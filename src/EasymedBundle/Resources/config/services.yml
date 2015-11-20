@@ -4,6 +4,13 @@ services:
 #        arguments: [@service_id, "plain_value", %parameter%]
     easymed.admin.med_card:
         class: EasymedBundle\Admin\MedCardAdmin
-        arguments: [~, EasymedBundle\Entity\MedCard, EasymedBundle:MedCardAdmin]
+        arguments: [~, EasymedBundle\Entity\MedCard, SonataAdminBundle:CRUD]
         tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: MedCard}
+            - {name: sonata.admin, manager_type: orm, group: Test, label: MedCard, label_catalogue: GeneralSettings}
+
+
+#    SkyFlow_app.admin.airport:
+#        class: SkyFlow\AppBundle\Admin\AirportAdmin
+#        arguments: [~, SkyFlow\AppBundle\Entity\Airport, SonataAdminBundle:CRUD]
+#        tags:
+#            - {name: sonata.admin, manager_type: orm, group: admin, label: Airport}
