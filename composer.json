@@ -22,7 +22,8 @@
         "sonata-project/admin-bundle": "2.3.*",
         "sonata-project/doctrine-orm-admin-bundle": "2.3.*",
         "sonata-project/user-bundle": "^2.2",
-        "friendsofsymfony/rest-bundle": "^1.7"
+        "friendsofsymfony/rest-bundle": "^1.7",
+        "doctrine/doctrine-fixtures-bundle": "^2.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
