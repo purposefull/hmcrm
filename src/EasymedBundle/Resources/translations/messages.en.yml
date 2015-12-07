@@ -1,0 +1,19 @@
+menu:
+  calendar: Calendar
+  doctors: Doctors
+  patients: Patients
+  cash: Cash
+
+add: Add
+edit: Edit
+delete: Delete
+
+templates:
+    patient:
+        patientAdding: Patient adding
+        patientEditing: Patient editing
+        firstName: First name
+        lastName: Last name
+        birthday: Birthday
+        phone: Phone
+        email: Email

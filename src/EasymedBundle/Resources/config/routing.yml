@@ -1,3 +1,3 @@
-easymed_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: EasymedBundle:Default:index }
+app:
+    resource: "@EasymedBundle/Controller/"
+    type:     annotation

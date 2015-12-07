@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>{{ 'templates.patient.firstName'|trans }}</th>
+            <th>{{ 'templates.patient.lastName'|trans }}</th>
+            <th>{{ 'templates.patient.birthday'|trans }}</th>
+            <th>{{ 'templates.patient.phone'|trans }}</th>
+            <th>{{ 'templates.patient.email'|trans }}</th>
+            <th>{{ 'edit'|trans }}/{{ 'delete'|trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for patient in patients %}
+            <tr>
+                <td>
+                    {{ patient.getFirstName() }}
+                </td>
+                <td>
+                    {{ patient.getLastName() }}
+                </td>
+                <td>
+                    {{ patient.getBirthday()|date('d.m.Y') }}
+                </td>
+                <td>
+                    {{ patient.getPhone() }}
+                </td>
+                <td>
+                    {{ patient.getEmail() }}
+                </td>
+                <td>
+                    <a href="{{ path('patient_edit', { 'id' : patient.getId() }) }}">{{ 'edit'|trans }}</a> / <a href="{{ path('patient_delete', { 'id' : patient.getId() }) }}">{{ 'delete'|trans }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{{ path('patient_add') }}" class="btn btn-primary btn-sm">{{ 'add'|trans }}</a>
+        </div>
+    </div>
+{% endblock %}
