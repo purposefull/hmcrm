@@ -169,4 +169,15 @@ class Patient extends Base
     {
         $this->transactions = $transactions;
     }
+
+    /**
+     * Gets full name
+     *
+     * @return string
+     */
+    public function getFullName()
+    {
+        return $this->lastName.' '.$this->firstName;
+    }
+
 }

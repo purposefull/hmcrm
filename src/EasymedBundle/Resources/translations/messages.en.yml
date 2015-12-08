@@ -10,6 +10,7 @@ delete: Delete
 
 templates:
     patient:
+        list: List of patients
         patientAdding: Patient adding
         patientEditing: Patient editing
         firstName: First name
@@ -17,3 +18,18 @@ templates:
         birthday: Birthday
         phone: Phone
         email: Email
+
+    doctor:
+        list: List of doctors
+        doctorAdding: Doctor adding
+        doctorEditing: Doctor editing
+        firstName: First name
+        lastName: Last name
+        specialization: Specialization
+    transaction:
+        list: List of transactions
+        transactionAdding: Transaction adding
+        patient: Patient
+        date: Date
+        status: Status
+        amount: Amount

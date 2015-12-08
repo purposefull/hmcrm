@@ -94,9 +94,9 @@
                     <div class="col-sm-3 col-md-2 sidebar">
                         <ul class="nav nav-sidebar">
                             <li><a href="#">{{ 'menu.calendar'|trans }}</a></li>
-                            <li><a href="#">{{ 'menu.doctors'|trans }}</a></li>
+                            <li><a href="{{ path('doctor_index') }}">{{ 'menu.doctors'|trans }}</a></li>
                             <li><a href="{{ path('patient_index') }}">{{ 'menu.patients'|trans }}</a></li>
-                            <li><a href="#">{{ 'menu.cash'|trans }}</a></li>
+                            <li><a href="{{ path('transaction_index') }}">{{ 'menu.cash'|trans }}</a></li>
                         </ul>
                     </div>
                 </div>
