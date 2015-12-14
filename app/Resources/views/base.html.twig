@@ -34,6 +34,8 @@
 
     <title>easymed</title>
 
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -59,6 +61,9 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    {% block stylesheets %}{% endblock %}
+    {% block javascripts %}{% endblock %}
 </head>
 
 <body>
@@ -93,7 +98,7 @@
                 <div class="row">
                     <div class="col-sm-3 col-md-2 sidebar">
                         <ul class="nav nav-sidebar">
-                            <li><a href="#">{{ 'menu.calendar'|trans }}</a></li>
+                            <li><a href="{{ path('calendar_index') }}">{{ 'menu.calendar'|trans }}</a></li>
                             <li><a href="{{ path('doctor_index') }}">{{ 'menu.doctors'|trans }}</a></li>
                             <li><a href="{{ path('patient_index') }}">{{ 'menu.patients'|trans }}</a></li>
                             <li><a href="{{ path('transaction_index') }}">{{ 'menu.cash'|trans }}</a></li>
@@ -106,6 +111,7 @@
                 <h1>{% block pageTitle %}{% endblock %}</h1>
                 <div class="content">
                     {% block content %}{% endblock %}
+                    {% block body %}{% endblock %}
                 </div>
             </div>
 
