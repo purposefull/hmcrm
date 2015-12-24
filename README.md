@@ -6,6 +6,7 @@ A Symfony project created on October 24, 2015, 11:38 pm.
 # Install
 
 1) git clone ...
+
 2) composer install
 3) php app/check.php
 4) php app/console doctrine:create:database
