@@ -19,7 +19,7 @@ A Symfony project created on October 24, 2015, 11:38 pm.
 
 7) php app/console server:start
 
-8) http://127.0.0.1
+8) http://127.0.0.1:8000
 
 # Postgresql
 
