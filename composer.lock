@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b85cca235a6079697137690740315c9b",
-    "content-hash": "77bed2fbed44d29c1d106f1d35f6fc11",
+    "hash": "cd66bfa09f2a8e14da836c92a36315ae",
+    "content-hash": "220a4aa66a1d4f95e26ffccdea428c5d",
     "packages": [
         {
             "name": "adesigns/calendar-bundle",
@@ -1547,6 +1547,36 @@
                 "minification"
             ],
             "time": "2015-11-12 13:51:40"
+        },
+        {
+            "name": "mailerlite/mailerlite_rest_v1",
+            "version": "1.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mailerlite/mailerlite-api-php-v1.git",
+                "reference": "c8bc570243052c5556a615267f4fe7a6bec8a096"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mailerlite/mailerlite-api-php-v1/zipball/c8bc570243052c5556a615267f4fe7a6bec8a096",
+                "reference": "c8bc570243052c5556a615267f4fe7a6bec8a096",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "MailerLite": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "MailerLite PHP API Wrapper",
+            "keywords": [
+                "mailerlite"
+            ],
+            "time": "2015-12-17 11:53:14"
         },
         {
             "name": "michelf/php-markdown",
