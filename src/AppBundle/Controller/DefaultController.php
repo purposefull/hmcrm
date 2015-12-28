@@ -9,6 +9,8 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 use Symfony\Component\Yaml\Dumper;
 use Symfony\Component\Yaml\Parser;
 
@@ -44,24 +46,9 @@ class DefaultController extends Controller
 
             // Define params
             $username = str_replace(array('@', '.'), '', $email);
-            $dbname = 'hmcrm_' . $username;
+            $dbname = '' . $username;
             $dir = $this->get('kernel')->getRootDir() . '/config';
             $fileconfig = $dir . '/config_' . $username . '.yml';
-
-            $pdo = $this->getDoctrine()->getConnection();
-
-            $kernel = $this->get('kernel');
-            $application = new Application($kernel);
-            $application->setAutoExit(false);
-
-            // Create database
-            $input = new ArrayInput(array(
-                'command' => 'doctrine:database:create',
-                '--env' => $username,
-            ));
-            // You can use NullOutput() if you don't need the output
-            $output = new BufferedOutput();
-            $application->run($input, $output);
 
             // Create configs
             $value = $yaml->parse(file_get_contents($dir . '/config_andreybolonin.yml'));
@@ -69,26 +56,44 @@ class DefaultController extends Controller
             $yaml = $dumper->dump($value);
             file_put_contents($fileconfig, $yaml);
 
+            // Create database
+            $pdo = $this->getDoctrine()->getConnection();
+            $query = 'CREATE DATABASE ' . $username;
+            $pdo->exec($query);
+
+//            $process = new Process('cd .. && php app/console doctrine:database:create --connection=default --env='.$username, null, [$username]);
+//            $process->run();
+//            if (!$process->isSuccessful()) {
+//                throw new ProcessFailedException($process);
+//            }
+
+            // Schema update
+            $process = new Process('cd .. && php app/console doctrine:schema:update --force --env='.$username);
+            $process->run();
+            if (!$process->isSuccessful()) {
+                throw new ProcessFailedException($process);
+            }
+
             // Create user in db
 
             // TODO Save email and phone in db
 
             // Send email
-            $message = \Swift_Message::newInstance()
-                ->setSubject('Регистрация в HealthMarketing CRM')
-                ->setFrom('info@healthmarketing.me')
-                ->setTo($email)
-                ->setBody(
-                    $this->renderView(
-                        'AppBundle:Default:email.txt.twig',
-                        array(
-                            'username' => $username,
-                            'password' => $password
-                        )
-                    )
-                )
-            ;
-            $this->get('mailer')->send($message);
+//            $message = \Swift_Message::newInstance()
+//                ->setSubject('Регистрация в HealthMarketing CRM')
+//                ->setFrom('info@healthmarketing.me')
+//                ->setTo($email)
+//                ->setBody(
+//                    $this->renderView(
+//                        'AppBundle:Default:email.txt.twig',
+//                        array(
+//                            'username' => $username,
+//                            'password' => $password
+//                        )
+//                    )
+//                )
+//            ;
+//            $this->get('mailer')->send($message);
 
             return $this->render('AppBundle:Default:register.html.twig', array(
                 'username' => $username,
