@@ -5,7 +5,7 @@ A Symfony project created on October 24, 2015, 11:38 pm.
 
 # Install
 
-1) git clone ...
+1) git clone https://andreybolonin@bitbucket.org/andreybolonin/easymed.git
 
 2) composer install
 
