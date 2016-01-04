@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class LeadType extends AbstractType
+class CompanyType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,11 +15,9 @@ class LeadType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName')
-            ->add('lastName')
-            ->add('companyName')
-            ->add('title')
-            ->add('leadStatus')
+            ->add('name')
+            ->add('customerStatus')
+            ->add('prospectStatus')
             ->add('email')
             ->add('mobilePhone')
             ->add('workPhone')
@@ -29,7 +27,6 @@ class LeadType extends AbstractType
             ->add('region')
             ->add('country')
             ->add('tags')
-            ->add('source')
         ;
     }
     
@@ -39,7 +36,7 @@ class LeadType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'EasymedBundle\Entity\Lead'
+            'data_class' => 'EasymedBundle\Entity\Company'
         ));
     }
 
@@ -48,6 +45,6 @@ class LeadType extends AbstractType
      */
     public function getName()
     {
-        return 'easymedbundle_lead';
+        return 'easymedbundle_company';
     }
 }

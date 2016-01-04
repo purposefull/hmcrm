@@ -1,33 +1,21 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Lead</h1>
+    <h1>Company</h1>
 
     <table class="record_properties">
         <tbody>
             <tr>
-                <th>Firstname</th>
-                <td>{{ entity.firstName }}</td>
+                <th>Name</th>
+                <td>{{ entity.name }}</td>
             </tr>
             <tr>
-                <th>Lastname</th>
-                <td>{{ entity.lastName }}</td>
+                <th>Customerstatus</th>
+                <td>{{ entity.customerStatus }}</td>
             </tr>
             <tr>
-                <th>Companyname</th>
-                <td>{{ entity.companyName }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ entity.title }}</td>
-            </tr>
-            <tr>
-                <th>Leadstatus</th>
-                <td>{{ entity.leadStatus }}</td>
-            </tr>
-            <tr>
-                <th>Source</th>
-                <td>{{ entity.source }}</td>
+                <th>Prospectstatus</th>
+                <td>{{ entity.prospectStatus }}</td>
             </tr>
             <tr>
                 <th>Email</th>
@@ -82,12 +70,12 @@
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('lead') }}">
+        <a href="{{ path('company') }}">
             Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('lead_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('company_edit', { 'id': entity.id }) }}">
             Edit
         </a>
     </li>

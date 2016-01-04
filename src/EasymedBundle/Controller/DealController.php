@@ -7,21 +7,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use EasymedBundle\Entity\Lead;
-use EasymedBundle\Form\LeadType;
+use EasymedBundle\Entity\Deal;
+use EasymedBundle\Form\DealType;
 
 /**
- * Lead controller.
+ * Deal controller.
  *
- * @Route("/lead")
+ * @Route("/deal")
  */
-class LeadController extends Controller
+class DealController extends Controller
 {
 
     /**
-     * Lists all Lead entities.
+     * Lists all Deal entities.
      *
-     * @Route("/", name="lead")
+     * @Route("/", name="deal")
      * @Method("GET")
      * @Template()
      */
@@ -29,22 +29,22 @@ class LeadController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('EasymedBundle:Lead')->findAll();
+        $entities = $em->getRepository('EasymedBundle:Deal')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new Lead entity.
+     * Creates a new Deal entity.
      *
-     * @Route("/", name="lead_create")
+     * @Route("/", name="deal_create")
      * @Method("POST")
-     * @Template("EasymedBundle:Lead:new.html.twig")
+     * @Template("EasymedBundle:Deal:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new Lead();
+        $entity = new Deal();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -53,7 +53,7 @@ class LeadController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('lead_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('deal_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -63,16 +63,16 @@ class LeadController extends Controller
     }
 
     /**
-     * Creates a form to create a Lead entity.
+     * Creates a form to create a Deal entity.
      *
-     * @param Lead $entity The entity
+     * @param Deal $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Lead $entity)
+    private function createCreateForm(Deal $entity)
     {
-        $form = $this->createForm(new LeadType(), $entity, array(
-            'action' => $this->generateUrl('lead_create'),
+        $form = $this->createForm(new DealType(), $entity, array(
+            'action' => $this->generateUrl('deal_create'),
             'method' => 'POST',
         ));
 
@@ -82,15 +82,15 @@ class LeadController extends Controller
     }
 
     /**
-     * Displays a form to create a new Lead entity.
+     * Displays a form to create a new Deal entity.
      *
-     * @Route("/new", name="lead_new")
+     * @Route("/new", name="deal_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Lead();
+        $entity = new Deal();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -100,9 +100,9 @@ class LeadController extends Controller
     }
 
     /**
-     * Finds and displays a Lead entity.
+     * Finds and displays a Deal entity.
      *
-     * @Route("/{id}", name="lead_show")
+     * @Route("/{id}", name="deal_show")
      * @Method("GET")
      * @Template()
      */
@@ -110,10 +110,10 @@ class LeadController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EasymedBundle:Lead')->find($id);
+        $entity = $em->getRepository('EasymedBundle:Deal')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Lead entity.');
+            throw $this->createNotFoundException('Unable to find Deal entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -125,9 +125,9 @@ class LeadController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Lead entity.
+     * Displays a form to edit an existing Deal entity.
      *
-     * @Route("/{id}/edit", name="lead_edit")
+     * @Route("/{id}/edit", name="deal_edit")
      * @Method("GET")
      * @Template()
      */
@@ -135,10 +135,10 @@ class LeadController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EasymedBundle:Lead')->find($id);
+        $entity = $em->getRepository('EasymedBundle:Deal')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Lead entity.');
+            throw $this->createNotFoundException('Unable to find Deal entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -152,16 +152,16 @@ class LeadController extends Controller
     }
 
     /**
-    * Creates a form to edit a Lead entity.
+    * Creates a form to edit a Deal entity.
     *
-    * @param Lead $entity The entity
+    * @param Deal $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Lead $entity)
+    private function createEditForm(Deal $entity)
     {
-        $form = $this->createForm(new LeadType(), $entity, array(
-            'action' => $this->generateUrl('lead_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new DealType(), $entity, array(
+            'action' => $this->generateUrl('deal_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -170,20 +170,20 @@ class LeadController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Lead entity.
+     * Edits an existing Deal entity.
      *
-     * @Route("/{id}", name="lead_update")
+     * @Route("/{id}", name="deal_update")
      * @Method("PUT")
-     * @Template("EasymedBundle:Lead:edit.html.twig")
+     * @Template("EasymedBundle:Deal:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EasymedBundle:Lead')->find($id);
+        $entity = $em->getRepository('EasymedBundle:Deal')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Lead entity.');
+            throw $this->createNotFoundException('Unable to find Deal entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -193,7 +193,7 @@ class LeadController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('lead_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('deal_edit', array('id' => $id)));
         }
 
         return array(
@@ -203,9 +203,9 @@ class LeadController extends Controller
         );
     }
     /**
-     * Deletes a Lead entity.
+     * Deletes a Deal entity.
      *
-     * @Route("/{id}", name="lead_delete")
+     * @Route("/{id}", name="deal_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -215,21 +215,21 @@ class LeadController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('EasymedBundle:Lead')->find($id);
+            $entity = $em->getRepository('EasymedBundle:Deal')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Lead entity.');
+                throw $this->createNotFoundException('Unable to find Deal entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('lead'));
+        return $this->redirect($this->generateUrl('deal'));
     }
 
     /**
-     * Creates a form to delete a Lead entity by id.
+     * Creates a form to delete a Deal entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -238,7 +238,7 @@ class LeadController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('lead_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('deal_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

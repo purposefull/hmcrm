@@ -1,17 +1,14 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Lead list</h1>
+    <h1>Company list</h1>
 
     <table class="records_list">
         <thead>
             <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Companyname</th>
-                <th>Title</th>
-                <th>Leadstatus</th>
-                <th>Source</th>
+                <th>Name</th>
+                <th>Customerstatus</th>
+                <th>Prospectstatus</th>
                 <th>Email</th>
                 <th>Mobilephone</th>
                 <th>Workphone</th>
@@ -30,12 +27,9 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('lead_show', { 'id': entity.id }) }}">{{ entity.firstName }}</a></td>
-                <td>{{ entity.lastName }}</td>
-                <td>{{ entity.companyName }}</td>
-                <td>{{ entity.title }}</td>
-                <td>{{ entity.leadStatus }}</td>
-                <td>{{ entity.source }}</td>
+                <td><a href="{{ path('company_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
+                <td>{{ entity.customerStatus }}</td>
+                <td>{{ entity.prospectStatus }}</td>
                 <td>{{ entity.email }}</td>
                 <td>{{ entity.mobilePhone }}</td>
                 <td>{{ entity.workPhone }}</td>
@@ -51,10 +45,10 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('lead_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('company_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('lead_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('company_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -65,7 +59,7 @@
 
         <ul>
         <li>
-            <a href="{{ path('lead_new') }}">
+            <a href="{{ path('company_new') }}">
                 Create a new entry
             </a>
         </li>
