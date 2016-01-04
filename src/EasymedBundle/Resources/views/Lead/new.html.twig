@@ -1,15 +1,15 @@
-{% extends '::base.html.twig' %}
+{% extends 'dashboard.html.twig' %}
+
+{% block title %} Lead creation {% endblock %}
 
 {% block body -%}
-    <h1>Lead creation</h1>
+    {{ form(form, {'class': 'form-horizontal'}) }}
 
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('lead') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('lead') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
 {% endblock %}

@@ -1,9 +1,8 @@
-{% extends '::base.html.twig' %}
+{% extends '::dashboard.html.twig' %}
 
+{% block title %} Lead {% endblock %}
 {% block body -%}
-    <h1>Lead</h1>
-
-    <table class="record_properties">
+    <table class="table table-striped table-bordered table-hover dataTables-example dataTable">
         <tbody>
             <tr>
                 <th>Firstname</th>
