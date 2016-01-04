@@ -1,0 +1,96 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Lead</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ entity.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ entity.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Companyname</th>
+                <td>{{ entity.companyName }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ entity.title }}</td>
+            </tr>
+            <tr>
+                <th>Leadstatus</th>
+                <td>{{ entity.leadStatus }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th>Mobilephone</th>
+                <td>{{ entity.mobilePhone }}</td>
+            </tr>
+            <tr>
+                <th>Workphone</th>
+                <td>{{ entity.workPhone }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ entity.address }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ entity.city }}</td>
+            </tr>
+            <tr>
+                <th>Zipcode</th>
+                <td>{{ entity.zipCode }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ entity.region }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ entity.country }}</td>
+            </tr>
+            <tr>
+                <th>Tags</th>
+                <td>{{ entity.tags }}</td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>{{ entity.source }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('lead') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('lead_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

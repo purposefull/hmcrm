@@ -1,0 +1,73 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Lead list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Companyname</th>
+                <th>Title</th>
+                <th>Leadstatus</th>
+                <th>Email</th>
+                <th>Mobilephone</th>
+                <th>Workphone</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Zipcode</th>
+                <th>Region</th>
+                <th>Country</th>
+                <th>Tags</th>
+                <th>Source</th>
+                <th>Id</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('lead_show', { 'id': entity.id }) }}">{{ entity.firstName }}</a></td>
+                <td>{{ entity.lastName }}</td>
+                <td>{{ entity.companyName }}</td>
+                <td>{{ entity.title }}</td>
+                <td>{{ entity.leadStatus }}</td>
+                <td>{{ entity.email }}</td>
+                <td>{{ entity.mobilePhone }}</td>
+                <td>{{ entity.workPhone }}</td>
+                <td>{{ entity.address }}</td>
+                <td>{{ entity.city }}</td>
+                <td>{{ entity.zipCode }}</td>
+                <td>{{ entity.region }}</td>
+                <td>{{ entity.country }}</td>
+                <td>{{ entity.tags }}</td>
+                <td>{{ entity.source }}</td>
+                <td>{{ entity.id }}</td>
+                <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.updatedAt %}{{ entity.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('lead_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('lead_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('lead_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}
