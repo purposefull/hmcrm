@@ -2,6 +2,7 @@
 
 namespace EasymedBundle\Form;
 
+use EasymedBundle\Entity\Company;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -16,8 +17,12 @@ class CompanyType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('customerStatus')
-            ->add('prospectStatus')
+            ->add('customerStatus', 'choice', array(
+                'choices' => Company::valuesOfCustomerStatus()
+            ))
+            ->add('prospectStatus', 'choice', array(
+                'choices' => Company::valuesOfProspectStatus()
+            ))
             ->add('email')
             ->add('mobilePhone')
             ->add('workPhone')
@@ -28,6 +33,8 @@ class CompanyType extends AbstractType
             ->add('country')
             ->add('tags')
         ;
+
+        $builder->setRequired(false);
     }
     
     /**
@@ -45,6 +52,6 @@ class CompanyType extends AbstractType
      */
     public function getName()
     {
-        return 'easymedbundle_company';
+        return 'company';
     }
 }

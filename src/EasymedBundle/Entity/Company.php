@@ -12,8 +12,22 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Company extends ContactBase
 {
+    const STATUS_CUSTOMER = 1;
+
+    const STATUS_PAST_CUSTOMER = 2;
+
+    const STATUS_NON_CUSTOMER = 3;
+
+    const STATUS_PROSPECT = 4;
+
+    const STATUS_NON_PROSPECT = 5;
+
+    const STATUS_LOST_PROSPECT = 6;
+
     /**
      * @var string
+     *
+     * @Assert\NotBlank()
      *
      * @ORM\Column(type="string", length=255)
      */
@@ -22,14 +36,14 @@ class Company extends ContactBase
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $customerStatus;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $prospectStatus;
 
@@ -79,5 +93,33 @@ class Company extends ContactBase
     public function setProspectStatus($prospectStatus)
     {
         $this->prospectStatus = $prospectStatus;
+    }
+
+    /**
+     * Returns array of customer statuses
+     *
+     * @return array
+     */
+    public static function valuesOfCustomerStatus()
+    {
+        return array(
+            self::STATUS_CUSTOMER => 'Customer',
+            self::STATUS_PAST_CUSTOMER => 'Past Customer',
+            self::STATUS_NON_CUSTOMER => 'Non Customer',
+        );
+    }
+
+    /**
+     * Returns array of prospect statuses
+     *
+     * @return array
+     */
+    public static function valuesOfProspectStatus()
+    {
+        return array(
+            self::STATUS_PROSPECT => 'Prospect',
+            self::STATUS_LOST_PROSPECT => 'Lost Prospect',
+            self::STATUS_NON_PROSPECT => 'Non Prospect',
+        );
     }
 }

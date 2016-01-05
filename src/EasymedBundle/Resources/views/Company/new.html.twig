@@ -1,15 +1,18 @@
-{% extends '::dashboard.html.twig' %}
+{% extends 'dashboard.html.twig' %}
 
-{% block body -%}
-    <h1>Company creation</h1>
+{% block title %} Company creation {% endblock %}
 
-    {{ form(form) }}
+{% block body %}
+    {{ form_start(form) }}
+    <div class="form-actions">
+        <div class="col-sm-12">
+            {{ form_widget(form.submit, { 'attr': {'class': 'btn btn-primary'}}) }}
+            <a class="btn btn-default" href="{{ path('company') }}">
+                Back to the list
+            </a>
+        </div>
+    </div>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('company') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
 {% endblock %}

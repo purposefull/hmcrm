@@ -1,65 +1,34 @@
-{% extends '::dashboard.html.twig' %}
+{% extends 'dashboard.html.twig' %}
 
-{% block body -%}
-    <h1>Person list</h1>
+{% block title %}Person list{% endblock %}
 
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Customerstatus</th>
-                <th>Prospectstatus</th>
-                <th>Email</th>
-                <th>Mobilephone</th>
-                <th>Workphone</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>Zipcode</th>
-                <th>Region</th>
-                <th>Country</th>
-                <th>Tags</th>
-                <th>Id</th>
-                <th>Createdat</th>
-                <th>Updatedat</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('person_show', { 'id': entity.id }) }}">{{ entity.customerStatus }}</a></td>
-                <td>{{ entity.prospectStatus }}</td>
-                <td>{{ entity.email }}</td>
-                <td>{{ entity.mobilePhone }}</td>
-                <td>{{ entity.workPhone }}</td>
-                <td>{{ entity.address }}</td>
-                <td>{{ entity.city }}</td>
-                <td>{{ entity.zipCode }}</td>
-                <td>{{ entity.region }}</td>
-                <td>{{ entity.country }}</td>
-                <td>{{ entity.tags }}</td>
-                <td>{{ entity.id }}</td>
-                <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if entity.updatedAt %}{{ entity.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('person_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('person_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+{% block body %}
+    <a class="btn btn-primary" href="{{ path('person_new') }}">
+        Create a new entry
+    </a>
+    {% for entity in entities %}
+        <a href="{{ path('person_show', { 'id' : entity.getId() }) }}">
+            <div class="row list-row">
+                <div class="col-md-8 list-item">
+                    <h3>{{ entity.getFirstName() }} {{ entity.getLastName() }}</h3>
 
-        <ul>
-        <li>
-            <a href="{{ path('person_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+                    <div class="hidden-list-fields">
+                        <p>{{ entity.getTitle() }}</p>
+                        <p>{{ entity.getCompanyName() }}</p>
+                    </div>
+                </div>
+                <div class="col-md-4 list-item hidden-list-fields">
+                    {% if entity.getEmail() is not null %}
+                        <p>Email: {{ entity.getEmail() }}</p>
+                    {% endif %}
+                    {% if entity.getMobilePhone() is not null %}
+                        <p>M: {{ entity.getMobilePhone() }}</p>
+                    {% endif %}
+                    {% if entity.getWorkPhone() is not null %}
+                        <p>W: {{ entity.getWorkPhone() }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+{% endblock %}

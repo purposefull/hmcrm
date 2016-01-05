@@ -193,7 +193,7 @@ class CompanyController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('company_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('company_show', array('id' => $id)));
         }
 
         return array(

@@ -2,6 +2,7 @@
 
 namespace EasymedBundle\Form;
 
+use EasymedBundle\Entity\Person;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -15,12 +16,16 @@ class PersonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('customerStatus')
-            ->add('prospectStatus')
             ->add('firstName')
             ->add('lastName')
             ->add('companyName')
             ->add('title')
+            ->add('customerStatus', 'choice', array(
+                'choices' => Person::valuesOfCustomerStatus()
+            ))
+            ->add('prospectStatus', 'choice', array(
+                'choices' => Person::valuesOfProspectStatus()
+            ))
             ->add('email')
             ->add('mobilePhone')
             ->add('workPhone')
@@ -31,6 +36,8 @@ class PersonType extends AbstractType
             ->add('country')
             ->add('tags')
         ;
+
+        $builder->setRequired(false);
     }
     
     /**
@@ -48,6 +55,6 @@ class PersonType extends AbstractType
      */
     public function getName()
     {
-        return 'easymedbundle_person';
+        return 'person';
     }
 }
