@@ -3,39 +3,32 @@
 {% block title %}Lead list{% endblock %}
 
 {% block body %}
-    <table class="table table-striped table-bordered table-hover dataTables-example dataTable">
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('lead_show', { 'id': entity.id }) }}">{{ entity.firstName }}</a></td>
-                <td>{{ entity.lastName }}</td>
-                <td>{{ entity.companyName }}</td>
-                <td>{{ entity.title }}</td>
-                <td>{{ entity.leadStatus }}</td>
-                <td>{{ entity.source }}</td>
-                <td>{{ entity.email }}</td>
-                <td>{{ entity.address }}</td>
-                <td>{{ entity.tags }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('lead_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('lead_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <a class="btn btn-primary" href="{{ path('lead_new') }}">
+        Create a new entry
+    </a>
+    {% for entity in entities %}
+        <a href="{{ path('lead_show', { 'id' : entity.getId() }) }}">
+            <div class="row list-row">
+                <div class="col-md-8 list-item">
+                    <h3>{{ entity.getFirstName() }} {{ entity.getLastName() }}</h3>
 
-        <ul>
-        <li>
-            <a href="{{ path('lead_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+                    <div class="hidden-list-fields">
+                        <p>{{ entity.getTitle() }}</p>
+                        <p>{{ entity.getCompanyName() }}</p>
+                    </div>
+                </div>
+                <div class="col-md-4 list-item hidden-list-fields">
+                    {% if entity.getEmail() is not null %}
+                        <p>Email: {{ entity.getEmail() }}</p>
+                    {% endif %}
+                    {% if entity.getMobilePhone() is not null %}
+                        <p>M: {{ entity.getMobilePhone() }}</p>
+                    {% endif %}
+                    {% if entity.getWorkPhone() is not null %}
+                        <p>W: {{ entity.getWorkPhone() }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+    {% endfor %}
 {% endblock %}

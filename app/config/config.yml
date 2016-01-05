@@ -128,5 +128,6 @@ fos_user:
         user_manager: sonata.user.orm.user_manager                      # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
 
 mopa_bootstrap:
-    form: ~  # Adds twig form theme  support
+    form:
+        render_optional_text: false
     menu: ~  # enables twig helpers for menu

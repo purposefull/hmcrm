@@ -161,7 +161,7 @@ class DealController extends Controller
     private function createEditForm(Deal $entity)
     {
         $form = $this->createForm(new DealType(), $entity, array(
-            'action' => $this->generateUrl('deal_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('deal_show', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -193,7 +193,7 @@ class DealController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('deal_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('deal_show', array('id' => $id)));
         }
 
         return array(

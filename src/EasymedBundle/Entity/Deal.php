@@ -12,8 +12,24 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Deal extends Base
 {
+    const STAGE_INCOMING = 1;
+
+    const STAGE_QUALIFIED = 2;
+
+    const STAGE_QUOTE = 3;
+
+    const STAGE_CLOSURE = 4;
+
+    const STAGE_WON = 5;
+
+    const STAGE_UNQUALIFIED = 6;
+
+    const STAGE_LOST = 7;
+
     /**
      * @var string
+     *
+     * @Assert\NotBlank()
      *
      * @ORM\Column(type="string", length=255)
      */
@@ -22,6 +38,8 @@ class Deal extends Base
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     *
      * @ORM\Column(type="string", length=255)
      */
     protected $contact;
@@ -29,28 +47,37 @@ class Deal extends Base
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     *
      * @ORM\Column(type="string", length=255)
+     */
+    protected $stage;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $value;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $currency;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $source;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $tags;
 
@@ -148,5 +175,39 @@ class Deal extends Base
     public function setTags($tags)
     {
         $this->tags = $tags;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStage()
+    {
+        return $this->stage;
+    }
+
+    /**
+     * @param string $stage
+     */
+    public function setStage($stage)
+    {
+        $this->stage = $stage;
+    }
+
+    /**
+     * Returns array of stages
+     *
+     * @return array
+     */
+    public static function valuesOfStage()
+    {
+        return array(
+            self::STAGE_INCOMING => 'Incoming',
+            self::STAGE_QUALIFIED => 'Qualified',
+            self::STAGE_QUOTE => 'Quote',
+            self::STAGE_CLOSURE => 'Closure',
+            self::STAGE_WON => 'Won',
+            self::STAGE_UNQUALIFIED => 'Unqualified',
+            self::STAGE_LOST => 'Lost',
+        );
     }
 }

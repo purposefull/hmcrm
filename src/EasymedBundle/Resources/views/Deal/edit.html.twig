@@ -1,16 +1,18 @@
 {% extends '::dashboard.html.twig' %}
 
+{% block title %} Deal edit {% endblock %}
+
 {% block body -%}
-    <h1>Deal edit</h1>
+    {{ form_start(edit_form) }}
+        <div class="form-actions">
+            <div class="col-sm-12">
+                {{ form_widget(edit_form.submit, { 'attr': {'class': 'btn btn-primary'}}) }}
+                <a class="btn btn-default" href="{{ path('deal') }}">
+                    Back to the list
+                </a>
+            </div>
+        </div>
 
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('deal') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+        {{ form_rest(edit_form) }}
+    {{ form_end(edit_form) }}
 {% endblock %}

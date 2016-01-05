@@ -2,6 +2,7 @@
 
 namespace EasymedBundle\Form;
 
+use EasymedBundle\Entity\Deal;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -17,11 +18,16 @@ class DealType extends AbstractType
         $builder
             ->add('name')
             ->add('contact')
+            ->add('stage', 'choice', array(
+                'choices' => Deal::valuesOfStage()
+            ))
             ->add('value')
             ->add('currency')
             ->add('source')
             ->add('tags')
         ;
+
+        $builder->setRequired(false);
     }
     
     /**

@@ -2,7 +2,6 @@
 
 namespace EasymedBundle\Entity;
 
-use ADesigns\CalendarBundle\Entity\EventEntity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -12,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="calendar_event")
  * @ORM\Entity()
  */
-class CalendarEvent extends EventEntity implements \JsonSerializable
+class CalendarEvent implements \JsonSerializable
 {
     /**
      * @var integer $id

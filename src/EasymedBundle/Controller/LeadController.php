@@ -76,8 +76,6 @@ class LeadController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
-
         return $form;
     }
 
@@ -193,7 +191,7 @@ class LeadController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('lead_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('lead_show', array('id' => $id)));
         }
 
         return array(

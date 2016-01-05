@@ -1,15 +1,19 @@
 {% extends '::dashboard.html.twig' %}
 
+{% block title %}Deal creation{% endblock %}
+
 {% block body -%}
-    <h1>Deal creation</h1>
 
-    {{ form(form) }}
+    {{ form_start(form) }}
+    <div class="form-actions">
+        <div class="col-sm-12">
+            {{ form_widget(form.submit, { 'attr': {'class': 'btn btn-primary'}}) }}
+            <a class="btn btn-default" href="{{ path('deal') }}">
+                Back to the list
+            </a>
+        </div>
+    </div>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('deal') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
 {% endblock %}

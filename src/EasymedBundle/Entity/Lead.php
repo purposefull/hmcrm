@@ -12,15 +12,23 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Lead extends ContactBase
 {
+    const STATUS_NEW = 1;
+
+    const STATUS_WORKING = 2;
+
+    const STATUS_UNQUALIFIED = 3;
+
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $firstName;
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank()
      *
      * @ORM\Column(type="string", length=255)
      */
@@ -29,28 +37,28 @@ class Lead extends ContactBase
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $companyName;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $title;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $leadStatus;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $source;
 
@@ -148,5 +156,36 @@ class Lead extends ContactBase
     public function setSource($source)
     {
         $this->source = $source;
+    }
+
+    /**
+     * Returns array of statuses
+     *
+     * @return array
+     */
+    public static function valuesOfStatus()
+    {
+        return array(
+            self::STATUS_NEW => 'New',
+            self::STATUS_WORKING => 'Working',
+            self::STATUS_UNQUALIFIED => 'Unqualified',
+        );
+    }
+
+    /**
+     * Returns status name
+     *
+     * @param integer $statusKey
+     *
+     * @return string
+     */
+    public static function getStatusName($statusKey)
+    {
+        if (array_key_exists($statusKey, self::valuesOfStatus())) {
+            $statusArray = self::valuesOfStatus();
+            return $statusArray[$statusKey];
+        }
+
+        return false;
     }
 }

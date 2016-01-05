@@ -8,13 +8,6 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: Test, label: MedCard, label_catalogue: GeneralSettings}
 
-    easymed.calendar_listener:
-        class: EasymedBundle\EventListener\CalendarListener
-        arguments:
-            - @doctrine.orm.entity_manager
-        tags:
-            - { name: kernel.event_listener, event: calendar.load_events, method: loadEvents }
-
 #    SkyFlow_app.admin.airport:
 #        class: SkyFlow\AppBundle\Admin\AirportAdmin
 #        arguments: [~, SkyFlow\AppBundle\Entity\Airport, SonataAdminBundle:CRUD]

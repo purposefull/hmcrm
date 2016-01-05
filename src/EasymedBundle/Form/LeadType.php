@@ -2,6 +2,7 @@
 
 namespace EasymedBundle\Form;
 
+use EasymedBundle\Entity\Lead;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -15,11 +16,16 @@ class LeadType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('submit', 'submit')
             ->add('firstName')
-            ->add('lastName')
+            ->add('lastName', 'text', array(
+                'label' => 'Last Name* '
+            ))
             ->add('companyName')
             ->add('title')
-            ->add('leadStatus')
+            ->add('leadStatus', 'choice', array(
+                'choices' => Lead::valuesOfStatus()
+            ))
             ->add('email')
             ->add('mobilePhone')
             ->add('workPhone')
@@ -29,10 +35,10 @@ class LeadType extends AbstractType
             ->add('region')
             ->add('country')
             ->add('tags')
-            ->add('source')
         ;
+
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
@@ -48,6 +54,6 @@ class LeadType extends AbstractType
      */
     public function getName()
     {
-        return 'easymedbundle_lead';
+        return 'lead';
     }
 }
