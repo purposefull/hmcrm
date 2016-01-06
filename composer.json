@@ -25,7 +25,9 @@
         "friendsofsymfony/rest-bundle": "^1.7",
         "doctrine/doctrine-fixtures-bundle": "^2.2",
         "mailerlite/mailerlite_rest_v1": "^1.1",
-        "mopa/bootstrap-bundle": "dev-master"
+        "mopa/bootstrap-bundle": "dev-master",
+        "knplabs/knp-menu-bundle": "v1.1.2",
+        "knplabs/knp-menu": "v1.1.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

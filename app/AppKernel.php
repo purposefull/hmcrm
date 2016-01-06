@@ -33,7 +33,8 @@ class AppKernel extends Kernel
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new EasymedBundle\EasymedBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
-            new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle()
+            new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
+            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
