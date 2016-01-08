@@ -4,7 +4,7 @@
 
 {% block body %}
     <a class="btn btn-primary" href="{{ path('lead_new') }}">
-        Create a new entry
+        + Lead
     </a>
     {% for entity in entities %}
         <a href="{{ path('lead_show', { 'id' : entity.getId() }) }}">

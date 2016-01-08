@@ -4,7 +4,7 @@
 
 {% block body -%}
     <a class="btn btn-primary" href="{{ path('deal_new') }}">
-        Create a new entry
+        + Deal
     </a>
     {% for entity in entities %}
         <a href="{{ path('deal_show', { 'id' : entity.getId() }) }}">
