@@ -17,7 +17,6 @@ use EasymedBundle\Form\PersonType;
  */
 class PersonController extends Controller
 {
-
     /**
      * Lists all Person entities.
      *
@@ -27,14 +26,20 @@ class PersonController extends Controller
      */
     public function indexAction()
     {
+        $securityContext = $this->container->get('security.authorization_checker');
+        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('EasymedBundle:Person')->findAll();
+        $entities = $em->getRepository('EasymedBundle:Person')->findByUser($this->getUser());
 
         return array(
             'entities' => $entities,
         );
     }
+
     /**
      * Creates a new Person entity.
      *
@@ -44,12 +49,18 @@ class PersonController extends Controller
      */
     public function createAction(Request $request)
     {
+        $securityContext = $this->container->get('security.authorization_checker');
+        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $entity = new Person();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $entity->setUser($this->getUser());
             $em->persist($entity);
             $em->flush();
 
@@ -90,6 +101,11 @@ class PersonController extends Controller
      */
     public function newAction()
     {
+        $securityContext = $this->container->get('security.authorization_checker');
+        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $entity = new Person();
         $form   = $this->createCreateForm($entity);
 
@@ -108,9 +124,17 @@ class PersonController extends Controller
      */
     public function showAction($id)
     {
+        $securityContext = $this->container->get('security.authorization_checker');
+        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EasymedBundle:Person')->find($id);
+        $entity = $em->getRepository('EasymedBundle:Person')->findOneBy(array(
+            'id' => $id,
+            'user' => $this->getUser()
+        ));;
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Person entity.');
@@ -133,9 +157,17 @@ class PersonController extends Controller
      */
     public function editAction($id)
     {
+        $securityContext = $this->container->get('security.authorization_checker');
+        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EasymedBundle:Person')->find($id);
+        $entity = $em->getRepository('EasymedBundle:Person')->findOneBy(array(
+            'id' => $id,
+            'user' => $this->getUser()
+        ));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Person entity.');
@@ -178,9 +210,17 @@ class PersonController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        $securityContext = $this->container->get('security.authorization_checker');
+        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EasymedBundle:Person')->find($id);
+        $entity = $em->getRepository('EasymedBundle:Person')->findOneBy(array(
+            'id' => $id,
+            'user' => $this->getUser()
+        ));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Person entity.');
@@ -210,12 +250,20 @@ class PersonController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
+        $securityContext = $this->container->get('security.authorization_checker');
+        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('EasymedBundle:Person')->find($id);
+            $entity = $em->getRepository('EasymedBundle:Person')->findOneBy(array(
+                'id' => $id,
+                'user' => $this->getUser()
+            ));
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Person entity.');

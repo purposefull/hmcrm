@@ -82,6 +82,12 @@ class Deal extends Base
     protected $tags;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="deals")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
+
+    /**
      * @return string
      */
     public function getName()
@@ -209,5 +215,21 @@ class Deal extends Base
             self::STAGE_UNQUALIFIED => 'Unqualified',
             self::STAGE_LOST => 'Lost',
         );
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 }

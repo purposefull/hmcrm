@@ -17,7 +17,6 @@ use EasymedBundle\Form\LeadType;
  */
 class LeadController extends Controller
 {
-
     /**
      * Lists all Lead entities.
      *
@@ -27,9 +26,14 @@ class LeadController extends Controller
      */
     public function indexAction()
     {
+        $securityContext = $this->container->get('security.authorization_checker');
+        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('EasymedBundle:Lead')->findAll();
+        $entities = $em->getRepository('EasymedBundle:Lead')->findByUser($this->getUser());
 
         return array(
             'entities' => $entities,
@@ -44,12 +48,18 @@ class LeadController extends Controller
      */
     public function createAction(Request $request)
     {
+        $securityContext = $this->container->get('security.authorization_checker');
+        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $entity = new Lead();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $entity->setUser($this->getUser());
             $em->persist($entity);
             $em->flush();
 
@@ -88,6 +98,11 @@ class LeadController extends Controller
      */
     public function newAction()
     {
+        $securityContext = $this->container->get('security.authorization_checker');
+        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $entity = new Lead();
         $form   = $this->createCreateForm($entity);
 
@@ -106,9 +121,17 @@ class LeadController extends Controller
      */
     public function showAction($id)
     {
+        $securityContext = $this->container->get('security.authorization_checker');
+        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EasymedBundle:Lead')->find($id);
+        $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy(array(
+            'id' => $id,
+            'user' => $this->getUser()
+        ));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Lead entity.');
@@ -131,9 +154,17 @@ class LeadController extends Controller
      */
     public function editAction($id)
     {
+        $securityContext = $this->container->get('security.authorization_checker');
+        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EasymedBundle:Lead')->find($id);
+        $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy(array(
+            'id' => $id,
+            'user' => $this->getUser()
+        ));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Lead entity.');
@@ -176,9 +207,17 @@ class LeadController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        $securityContext = $this->container->get('security.authorization_checker');
+        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EasymedBundle:Lead')->find($id);
+        $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy(array(
+            'id' => $id,
+            'user' => $this->getUser()
+        ));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Lead entity.');
@@ -208,12 +247,20 @@ class LeadController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
+        $securityContext = $this->container->get('security.authorization_checker');
+        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('EasymedBundle:Lead')->find($id);
+            $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy(array(
+                    'id' => $id,
+                    'user' => $this->getUser()
+                ));
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Lead entity.');
