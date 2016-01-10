@@ -52,6 +52,11 @@ class User extends BaseUser
     protected $deals;
 
     /**
+     * @ORM\OneToMany(targetEntity="EasymedBundle\Entity\Contact", mappedBy="user")
+     */
+    protected $contacts;
+
+    /**
      * Get id
      *
      * @return int $id
@@ -123,5 +128,21 @@ class User extends BaseUser
     public function setDeals($deals)
     {
         $this->deals = $deals;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContacts()
+    {
+        return $this->contacts;
+    }
+
+    /**
+     * @param mixed $contacts
+     */
+    public function setContacts($contacts)
+    {
+        $this->contacts = $contacts;
     }
 }

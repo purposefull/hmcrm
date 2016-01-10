@@ -17,7 +17,10 @@ class DealType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('contact')
+            ->add('contact', 'entity', array(
+                'class' => 'EasymedBundle:Contact',
+                'choice_label' => 'name',
+            ))
             ->add('stage', 'choice', array(
                 'choices' => Deal::valuesOfStage()
             ))

@@ -1,0 +1,37 @@
+{% extends '::dashboard.html.twig' %}
+
+{% block title %}Deal list{% endblock %}
+
+{% block body -%}
+    <div class="dropdown profile-element">
+    <a data-toggle="dropdown" class="dropdown-toggle btn btn-primary" href="#">
+        <span class="clear">
+            <span class="block m-t-xs">
+                <strong class="font-bold">
+                    Add
+                </strong>
+                <span class="text-muted text-xs inline"><b class="caret"></b></span>
+            </span>
+        </span>
+    </a>
+    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+        <li><a href="{{ path('person_new') }}">New person</a></li>
+        <li><a href="{{ path('company_new') }}">New company</a></li>
+    </ul>
+    </div>
+
+
+    {% for entity in entities %}
+        <a href="{{ path(entity.type, {'id' : entity.id}) }}">
+            <div class="row list-row">
+                <div class="col-md-8 list-item">
+                    <h3>
+                        {{ entity.name }}
+                    </h3>
+                </div>
+            </div>
+        </a>
+
+    {% endfor %}
+
+{% endblock %}

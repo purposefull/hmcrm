@@ -54,6 +54,11 @@ class Company extends ContactBase
     protected $user;
 
     /**
+     * @ORM\OneToOne(targetEntity="Contact", mappedBy="company", cascade={"all"}, orphanRemoval=true)
+     */
+    protected $contact;
+
+    /**
      * @return mixed
      */
     public function getName()
@@ -143,5 +148,21 @@ class Company extends ContactBase
     public function setUser($user)
     {
         $this->user = $user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
+
+    /**
+     * @param mixed $contact
+     */
+    public function setContact($contact)
+    {
+        $this->contact = $contact;
     }
 }

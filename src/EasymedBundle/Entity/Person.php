@@ -75,6 +75,11 @@ class Person extends ContactBase
     protected $user;
 
     /**
+     * @ORM\OneToOne(targetEntity="Contact", mappedBy="person", cascade={"all"}, orphanRemoval=true)
+     */
+    protected $contact;
+
+    /**
      * @return string
      */
     public function getCustomerStatus()
@@ -213,5 +218,29 @@ class Person extends ContactBase
     public function setUser($user)
     {
         $this->user = $user;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullName()
+    {
+        return $this->getLastName() . ' ' . $this->getFirstName();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
+
+    /**
+     * @param mixed $contact
+     */
+    public function setContact($contact)
+    {
+        $this->contact = $contact;
     }
 }

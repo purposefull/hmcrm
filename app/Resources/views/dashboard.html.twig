@@ -37,9 +37,9 @@
                              </span> <span class="text-muted text-xs block"><b class="caret"></b></span> </span> </a>
                             {% endif %}
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="/profile/edit-profile">Profile</a></li>
-                                <li><a href="contacts.html">Contacts</a></li>
-                                <li><a href="mailbox.html">Mailbox</a></li>
+                                <li><a href="#>Profile</a></li>
+                                <li><a href="{{ path('contact_list') }}">Contacts</a></li>
+                                <li><a href="#">Mailbox</a></li>
                                 <li class="divider"></li>
                                 <li><a href="/logout">Logout</a></li>
                             </ul>
@@ -52,7 +52,7 @@
                         <a title="Leads" href="{{ path('lead') }}"><i class="fa fa-diamond"></i> <span class="nav-label">Leads</span></a>
                     </li>
                     <li>
-                        <a title="Contacts">
+                        <a title="Contacts" href="{{ path('contact_list') }}">
                             <i class="fa fa-flask"></i>
                             <span class="nav-label">Contacts</span>
                         </a>
@@ -74,7 +74,7 @@
         <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-            <form role="search" class="navbar-form-custom" action="search_results.html">
+            <form role="search" class="navbar-form-custom" action="#">
                 <div class="form-group">
                     <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
                 </div>

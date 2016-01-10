@@ -36,11 +36,8 @@ class Deal extends Base
     protected $name;
 
     /**
-     * @var string
-     *
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Contact", inversedBy="deals")
+     * @ORM\JoinColumn(name="contact_id", referencedColumnName="id")
      */
     protected $contact;
 
@@ -106,22 +103,6 @@ class Deal extends Base
     /**
      * @return string
      */
-    public function getContact()
-    {
-        return $this->contact;
-    }
-
-    /**
-     * @param string $contact
-     */
-    public function setContact($contact)
-    {
-        $this->contact = $contact;
-    }
-
-    /**
-     * @return string
-     */
     public function getValue()
     {
         return $this->value;
@@ -133,6 +114,22 @@ class Deal extends Base
     public function setValue($value)
     {
         $this->value = $value;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
+
+    /**
+     * @param mixed $contact
+     */
+    public function setContact($contact)
+    {
+        $this->contact = $contact;
     }
 
     /**

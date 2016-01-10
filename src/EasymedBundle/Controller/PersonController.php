@@ -2,6 +2,7 @@
 
 namespace EasymedBundle\Controller;
 
+use EasymedBundle\Entity\Contact;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -60,8 +61,13 @@ class PersonController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $contact = new Contact();
+            $contact->setType(Contact::TYPE_PERSON);
+            $contact->setUser($this->getUser());
             $entity->setUser($this->getUser());
             $em->persist($entity);
+            $contact->setPerson($entity);
+            $em->persist($contact);
             $em->flush();
 
             return $this->redirect($this->generateUrl('person_show', array('id' => $entity->getId())));
