@@ -11,7 +11,7 @@ A Symfony project created on October 24, 2015, 11:38 pm.
 
 3) php app/check.php
 
-4) php app/console doctrine:create:database
+4) php app/console doctrine:database:create
 
 5) php app/console doctrine:schema:update --force
 
