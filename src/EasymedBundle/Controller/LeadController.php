@@ -112,10 +112,35 @@ class LeadController extends Controller
         );
     }
 
+
+    /**
+     * @Route("/lead_capture_form", name="lead_capture_form")
+     * @Template()
+     */
+    public function leadCaptureFormAction(Request $request)
+    {
+        if ($request->getMethod() == 'POST') {
+            $form = $request->request->all();
+            if (!empty($form['userId']) && !empty($form['name']) && !empty($form['email']) && !empty($form['phone'])) {
+                $lead = new Lead();
+                $lead->setLastName($form['name']);
+                $lead->setEmail($form['email']);
+                $lead->setMobilePhone($form['phone']);
+                $lead->setUser($form['userId']);
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($lead);
+                $em->flush();
+            }
+        }
+
+        return array();
+    }
+
     /**
      * Finds and displays a Lead entity.
      *
-     * @Route("/{id}", name="lead_show")
+     * @Route("/show/{id}", name="lead_show")
      * @Method("GET")
      * @Template()
      */
@@ -148,7 +173,7 @@ class LeadController extends Controller
     /**
      * Displays a form to edit an existing Lead entity.
      *
-     * @Route("/{id}/edit", name="lead_edit")
+     * @Route("/edit/{id}", name="lead_edit")
      * @Method("GET")
      * @Template()
      */
@@ -198,10 +223,11 @@ class LeadController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Lead entity.
      *
-     * @Route("/{id}", name="lead_update")
+     * @Route("/update/{id}", name="lead_update")
      * @Method("PUT")
      * @Template("EasymedBundle:Lead:edit.html.twig")
      */
@@ -239,10 +265,11 @@ class LeadController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
+
     /**
      * Deletes a Lead entity.
      *
-     * @Route("/{id}", name="lead_delete")
+     * @Route("/delete/{id}", name="lead_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
