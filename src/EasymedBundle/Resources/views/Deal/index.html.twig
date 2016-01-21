@@ -12,7 +12,9 @@
                 <div class="col-md-8 list-item">
                     <h3>{{ entity.getName() }}</h3>
                     <div >
-                        <p>{{ entity.getContact().getName() }}</p>
+                        {% if entity.getContact() %}
+                            <p>{{ entity.getContact().getName() }}</p>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-md-4 list-item">

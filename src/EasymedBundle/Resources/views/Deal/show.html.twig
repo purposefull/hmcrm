@@ -10,8 +10,10 @@
                 <td>{{ entity.name }}</td>
             </tr>
             <tr>
-                <th>Contact</th>
-                <td>{{ entity.contact.getName() }}</td>
+                {% if entity.contact is not null %}
+                    <th>Contact</th>
+                    <td>{{ entity.contact.getName() }}</td>
+                {% endif %}
             </tr>
             <tr>
                 <th>Value</th>
