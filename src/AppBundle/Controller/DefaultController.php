@@ -32,6 +32,21 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/lp", name="lp")
+     */
+    public function lpAction(Request $request)
+    {
+//        $securityContext = $this->container->get('security.authorization_checker');
+//        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+//            return $this->redirect($this->generateUrl('fos_user_security_login'));
+//        }
+
+        return $this->render('lp.html.twig', array(
+            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+        ));
+    }
+
+    /**
      */
     public function registerAction(Request $request)
     {
