@@ -131,7 +131,7 @@ class LeadController extends Controller
 
                 $user = $this->getDoctrine()->getRepository('ApplicationSonataUserBundle:User')->find($form['userId']);
                 if ($user) {
-                    $lead->setUser($form['userId']);
+                    $lead->setUser($user);
                 } else {
                     throw new EntityNotFoundException();
                 }
