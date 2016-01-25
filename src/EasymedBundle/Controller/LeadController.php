@@ -2,6 +2,7 @@
 
 namespace EasymedBundle\Controller;
 
+use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -9,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use EasymedBundle\Entity\Lead;
 use EasymedBundle\Form\LeadType;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Lead controller.
@@ -126,8 +128,13 @@ class LeadController extends Controller
                 $lead->setLastName($form['name']);
                 $lead->setEmail($form['email']);
                 $lead->setMobilePhone($form['phone']);
-                $lead->setUser($form['userId']);
 
+                $user = $this->getDoctrine()->getRepository('ApplicationSonataUserBundle:User')->find($form['userId']);
+                if ($user) {
+                    $lead->setUser($form['userId']);
+                } else {
+                    throw new EntityNotFoundException();
+                }
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($lead);
                 $em->flush();
