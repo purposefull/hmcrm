@@ -1,11 +1,26 @@
 {% extends '::dashboard.html.twig' %}
 
-{% block title %}Deal list{% endblock %}
+{% block title %}
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-sm-4">
+            <h2>Project list</h2>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="active">
+                    <strong>Project list</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+{% endblock %}
 
 {% block body -%}
     <a class="btn btn-primary" href="{{ path('deal_new') }}">
         + Deal
     </a>
+
     {% for entity in entities %}
         <a href="{{ path('deal_show', { 'id' : entity.getId() }) }}">
             <div class="row list-row">

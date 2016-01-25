@@ -210,9 +210,15 @@
         </nav>
         </div>
 
-        <div class="row border-bottom white-bg dashboard-header">
-            <h1>{% block title %}{% endblock %}</h1>
-        </div>
+            {% block title %}
+
+            {% endblock %}
+
+        {#<div class="row border-bottom white-bg dashboard-header">#}
+            {#<h1>{% block title %}{% endblock %}</h1>#}
+        {#</div>#}
+
+
 
         <div class="row border-bottom white-bg dashboard-header">
             <div class="col-lg-12">{% block body %}{% endblock %}</div>

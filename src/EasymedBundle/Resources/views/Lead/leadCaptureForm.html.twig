@@ -6,30 +6,32 @@
     <p>Capture leads directly into your sales funnel via customizable form.</p>
 
     <h3>Example of form:</h3>
+    <form action="http://easymed24.ru/lead/lead_capture_form" method="post">
     <br />
     <div class="row">
         <div class="col-md-4">
-            <input class="form-control" type="text" placeholder="Name" required disabled/>
+            <input name="name" class="form-control" type="text" placeholder="Name" required disabled/>
         </div>
     </div>
     <br />
     <div class="row">
         <div class="col-md-4">
-            <input class="form-control" type="email" placeholder="Email" required disabled/>
+            <input name="email" class="form-control" type="email" placeholder="Email" required disabled/>
         </div>
     </div>
     <br />
     <div class="row">
         <div class="col-md-4">
-            <input class="form-control" type="text" placeholder="Phone" required disabled/>
+            <input name="phone" class="form-control" type="text" placeholder="Phone" required disabled/>
         </div>
     </div>
     <br />
+        <input name="userId" class="form-control" type="hidden" placeholder="UserId" required disabled/>
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-1">
             <input class="btn btn-primary" type="button" value="Submit" required disabled/>
         </div>
     </div>
-
+    </form>
 {% endblock %}
