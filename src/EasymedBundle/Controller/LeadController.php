@@ -138,6 +138,8 @@ class LeadController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($lead);
                 $em->flush();
+
+                return $this->redirect($request->get('redirectUrl'));
             }
         }
 
