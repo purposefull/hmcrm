@@ -143,7 +143,7 @@ class LeadController extends Controller
 
                 return $this->redirect($request->get('redirectUrl'));
             }
-        } else if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+        } else if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             return array();
         } else {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
