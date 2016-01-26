@@ -32,13 +32,13 @@
                     <li class="nav-header">
                         <div class="dropdown profile-element">
                             {% if app.user %}
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{ app.user.username }}</strong>
-                             </span> <span class="text-muted text-xs block"><b class="caret"></b></span> </span> </a>
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{ app.user.username }}</strong>
+                                 </span> <span class="text-muted text-xs block"><b class="caret"></b></span> </span> </a>
                             {% endif %}
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 <li><a href="#>Profile</a></li>
-                                <li><a href="{{ path('contact_list') }}">Contacts</a></li>
+                                    <li><a href="{{ path('contact_list') }}">Contacts</a></li>
                                 <li><a href="#">Mailbox</a></li>
                                 <li class="divider"></li>
                                 <li><a href="/logout">Logout</a></li>
@@ -48,48 +48,8 @@
                             HM CRM
                         </div>
                     </li>
-                    <li>
-                        <a title="Leads" href="{{ path('lead') }}"><i class="fa fa-users"></i> <span class="nav-label">Leads</span></a>
-                    </li>
-                    <li>
-                        <a title="Contacts" href="{{ path('contact_list') }}">
-                            <i class="fa fa-phone"></i>
-                            <span class="nav-label">Contacts</span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="{{ path('person') }}">Person</a></li>
-                            <li><a href="{{ path('company') }}">Company</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a title="Sales Pipeline" href="{{ path('deal') }}"><i class="fa fa-rub"></i> <span class="nav-label">Sales Pipeline</span></a>
-                    </li>
-                    <li>
-                        <a title="Reports" href="{{ path('deal') }}"><i class="fa fa-pie-chart"></i> <span class="nav-label">Reports</span></a>
-                    </li>
-                    <li>
-                        <a title="Lead Capture Form" href="{{ path('lead_capture_form') }}"><i class="fa fa-user"></i> <span class="nav-label">Lead Capture Form</span></a>
-                    </li>
-                    <li>
-                        <a title="Import" href="{{ path('deal') }}"><i class="fa fa-download"></i> <span class="nav-label">Import</span></a>
-                    </li>
-                    <li>
-                        <a title="Export" href="{{ path('deal') }}"><i class="fa fa-upload"></i> <span class="nav-label">Export</span></a>
-                    </li>
-                    <li>
-                        <a title="Products" href="{{ path('deal') }}"><i class="fa fa-cube"></i> <span class="nav-label">Products</span></a>
-                    </li>
-                    <li>
-                        <a title="Manage Users" href="{{ path('deal') }}"><i class="fa fa-unlock-alt"></i> <span class="nav-label">Manage Users</span></a>
-                    </li>
-                    <li>
-                        <a title="Email Templates" href="{{ path('deal') }}"><i class="fa fa-envelope"></i> <span class="nav-label">Email Templates</span></a>
-                    </li>
-                    <li>
-                        <a title="Tasks Management" href="{{ path('deal') }}"><i class="fa fa-check-square"></i> <span class="nav-label">Tasks Management</span></a>
-                    </li>
                 </ul>
-
+                {{ knp_menu_render('EasymedBundle:Builder:mainMenu', { 'currentClass': 'active' }) }}
             </div>
         </nav>
 
@@ -395,7 +355,15 @@
             var Polarchart = new Chart(ctx).PolarArea(polarData, polarOptions);
 
         });
+        $('#drpdown').on('click', function(e) {
+            e.preventDefault();
+            if (!$($(this).parent().children('ul')).hasClass('in')) {
+                $($(this).parent()).addClass('active');
+            } else {
+                $($(this).parent()).removeClass('active');
+            }
+        });
     </script>
-        </div>
+    </div>
 </body>
 </html>

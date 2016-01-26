@@ -117,6 +117,9 @@ fos_user:
 
     service:
         user_manager: sonata.user.orm.user_manager                      # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
+knp_menu:
+    twig:
+        template: EasymedBundle:Menu:main.html.twig
 
 mopa_bootstrap:
     form:
