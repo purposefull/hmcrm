@@ -1,0 +1,73 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Lead Capture Form{% endblock %}
+
+{% block body %}
+    <style>
+        code {
+            white-space: normal;
+        }
+    </style>
+    <p>Capture leads directly into your sales funnel via customizable form.</p>
+
+    <h3>Example of form:</h3>
+    <form action="http://easymed24.ru/lead/lead_capture_form" method="post">
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            <input name="name" class="form-control" type="text" placeholder="Name" required disabled/>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            <input name="email" class="form-control" type="email" placeholder="Email" required disabled/>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            <input name="phone" class="form-control" type="text" placeholder="Phone" required disabled/>
+        </div>
+    </div>
+    <br />
+        <input name="userId" class="form-control" type="hidden" placeholder="userId" required disabled/>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-1">
+            <input class="btn btn-primary" type="button" value="Submit" required disabled/>
+        </div>
+    </div>
+    </form>
+
+    Code:
+    <code>
+        <div class="row">
+            &lt;form action="http://easymed24.ru/lead/lead_capture_form" method="post"&gt;
+        </div>
+
+        <div class="row">
+            &lt;input name="name" class="form-control" type="text" placeholder="Name" required&gt;
+        </div>
+        <div class="row">
+            &lt;input name="email" class="form-control" type="email" placeholder="Email" required&gt;
+        </div>
+        <div class="row">
+            &lt;input name="phone" class="form-control" type="text" placeholder="Phone" required&gt;
+        </div>
+        <div class="row">
+            &lt;input name="userId" class="form-control" type="hidden" value="{{ app.user.getId() }}" placeholder="userId" required&gt;
+        </div>
+        <div class="row">
+            &lt;input name="redirectUrl" class="form-control" type="hidden" value="http://easymed24.ru/lp" placeholder="userId" required&gt;
+        </div>
+        <div class="row">
+            &lt;input class="btn btn-primary" type="button" value="Submit"&gt;
+        </div>
+        <div class="row">
+            &lt;form&gt;
+        </div>
+
+    </code>
+
+{% endblock %}
