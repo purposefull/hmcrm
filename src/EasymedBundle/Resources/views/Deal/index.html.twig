@@ -16,7 +16,8 @@
     </div>
 {% endblock %}
 
-{% block body -%}
+{% block body -%}    {{ 'contacts'|trans }}
+
     <a class="btn btn-primary" href="{{ path('deal_new') }}">
         + Deal
     </a>

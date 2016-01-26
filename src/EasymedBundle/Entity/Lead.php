@@ -60,6 +60,13 @@ class Lead extends ContactBase
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    protected $product;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     protected $source;
 
     /**
@@ -209,5 +216,21 @@ class Lead extends ContactBase
         }
 
         return false;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * @param string $product
+     */
+    public function setProduct($product)
+    {
+        $this->product = $product;
     }
 }
