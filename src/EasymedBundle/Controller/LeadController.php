@@ -121,6 +121,8 @@ class LeadController extends Controller
      */
     public function leadCaptureFormAction(Request $request)
     {
+        $securityContext = $this->container->get('security.authorization_checker');
+
         if ($request->getMethod() == 'POST') {
             $form = $request->request->all();
             if (!empty($form['userId']) && !empty($form['name']) && !empty($form['email']) && !empty($form['phone'])) {
@@ -141,9 +143,11 @@ class LeadController extends Controller
 
                 return $this->redirect($request->get('redirectUrl'));
             }
+        } else if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return array();
+        } else {
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
-
-        return array();
     }
 
     /**
