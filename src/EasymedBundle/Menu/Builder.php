@@ -35,22 +35,22 @@ class Builder implements ContainerAwareInterface
         ));
 
         // Add Menu items that are available for user
-        $menu->addChild('Lead', array('route' => 'lead'))->setAttribute('icon', 'fa fa-users')->setAttribute('icon', 'fa fa-users');
-        $menu->addChild('Contacts', array('route' => 'contact_list'))->setAttribute('icon', 'fa fa-phone');
+        $menu->addChild('menu.lead', array('route' => 'lead'))->setAttribute('icon', 'fa fa-users')->setAttribute('icon', 'fa fa-users');
+        $menu->addChild('menu.contacts', array('route' => 'contact_list'))->setAttribute('icon', 'fa fa-phone');
 
         // you can also add sub level's to your menu's as follows
-        $menu['Contacts']->addChild('Person', array('route' => 'person'));
-        $menu['Contacts']->addChild('Company', array('route' => 'company'));
+        $menu['menu.contacts']->addChild('menu.person', array('route' => 'person'));
+        $menu['menu.contacts']->addChild('menu.company', array('route' => 'company'));
 
-        $menu->addChild('Deals', array('route' => 'deal'))->setAttribute('icon', 'fa fa-rub');
-        $menu->addChild('Reports', array('route' => 'deal'))->setAttribute('icon', 'fa fa-pie-chart');
-        $menu->addChild('Lead Capture Form', array('route' => 'lead_capture_form_settings'))->setAttribute('icon', 'fa fa-user');
-        $menu->addChild('Import', array('route' => 'deal'))->setAttribute('icon', 'fa fa-download');
-        $menu->addChild('Export', array('route' => 'deal'))->setAttribute('icon', 'fa fa-upload');
-        $menu->addChild('Products', array('route' => 'deal'))->setAttribute('icon', 'fa fa-cube');
-        $menu->addChild('Manage Users', array('route' => 'deal'))->setAttribute('icon', 'fa fa-unlock-alt');
-        $menu->addChild('Email Templates', array('route' => 'deal'))->setAttribute('icon', 'fa fa-envelope');
-        $menu->addChild('Tasks Management', array('route' => 'deal'))->setAttribute('icon', 'fa fa-check-square');
+        $menu->addChild('menu.deal', array('route' => 'deal'))->setAttribute('icon', 'fa fa-rub');
+        $menu->addChild('menu.reports', array('route' => 'deal'))->setAttribute('icon', 'fa fa-pie-chart');
+        $menu->addChild('menu.leadCaptureForm', array('route' => 'lead_capture_form_settings'))->setAttribute('icon', 'fa fa-user');
+        $menu->addChild('menu.import', array('route' => 'deal'))->setAttribute('icon', 'fa fa-download');
+        $menu->addChild('menu.export', array('route' => 'deal'))->setAttribute('icon', 'fa fa-upload');
+        $menu->addChild('menu.products', array('route' => 'deal'))->setAttribute('icon', 'fa fa-cube');
+        $menu->addChild('menu.manageUsers', array('route' => 'deal'))->setAttribute('icon', 'fa fa-unlock-alt');
+        $menu->addChild('menu.emailTemplates', array('route' => 'deal'))->setAttribute('icon', 'fa fa-envelope');
+        $menu->addChild('menu.tasksManagement', array('route' => 'deal'))->setAttribute('icon', 'fa fa-check-square');
 
         return $menu;
     }

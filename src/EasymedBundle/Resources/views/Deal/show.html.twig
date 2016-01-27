@@ -1,38 +1,38 @@
 {% extends '::dashboard.html.twig' %}
 
-{% block title %} Deal {% endblock %}
+{% block title %} {{ 'deal.title'|trans }} {% endblock %}
 
 {% block body -%}
     <table class="table table-striped table-hover">
         <tbody>
             <tr>
-                <th>Name</th>
+                <th>{{ 'name'|trans }}</th>
                 <td>{{ entity.name }}</td>
             </tr>
             <tr>
                 {% if entity.contact is not null %}
-                    <th>Contact</th>
+                    <th>{{ 'contact.title'|trans }}</th>
                     <td>{{ entity.contact.getName() }}</td>
                 {% endif %}
             </tr>
             <tr>
-                <th>Value</th>
+                <th>{{ 'value'|trans }}</th>
                 <td>{{ entity.value }}</td>
             </tr>
             <tr>
-                <th>Currency</th>
+                <th>{{ 'currency'|trans }}</th>
                 <td>{{ entity.currency }}</td>
             </tr>
             <tr>
-                <th>Source</th>
+                <th>{{ 'source'|trans }}</th>
                 <td>{{ entity.source }}</td>
             </tr>
             <tr>
-                <th>Tags</th>
+                <th>{{ 'tags'|trans }}</th>
                 <td>{{ entity.tags }}</td>
             </tr>
             <tr>
-                <th>Created at</th>
+                <th>{{ 'createdAt'|trans }}</th>
                 <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
             </tr>
         </tbody>
@@ -40,11 +40,11 @@
 
     <div class="actions">
         <a class="btn btn-default" href="{{ path('deal') }}">
-            Back to the list
+            {{ 'backToTheList'|trans }}
         </a>
 
         <a class="btn btn-default"  href="{{ path('deal_edit', { 'id': entity.id }) }}">
-            Edit
+            {{ 'edit'|trans }}
         </a>
         {{ form_start(delete_form) }}
         {{ form_widget(delete_form.submit) }}

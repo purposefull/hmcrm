@@ -16,25 +16,53 @@ class PersonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName')
-            ->add('lastName')
-            ->add('companyName')
-            ->add('title')
+            ->add('firstName', 'text', array(
+                'label' => 'firstname'
+            ))
+            ->add('lastName', 'text', array(
+                'label' => 'lastName'
+            ))
+            ->add('companyName', 'text', array(
+                'label' => 'company.title'
+            ))
+            ->add('title', 'text', array(
+                'label' => 'title'
+            ))
             ->add('customerStatus', 'choice', array(
-                'choices' => Person::valuesOfCustomerStatus()
+                'choices' => Person::valuesOfCustomerStatus(),
+                'label' => 'customerstatus'
             ))
             ->add('prospectStatus', 'choice', array(
-                'choices' => Person::valuesOfProspectStatus()
+                'choices' => Person::valuesOfProspectStatus(),
+                'label' => 'prospectstatus'
             ))
-            ->add('email')
-            ->add('mobilePhone')
-            ->add('workPhone')
-            ->add('address')
-            ->add('city')
-            ->add('zipCode')
-            ->add('region')
-            ->add('country')
-            ->add('tags')
+            ->add('email', 'text', array(
+                'label' => 'email'
+            ))
+            ->add('mobilePhone', 'text', array(
+                'label' => 'mobilephone'
+            ))
+            ->add('workPhone', 'text', array(
+                'label' => 'workphone'
+            ))
+            ->add('address', 'text', array(
+                'label' => 'address'
+            ))
+            ->add('city', 'text', array(
+                'label' => 'city'
+            ))
+            ->add('zipCode', 'text', array(
+                'label' => 'zipcode'
+            ))
+            ->add('region', 'text', array(
+                'label' => 'region'
+            ))
+            ->add('country', 'text', array(
+                'label' => 'country'
+            ))
+            ->add('tags', 'text', array(
+                'label' => 'tags'
+            ))
         ;
 
         $builder->setRequired(false);

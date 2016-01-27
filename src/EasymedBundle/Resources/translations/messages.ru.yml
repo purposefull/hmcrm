@@ -1,1 +1,71 @@
-contacts: Контакты
+add: Добавить
+edit: Редактировать
+delete: Удалить
+backToTheList: Вернуться к списку
+home: Главная
+submit: Отправить
+phone: Телефон
+name: Имя
+firstname: Имя
+lastName: Фамилия
+title: Название
+email: Email
+mobilephone: Мобильный телефон
+workphone: Рабочий телефон
+address: Адрес
+city: Город
+zipcode: Индекс
+region: Регион
+country: Страна
+tags: Теги
+customerstatus: Customer status
+prospectstatus: Prospect status
+m: М
+w: Р
+value: Значение
+currency: Валюта
+source: Источник
+createdAt: Создан
+stage: Этап
+lead:
+    title: Lead
+    edit: Lead edit
+    list: Lead list
+    adding: Lead adding
+    captureFormTitle: Lead Capture Form
+    LCFdesc: Capture leads directly into your sales funnel via customizable form.
+    exampleOfForm: Example of form
+    status: Lead status
+deal:
+    title: Сделка
+    edit: Редактирование сделки
+    list: Список сделок
+    adding: Добавление сделки
+contact:
+    title: Контакт
+    newPerson: Новый субъект
+    newCompany: Новая компания
+company:
+    title: Компания
+    edit: Редактирование компании
+    list: Список компаний
+    adding: Добавление компании
+person:
+    title: Субъект
+    edit: Редактирование Субъекта
+    list: Список субъектов
+    adding: Добавление субъекта
+menu:
+    lead: Lead
+    contacts: Contacts
+    person: Субъект
+    company: Компания
+    deal: Сделки
+    reports: Отчеты
+    leadCaptureForm: Lead Capture Form
+    import: Импорт
+    export: Экспорт
+    products: Продукты
+    manageUsers: Manage Users
+    emailTemplates: Шаблоны писем
+    tasksManagement: Управление задачами

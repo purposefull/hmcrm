@@ -16,27 +16,55 @@ class LeadType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('submit', 'submit')
-            ->add('firstName')
+            ->add('submit', 'submit', array(
+                'label' => 'name'
+            ))
+            ->add('firstName', 'text', array(
+                'label' => 'firstname'
+            ))
             ->add('lastName', 'text', array(
-                'label' => 'Last Name* '
+                'label' => 'lastName'
             ))
-            ->add('companyName')
-            ->add('title')
+            ->add('companyName', 'text', array(
+                'label' => 'company.title'
+            ))
+            ->add('title', 'text', array(
+                'label' => 'title'
+            ))
             ->add('leadStatus', 'choice', array(
-                'choices' => Lead::valuesOfStatus()
+                'choices' => Lead::valuesOfStatus(),
+                'label' => 'lead.status'
             ))
-            ->add('email')
-            ->add('mobilePhone')
-            ->add('workPhone')
-            ->add('address')
-            ->add('city')
-            ->add('zipCode')
-            ->add('region')
-            ->add('country')
-            ->add('tags')
+            ->add('email', 'text', array(
+                'label' => 'email'
+            ))
+            ->add('mobilePhone', 'text', array(
+                'label' => 'mobilephone'
+            ))
+            ->add('workPhone', 'text', array(
+                'label' => 'workphone'
+            ))
+            ->add('address', 'text', array(
+                'label' => 'address'
+            ))
+            ->add('city', 'text', array(
+                'label' => 'city'
+            ))
+            ->add('zipCode', 'text', array(
+                'label' => 'zipcode'
+            ))
+            ->add('region', 'text', array(
+                'label' => 'region'
+            ))
+            ->add('country', 'text', array(
+                'label' => 'country'
+            ))
+            ->add('tags', 'text', array(
+                'label' => 'tags'
+            ))
         ;
 
+        $builder->setRequired(false);
     }
 
     /**
