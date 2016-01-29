@@ -1,6 +1,6 @@
 {% extends 'dashboard.html.twig' %}
 
-{% block title %} Person creation {% endblock %}
+{% block title %} {{ 'person.adding'|trans }} {% endblock %}
 
 {% block body %}
     {{ form_start(form) }}
@@ -8,7 +8,7 @@
         <div class="col-sm-12">
             {{ form_widget(form.submit, { 'attr': {'class': 'btn btn-primary'}}) }}
             <a class="btn btn-default" href="{{ path('person') }}">
-                Back to the list
+                {{ 'backToTheList'|trans }}
             </a>
         </div>
     </div>

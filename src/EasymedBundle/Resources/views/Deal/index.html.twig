@@ -3,23 +3,22 @@
 {% block title %}
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
-            <h2>Project list</h2>
+            <h2>{{ 'deal.title'|trans }}</h2>
             <ol class="breadcrumb">
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="/">{{ 'home'|trans }}</a>
                 </li>
                 <li class="active">
-                    <strong>Project list</strong>
+                    <strong>{{ 'deal.list'|trans }}</strong>
                 </li>
             </ol>
         </div>
     </div>
 {% endblock %}
 
-{% block body -%}    {{ 'contacts'|trans }}
-
+{% block body -%}
     <a class="btn btn-primary" href="{{ path('deal_new') }}">
-        + Deal
+        {{ 'add'|trans }}
     </a>
 
     {% for entity in entities %}
@@ -42,7 +41,5 @@
                 </div>
             </div>
         </a>
-
     {% endfor %}
-
 {% endblock %}

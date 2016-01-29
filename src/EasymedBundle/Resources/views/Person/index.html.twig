@@ -1,10 +1,10 @@
 {% extends 'dashboard.html.twig' %}
 
-{% block title %}Person list{% endblock %}
+{% block title %}{{ 'person.list'|trans }}{% endblock %}
 
 {% block body %}
     <a class="btn btn-primary" href="{{ path('person_new') }}">
-        + Add
+        {{ 'add'|trans }}
     </a>
     {% for entity in entities %}
         <a href="{{ path('person_show', { 'id' : entity.getId() }) }}">
@@ -19,13 +19,13 @@
                 </div>
                 <div class="col-md-4 list-item hidden-list-fields">
                     {% if entity.getEmail() is not null %}
-                        <p>Email: {{ entity.getEmail() }}</p>
+                        <p>{{ 'email'|trans }}: {{ entity.getEmail() }}</p>
                     {% endif %}
                     {% if entity.getMobilePhone() is not null %}
-                        <p>M: {{ entity.getMobilePhone() }}</p>
+                        <p>{{ 'm'|trans }}: {{ entity.getMobilePhone() }}</p>
                     {% endif %}
                     {% if entity.getWorkPhone() is not null %}
-                        <p>W: {{ entity.getWorkPhone() }}</p>
+                        <p>{{ 'w'|trans }}: {{ entity.getWorkPhone() }}</p>
                     {% endif %}
                 </div>
             </div>

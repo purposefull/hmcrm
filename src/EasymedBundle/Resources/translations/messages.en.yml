@@ -1,5 +1,71 @@
-add: Add
+home: Home
+add: + Add
 edit: Edit
 delete: Delete
-
-contacts: Contacts
+submit: Submit
+phone: Phone
+backToTheList: Back to the list
+name: Name
+firstname: First name
+lastName: Last name
+title: Title
+email: Email
+mobilephone: Mobile phone
+workphone: Work phone
+address: Address
+city: City
+zipcode: Zipcode
+region: Region
+country: Country
+tags: Tags
+customerstatus: Customer status
+prospectstatus: Prospect status
+m: M
+w: W
+value: Value
+currency: Currency
+source: Source
+createdAt: Created at
+stage: Stage
+lead:
+    title: Lead
+    edit: Lead edit
+    list: Lead list
+    adding: Lead adding
+    captureFormTitle: Lead Capture Form
+    LCFdesc: Capture leads directly into your sales funnel via customizable form.
+    exampleOfForm: Example of form
+    status: Lead status
+deal:
+    title: Deal
+    edit: Deal edit
+    list: Deal list
+    adding: Deal adding
+contact:
+    title: Contact
+    newPerson: New person
+    newCompany: New company
+company:
+    title: Company
+    edit: Company edit
+    list: Company list
+    adding: Company adding
+person:
+    title: Person
+    edit: Person edit
+    list: Person list
+    adding: Person adding
+menu:
+    lead: Lead
+    contacts: Contacts
+    person: Person
+    company: Company
+    deal: Deals
+    reports: Reports
+    leadCaptureForm: Lead Capture Form
+    import: Import
+    export: Export
+    products: Products
+    manageUsers: Manage Users
+    emailTemplates: Email Templates
+    tasksManagement: Tasks Management

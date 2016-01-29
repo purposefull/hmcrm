@@ -16,22 +16,44 @@ class CompanyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', 'text', array(
+                'label' => 'name'
+            ))
             ->add('customerStatus', 'choice', array(
-                'choices' => Company::valuesOfCustomerStatus()
+                'choices' => Company::valuesOfCustomerStatus(),
+                'label' => 'customerstatus'
             ))
             ->add('prospectStatus', 'choice', array(
-                'choices' => Company::valuesOfProspectStatus()
+                'choices' => Company::valuesOfProspectStatus(),
+                'label' => 'prospectstatus'
             ))
-            ->add('email')
-            ->add('mobilePhone')
-            ->add('workPhone')
-            ->add('address')
-            ->add('city')
-            ->add('zipCode')
-            ->add('region')
-            ->add('country')
-            ->add('tags')
+            ->add('email', 'email', array(
+                'label' => 'Email'
+            ))
+            ->add('mobilePhone', 'text', array(
+                'label' => 'mobilephone'
+            ))
+            ->add('workPhone', 'text', array(
+                'label' => 'workphone'
+            ))
+            ->add('address', 'text', array(
+                'label' => 'address'
+            ))
+            ->add('city', 'text', array(
+                'label' => 'city'
+            ))
+            ->add('zipCode', 'text', array(
+                'label' => 'zipcode'
+            ))
+            ->add('region', 'text', array(
+                'label' => 'region'
+            ))
+            ->add('country', 'text', array(
+                'label' => 'country'
+            ))
+            ->add('tags', 'text', array(
+                'label' => 'tags'
+            ))
         ;
 
         $builder->setRequired(false);

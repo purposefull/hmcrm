@@ -47,11 +47,15 @@ class LocaleListener implements EventSubscriberInterface
 
         // при переключении языка в веб-интерфейсе (язык в роуте)
         if ($localeFromRoute) {
+
             $request->getSession()->set('_locale', $localeFromRoute);
             $request->setLocale($localeFromSession);
 
             $route = $event->getRequest()->get('_route');
-            $url = $this->router->generate($route);
+
+            $params = $request->attributes->get('_route_params');
+            $url = $this->router->generate($route, $params);
+
             $response = new RedirectResponse($url);
             $event->setResponse($response);
 

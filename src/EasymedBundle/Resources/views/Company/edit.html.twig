@@ -1,6 +1,6 @@
 {% extends '::dashboard.html.twig' %}
 
-{% block title %} Company edit {% endblock %}
+{% block title %} {{ 'company.edit'|trans }} {% endblock %}
 
 {% block body -%}
     {{ form_start(edit_form) }}
@@ -8,7 +8,7 @@
         <div class="col-sm-12">
             {{ form_widget(edit_form.submit, { 'attr': {'class': 'btn btn-primary'}}) }}
             <a class="btn btn-default" href="{{ path('company') }}">
-                Back to the list
+                {{ 'backToTheList'|trans }}
             </a>
         </div>
     </div>

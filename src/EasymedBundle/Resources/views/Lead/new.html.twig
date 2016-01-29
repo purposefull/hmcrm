@@ -1,6 +1,6 @@
 {% extends 'dashboard.html.twig' %}
 
-{% block title %} Lead creation {% endblock %}
+{% block title %} {{ 'lead.adding'|trans }} {% endblock %}
 
 {% block body %}
     {{ form_start(form) }}
@@ -8,7 +8,7 @@
             <div class="col-sm-12">
                 {{ form_widget(form.submit, { 'attr': {'class': 'btn btn-primary'}}) }}
                 <a class="btn btn-default" href="{{ path('lead') }}">
-                    Back to the list
+                    {{ 'backToTheList'|trans }}
                 </a>
             </div>
         </div>

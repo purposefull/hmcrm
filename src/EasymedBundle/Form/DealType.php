@@ -16,18 +16,30 @@ class DealType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', 'text', array(
+                'label' => 'name'
+            ))
             ->add('contact', 'entity', array(
                 'class' => 'EasymedBundle:Contact',
                 'choice_label' => 'name',
+                'label' => 'contact.title'
             ))
             ->add('stage', 'choice', array(
-                'choices' => Deal::valuesOfStage()
+                'choices' => Deal::valuesOfStage(),
+                'label' => 'stage'
             ))
-            ->add('value')
-            ->add('currency')
-            ->add('source')
-            ->add('tags')
+            ->add('value', 'text', array(
+                'label' => 'value'
+            ))
+            ->add('currency', 'text', array(
+                'label' => 'currency'
+            ))
+            ->add('source', 'text', array(
+                'label' => 'source'
+            ))
+            ->add('tags', 'text', array(
+                'label' => 'tags'
+            ))
         ;
 
         $builder->setRequired(false);
