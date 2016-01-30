@@ -1,6 +1,22 @@
 {% extends 'dashboard.html.twig' %}
 
-{% block title %}{{ 'lead.captureFormTitle'|trans }}{% endblock %}
+{#{% block title %}{{ 'lead.captureFormTitle'|trans }}{% endblock %}#}
+
+{% block title %}
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-sm-4">
+            <h2>{{ 'lead.captureFormTitle'|trans }}</h2>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="/">{{ 'home'|trans }}</a>
+                </li>
+                <li class="active">
+                    <strong>{{ 'lead.captureFormTitle'|trans }}</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+{% endblock %}
 
 {% block body %}
     <style>
@@ -10,7 +26,7 @@
     </style>
     <p>{{ 'lead.LCFdesc'|trans }}</p>
 
-    <h3>{{ 'exampleOfForm'|trans }}:</h3>
+    <h3>{{ 'lead.exampleOfForm'|trans }}:</h3>
     <form action="http://easymed24.ru/lead/lead_capture_form" method="post">
     <br />
     <div class="row">

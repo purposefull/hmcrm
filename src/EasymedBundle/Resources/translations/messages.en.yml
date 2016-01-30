@@ -28,35 +28,44 @@ source: Source
 createdAt: Created at
 stage: Stage
 lead:
-    title: Lead
+    title: Leads
     edit: Lead edit
-    list: Lead list
+    list: Leads
     adding: Lead adding
     captureFormTitle: Lead Capture Form
     LCFdesc: Capture leads directly into your sales funnel via customizable form.
     exampleOfForm: Example of form
     status: Lead status
+report:
+    title: Reports
+    edit: Report edit
+    list: Reports
+    adding: Report adding
+#    captureFormTitle: Lead Capture Form
+#    LCFdesc: Capture leads directly into your sales funnel via customizable form.
+#    exampleOfForm: Example of form
+    status: Report status
 deal:
-    title: Deal
+    title: Deals
     edit: Deal edit
-    list: Deal list
+    list: Deals
     adding: Deal adding
 contact:
     title: Contact
     newPerson: New person
     newCompany: New company
 company:
-    title: Company
+    title: Companies
     edit: Company edit
-    list: Company list
+    list: Companies
     adding: Company adding
 person:
-    title: Person
+    title: Persons
     edit: Person edit
-    list: Person list
+    list: Persons
     adding: Person adding
 menu:
-    lead: Lead
+    lead: Leads
     contacts: Contacts
     person: Person
     company: Company

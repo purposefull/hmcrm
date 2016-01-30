@@ -43,7 +43,7 @@ class Builder implements ContainerAwareInterface
         $menu['menu.contacts']->addChild('menu.company', array('route' => 'company'));
 
         $menu->addChild('menu.deal', array('route' => 'deal'))->setAttribute('icon', 'fa fa-usd');
-        $menu->addChild('menu.reports', array('route' => 'deal'))->setAttribute('icon', 'fa fa-pie-chart');
+        $menu->addChild('menu.reports', array('route' => 'report'))->setAttribute('icon', 'fa fa-pie-chart');
         $menu->addChild('menu.leadCaptureForm', array('route' => 'lead_capture_form_settings'))->setAttribute('icon', 'fa fa-user');
         $menu->addChild('menu.import', array('route' => 'deal'))->setAttribute('icon', 'fa fa-download');
         $menu->addChild('menu.export', array('route' => 'deal'))->setAttribute('icon', 'fa fa-upload');
