@@ -1,6 +1,18 @@
 {% extends 'dashboard.html.twig' %}
 
-{% block title %}{{ 'company.list'|trans }}{% endblock %}
+{% block title %}
+    <div class="col-sm-4">
+        <h2>{{ 'company.title'|trans }}</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">{{ 'home'|trans }}</a>
+            </li>
+            <li class="active">
+                <strong>{{ 'company.list'|trans }}</strong>
+            </li>
+        </ol>
+    </div>
+{% endblock %}
 
 {% block body %}
     <a class="btn btn-primary" href="{{ path('company_new') }}">

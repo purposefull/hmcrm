@@ -3,18 +3,16 @@
 {#{% block title %}{{ 'lead.captureFormTitle'|trans }}{% endblock %}#}
 
 {% block title %}
-    <div class="row wrapper border-bottom white-bg page-heading">
-        <div class="col-sm-4">
-            <h2>{{ 'lead.captureFormTitle'|trans }}</h2>
-            <ol class="breadcrumb">
-                <li>
-                    <a href="/">{{ 'home'|trans }}</a>
-                </li>
-                <li class="active">
-                    <strong>{{ 'lead.captureFormTitle'|trans }}</strong>
-                </li>
-            </ol>
-        </div>
+    <div class="col-sm-4">
+        <h2>{{ 'lead.captureFormTitle'|trans }}</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">{{ 'home'|trans }}</a>
+            </li>
+            <li class="active">
+                <strong>{{ 'lead.captureFormTitle'|trans }}</strong>
+            </li>
+        </ol>
     </div>
 {% endblock %}
 
@@ -28,32 +26,34 @@
 
     <h3>{{ 'lead.exampleOfForm'|trans }}:</h3>
     <form action="http://easymed24.ru/lead/lead_capture_form" method="post">
-    <br />
-    <div class="row">
-        <div class="col-md-4">
-            <input name="name" class="form-control" type="text" placeholder="{{ 'name'|trans }}" required disabled/>
+        <br/>
+        <div class="row">
+            <div class="col-md-4">
+                <input name="name" class="form-control" type="text" placeholder="{{ 'name'|trans }}" required disabled/>
+            </div>
         </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-md-4">
-            <input name="email" class="form-control" type="email" placeholder="{{ 'email'|trans }}" required disabled/>
+        <br/>
+        <div class="row">
+            <div class="col-md-4">
+                <input name="email" class="form-control" type="email" placeholder="{{ 'email'|trans }}" required
+                       disabled/>
+            </div>
         </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-md-4">
-            <input name="phone" class="form-control" type="text" placeholder="{{ 'phone'|trans }}" required disabled/>
+        <br/>
+        <div class="row">
+            <div class="col-md-4">
+                <input name="phone" class="form-control" type="text" placeholder="{{ 'phone'|trans }}" required
+                       disabled/>
+            </div>
         </div>
-    </div>
-    <br />
+        <br/>
         <input name="userId" class="form-control" type="hidden" placeholder="userId" required disabled/>
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-1">
-            <input class="btn btn-primary" type="button" value="{{ 'submit'|trans }}" required disabled/>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-1">
+                <input class="btn btn-primary" type="button" value="{{ 'submit'|trans }}" required disabled/>
+            </div>
         </div>
-    </div>
     </form>
 
     Code:
@@ -72,10 +72,12 @@
             &lt;input name="phone" class="form-control" type="text" placeholder="{{ 'phone'|trans }}" required&gt;
         </div>
         <div class="row">
-            &lt;input name="userId" class="form-control" type="hidden" value="{{ app.user.getId() }}" placeholder="userId" required&gt;
+            &lt;input name="userId" class="form-control" type="hidden" value="{{ app.user.getId() }}"
+            placeholder="userId" required&gt;
         </div>
         <div class="row">
-            &lt;input name="redirectUrl" class="form-control" type="hidden" value="http://easymed24.ru/lp" placeholder="userId" required&gt;
+            &lt;input name="redirectUrl" class="form-control" type="hidden" value="http://easymed24.ru/lp"
+            placeholder="userId" required&gt;
         </div>
         <div class="row">
             &lt;input class="btn btn-primary" type="button" value="{{ 'submit'|trans }}"&gt;
