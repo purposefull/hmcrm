@@ -127,7 +127,11 @@ class LeadController extends Controller
                 $lead->setLastName($form['name']);
                 $lead->setEmail($form['email']);
                 $lead->setMobilePhone($form['phone']);
-                $lead->setProduct($form['product']);
+
+                if (isset($form['product']) && $form['product']) {
+                    $lead->setProduct($form['product']);
+                }
+
                 $user = $this->getDoctrine()->getRepository('ApplicationSonataUserBundle:User')->find($form['userId']);
                 if ($user) {
                     $lead->setUser($user);
