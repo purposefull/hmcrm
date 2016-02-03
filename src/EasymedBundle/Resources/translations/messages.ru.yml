@@ -28,10 +28,10 @@ source: Источник
 createdAt: Создан
 stage: Этап
 lead:
-    title: Lead
-    edit: Lead edit
-    list: Lead list
-    adding: Lead adding
+    title: Лиды
+    edit: Редактировать
+    list: Лиды
+    adding: Добавить
     captureFormTitle: Lead Capture Form
     LCFdesc: Capture leads directly into your sales funnel via customizable form.
     exampleOfForm: Example of form
@@ -56,16 +56,16 @@ person:
     list: Список субъектов
     adding: Добавление субъекта
 menu:
-    lead: Lead
-    contacts: Contacts
-    person: Субъект
+    lead: Лиды
+    contacts: Контакты
+    person: Человек
     company: Компания
     deal: Сделки
     reports: Отчеты
-    leadCaptureForm: Lead Capture Form
+    leadCaptureForm: Форма захвата
     import: Импорт
     export: Экспорт
     products: Продукты
-    manageUsers: Manage Users
+    manageUsers: Управление правами
     emailTemplates: Шаблоны писем
     tasksManagement: Управление задачами
