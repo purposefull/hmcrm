@@ -122,11 +122,15 @@ class LeadController extends Controller
     {
         if ($request->getMethod() == 'POST') {
             $form = $request->request->all();
-            if (!empty($form['userId']) && !empty($form['name']) && !empty($form['email']) && !empty($form['phone'])) {
+            if (!empty($form['userId']) && !empty($form['name']) && !empty($form['email'])) {
+
                 $lead = new Lead();
                 $lead->setLastName($form['name']);
                 $lead->setEmail($form['email']);
-                $lead->setMobilePhone($form['phone']);
+
+                if (isset($form['phone']) && $form['phone']) {
+                    $lead->setMobilePhone($form['phone']);
+                }
 
                 if (isset($form['product']) && $form['product']) {
                     $lead->setProduct($form['product']);
