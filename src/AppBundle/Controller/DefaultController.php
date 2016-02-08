@@ -41,7 +41,6 @@ class DefaultController extends Controller
         ));
     }
 
-
     /**
      * @Route("/lp/ru", name="lp_ru")
      */

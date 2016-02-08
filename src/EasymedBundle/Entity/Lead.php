@@ -70,7 +70,7 @@ class Lead extends ContactBase
     protected $source;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="deals")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="leads")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
