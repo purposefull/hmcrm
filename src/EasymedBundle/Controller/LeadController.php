@@ -299,7 +299,6 @@ class LeadController extends Controller
      * Deletes a Lead entity.
      *
      * @Route("/delete/{id}", name="lead_delete")
-     * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
     {
@@ -308,23 +307,18 @@ class LeadController extends Controller
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
 
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy(array(
+                'id' => $id,
+                'user' => $this->getUser()
+            ));
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy(array(
-                    'id' => $id,
-                    'user' => $this->getUser()
-                ));
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Lead entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Lead entity.');
         }
+
+        $em->remove($entity);
+        $em->flush();
 
         return $this->redirect($this->generateUrl('lead'));
     }
