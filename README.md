@@ -1,11 +1,13 @@
 HealthMarketing CRM
 =======
 
-A Symfony project created on October 24, 2015, 11:38 pm.
+Almost Free and Open Source CRM for Small Business
+
+http://easymed24.ru [temporary domain]
 
 # Install
 
-1) git clone https://andreybolonin@bitbucket.org/andreybolonin/easymed.git
+1) git clone git@github.com:andreybolonin/hmcrm.git
 
 2) composer install
 
@@ -21,7 +23,7 @@ A Symfony project created on October 24, 2015, 11:38 pm.
 
 8) http://127.0.0.1:8000
 
-# Postgresql
+# Database [PostgreSQL]
 
 1) sudo apt-get install php7.0-postgresql
 
