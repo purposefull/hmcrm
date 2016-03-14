@@ -3,7 +3,7 @@ HealthMarketing CRM
 
 Almost Free and Open Source CRM for Small Business
 
-http://easymed24.ru [temporary domain]
+http://easymed24.ru - SaaS implementation. Using temporary domain name, but service work in production environment.
 
 # System Requirements
 
