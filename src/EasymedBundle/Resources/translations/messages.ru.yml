@@ -32,9 +32,9 @@ lead:
     edit: Редактировать
     list: Лиды
     adding: Добавить
-    captureFormTitle: Lead Capture Form
-    LCFdesc: Capture leads directly into your sales funnel via customizable form.
-    exampleOfForm: Example of form
+    captureFormTitle: Форма Захвата
+    LCFdesc: Захватывайте лидов напрямую в вашу воронку продаж с помощью формы захвата.
+    exampleOfForm: Пример формы захвата
     status: Lead status
 deal:
     title: Сделки
@@ -44,6 +44,7 @@ deal:
 contact:
     title: Контакты
     newPerson: Новый субъект
+    list: Контакты
     newCompany: Новая компания
 company:
     title: Компания
@@ -69,3 +70,7 @@ menu:
     manageUsers: Управление правами
     emailTemplates: Шаблоны писем
     tasksManagement: Управление задачами
+Header: 321
+report:
+    title: Отчеты
+    list: Отчеты

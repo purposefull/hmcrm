@@ -21,7 +21,7 @@ class ContactController extends Controller
      * @Route("/", name="contact_list")
      * @Template()
      */
-    public function listAction()
+    public function indexAction()
     {
         $em = $this->getDoctrine()->getEntityManager();
 
