@@ -35,11 +35,11 @@ http://easymed24.ru [temporary domain]
 
 # System Requirements
 
-1) php 5.6 (php 7.x is better choice)
+1) php 5.6 (php 7.x is better choice) - http://php.net
 
-2) PostgreSQL 9.3 or MySQL 5.6
+2) PostgreSQL 9.3 or MySQL 5.6 - http://www.postgresql.org/ or http://www.mysql.com/
 
-3) Composer
+3) Composer - https://getcomposer.org/
 
 # Roadmap
 
