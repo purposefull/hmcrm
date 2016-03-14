@@ -75,7 +75,7 @@ class PersonController extends Controller
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -113,11 +113,11 @@ class PersonController extends Controller
         }
 
         $entity = new Person();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -139,8 +139,8 @@ class PersonController extends Controller
 
         $entity = $em->getRepository('EasymedBundle:Person')->findOneBy(array(
             'id' => $id,
-            'user' => $this->getUser()
-        ));;
+            'user' => $this->getUser(),
+        ));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Person entity.');
@@ -149,7 +149,7 @@ class PersonController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -172,7 +172,7 @@ class PersonController extends Controller
 
         $entity = $em->getRepository('EasymedBundle:Person')->findOneBy(array(
             'id' => $id,
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
         ));
 
         if (!$entity) {
@@ -183,19 +183,19 @@ class PersonController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
 
     /**
-    * Creates a form to edit a Person entity.
-    *
-    * @param Person $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Person entity.
+     *
+     * @param Person $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Person $entity)
     {
         $form = $this->createForm(new PersonType(), $entity, array(
@@ -225,7 +225,7 @@ class PersonController extends Controller
 
         $entity = $em->getRepository('EasymedBundle:Person')->findOneBy(array(
             'id' => $id,
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
         ));
 
         if (!$entity) {
@@ -243,8 +243,8 @@ class PersonController extends Controller
         }
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -268,7 +268,7 @@ class PersonController extends Controller
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('EasymedBundle:Person')->findOneBy(array(
                 'id' => $id,
-                'user' => $this->getUser()
+                'user' => $this->getUser(),
             ));
 
             if (!$entity) {

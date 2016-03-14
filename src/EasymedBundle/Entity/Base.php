@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 abstract class Base
 {
     /**
-     * @var integer $id
+     * @var int
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -31,9 +31,9 @@ abstract class Base
     protected $updatedAt;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -41,9 +41,10 @@ abstract class Base
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
      * @param \DateTime $createdAt
+     *
      * @return Base
      */
     public function setCreatedAt($createdAt)
@@ -54,7 +55,7 @@ abstract class Base
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
      * @return \DateTime
      */
@@ -64,9 +65,10 @@ abstract class Base
     }
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
      *
      * @param \DateTime $updatedAt
+     *
      * @return Base
      */
     public function setUpdatedAt($updatedAt)
@@ -77,7 +79,7 @@ abstract class Base
     }
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
      *
      * @return \DateTime
      */
@@ -87,21 +89,23 @@ abstract class Base
     }
 
     /**
-     * Hook on pre-persist operations
+     * Hook on pre-persist operations.
+     *
      * @ORM\PrePersist()
      */
     public function prePersist()
     {
-        $this->createdAt = new \DateTime;
-        $this->updatedAt = new \DateTime;
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 
     /**
-     * Hook on pre-update operations
+     * Hook on pre-update operations.
+     *
      * @ORM\PreUpdate()
      */
     public function preUpdate()
     {
-        $this->updatedAt = new \DateTime;
+        $this->updatedAt = new \DateTime();
     }
 }

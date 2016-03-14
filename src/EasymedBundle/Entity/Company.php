@@ -1,11 +1,12 @@
 <?php
+
 namespace EasymedBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Company
+ * Company.
  *
  * @ORM\Table(name="company")
  * @ORM\Entity()
@@ -107,7 +108,7 @@ class Company extends ContactBase
     }
 
     /**
-     * Returns array of customer statuses
+     * Returns array of customer statuses.
      *
      * @return array
      */
@@ -121,7 +122,7 @@ class Company extends ContactBase
     }
 
     /**
-     * Returns array of prospect statuses
+     * Returns array of prospect statuses.
      *
      * @return array
      */

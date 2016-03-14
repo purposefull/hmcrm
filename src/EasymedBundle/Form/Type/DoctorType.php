@@ -1,4 +1,5 @@
 <?php
+
 namespace EasymedBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
@@ -8,7 +9,7 @@ class DoctorType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

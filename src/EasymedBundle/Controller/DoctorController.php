@@ -11,15 +11,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class DoctorController
- * @package EasymedBundle\Controller
+ * Class DoctorController.
  *
  * @Route("/doctor")
  */
 class DoctorController extends Controller
 {
     /**
-     * Returns list of doctors
+     * Returns list of doctors.
      *
      * @Route("/list", name="doctor_index")
      * @Template()
@@ -33,12 +32,12 @@ class DoctorController extends Controller
             ->findAll();
 
         return array(
-            'doctors' => $doctors
+            'doctors' => $doctors,
         );
     }
 
     /**
-     * Adds doctor
+     * Adds doctor.
      *
      * @Route("/add", name="doctor_add")
      * @Template()
@@ -54,7 +53,6 @@ class DoctorController extends Controller
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             if ($form->isValid()) {
-
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($doctor);
                 $em->flush();
@@ -64,19 +62,21 @@ class DoctorController extends Controller
         }
 
         return array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
         );
     }
 
     /**
-     * Edits doctor
+     * Edits doctor.
      *
      * @Route("/edit/{id}", name="doctor_edit")
      * @Template()
      *
      * @param Request $request
      * @param $id
+     *
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
+     *
      * @throws EntityNotFoundException
      */
     public function editAction(Request $request, $id)
@@ -94,7 +94,6 @@ class DoctorController extends Controller
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             if ($form->isValid()) {
-
                 $em = $this->getDoctrine()->getManager();
                 $em->flush();
 
@@ -103,18 +102,20 @@ class DoctorController extends Controller
         }
 
         return array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
         );
     }
 
     /**
-     * Deletes doctor
+     * Deletes doctor.
      *
      * @Route("/delete/{id}", name="doctor_delete")
      *
      * @param Request $request
      * @param $id
+     *
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
+     *
      * @throws EntityNotFoundException
      */
     public function deleteAction(Request $request, $id)

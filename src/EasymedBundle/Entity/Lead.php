@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Lead
+ * Lead.
  *
  * @ORM\Table(name="lead")
  * @ORM\Entity()
@@ -195,7 +195,7 @@ class Lead extends ContactBase
     }
 
     /**
-     * Returns array of statuses
+     * Returns array of statuses.
      *
      * @return array
      */
@@ -209,9 +209,9 @@ class Lead extends ContactBase
     }
 
     /**
-     * Returns status name
+     * Returns status name.
      *
-     * @param integer $statusKey
+     * @param int $statusKey
      *
      * @return string
      */
@@ -219,6 +219,7 @@ class Lead extends ContactBase
     {
         if (array_key_exists($statusKey, self::valuesOfStatus())) {
             $statusArray = self::valuesOfStatus();
+
             return $statusArray[$statusKey];
         }
 

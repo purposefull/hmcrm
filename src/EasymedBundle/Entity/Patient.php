@@ -1,4 +1,5 @@
 <?php
+
 namespace EasymedBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -7,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * Pacient
+ * Pacient.
  *
  * @ORM\Table(name="patient")
  * @ORM\Entity()
@@ -34,7 +35,7 @@ class Patient extends Base
     protected $lastName;
 
     /**
-     * @var integer
+     * @var int
      *
      * @Assert\NotBlank()
      *
@@ -67,7 +68,7 @@ class Patient extends Base
     protected $transactions;
 
     /**
-     * Construct
+     * Construct.
      */
     public function __construct()
     {
@@ -171,7 +172,7 @@ class Patient extends Base
     }
 
     /**
-     * Gets full name
+     * Gets full name.
      *
      * @return string
      */
@@ -179,5 +180,4 @@ class Patient extends Base
     {
         return $this->lastName.' '.$this->firstName;
     }
-
 }

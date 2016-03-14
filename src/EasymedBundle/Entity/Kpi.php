@@ -5,7 +5,7 @@ namespace EasymedBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Kpi
+ * Kpi.
  *
  * @ORM\Table()
  * @ORM\Entity
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Kpi
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -22,7 +22,7 @@ class Kpi
     private $id;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="sugar", type="integer")
      */
@@ -36,7 +36,7 @@ class Kpi
     private $cholesterol;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="heartRate", type="integer")
      */
@@ -50,17 +50,16 @@ class Kpi
     private $pressureSystole;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="pressureDiastole", type="integer")
      */
     private $pressureDiastole;
 
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -68,9 +67,9 @@ class Kpi
     }
 
     /**
-     * Set sugar
+     * Set sugar.
      *
-     * @param integer $sugar
+     * @param int $sugar
      *
      * @return Kpi
      */
@@ -82,9 +81,9 @@ class Kpi
     }
 
     /**
-     * Get sugar
+     * Get sugar.
      *
-     * @return integer
+     * @return int
      */
     public function getSugar()
     {
@@ -92,7 +91,7 @@ class Kpi
     }
 
     /**
-     * Set cholesterol
+     * Set cholesterol.
      *
      * @param float $cholesterol
      *
@@ -106,7 +105,7 @@ class Kpi
     }
 
     /**
-     * Get cholesterol
+     * Get cholesterol.
      *
      * @return float
      */
@@ -116,9 +115,9 @@ class Kpi
     }
 
     /**
-     * Set heartRate
+     * Set heartRate.
      *
-     * @param integer $heartRate
+     * @param int $heartRate
      *
      * @return Kpi
      */
@@ -130,9 +129,9 @@ class Kpi
     }
 
     /**
-     * Get heartRate
+     * Get heartRate.
      *
-     * @return integer
+     * @return int
      */
     public function getHeartRate()
     {
@@ -140,7 +139,7 @@ class Kpi
     }
 
     /**
-     * Set pressureSystole
+     * Set pressureSystole.
      *
      * @param float $pressureSystole
      *
@@ -154,7 +153,7 @@ class Kpi
     }
 
     /**
-     * Get pressureSystole
+     * Get pressureSystole.
      *
      * @return float
      */
@@ -164,9 +163,9 @@ class Kpi
     }
 
     /**
-     * Set pressureDiastole
+     * Set pressureDiastole.
      *
-     * @param integer $pressureDiastole
+     * @param int $pressureDiastole
      *
      * @return Kpi
      */
@@ -178,13 +177,12 @@ class Kpi
     }
 
     /**
-     * Get pressureDiastole
+     * Get pressureDiastole.
      *
-     * @return integer
+     * @return int
      */
     public function getPressureDiastole()
     {
         return $this->pressureDiastole;
     }
 }
-

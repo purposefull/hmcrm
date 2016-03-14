@@ -1,11 +1,12 @@
 <?php
+
 namespace EasymedBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Transaction
+ * Transaction.
  *
  * @ORM\Table(name="transaction")
  * @ORM\Entity()
@@ -13,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Transaction extends Base
 {
     /**
-     * @var integer
+     * @var int
      *
      * @Assert\NotBlank()
      *
@@ -31,7 +32,7 @@ class Transaction extends Base
     protected $status;
 
     /**
-     * @var integer
+     * @var int
      *
      * @Assert\NotBlank()
      *

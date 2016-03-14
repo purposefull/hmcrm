@@ -2,7 +2,6 @@
 
 namespace EasymedBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -46,7 +45,7 @@ class ContactController extends Controller
         }
 
         return array(
-            'entities' => $resultArray
+            'entities' => $resultArray,
         );
     }
 }

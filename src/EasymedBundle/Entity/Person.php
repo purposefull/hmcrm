@@ -1,11 +1,12 @@
 <?php
+
 namespace EasymedBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Person
+ * Person.
  *
  * @ORM\Table(name="person")
  * @ORM\Entity()
@@ -175,9 +176,8 @@ class Person extends ContactBase
         $this->title = $title;
     }
 
-
     /**
-     * Returns array of customer statuses
+     * Returns array of customer statuses.
      *
      * @return array
      */
@@ -191,7 +191,7 @@ class Person extends ContactBase
     }
 
     /**
-     * Returns array of prospect statuses
+     * Returns array of prospect statuses.
      *
      * @return array
      */
@@ -225,7 +225,7 @@ class Person extends ContactBase
      */
     public function getFullName()
     {
-        return $this->getLastName() . ' ' . $this->getFirstName();
+        return $this->getLastName().' '.$this->getFirstName();
     }
 
     /**

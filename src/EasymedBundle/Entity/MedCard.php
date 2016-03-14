@@ -5,7 +5,7 @@ namespace EasymedBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * MedCard
+ * MedCard.
  *
  * @ORM\Table()
  * @ORM\Entity
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class MedCard
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -35,11 +35,10 @@ class MedCard
      */
     private $intake;
 
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -47,7 +46,7 @@ class MedCard
     }
 
     /**
-     * Set recommendation
+     * Set recommendation.
      *
      * @param string $recommendation
      *
@@ -61,7 +60,7 @@ class MedCard
     }
 
     /**
-     * Get recommendation
+     * Get recommendation.
      *
      * @return string
      */
@@ -71,7 +70,7 @@ class MedCard
     }
 
     /**
-     * Set intake
+     * Set intake.
      *
      * @param string $intake
      *
@@ -85,7 +84,7 @@ class MedCard
     }
 
     /**
-     * Get intake
+     * Get intake.
      *
      * @return string
      */
@@ -94,4 +93,3 @@ class MedCard
         return $this->intake;
     }
 }
-

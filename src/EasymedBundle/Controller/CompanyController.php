@@ -18,7 +18,6 @@ use EasymedBundle\Form\CompanyType;
  */
 class CompanyController extends Controller
 {
-
     /**
      * Lists all Company entities.
      *
@@ -77,7 +76,7 @@ class CompanyController extends Controller
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -115,11 +114,11 @@ class CompanyController extends Controller
         }
 
         $entity = new Company();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -141,7 +140,7 @@ class CompanyController extends Controller
 
         $entity = $em->getRepository('EasymedBundle:Company')->findOneBy(array(
             'id' => $id,
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
         ));
 
         if (!$entity) {
@@ -151,7 +150,7 @@ class CompanyController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -174,7 +173,7 @@ class CompanyController extends Controller
 
         $entity = $em->getRepository('EasymedBundle:Company')->findOneBy(array(
             'id' => $id,
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
         ));
 
         if (!$entity) {
@@ -185,19 +184,19 @@ class CompanyController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
 
     /**
-    * Creates a form to edit a Company entity.
-    *
-    * @param Company $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Company entity.
+     *
+     * @param Company $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Company $entity)
     {
         $form = $this->createForm(new CompanyType(), $entity, array(
@@ -227,7 +226,7 @@ class CompanyController extends Controller
 
         $entity = $em->getRepository('EasymedBundle:Company')->findOneBy(array(
             'id' => $id,
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
         ));
 
         if (!$entity) {
@@ -245,8 +244,8 @@ class CompanyController extends Controller
         }
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -270,7 +269,7 @@ class CompanyController extends Controller
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('EasymedBundle:Company')->findOneBy(array(
                 'id' => $id,
-                'user' => $this->getUser()
+                'user' => $this->getUser(),
             ));
 
             if (!$entity) {

@@ -2,7 +2,6 @@
 
 namespace EasymedBundle\Controller;
 
-use Doctrine\ORM\EntityNotFoundException;
 use EasymedBundle\Entity\Transaction;
 use EasymedBundle\Form\Type\TransactionType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -11,16 +10,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class TransactionController
- * @package EasymedBundle\Controller
+ * Class TransactionController.
  *
  * @Route("/transaction")
  */
 class TransactionController extends Controller
 {
-
     /**
-     * Returns list of transactions
+     * Returns list of transactions.
      *
      * @Route("/list", name="transaction_index")
      * @Template()
@@ -34,12 +31,12 @@ class TransactionController extends Controller
             ->findAll();
 
         return array(
-            'transactions' => $transactions
+            'transactions' => $transactions,
         );
     }
 
     /**
-     * Adds transaction
+     * Adds transaction.
      *
      * @Route("/add", name="transaction_add")
      * @Template()
@@ -55,7 +52,6 @@ class TransactionController extends Controller
         if ($request->getMethod() == 'POST') {
             $form->handleRequest($request);
             if ($form->isValid()) {
-
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($transaction);
                 $em->flush();
@@ -65,7 +61,7 @@ class TransactionController extends Controller
         }
 
         return array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
         );
     }
 }

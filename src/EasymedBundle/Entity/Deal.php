@@ -1,11 +1,12 @@
 <?php
+
 namespace EasymedBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Deal
+ * Deal.
  *
  * @ORM\Table(name="deal")
  * @ORM\Entity()
@@ -197,7 +198,7 @@ class Deal extends Base
     }
 
     /**
-     * Returns array of stages
+     * Returns array of stages.
      *
      * @return array
      */

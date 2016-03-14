@@ -10,7 +10,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use EasymedBundle\Entity\Lead;
 use EasymedBundle\Form\LeadType;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Lead controller.
@@ -70,7 +69,7 @@ class LeadController extends Controller
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -106,11 +105,11 @@ class LeadController extends Controller
         }
 
         $entity = new Lead();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -123,7 +122,6 @@ class LeadController extends Controller
         if ($request->getMethod() == 'POST') {
             $form = $request->request->all();
             if (!empty($form['userId']) && !empty($form['name']) && !empty($form['email'])) {
-
                 $lead = new Lead();
                 $lead->setLastName($form['name']);
                 $lead->setEmail($form['email']);
@@ -184,7 +182,7 @@ class LeadController extends Controller
 
         $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy(array(
             'id' => $id,
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
         ));
 
         if (!$entity) {
@@ -194,7 +192,7 @@ class LeadController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -217,7 +215,7 @@ class LeadController extends Controller
 
         $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy(array(
             'id' => $id,
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
         ));
 
         if (!$entity) {
@@ -228,19 +226,19 @@ class LeadController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
 
     /**
-    * Creates a form to edit a Lead entity.
-    *
-    * @param Lead $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Lead entity.
+     *
+     * @param Lead $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Lead $entity)
     {
         $form = $this->createForm(new LeadType(), $entity, array(
@@ -271,7 +269,7 @@ class LeadController extends Controller
 
         $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy(array(
             'id' => $id,
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
         ));
 
         if (!$entity) {
@@ -289,8 +287,8 @@ class LeadController extends Controller
         }
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -310,7 +308,7 @@ class LeadController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy(array(
                 'id' => $id,
-                'user' => $this->getUser()
+                'user' => $this->getUser(),
             ));
 
         if (!$entity) {

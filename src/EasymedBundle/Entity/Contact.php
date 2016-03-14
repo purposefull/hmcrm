@@ -1,11 +1,11 @@
 <?php
+
 namespace EasymedBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Contact
+ * Contact.
  *
  * @ORM\Table(name="contact")
  * @ORM\Entity()
@@ -29,7 +29,7 @@ class Contact extends Base
     protected $company;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(type="integer", length=255)
      */

@@ -11,47 +11,47 @@ class DealType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('name', 'text', array(
-                'label' => 'name'
+                'label' => 'name',
             ))
             ->add('contact', 'entity', array(
                 'class' => 'EasymedBundle:Contact',
                 'choice_label' => 'name',
-                'label' => 'contact.title'
+                'label' => 'contact.title',
             ))
             ->add('stage', 'choice', array(
                 'choices' => Deal::valuesOfStage(),
-                'label' => 'stage'
+                'label' => 'stage',
             ))
             ->add('value', 'text', array(
-                'label' => 'value'
+                'label' => 'value',
             ))
             ->add('currency', 'text', array(
-                'label' => 'currency'
+                'label' => 'currency',
             ))
             ->add('source', 'text', array(
-                'label' => 'source'
+                'label' => 'source',
             ))
             ->add('tags', 'text', array(
-                'label' => 'tags'
+                'label' => 'tags',
             ))
         ;
 
         $builder->setRequired(false);
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'EasymedBundle\Entity\Deal'
+            'data_class' => 'EasymedBundle\Entity\Deal',
         ));
     }
 

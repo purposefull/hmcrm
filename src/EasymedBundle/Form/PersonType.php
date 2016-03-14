@@ -11,70 +11,70 @@ class PersonType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('firstName', 'text', array(
-                'label' => 'firstname'
+                'label' => 'firstname',
             ))
             ->add('lastName', 'text', array(
-                'label' => 'lastName'
+                'label' => 'lastName',
             ))
             ->add('companyName', 'text', array(
-                'label' => 'company.title'
+                'label' => 'company.title',
             ))
             ->add('title', 'text', array(
-                'label' => 'title'
+                'label' => 'title',
             ))
             ->add('customerStatus', 'choice', array(
                 'choices' => Person::valuesOfCustomerStatus(),
-                'label' => 'customerstatus'
+                'label' => 'customerstatus',
             ))
             ->add('prospectStatus', 'choice', array(
                 'choices' => Person::valuesOfProspectStatus(),
-                'label' => 'prospectstatus'
+                'label' => 'prospectstatus',
             ))
             ->add('email', 'text', array(
-                'label' => 'email'
+                'label' => 'email',
             ))
             ->add('mobilePhone', 'text', array(
-                'label' => 'mobilephone'
+                'label' => 'mobilephone',
             ))
             ->add('workPhone', 'text', array(
-                'label' => 'workphone'
+                'label' => 'workphone',
             ))
             ->add('address', 'text', array(
-                'label' => 'address'
+                'label' => 'address',
             ))
             ->add('city', 'text', array(
-                'label' => 'city'
+                'label' => 'city',
             ))
             ->add('zipCode', 'text', array(
-                'label' => 'zipcode'
+                'label' => 'zipcode',
             ))
             ->add('region', 'text', array(
-                'label' => 'region'
+                'label' => 'region',
             ))
             ->add('country', 'text', array(
-                'label' => 'country'
+                'label' => 'country',
             ))
             ->add('tags', 'text', array(
-                'label' => 'tags'
+                'label' => 'tags',
             ))
         ;
 
         $builder->setRequired(false);
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'EasymedBundle\Entity\Person'
+            'data_class' => 'EasymedBundle\Entity\Person',
         ));
     }
 

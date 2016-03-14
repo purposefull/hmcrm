@@ -1,11 +1,12 @@
 <?php
+
 namespace EasymedBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Doctor
+ * Doctor.
  *
  * @ORM\Table(name="doctor")
  * @ORM\Entity()

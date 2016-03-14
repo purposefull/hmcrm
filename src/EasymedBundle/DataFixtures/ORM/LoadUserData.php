@@ -1,4 +1,5 @@
 <?php
+
 namespace EasymedBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;

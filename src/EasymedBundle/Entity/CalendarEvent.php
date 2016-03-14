@@ -3,10 +3,9 @@
 namespace EasymedBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Calendar event
+ * Calendar event.
  *
  * @ORM\Table(name="calendar_event")
  * @ORM\Entity()
@@ -14,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class CalendarEvent implements \JsonSerializable
 {
     /**
-     * @var integer $id
+     * @var int
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -99,7 +98,8 @@ class CalendarEvent implements \JsonSerializable
         $this->endDate = $endDate;
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         return [
             'title' => $this->getTitle(),
             'start' => $this->getStartDate(),

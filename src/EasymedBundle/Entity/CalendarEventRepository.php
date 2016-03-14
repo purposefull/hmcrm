@@ -11,7 +11,7 @@ class CalendarEventRepository
             ->andWhere('c.endDate <= :end')
             ->setParameters([
                 'start' => $start,
-                'end' => $end
+                'end' => $end,
             ]);
 
         return $qb->getQuery()->getResult();

@@ -1,4 +1,5 @@
 <?php
+
 namespace EasymedBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
@@ -8,17 +9,17 @@ class TransactionType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('patient', 'entity', array(
             'class' => 'EasymedBundle\Entity\Patient',
-            'property' => 'fullName'
+            'property' => 'fullName',
         ));
         $builder->add('status', 'text');
         $builder->add('date', 'date', array(
-            'input'  => 'timestamp',
+            'input' => 'timestamp',
         ));
         $builder->add('amount', 'integer');
         $builder->add('submit', 'submit');
