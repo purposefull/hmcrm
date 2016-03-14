@@ -5,7 +5,15 @@ Almost Free and Open Source CRM for Small Business
 
 http://easymed24.ru [temporary domain]
 
-# Install
+# System Requirements
+
+1) php 5.6 (php 7.x is better choice) - http://php.net
+
+2) PostgreSQL 9.3 or MySQL 5.6 - http://www.postgresql.org/ or http://www.mysql.com/
+
+3) Composer - https://getcomposer.org/
+
+# Install [for Linux]
 
 1) git clone git@github.com:andreybolonin/hmcrm.git
 
@@ -33,14 +41,6 @@ http://easymed24.ru [temporary domain]
 
 4) Double type password for user postgres
 
-# System Requirements
-
-1) php 5.6 (php 7.x is better choice) - http://php.net
-
-2) PostgreSQL 9.3 or MySQL 5.6 - http://www.postgresql.org/ or http://www.mysql.com/
-
-3) Composer - https://getcomposer.org/
-
 # Roadmap
 
 1) Import
@@ -48,3 +48,7 @@ http://easymed24.ru [temporary domain]
 2) Tasks integration
 
 3) User ACL
+
+4) Phone calls integration
+
+5) Voice control
