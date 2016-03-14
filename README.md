@@ -33,6 +33,14 @@ http://easymed24.ru [temporary domain]
 
 4) Double type password for user postgres
 
+# System Requirements
+
+1) php 5.6 (php 7.x is better choice)
+
+2) PostgreSQL 9.3 or MySQL 5.6
+
+3) Composer
+
 # Roadmap
 
 1) Import
