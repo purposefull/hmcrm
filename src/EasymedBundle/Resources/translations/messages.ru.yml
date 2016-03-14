@@ -37,12 +37,12 @@ lead:
     exampleOfForm: Example of form
     status: Lead status
 deal:
-    title: Сделка
+    title: Сделки
     edit: Редактирование сделки
     list: Список сделок
     adding: Добавление сделки
 contact:
-    title: Контакт
+    title: Контакты
     newPerson: Новый субъект
     newCompany: Новая компания
 company:

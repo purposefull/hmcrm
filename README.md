@@ -32,3 +32,11 @@ http://easymed24.ru [temporary domain]
 3) \password postgres
 
 4) Double type password for user postgres
+
+# Roadmap
+
+1) Import
+
+2) Tasks integration
+
+3) User ACL

@@ -117,9 +117,11 @@ class Contact extends Base
     {
         $name = null;
         switch ($this->getType()) {
+
             case self::TYPE_PERSON:
                 $name = $this->getPerson()->getFullName();
                 break;
+
             case self::TYPE_COMPANY:
                 $name = $this->getCompany()->getName();
                 break;

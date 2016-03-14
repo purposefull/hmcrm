@@ -1,4 +1,5 @@
 <?php
+
 namespace EasymedBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -68,6 +69,12 @@ class Lead extends ContactBase
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $source;
+
+//    /**
+//     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="contacts")
+//     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+//     */
+//    protected $user;
 
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="leads")
