@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class PatientController.
  *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
+ *
  * @Route("/patient")
  */
 class PatientController extends Controller
@@ -23,17 +25,17 @@ class PatientController extends Controller
      * @Route("/list", name="patient_index")
      * @Template()
      *
-     * @return array
+     * @return []
      */
     public function indexAction()
     {
         $patients = $this->getDoctrine()
-            ->getRepository('EasymedBundle:Patient')
-            ->findAll();
+                         ->getRepository('EasymedBundle:Patient')
+                         ->findAll();
 
-        return array(
+        return [
             'patients' => $patients,
-        );
+        ];
     }
 
     /**
@@ -42,7 +44,7 @@ class PatientController extends Controller
      * @Route("/add", name="patient_add")
      * @Template()
      *
-     * @return array
+     * @return []
      */
     public function addAction(Request $request)
     {
@@ -61,9 +63,9 @@ class PatientController extends Controller
             }
         }
 
-        return array(
+        return [
             'form' => $form->createView(),
-        );
+        ];
     }
 
     /**
@@ -73,17 +75,17 @@ class PatientController extends Controller
      * @Template()
      *
      * @param Request $request
-     * @param $id
+     * @param         $id
      *
-     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
+     * @return []|\Symfony\Component\HttpFoundation\RedirectResponse
      *
      * @throws EntityNotFoundException
      */
     public function editAction(Request $request, $id)
     {
         $patient = $this->getDoctrine()
-            ->getRepository('EasymedBundle:Patient')
-            ->find($id);
+                        ->getRepository('EasymedBundle:Patient')
+                        ->find($id);
 
         if (!$patient) {
             throw new EntityNotFoundException();
@@ -101,9 +103,9 @@ class PatientController extends Controller
             }
         }
 
-        return array(
+        return [
             'form' => $form->createView(),
-        );
+        ];
     }
 
     /**
@@ -112,17 +114,17 @@ class PatientController extends Controller
      * @Route("/delete/{id}", name="patient_delete")
      *
      * @param Request $request
-     * @param $id
+     * @param         $id
      *
-     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
+     * @return []|\Symfony\Component\HttpFoundation\RedirectResponse
      *
      * @throws EntityNotFoundException
      */
     public function deleteAction(Request $request, $id)
     {
         $patient = $this->getDoctrine()
-            ->getRepository('EasymedBundle:Patient')
-            ->find($id);
+                        ->getRepository('EasymedBundle:Patient')
+                        ->find($id);
 
         if (!$patient) {
             throw new EntityNotFoundException();

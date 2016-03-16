@@ -7,6 +7,11 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+/**
+ * PersonType class
+ *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
+ */
 class PersonType extends AbstractType
 {
     /**
@@ -16,54 +21,53 @@ class PersonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName', 'text', array(
+            ->add('firstName', 'text', [
                 'label' => 'firstname',
-            ))
-            ->add('lastName', 'text', array(
+            ])
+            ->add('lastName', 'text', [
                 'label' => 'lastName',
-            ))
-            ->add('companyName', 'text', array(
+            ])
+            ->add('companyName', 'text', [
                 'label' => 'company.title',
-            ))
-            ->add('title', 'text', array(
+            ])
+            ->add('title', 'text', [
                 'label' => 'title',
-            ))
-            ->add('customerStatus', 'choice', array(
+            ])
+            ->add('customerStatus', 'choice', [
                 'choices' => Person::valuesOfCustomerStatus(),
-                'label' => 'customerstatus',
-            ))
-            ->add('prospectStatus', 'choice', array(
+                'label'   => 'customerstatus',
+            ])
+            ->add('prospectStatus', 'choice', [
                 'choices' => Person::valuesOfProspectStatus(),
-                'label' => 'prospectstatus',
-            ))
-            ->add('email', 'text', array(
+                'label'   => 'prospectstatus',
+            ])
+            ->add('email', 'text', [
                 'label' => 'email',
-            ))
-            ->add('mobilePhone', 'text', array(
+            ])
+            ->add('mobilePhone', 'text', [
                 'label' => 'mobilephone',
-            ))
-            ->add('workPhone', 'text', array(
+            ])
+            ->add('workPhone', 'text', [
                 'label' => 'workphone',
-            ))
-            ->add('address', 'text', array(
+            ])
+            ->add('address', 'text', [
                 'label' => 'address',
-            ))
-            ->add('city', 'text', array(
+            ])
+            ->add('city', 'text', [
                 'label' => 'city',
-            ))
-            ->add('zipCode', 'text', array(
+            ])
+            ->add('zipCode', 'text', [
                 'label' => 'zipcode',
-            ))
-            ->add('region', 'text', array(
+            ])
+            ->add('region', 'text', [
                 'label' => 'region',
-            ))
-            ->add('country', 'text', array(
+            ])
+            ->add('country', 'text', [
                 'label' => 'country',
-            ))
-            ->add('tags', 'text', array(
+            ])
+            ->add('tags', 'text', [
                 'label' => 'tags',
-            ))
-        ;
+            ]);
 
         $builder->setRequired(false);
     }
@@ -73,9 +77,9 @@ class PersonType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'EasymedBundle\Entity\Person',
-        ));
+        ]);
     }
 
     /**

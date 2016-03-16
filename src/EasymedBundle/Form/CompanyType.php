@@ -5,8 +5,13 @@ namespace EasymedBundle\Form;
 use EasymedBundle\Entity\Company;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * CompanyType class
+ *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
+ */
 class CompanyType extends AbstractType
 {
     /**
@@ -16,57 +21,56 @@ class CompanyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text', array(
+            ->add('name', 'text', [
                 'label' => 'name',
-            ))
-            ->add('customerStatus', 'choice', array(
+            ])
+            ->add('customerStatus', 'choice', [
                 'choices' => Company::valuesOfCustomerStatus(),
-                'label' => 'customerstatus',
-            ))
-            ->add('prospectStatus', 'choice', array(
-                'choices' => Company::valuesOfProspectStatus(),
-                'label' => 'prospectstatus',
-            ))
-            ->add('email', 'email', array(
-                'label' => 'Email',
-            ))
-            ->add('mobilePhone', 'text', array(
-                'label' => 'mobilephone',
-            ))
-            ->add('workPhone', 'text', array(
-                'label' => 'workphone',
-            ))
-            ->add('address', 'text', array(
-                'label' => 'address',
-            ))
-            ->add('city', 'text', array(
-                'label' => 'city',
-            ))
-            ->add('zipCode', 'text', array(
-                'label' => 'zipcode',
-            ))
-            ->add('region', 'text', array(
-                'label' => 'region',
-            ))
-            ->add('country', 'text', array(
-                'label' => 'country',
-            ))
-            ->add('tags', 'text', array(
-                'label' => 'tags',
-            ))
-        ;
+                'label'   => 'customerstatus',
+            ])
+            ->add('prospectStatus', 'choice', [
+        'choices' => Company::valuesOfProspectStatus(),
+        'label'   => 'prospectstatus',
+    ])
+        ->add('email', 'email', [
+            'label' => 'Email',
+        ])
+        ->add('mobilePhone', 'text', [
+            'label' => 'mobilephone',
+        ])
+        ->add('workPhone', 'text', [
+            'label' => 'workphone',
+        ])
+        ->add('address', 'text', [
+            'label' => 'address',
+        ])
+        ->add('city', 'text', [
+            'label' => 'city',
+        ])
+        ->add('zipCode', 'text', [
+            'label' => 'zipcode',
+        ])
+        ->add('region', 'text', [
+            'label' => 'region',
+        ])
+        ->add('country', 'text', [
+            'label' => 'country',
+        ])
+        ->add('tags', 'text', [
+            'label' => 'tags',
+        ]);
 
         $builder->setRequired(false);
     }
 
     /**
-     * @param OptionsResolverInterface $resolver
+     * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'EasymedBundle\Entity\Company',
-        ));
+        ]);
     }
 
     /**

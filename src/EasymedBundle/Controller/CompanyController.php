@@ -14,6 +14,8 @@ use EasymedBundle\Form\CompanyType;
 /**
  * Company controller.
  *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
+ *
  * @Route("/company")
  */
 class CompanyController extends Controller
@@ -27,20 +29,16 @@ class CompanyController extends Controller
      */
     public function indexAction()
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $em = $this->getDoctrine()->getManager();
 
-        $user = $this->getUser();
+        $user     = $this->getUser();
         $entities = $em->getRepository('EasymedBundle:Company')->findByUser($user);
 
-        return array(
+        return [
             'entities' => $entities,
-        );
+        ];
     }
+
     /**
      * Creates a new Company entity.
      *
@@ -50,17 +48,12 @@ class CompanyController extends Controller
      */
     public function createAction(Request $request)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $entity = new Company();
-        $form = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $em      = $this->getDoctrine()->getManager();
             $contact = new Contact();
             $contact->setType(Contact::TYPE_COMPANY);
             $contact->setUser($this->getUser());
@@ -71,13 +64,15 @@ class CompanyController extends Controller
 
             $em->flush();
 
-            return $this->redirect($this->generateUrl('company_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('company_show', [
+                'id' => $entity->getId(),
+            ]));
         }
 
-        return array(
+        return [
             'entity' => $entity,
-            'form' => $form->createView(),
-        );
+            'form'   => $form->createView(),
+        ];
     }
 
     /**
@@ -89,12 +84,14 @@ class CompanyController extends Controller
      */
     private function createCreateForm(Company $entity)
     {
-        $form = $this->createForm(new CompanyType(), $entity, array(
+        $form = $this->createForm(new CompanyType(), $entity, [
             'action' => $this->generateUrl('company_create'),
             'method' => 'POST',
-        ));
+        ]);
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', [
+            'label' => 'Create',
+        ]);
 
         return $form;
     }
@@ -108,18 +105,13 @@ class CompanyController extends Controller
      */
     public function newAction()
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $entity = new Company();
-        $form = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($entity);
 
-        return array(
+        return [
             'entity' => $entity,
-            'form' => $form->createView(),
-        );
+            'form'   => $form->createView(),
+        ];
     }
 
     /**
@@ -131,17 +123,12 @@ class CompanyController extends Controller
      */
     public function showAction($id)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EasymedBundle:Company')->findOneBy(array(
-            'id' => $id,
+        $entity = $em->getRepository('EasymedBundle:Company')->findOneBy([
+            'id'   => $id,
             'user' => $this->getUser(),
-        ));
+        ]);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Company entity.');
@@ -149,10 +136,10 @@ class CompanyController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
-            'entity' => $entity,
+        return [
+            'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
     }
 
     /**
@@ -164,30 +151,25 @@ class CompanyController extends Controller
      */
     public function editAction($id)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EasymedBundle:Company')->findOneBy(array(
-            'id' => $id,
+        $entity = $em->getRepository('EasymedBundle:Company')->findOneBy([
+            'id'   => $id,
             'user' => $this->getUser(),
-        ));
+        ]);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Company entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
+        $editForm   = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
-            'entity' => $entity,
-            'edit_form' => $editForm->createView(),
+        return [
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
     }
 
     /**
@@ -199,15 +181,20 @@ class CompanyController extends Controller
      */
     private function createEditForm(Company $entity)
     {
-        $form = $this->createForm(new CompanyType(), $entity, array(
-            'action' => $this->generateUrl('company_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new CompanyType(), $entity, [
+            'action' => $this->generateUrl('company_update', [
+                'id' => $entity->getId(),
+            ]),
             'method' => 'PUT',
-        ));
+        ]);
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', [
+            'label' => 'Update',
+        ]);
 
         return $form;
     }
+
     /**
      * Edits an existing Company entity.
      *
@@ -217,38 +204,36 @@ class CompanyController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EasymedBundle:Company')->findOneBy(array(
-            'id' => $id,
+        $entity = $em->getRepository('EasymedBundle:Company')->findOneBy([
+            'id'   => $id,
             'user' => $this->getUser(),
-        ));
+        ]);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Company entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $editForm   = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('company_show', array('id' => $id)));
+            return $this->redirect($this->generateUrl('company_show', [
+                'id' => $id,
+            ]));
         }
 
-        return array(
-            'entity' => $entity,
-            'edit_form' => $editForm->createView(),
+        return [
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
     }
+
     /**
      * Deletes a Company entity.
      *
@@ -257,20 +242,15 @@ class CompanyController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('EasymedBundle:Company')->findOneBy(array(
-                'id' => $id,
+            $em     = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('EasymedBundle:Company')->findOneBy([
+                'id'   => $id,
                 'user' => $this->getUser(),
-            ));
+            ]);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Company entity.');
@@ -293,10 +273,13 @@ class CompanyController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('company_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
+                    ->setAction($this->generateUrl('company_delete', [
+                        'id' => $id,
+                    ]))
+                    ->setMethod('DELETE')
+                    ->add('submit', 'submit', [
+                        'label' => 'Delete',
+                    ])
+                    ->getForm();
     }
 }

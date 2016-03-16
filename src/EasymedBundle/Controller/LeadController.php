@@ -14,6 +14,8 @@ use EasymedBundle\Form\LeadType;
 /**
  * Lead controller.
  *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
+ *
  * @Route("/lead")
  */
 class LeadController extends Controller
@@ -27,19 +29,15 @@ class LeadController extends Controller
      */
     public function indexAction()
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('EasymedBundle:Lead')->findByUser($this->getUser());
 
-        return array(
+        return [
             'entities' => $entities,
-        );
+        ];
     }
+
     /**
      * Creates a new Lead entity.
      *
@@ -49,13 +47,8 @@ class LeadController extends Controller
      */
     public function createAction(Request $request)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $entity = new Lead();
-        $form = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -64,13 +57,15 @@ class LeadController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('lead_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('lead_show', [
+                'id' => $entity->getId(),
+            ]));
         }
 
-        return array(
+        return [
             'entity' => $entity,
-            'form' => $form->createView(),
-        );
+            'form'   => $form->createView(),
+        ];
     }
 
     /**
@@ -82,10 +77,10 @@ class LeadController extends Controller
      */
     private function createCreateForm(Lead $entity)
     {
-        $form = $this->createForm(new LeadType(), $entity, array(
+        $form = $this->createForm(new LeadType(), $entity, [
             'action' => $this->generateUrl('lead_create'),
             'method' => 'POST',
-        ));
+        ]);
 
         return $form;
     }
@@ -99,18 +94,13 @@ class LeadController extends Controller
      */
     public function newAction()
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $entity = new Lead();
-        $form = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($entity);
 
-        return array(
+        return [
             'entity' => $entity,
-            'form' => $form->createView(),
-        );
+            'form'   => $form->createView(),
+        ];
     }
 
     /**
@@ -158,7 +148,7 @@ class LeadController extends Controller
         $securityContext = $this->container->get('security.authorization_checker');
 
         if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return array();
+            return [];
         } else {
             return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
@@ -173,17 +163,12 @@ class LeadController extends Controller
      */
     public function showAction($id)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy(array(
-            'id' => $id,
+        $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy([
+            'id'   => $id,
             'user' => $this->getUser(),
-        ));
+        ]);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Lead entity.');
@@ -191,10 +176,10 @@ class LeadController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
-            'entity' => $entity,
+        return [
+            'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
     }
 
     /**
@@ -206,30 +191,25 @@ class LeadController extends Controller
      */
     public function editAction($id)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy(array(
-            'id' => $id,
+        $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy([
+            'id'   => $id,
             'user' => $this->getUser(),
-        ));
+        ]);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Lead entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
+        $editForm   = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
-            'entity' => $entity,
-            'edit_form' => $editForm->createView(),
+        return [
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
     }
 
     /**
@@ -241,12 +221,16 @@ class LeadController extends Controller
      */
     private function createEditForm(Lead $entity)
     {
-        $form = $this->createForm(new LeadType(), $entity, array(
-            'action' => $this->generateUrl('lead_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new LeadType(), $entity, [
+            'action' => $this->generateUrl('lead_update', [
+                'id' => $entity->getId(),
+            ]),
             'method' => 'PUT',
-        ));
+        ]);
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', [
+            'label' => 'Update',
+        ]);
 
         return $form;
     }
@@ -260,37 +244,34 @@ class LeadController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy(array(
-            'id' => $id,
+        $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy([
+            'id'   => $id,
             'user' => $this->getUser(),
-        ));
+        ]);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Lead entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $editForm   = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('lead_show', array('id' => $id)));
+            return $this->redirect($this->generateUrl('lead_show', [
+                'id' => $id,
+            ]));
         }
 
-        return array(
-            'entity' => $entity,
-            'edit_form' => $editForm->createView(),
+        return [
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
     }
 
     /**
@@ -300,16 +281,11 @@ class LeadController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
-        $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy(array(
-                'id' => $id,
-                'user' => $this->getUser(),
-            ));
+        $em     = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy([
+            'id'   => $id,
+            'user' => $this->getUser(),
+        ]);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Lead entity.');
@@ -331,10 +307,13 @@ class LeadController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('lead_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
+                    ->setAction($this->generateUrl('lead_delete', [
+                        'id' => $id,
+                    ]))
+                    ->setMethod('DELETE')
+                    ->add('submit', 'submit', [
+                        'label' => 'Delete',
+                    ])
+                    ->getForm();
     }
 }

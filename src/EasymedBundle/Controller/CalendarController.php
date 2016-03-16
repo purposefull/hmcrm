@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 /**
  * Class DoctorController.
  *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
+ *
  * @Route("/calendar")
  */
 class CalendarController extends Controller
@@ -17,10 +19,10 @@ class CalendarController extends Controller
      * @Route("/index", name="calendar_index")
      * @Template()
      *
-     * @return array
+     * @return []
      */
     public function indexAction()
     {
-        return array();
+        return [];
     }
 }

@@ -7,6 +7,11 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+/**
+ * DealType class
+ *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
+ */
 class DealType extends AbstractType
 {
     /**
@@ -16,31 +21,30 @@ class DealType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text', array(
+            ->add('name', 'text', [
                 'label' => 'name',
-            ))
-            ->add('contact', 'entity', array(
-                'class' => 'EasymedBundle:Contact',
+            ])
+            ->add('contact', 'entity', [
+                'class'        => 'EasymedBundle:Contact',
                 'choice_label' => 'name',
-                'label' => 'contact.title',
-            ))
-            ->add('stage', 'choice', array(
+                'label'        => 'contact.title',
+            ])
+            ->add('stage', 'choice', [
                 'choices' => Deal::valuesOfStage(),
-                'label' => 'stage',
-            ))
-            ->add('value', 'text', array(
+                'label'   => 'stage',
+            ])
+            ->add('value', 'text', [
                 'label' => 'value',
-            ))
-            ->add('currency', 'text', array(
+            ])
+            ->add('currency', 'text', [
                 'label' => 'currency',
-            ))
-            ->add('source', 'text', array(
+            ])
+            ->add('source', 'text', [
                 'label' => 'source',
-            ))
-            ->add('tags', 'text', array(
+            ])
+            ->add('tags', 'text', [
                 'label' => 'tags',
-            ))
-        ;
+            ]);
 
         $builder->setRequired(false);
     }
@@ -50,9 +54,9 @@ class DealType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'EasymedBundle\Entity\Deal',
-        ));
+        ]);
     }
 
     /**

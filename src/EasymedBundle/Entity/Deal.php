@@ -8,6 +8,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Deal.
  *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
+ *
  * @ORM\Table(name="deal")
  * @ORM\Entity()
  */
@@ -200,19 +202,19 @@ class Deal extends Base
     /**
      * Returns array of stages.
      *
-     * @return array
+     * @return []
      */
     public static function valuesOfStage()
     {
-        return array(
-            self::STAGE_INCOMING => 'Incoming',
-            self::STAGE_QUALIFIED => 'Qualified',
-            self::STAGE_QUOTE => 'Quote',
-            self::STAGE_CLOSURE => 'Closure',
-            self::STAGE_WON => 'Won',
+        return [
+            self::STAGE_INCOMING    => 'Incoming',
+            self::STAGE_QUALIFIED   => 'Qualified',
+            self::STAGE_QUOTE       => 'Quote',
+            self::STAGE_CLOSURE     => 'Closure',
+            self::STAGE_WON         => 'Won',
             self::STAGE_UNQUALIFIED => 'Unqualified',
-            self::STAGE_LOST => 'Lost',
-        );
+            self::STAGE_LOST        => 'Lost',
+        ];
     }
 
     /**

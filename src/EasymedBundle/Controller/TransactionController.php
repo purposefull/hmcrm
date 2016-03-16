@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class TransactionController.
  *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
+ *
  * @Route("/transaction")
  */
 class TransactionController extends Controller
@@ -27,12 +29,12 @@ class TransactionController extends Controller
     public function indexAction()
     {
         $transactions = $this->getDoctrine()
-            ->getRepository('EasymedBundle:Transaction')
-            ->findAll();
+                             ->getRepository('EasymedBundle:Transaction')
+                             ->findAll();
 
-        return array(
+        return [
             'transactions' => $transactions,
-        );
+        ];
     }
 
     /**
@@ -41,7 +43,7 @@ class TransactionController extends Controller
      * @Route("/add", name="transaction_add")
      * @Template()
      *
-     * @return array
+     * @return []
      */
     public function addAction(Request $request)
     {
@@ -60,8 +62,8 @@ class TransactionController extends Controller
             }
         }
 
-        return array(
+        return [
             'form' => $form->createView(),
-        );
+        ];
     }
 }

@@ -5,6 +5,11 @@ namespace EasymedBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
+/**
+ * PatientType class
+ *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
+ */
 class PatientType extends AbstractType
 {
     /**
@@ -15,9 +20,9 @@ class PatientType extends AbstractType
     {
         $builder->add('firstName', 'text');
         $builder->add('lastName', 'text');
-        $builder->add('birthday', 'date', array(
+        $builder->add('birthday', 'date', [
             'input' => 'timestamp',
-        ));
+        ]);
         $builder->add('phone', 'integer');
         $builder->add('email', 'text');
         $builder->add('submit', 'submit');

@@ -21,13 +21,14 @@ class LocaleListener implements EventSubscriberInterface
 
     /**
      * LocaleListener constructor.
+     *
      * @param string $defaultLocale
      */
     public function __construct($defaultLocale = 'en', $availableLocales, Router $router)
     {
-        $this->defaultLocale = $defaultLocale;
+        $this->defaultLocale    = $defaultLocale;
         $this->availableLocales = $availableLocales;
-        $this->router = $router;
+        $this->router           = $router;
     }
 
     /**
@@ -42,8 +43,8 @@ class LocaleListener implements EventSubscriberInterface
         }
 
         $localeFromSession = $request->getSession()->get('_locale');
-        $localeFromRoute = $request->query->get('_locale');
-        $localeFromHeader = $request->getPreferredLanguage($this->availableLocales);
+        $localeFromRoute   = $request->query->get('_locale');
+        $localeFromHeader  = $request->getPreferredLanguage($this->availableLocales);
 
         // при переключении языка в веб-интерфейсе (язык в роуте)
         if ($localeFromRoute) {
@@ -54,35 +55,38 @@ class LocaleListener implements EventSubscriberInterface
             $route = $event->getRequest()->get('_route');
 
             $params = $request->attributes->get('_route_params');
-            $url = $this->router->generate($route, $params);
+            $url    = $this->router->generate($route, $params);
 
             $response = new RedirectResponse($url);
             $event->setResponse($response);
-
             // при отсутствии языка в роуте
         } else {
 
             // берем локаль из сессии (дефолтное состояние при выбранной локали)
             if ($localeFromSession) {
                 $request->setLocale($localeFromSession);
-            }
-
-            // или из http заголовка (пользователь первый раз зашел на сайт)
-            else if ($localeFromHeader) {
-                $request->setLocale($localeFromHeader);
-                $request->getSession()->set('_locale', $localeFromHeader);
+            } // или из http заголовка (пользователь первый раз зашел на сайт)
+            else {
+                if ($localeFromHeader) {
+                    $request->setLocale($localeFromHeader);
+                    $request->getSession()->set('_locale', $localeFromHeader);
+                }
             }
         }
     }
 
     /**
-     * @return array
+     * @return []
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             // must be registered before the default Locale listener
-            KernelEvents::REQUEST => array(array('onKernelRequest', 17)),
-        );
+            KernelEvents::REQUEST => [
+                [
+                    'onKernelRequest', 17,
+                ],
+            ],
+        ];
     }
 }
