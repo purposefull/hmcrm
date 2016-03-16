@@ -51,15 +51,13 @@ class TransactionController extends Controller
 
         $form = $this->createForm(new TransactionType(), $transaction);
 
-        if ($request->getMethod() == 'POST') {
-            $form->handleRequest($request);
-            if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($transaction);
-                $em->flush();
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($transaction);
+            $em->flush();
 
-                return $this->redirect($this->generateUrl('transaction_index'));
-            }
+            return $this->redirect($this->generateUrl('transaction_index'));
         }
 
         return [

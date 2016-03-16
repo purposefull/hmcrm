@@ -52,15 +52,13 @@ class DoctorController extends Controller
 
         $form = $this->createForm(new DoctorType(), $doctor);
 
-        if ($request->getMethod() == 'POST') {
-            $form->handleRequest($request);
-            if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($doctor);
-                $em->flush();
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($doctor);
+            $em->flush();
 
-                return $this->redirect($this->generateUrl('doctor_index'));
-            }
+            return $this->redirect($this->generateUrl('doctor_index'));
         }
 
         return [
@@ -93,14 +91,12 @@ class DoctorController extends Controller
 
         $form = $this->createForm(new DoctorType(), $doctor);
 
-        if ($request->getMethod() == 'POST') {
-            $form->handleRequest($request);
-            if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-                $em->flush();
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
 
-                return $this->redirect($this->generateUrl('doctor_index'));
-            }
+            return $this->redirect($this->generateUrl('doctor_index'));
         }
 
         return [
