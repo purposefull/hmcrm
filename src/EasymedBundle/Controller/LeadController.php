@@ -3,13 +3,18 @@
 namespace EasymedBundle\Controller;
 
 use Doctrine\ORM\EntityNotFoundException;
+use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use EasymedBundle\Entity\Lead;
 use EasymedBundle\Form\LeadType;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Lead controller.
@@ -22,6 +27,8 @@ class LeadController extends Controller
 {
     /**
      * Lists all Lead entities.
+     *
+     * @return Response
      *
      * @Route("/", name="lead")
      * @Method("GET")
@@ -40,6 +47,10 @@ class LeadController extends Controller
 
     /**
      * Creates a new Lead entity.
+     *
+     * @param Request $request Request
+     *
+     * @return RedirectResponse|Response
      *
      * @Route("/", name="lead_create")
      * @Method("POST")
@@ -73,7 +84,7 @@ class LeadController extends Controller
      *
      * @param Lead $entity The entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return Form The form
      */
     private function createCreateForm(Lead $entity)
     {
@@ -87,6 +98,8 @@ class LeadController extends Controller
 
     /**
      * Displays a form to create a new Lead entity.
+     *
+     * @return Response
      *
      * @Route("/new", name="lead_new")
      * @Method("GET")
@@ -104,6 +117,10 @@ class LeadController extends Controller
     }
 
     /**
+     * @throws EntityNotFoundException
+     *
+     * @return RedirectResponse
+     *
      * @Route("/lead_capture_form", name="lead_capture_form")
      * @Template()
      */
@@ -140,10 +157,12 @@ class LeadController extends Controller
     }
 
     /**
+     * @return RedirectResponse|Response
+     *
      * @Route("/lead_capture_form_settings", name="lead_capture_form_settings")
      * @Template()
      */
-    public function leadCaptureFormSettingsAction(Request $request)
+    public function leadCaptureFormSettingsAction()
     {
         $securityContext = $this->container->get('security.authorization_checker');
 
@@ -157,27 +176,27 @@ class LeadController extends Controller
     /**
      * Finds and displays a Lead entity.
      *
+     * @param Lead $lead Lead
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return Response
+     *
      * @Route("/show/{id}", name="lead_show")
      * @Method("GET")
+     * @ParamConverter("lead", class="EasymedBundle:Lead")
      * @Template()
      */
-    public function showAction($id)
+    public function showAction(Lead $lead)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy([
-            'id'   => $id,
-            'user' => $this->getUser(),
-        ]);
-
-        if (!$entity) {
+        if ($this->getUser() !== $lead->getUser()) {
             throw $this->createNotFoundException('Unable to find Lead entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($lead->getId());
 
         return [
-            'entity'      => $entity,
+            'entity'      => $lead,
             'delete_form' => $deleteForm->createView(),
         ];
     }
@@ -185,28 +204,28 @@ class LeadController extends Controller
     /**
      * Displays a form to edit an existing Lead entity.
      *
+     * @param Lead $lead Lead
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return Response
+     *
      * @Route("/edit/{id}", name="lead_edit")
      * @Method("GET")
+     * @ParamConverter("lead", class="EasymedBundle:Lead")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction(Lead $lead)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy([
-            'id'   => $id,
-            'user' => $this->getUser(),
-        ]);
-
-        if (!$entity) {
+        if ($this->getUser() !== $lead->getUser()) {
             throw $this->createNotFoundException('Unable to find Lead entity.');
         }
 
-        $editForm   = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $editForm   = $this->createEditForm($lead);
+        $deleteForm = $this->createDeleteForm($lead->getId());
 
         return [
-            'entity'      => $entity,
+            'entity'      => $lead,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ];
@@ -217,7 +236,7 @@ class LeadController extends Controller
      *
      * @param Lead $entity The entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return Form The form
      */
     private function createEditForm(Lead $entity)
     {
@@ -238,37 +257,40 @@ class LeadController extends Controller
     /**
      * Edits an existing Lead entity.
      *
+     * @param Request $request Request
+     * @param Lead    $lead    Lead
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return RedirectResponse|Response
+     *
      * @Route("/update/{id}", name="lead_update")
      * @Method("PUT")
+     * @ParamConverter("lead", class="EasymedBundle:Lead")
      * @Template("EasymedBundle:Lead:edit.html.twig")
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, Lead $lead)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy([
-            'id'   => $id,
-            'user' => $this->getUser(),
-        ]);
-
-        if (!$entity) {
+        if ($this->getUser() !== $lead->getUser()) {
             throw $this->createNotFoundException('Unable to find Lead entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm   = $this->createEditForm($entity);
+        $em = $this->getDoctrine()->getManager();
+
+        $deleteForm = $this->createDeleteForm($lead->getId());
+        $editForm   = $this->createEditForm($lead);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
             return $this->redirect($this->generateUrl('lead_show', [
-                'id' => $id,
+                'id' => $lead->getId(),
             ]));
         }
 
         return [
-            'entity'      => $entity,
+            'entity'      => $lead->getId(),
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ];
@@ -277,21 +299,23 @@ class LeadController extends Controller
     /**
      * Deletes a Lead entity.
      *
+     * @param Lead $lead Lead
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return RedirectResponse
+     *
      * @Route("/delete/{id}", name="lead_delete")
+     * @ParamConverter("lead", class="EasymedBundle:Lead")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Lead $lead)
     {
-        $em     = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('EasymedBundle:Lead')->findOneBy([
-            'id'   => $id,
-            'user' => $this->getUser(),
-        ]);
-
-        if (!$entity) {
+        if ($this->getUser() !== $lead->getUser()) {
             throw $this->createNotFoundException('Unable to find Lead entity.');
         }
 
-        $em->remove($entity);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($lead);
         $em->flush();
 
         return $this->redirect($this->generateUrl('lead'));

@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use EasymedBundle\Entity\Contact;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Contact controller.
@@ -18,6 +19,8 @@ class ContactController extends Controller
 {
     /**
      * Lists all Contact entities.
+     *
+     * @return Response
      *
      * @Route("/", name="contact_list")
      * @Template()

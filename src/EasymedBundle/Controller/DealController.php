@@ -2,13 +2,18 @@
 
 namespace EasymedBundle\Controller;
 
+use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use EasymedBundle\Entity\Deal;
 use EasymedBundle\Form\DealType;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Deal controller.
@@ -21,6 +26,8 @@ class DealController extends Controller
 {
     /**
      * Lists all Deal entities.
+     *
+     * @return Response
      *
      * @Route("/", name="deal")
      * @Method("GET")
@@ -40,6 +47,10 @@ class DealController extends Controller
 
     /**
      * Creates a new Deal entity.
+     *
+     * @param Deal $deal Deal
+     *
+     * @return RedirectResponse|Response
      *
      * @Route("/", name="deal_create")
      * @Method("POST")
@@ -92,6 +103,8 @@ class DealController extends Controller
     /**
      * Displays a form to create a new Deal entity.
      *
+     * @return Response
+     *
      * @Route("/new", name="deal_new")
      * @Method("GET")
      * @Template()
@@ -110,27 +123,27 @@ class DealController extends Controller
     /**
      * Finds and displays a Deal entity.
      *
+     * @param Deal $deal Deal
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return Response
+     *
      * @Route("/{id}", name="deal_show")
      * @Method("GET")
+     * @ParamConverter("deal", class="EasymedBundle:Deal")
      * @Template()
      */
-    public function showAction($id)
+    public function showAction(Deal $deal)
     {
-        $em = $this->getDoctrine()->getManager();
+        $deleteForm = $this->createDeleteForm($deal->getId());
 
-        $entity = $em->getRepository('EasymedBundle:Deal')->findOneBy([
-            'id'   => $id,
-            'user' => $this->getUser(),
-        ]);
-
-        if (!$entity) {
+        if ($this->getUser() !== $deal->getUser()) {
             throw $this->createNotFoundException('Unable to find Deal entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-
         return [
-            'entity'      => $entity,
+            'entity'      => $deal,
             'delete_form' => $deleteForm->createView(),
         ];
     }
@@ -138,28 +151,28 @@ class DealController extends Controller
     /**
      * Displays a form to edit an existing Deal entity.
      *
+     * @param Deal $deal Deal
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return Response
+     *
      * @Route("/{id}/edit", name="deal_edit")
      * @Method("GET")
+     * @ParamConverter("deal", class="EasymedBundle:Deal")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction(Deal $deal)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('EasymedBundle:Deal')->findOneBy([
-            'id'   => $id,
-            'user' => $this->getUser(),
-        ]);
-
-        if (!$entity) {
+        if ($this->getUser() !== $deal->getUser()) {
             throw $this->createNotFoundException('Unable to find Deal entity.');
         }
 
-        $editForm   = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $editForm   = $this->createEditForm($deal);
+        $deleteForm = $this->createDeleteForm($deal->getId());
 
         return [
-            'entity'      => $entity,
+            'entity'      => $deal,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ];
@@ -170,7 +183,7 @@ class DealController extends Controller
      *
      * @param Deal $entity The entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return Form The form
      */
     private function createEditForm(Deal $entity)
     {
@@ -191,37 +204,39 @@ class DealController extends Controller
     /**
      * Edits an existing Deal entity.
      *
+     * @param Deal $deal Deal
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return RedirectResponse|Response
+     *
      * @Route("/{id}", name="deal_update")
      * @Method("PUT")
+     * @ParamConverter("deal", class="EasymedBundle:Deal")
      * @Template("EasymedBundle:Deal:edit.html.twig")
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, Deal $deal)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('EasymedBundle:Deal')->findOneBy([
-            'id'   => $id,
-            'user' => $this->getUser(),
-        ]);
-
-        if (!$entity) {
+        if ($this->getUser() !== $deal->getUser()) {
             throw $this->createNotFoundException('Unable to find Deal entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm   = $this->createEditForm($entity);
+        $em = $this->getDoctrine()->getManager();
+
+        $deleteForm = $this->createDeleteForm($deal->getId());
+        $editForm   = $this->createEditForm($deal);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
             return $this->redirect($this->generateUrl('deal_show', [
-                'id' => $id,
+                'id' => $deal->getId(),
             ]));
         }
 
         return [
-            'entity'      => $entity,
+            'entity'      => $deal,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ];
@@ -230,26 +245,28 @@ class DealController extends Controller
     /**
      * Deletes a Deal entity.
      *
+     * @param Deal $deal Deal
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return RedirectResponse
+     *
      * @Route("/{id}", name="deal_delete")
      * @Method("DELETE")
+     * @ParamConverter("deal", class="EasymedBundle:Deal")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Request $request, Deal $deal)
     {
-        $form = $this->createDeleteForm($id);
+        if ($this->getUser() !== $deal->getUser()) {
+            throw $this->createNotFoundException('Unable to find Deal entity.');
+        }
+
+        $form = $this->createDeleteForm($deal->getId());
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em     = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('EasymedBundle:Deal')->findOneBy([
-                'id'   => $id,
-                'user' => $this->getUser(),
-            ]);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Deal entity.');
-            }
-
-            $em->remove($entity);
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($deal);
             $em->flush();
         }
 
@@ -261,7 +278,7 @@ class DealController extends Controller
      *
      * @param mixed $id The entity id
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return Form The form
      */
     private function createDeleteForm($id)
     {

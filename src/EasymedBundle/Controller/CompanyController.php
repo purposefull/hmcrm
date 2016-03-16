@@ -3,13 +3,19 @@
 namespace EasymedBundle\Controller;
 
 use EasymedBundle\Entity\Contact;
+use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use EasymedBundle\Entity\Company;
 use EasymedBundle\Form\CompanyType;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Company controller.
@@ -22,6 +28,8 @@ class CompanyController extends Controller
 {
     /**
      * Lists all Company entities.
+     *
+     * @return Response
      *
      * @Route("/", name="company")
      * @Method("GET")
@@ -41,6 +49,8 @@ class CompanyController extends Controller
 
     /**
      * Creates a new Company entity.
+     *
+     * @return RedirectResponse|Response
      *
      * @Route("/", name="company_create")
      * @Method("POST")
@@ -80,7 +90,9 @@ class CompanyController extends Controller
      *
      * @param Company $entity The entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return Form
+     *
+     * @return Form The form
      */
     private function createCreateForm(Company $entity)
     {
@@ -98,6 +110,8 @@ class CompanyController extends Controller
 
     /**
      * Displays a form to create a new Company entity.
+     *
+     * @return Response
      *
      * @Route("/new", name="company_new")
      * @Method("GET")
@@ -117,27 +131,27 @@ class CompanyController extends Controller
     /**
      * Finds and displays a Company entity.
      *
+     * @param Company $company Company
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return Response
+     *
      * @Route("/{id}", name="company_show")
      * @Method("GET")
+     * @ParamConverter("deal", class="EasymedBundle:Deal")
      * @Template()
      */
-    public function showAction($id)
+    public function showAction(Company $company)
     {
-        $em = $this->getDoctrine()->getManager();
+        $deleteForm = $this->createDeleteForm($company->getId());
 
-        $entity = $em->getRepository('EasymedBundle:Company')->findOneBy([
-            'id'   => $id,
-            'user' => $this->getUser(),
-        ]);
-
-        if (!$entity) {
+        if ($this->getUser() !== $company->getUser()) {
             throw $this->createNotFoundException('Unable to find Company entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-
         return [
-            'entity'      => $entity,
+            'entity'      => $company,
             'delete_form' => $deleteForm->createView(),
         ];
     }
@@ -145,28 +159,28 @@ class CompanyController extends Controller
     /**
      * Displays a form to edit an existing Company entity.
      *
+     * @param Company $company Company
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return Response
+     *
      * @Route("/{id}/edit", name="company_edit")
      * @Method("GET")
+     * @ParamConverter("deal", class="EasymedBundle:Deal")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction(Company $company)
     {
-        $em = $this->getDoctrine()->getManager();
+        $editForm   = $this->createEditForm($company);
+        $deleteForm = $this->createDeleteForm($company->getId());
 
-        $entity = $em->getRepository('EasymedBundle:Company')->findOneBy([
-            'id'   => $id,
-            'user' => $this->getUser(),
-        ]);
-
-        if (!$entity) {
+        if ($this->getUser() !== $company->getUser()) {
             throw $this->createNotFoundException('Unable to find Company entity.');
         }
 
-        $editForm   = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
-
         return [
-            'entity'      => $entity,
+            'entity'      => $company,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ];
@@ -198,37 +212,40 @@ class CompanyController extends Controller
     /**
      * Edits an existing Company entity.
      *
+     * @param Request $request Request
+     * @param Company $company Company
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return RedirectResponse|Response
+     *
      * @Route("/{id}", name="company_update")
      * @Method("PUT")
+     * @ParamConverter("deal", class="EasymedBundle:Deal")
      * @Template("EasymedBundle:Company:edit.html.twig")
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, Company $company)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EasymedBundle:Company')->findOneBy([
-            'id'   => $id,
-            'user' => $this->getUser(),
-        ]);
-
-        if (!$entity) {
+        if ($this->getUser() !== $company->getUser()) {
             throw $this->createNotFoundException('Unable to find Company entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm   = $this->createEditForm($entity);
+        $deleteForm = $this->createDeleteForm($company->getId());
+        $editForm   = $this->createEditForm($company);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
             return $this->redirect($this->generateUrl('company_show', [
-                'id' => $id,
+                'id' => $company->getId(),
             ]));
         }
 
         return [
-            'entity'      => $entity,
+            'entity'      => $company,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ];
@@ -237,26 +254,29 @@ class CompanyController extends Controller
     /**
      * Deletes a Company entity.
      *
+     * @param Request $request Request
+     * @param Company $company Company
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return RedirectResponse
+     *
      * @Route("/{id}", name="company_delete")
      * @Method("DELETE")
+     * @ParamConverter("company", class="EasymedBundle:Company")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Request $request, Company $company)
     {
-        $form = $this->createDeleteForm($id);
+        if ($this->getUser() !== $company->getUser()) {
+            throw $this->createNotFoundException('Unable to find Company entity.');
+        }
+
+        $form = $this->createDeleteForm($company->getId());
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em     = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('EasymedBundle:Company')->findOneBy([
-                'id'   => $id,
-                'user' => $this->getUser(),
-            ]);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Company entity.');
-            }
-
-            $em->remove($entity);
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($company);
             $em->flush();
         }
 
@@ -268,7 +288,7 @@ class CompanyController extends Controller
      *
      * @param mixed $id The entity id
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return Form The form
      */
     private function createDeleteForm($id)
     {

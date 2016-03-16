@@ -3,13 +3,18 @@
 namespace EasymedBundle\Controller;
 
 use EasymedBundle\Entity\Contact;
+use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use EasymedBundle\Entity\Person;
 use EasymedBundle\Form\PersonType;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Person controller.
@@ -22,6 +27,8 @@ class PersonController extends Controller
 {
     /**
      * Lists all Person entities.
+     *
+     * @return Response
      *
      * @Route("/", name="person")
      * @Method("GET")
@@ -40,6 +47,10 @@ class PersonController extends Controller
 
     /**
      * Creates a new Person entity.
+     *
+     * @param Request $request Request
+     *
+     * @return RedirectResponse|Response
      *
      * @Route("/", name="person_create")
      * @Method("POST")
@@ -78,7 +89,7 @@ class PersonController extends Controller
      *
      * @param Person $entity The entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return Form The form
      */
     private function createCreateForm(Person $entity)
     {
@@ -96,6 +107,8 @@ class PersonController extends Controller
 
     /**
      * Displays a form to create a new Person entity.
+     *
+     * @return Response
      *
      * @Route("/new", name="person_new")
      * @Method("GET")
@@ -115,27 +128,27 @@ class PersonController extends Controller
     /**
      * Finds and displays a Person entity.
      *
+     * @param Person $person Person
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return Response
+     *
      * @Route("/{id}", name="person_show")
      * @Method("GET")
+     * @ParamConverter("person", class="EasymedBundle:Person")
      * @Template()
      */
-    public function showAction($id)
+    public function showAction(Person $person)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('EasymedBundle:Person')->findOneBy([
-            'id'   => $id,
-            'user' => $this->getUser(),
-        ]);
-
-        if (!$entity) {
+        if ($this->getUser() !== $person->getUser()) {
             throw $this->createNotFoundException('Unable to find Person entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($person->getId());
 
         return [
-            'entity'      => $entity,
+            'entity'      => $person,
             'delete_form' => $deleteForm->createView(),
         ];
     }
@@ -143,28 +156,28 @@ class PersonController extends Controller
     /**
      * Displays a form to edit an existing Person entity.
      *
+     * @param Person $person Person
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return Response
+     *
      * @Route("/{id}/edit", name="person_edit")
      * @Method("GET")
+     * @ParamConverter("person", class="EasymedBundle:Person")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction(Person $person)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('EasymedBundle:Person')->findOneBy([
-            'id'   => $id,
-            'user' => $this->getUser(),
-        ]);
-
-        if (!$entity) {
+        if ($this->getUser() !== $person->getUser()) {
             throw $this->createNotFoundException('Unable to find Person entity.');
         }
 
-        $editForm   = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $editForm   = $this->createEditForm($person);
+        $deleteForm = $this->createDeleteForm($person->getId());
 
         return [
-            'entity'      => $entity,
+            'entity'      => $person,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ];
@@ -175,7 +188,7 @@ class PersonController extends Controller
      *
      * @param Person $entity The entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return Form The form
      */
     private function createEditForm(Person $entity)
     {
@@ -196,37 +209,40 @@ class PersonController extends Controller
     /**
      * Edits an existing Person entity.
      *
+     * @param Request $request Request
+     * @param Person  $person  Person
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return Response
+     *
      * @Route("/{id}", name="person_update")
      * @Method("PUT")
+     * @ParamConverter("person", class="EasymedBundle:Person")
      * @Template("EasymedBundle:Person:edit.html.twig")
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, Person $person)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('EasymedBundle:Person')->findOneBy([
-            'id'   => $id,
-            'user' => $this->getUser(),
-        ]);
-
-        if (!$entity) {
+        if ($this->getUser() !== $person->getUser()) {
             throw $this->createNotFoundException('Unable to find Person entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm   = $this->createEditForm($entity);
+        $em = $this->getDoctrine()->getManager();
+
+        $deleteForm = $this->createDeleteForm($person->getId());
+        $editForm   = $this->createEditForm($person);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
             return $this->redirect($this->generateUrl('person_show', [
-                'id' => $id,
+                'id' => $person->getId(),
             ]));
         }
 
         return [
-            'entity'      => $entity,
+            'entity'      => $person,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ];
@@ -235,28 +251,20 @@ class PersonController extends Controller
     /**
      * Deletes a Person entity.
      *
+     * @param Person $person Person
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return RedirectResponse
+     *
      * @Route("/{id}", name="person_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Person $person)
     {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em     = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('EasymedBundle:Person')->findOneBy([
-                'id'   => $id,
-                'user' => $this->getUser(),
-            ]);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Person entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
-        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($person);
+        $em->flush();
 
         return $this->redirect($this->generateUrl('person'));
     }
@@ -266,7 +274,7 @@ class PersonController extends Controller
      *
      * @param mixed $id The entity id
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return Form The form
      */
     private function createDeleteForm($id)
     {
