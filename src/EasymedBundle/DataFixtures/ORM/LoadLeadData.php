@@ -65,5 +65,7 @@ class LoadLeadData extends AbstractFixture
             ->setLeadStatus(2);
         $this->setReference('lead-3', $lead3);
         $manager->persist($lead3);
+
+        $manager->flush();
     }
 }

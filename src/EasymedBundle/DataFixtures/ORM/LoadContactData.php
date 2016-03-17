@@ -56,6 +56,7 @@ class LoadContactData extends AbstractFixture implements DependentFixtureInterfa
             ->setPerson($person1)
             ->setUser($userAdmin)
             ->setType(1);
+        $this->setReference('contact-1', $contact1);
         $manager->persist($contact1);
 
         $contact2 = (new Contact())
@@ -63,13 +64,15 @@ class LoadContactData extends AbstractFixture implements DependentFixtureInterfa
             ->setPerson($person2)
             ->setUser($userAdmin)
             ->setType(2);
+        $this->setReference('contact-2', $contact1);
         $manager->persist($contact2);
 
         $contact3 = (new Contact())
             ->setCompany($company3)
             ->setPerson($person3)
             ->setUser($userAdmin)
-            ->setType(3);
+            ->setType(2);
+        $this->setReference('contact-3', $contact1);
         $manager->persist($contact3);
 
         $manager->flush();
