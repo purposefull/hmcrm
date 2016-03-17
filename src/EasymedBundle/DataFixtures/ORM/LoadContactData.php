@@ -3,6 +3,7 @@
 namespace EasymedBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use EasymedBundle\Entity\Company;
 use EasymedBundle\Entity\Contact;
@@ -14,7 +15,7 @@ use EasymedBundle\Entity\User;
  *
  * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  */
-class LoadContactData extends AbstractFixture
+class LoadContactData extends AbstractFixture implements DependentFixtureInterface
 {
     /**
      * {@inheritdoc}
@@ -22,9 +23,9 @@ class LoadContactData extends AbstractFixture
     public function getDependencies()
     {
         return [
-            'AppBundle\DataFixtures\ORM\LoadUserData',
-            'AppBundle\DataFixtures\ORM\LoadPersonData',
-            'AppBundle\DataFixtures\ORM\LoadCompanyData',
+            'EasymedBundle\DataFixtures\ORM\LoadUserData',
+            'EasymedBundle\DataFixtures\ORM\LoadPersonData',
+            'EasymedBundle\DataFixtures\ORM\LoadCompanyData',
         ];
     }
 

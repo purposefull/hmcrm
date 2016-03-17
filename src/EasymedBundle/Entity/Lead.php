@@ -8,6 +8,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Lead.
  *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
+ *
  * @ORM\Table(name="lead")
  * @ORM\Entity()
  */
@@ -92,10 +94,14 @@ class Lead extends ContactBase
 
     /**
      * @param mixed $user
+     *
+     * @return $this
      */
     public function setUser($user)
     {
         $this->user = $user;
+
+        return $this;
     }
 
     /**
@@ -108,10 +114,14 @@ class Lead extends ContactBase
 
     /**
      * @param string $firstName
+     *
+     * @return $this
      */
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
+
+        return $this;
     }
 
     /**
@@ -124,10 +134,14 @@ class Lead extends ContactBase
 
     /**
      * @param string $lastName
+     *
+     * @return $this
      */
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+
+        return $this;
     }
 
     /**
@@ -140,10 +154,14 @@ class Lead extends ContactBase
 
     /**
      * @param string $companyName
+     *
+     * @return $this
      */
     public function setCompanyName($companyName)
     {
         $this->companyName = $companyName;
+
+        return $this;
     }
 
     /**
@@ -156,10 +174,14 @@ class Lead extends ContactBase
 
     /**
      * @param string $title
+     *
+     * @return $this
      */
     public function setTitle($title)
     {
         $this->title = $title;
+
+        return $this;
     }
 
     /**
@@ -172,10 +194,14 @@ class Lead extends ContactBase
 
     /**
      * @param string $leadStatus
+     *
+     * @return $this
      */
     public function setLeadStatus($leadStatus)
     {
         $this->leadStatus = $leadStatus;
+
+        return $this;
     }
 
     /**
@@ -188,10 +214,14 @@ class Lead extends ContactBase
 
     /**
      * @param string $source
+     *
+     * @return $this
      */
     public function setSource($source)
     {
         $this->source = $source;
+
+        return $this;
     }
 
     /**
@@ -236,9 +266,13 @@ class Lead extends ContactBase
 
     /**
      * @param string $product
+     *
+     * @return $this
      */
     public function setProduct($product)
     {
         $this->product = $product;
+
+        return $this;
     }
 }

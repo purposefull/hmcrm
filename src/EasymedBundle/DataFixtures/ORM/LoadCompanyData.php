@@ -29,6 +29,7 @@ class LoadCompanyData extends AbstractFixture
             ->setCity('Днепропетровск')
             ->setRegion('Днепропетровск')
             ->setTags('Успешная компания');
+        $this->setReference('company-1', $company1);
         $manager->persist($company1);
 
         $company2 = (new Company())
@@ -42,6 +43,7 @@ class LoadCompanyData extends AbstractFixture
             ->setCity('Киев')
             ->setRegion('Киев')
             ->setTags('Пресса');
+        $this->setReference('company-2', $company2);
         $manager->persist($company2);
 
         $company3 = (new Company())
@@ -55,6 +57,7 @@ class LoadCompanyData extends AbstractFixture
             ->setCity('Львов')
             ->setRegion('Львов')
             ->setTags('Успешная компания');
+        $this->setReference('company-3', $company3);
         $manager->persist($company3);
 
         $manager->flush();
