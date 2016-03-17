@@ -49,7 +49,7 @@ http://easymed24.ru - SaaS implementation. Using temporary domain name, but serv
 
 3) User ACL
 
-4) Func tests
+4) Func tests / Deploy
 
 5) Phone calls integration
 
