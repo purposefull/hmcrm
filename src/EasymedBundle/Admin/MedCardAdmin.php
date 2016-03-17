@@ -8,6 +8,11 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
+/**
+ * MedCardAdmin class
+ *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
+ */
 class MedCardAdmin extends Admin
 {
     /**
@@ -18,8 +23,7 @@ class MedCardAdmin extends Admin
         $datagridMapper
             ->add('id')
             ->add('recommendation')
-            ->add('intake')
-        ;
+            ->add('intake');
     }
 
     /**
@@ -31,14 +35,13 @@ class MedCardAdmin extends Admin
             ->add('id')
             ->add('recommendation')
             ->add('intake')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
-            ))
-        ;
+            ->add('_action', 'actions', [
+                'actions' => [
+                    'show'   => [],
+                    'edit'   => [],
+                    'delete' => [],
+                ],
+            ]);
     }
 
     /**
@@ -49,8 +52,7 @@ class MedCardAdmin extends Admin
         $formMapper
             ->add('id')
             ->add('recommendation')
-            ->add('intake')
-        ;
+            ->add('intake');
     }
 
     /**
@@ -61,7 +63,6 @@ class MedCardAdmin extends Admin
         $showMapper
             ->add('id')
             ->add('recommendation')
-            ->add('intake')
-        ;
+            ->add('intake');
     }
 }

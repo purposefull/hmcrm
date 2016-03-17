@@ -3,16 +3,24 @@
 namespace EasymedBundle\Controller;
 
 use EasymedBundle\Entity\Contact;
+use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use EasymedBundle\Entity\Company;
 use EasymedBundle\Form\CompanyType;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Company controller.
+ *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  *
  * @Route("/company")
  */
@@ -21,28 +29,28 @@ class CompanyController extends Controller
     /**
      * Lists all Company entities.
      *
+     * @return Response
+     *
      * @Route("/", name="company")
      * @Method("GET")
      * @Template()
      */
     public function indexAction()
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $em = $this->getDoctrine()->getManager();
 
-        $user = $this->getUser();
+        $user     = $this->getUser();
         $entities = $em->getRepository('EasymedBundle:Company')->findByUser($user);
 
-        return array(
+        return [
             'entities' => $entities,
-        );
+        ];
     }
+
     /**
      * Creates a new Company entity.
+     *
+     * @return RedirectResponse|Response
      *
      * @Route("/", name="company_create")
      * @Method("POST")
@@ -50,17 +58,12 @@ class CompanyController extends Controller
      */
     public function createAction(Request $request)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $entity = new Company();
-        $form = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $em      = $this->getDoctrine()->getManager();
             $contact = new Contact();
             $contact->setType(Contact::TYPE_COMPANY);
             $contact->setUser($this->getUser());
@@ -71,13 +74,15 @@ class CompanyController extends Controller
 
             $em->flush();
 
-            return $this->redirect($this->generateUrl('company_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('company_show', [
+                'id' => $entity->getId(),
+            ]));
         }
 
-        return array(
+        return [
             'entity' => $entity,
-            'form' => $form->createView(),
-        );
+            'form'   => $form->createView(),
+        ];
     }
 
     /**
@@ -85,16 +90,20 @@ class CompanyController extends Controller
      *
      * @param Company $entity The entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return Form
+     *
+     * @return Form The form
      */
     private function createCreateForm(Company $entity)
     {
-        $form = $this->createForm(new CompanyType(), $entity, array(
+        $form = $this->createForm(new CompanyType(), $entity, [
             'action' => $this->generateUrl('company_create'),
             'method' => 'POST',
-        ));
+        ]);
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', [
+            'label' => 'Create',
+        ]);
 
         return $form;
     }
@@ -102,92 +111,79 @@ class CompanyController extends Controller
     /**
      * Displays a form to create a new Company entity.
      *
+     * @return Response
+     *
      * @Route("/new", name="company_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $entity = new Company();
-        $form = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($entity);
 
-        return array(
+        return [
             'entity' => $entity,
-            'form' => $form->createView(),
-        );
+            'form'   => $form->createView(),
+        ];
     }
 
     /**
      * Finds and displays a Company entity.
      *
+     * @param Company $company Company
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return Response
+     *
      * @Route("/{id}", name="company_show")
      * @Method("GET")
+     * @ParamConverter("deal", class="EasymedBundle:Deal")
      * @Template()
      */
-    public function showAction($id)
+    public function showAction(Company $company)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
+        $deleteForm = $this->createDeleteForm($company->getId());
 
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('EasymedBundle:Company')->findOneBy(array(
-            'id' => $id,
-            'user' => $this->getUser(),
-        ));
-
-        if (!$entity) {
+        if ($this->getUser() !== $company->getUser()) {
             throw $this->createNotFoundException('Unable to find Company entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity' => $entity,
+        return [
+            'entity'      => $company,
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
     }
 
     /**
      * Displays a form to edit an existing Company entity.
      *
+     * @param Company $company Company
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return Response
+     *
      * @Route("/{id}/edit", name="company_edit")
      * @Method("GET")
+     * @ParamConverter("deal", class="EasymedBundle:Deal")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction(Company $company)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
+        $editForm   = $this->createEditForm($company);
+        $deleteForm = $this->createDeleteForm($company->getId());
 
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('EasymedBundle:Company')->findOneBy(array(
-            'id' => $id,
-            'user' => $this->getUser(),
-        ));
-
-        if (!$entity) {
+        if ($this->getUser() !== $company->getUser()) {
             throw $this->createNotFoundException('Unable to find Company entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity' => $entity,
-            'edit_form' => $editForm->createView(),
+        return [
+            'entity'      => $company,
+            'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
     }
 
     /**
@@ -199,84 +195,88 @@ class CompanyController extends Controller
      */
     private function createEditForm(Company $entity)
     {
-        $form = $this->createForm(new CompanyType(), $entity, array(
-            'action' => $this->generateUrl('company_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new CompanyType(), $entity, [
+            'action' => $this->generateUrl('company_update', [
+                'id' => $entity->getId(),
+            ]),
             'method' => 'PUT',
-        ));
+        ]);
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', [
+            'label' => 'Update',
+        ]);
 
         return $form;
     }
+
     /**
      * Edits an existing Company entity.
      *
+     * @param Request $request Request
+     * @param Company $company Company
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return RedirectResponse|Response
+     *
      * @Route("/{id}", name="company_update")
      * @Method("PUT")
+     * @ParamConverter("deal", class="EasymedBundle:Deal")
      * @Template("EasymedBundle:Company:edit.html.twig")
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, Company $company)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EasymedBundle:Company')->findOneBy(array(
-            'id' => $id,
-            'user' => $this->getUser(),
-        ));
-
-        if (!$entity) {
+        if ($this->getUser() !== $company->getUser()) {
             throw $this->createNotFoundException('Unable to find Company entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $deleteForm = $this->createDeleteForm($company->getId());
+        $editForm   = $this->createEditForm($company);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('company_show', array('id' => $id)));
+            return $this->redirect($this->generateUrl('company_show', [
+                'id' => $company->getId(),
+            ]));
         }
 
-        return array(
-            'entity' => $entity,
-            'edit_form' => $editForm->createView(),
+        return [
+            'entity'      => $company,
+            'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
     }
+
     /**
      * Deletes a Company entity.
      *
+     * @param Request $request Request
+     * @param Company $company Company
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return RedirectResponse
+     *
      * @Route("/{id}", name="company_delete")
      * @Method("DELETE")
+     * @ParamConverter("company", class="EasymedBundle:Company")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Request $request, Company $company)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        if ($this->getUser() !== $company->getUser()) {
+            throw $this->createNotFoundException('Unable to find Company entity.');
         }
 
-        $form = $this->createDeleteForm($id);
+        $form = $this->createDeleteForm($company->getId());
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('EasymedBundle:Company')->findOneBy(array(
-                'id' => $id,
-                'user' => $this->getUser(),
-            ));
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Company entity.');
-            }
-
-            $em->remove($entity);
+            $em->remove($company);
             $em->flush();
         }
 
@@ -288,15 +288,18 @@ class CompanyController extends Controller
      *
      * @param mixed $id The entity id
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return Form The form
      */
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('company_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
+                    ->setAction($this->generateUrl('company_delete', [
+                        'id' => $id,
+                    ]))
+                    ->setMethod('DELETE')
+                    ->add('submit', 'submit', [
+                        'label' => 'Delete',
+                    ])
+                    ->getForm();
     }
 }

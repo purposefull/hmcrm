@@ -8,10 +8,14 @@ use EasymedBundle\Form\Type\PatientType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class PatientController.
+ *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  *
  * @Route("/patient")
  */
@@ -20,29 +24,31 @@ class PatientController extends Controller
     /**
      * Returns list of patients.
      *
+     * @return Response
+     *
      * @Route("/list", name="patient_index")
      * @Template()
-     *
-     * @return array
      */
     public function indexAction()
     {
         $patients = $this->getDoctrine()
-            ->getRepository('EasymedBundle:Patient')
-            ->findAll();
+                         ->getRepository('EasymedBundle:Patient')
+                         ->findAll();
 
-        return array(
+        return [
             'patients' => $patients,
-        );
+        ];
     }
 
     /**
      * Adds patient.
      *
+     * @param Request $request Request
+     *
+     * @return Response
+     *
      * @Route("/add", name="patient_add")
      * @Template()
-     *
-     * @return array
      */
     public function addAction(Request $request)
     {
@@ -50,84 +56,59 @@ class PatientController extends Controller
 
         $form = $this->createForm(new PatientType(), $patient);
 
-        if ($request->getMethod() == 'POST') {
-            $form->handleRequest($request);
-            if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($patient);
-                $em->flush();
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($patient);
+            $em->flush();
 
-                return $this->redirect($this->generateUrl('patient_index'));
-            }
+            return $this->redirect($this->generateUrl('patient_index'));
         }
 
-        return array(
+        return [
             'form' => $form->createView(),
-        );
+        ];
     }
 
     /**
      * Edits patient.
      *
+     * @param Request $request Request
+     * @param Patient $patient Patient
+     *
+     * @return RedirectResponse|RedirectResponse
+     *
      * @Route("/edit/{id}", name="patient_edit")
      * @Template()
-     *
-     * @param Request $request
-     * @param $id
-     *
-     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
-     *
-     * @throws EntityNotFoundException
      */
-    public function editAction(Request $request, $id)
+    public function editAction(Request $request, Patient $patient)
     {
-        $patient = $this->getDoctrine()
-            ->getRepository('EasymedBundle:Patient')
-            ->find($id);
-
-        if (!$patient) {
-            throw new EntityNotFoundException();
-        }
-
         $form = $this->createForm(new PatientType(), $patient);
 
-        if ($request->getMethod() == 'POST') {
-            $form->handleRequest($request);
-            if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-                $em->flush();
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
 
-                return $this->redirect($this->generateUrl('patient_index'));
-            }
+            return $this->redirect($this->generateUrl('patient_index'));
         }
 
-        return array(
+        return [
             'form' => $form->createView(),
-        );
+        ];
     }
 
     /**
      * Deletes patient.
      *
+     * @param Patient $patient Patient
+     *
+     * @return RedirectResponse|Response
+     *
      * @Route("/delete/{id}", name="patient_delete")
-     *
-     * @param Request $request
-     * @param $id
-     *
-     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
-     *
-     * @throws EntityNotFoundException
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Patient $patient)
     {
-        $patient = $this->getDoctrine()
-            ->getRepository('EasymedBundle:Patient')
-            ->find($id);
-
-        if (!$patient) {
-            throw new EntityNotFoundException();
-        }
-
         $em = $this->getDoctrine()->getManager();
         $em->remove($patient);
         $em->flush();

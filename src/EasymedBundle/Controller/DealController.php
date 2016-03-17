@@ -2,16 +2,23 @@
 
 namespace EasymedBundle\Controller;
 
+use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use EasymedBundle\Entity\Deal;
 use EasymedBundle\Form\DealType;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Deal controller.
+ *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  *
  * @Route("/deal")
  */
@@ -20,28 +27,30 @@ class DealController extends Controller
     /**
      * Lists all Deal entities.
      *
+     * @return Response
+     *
      * @Route("/", name="deal")
      * @Method("GET")
      * @Template()
      */
     public function indexAction()
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $em = $this->getDoctrine()->getManager();
 
-        $user = $this->getUser();
+        $user     = $this->getUser();
         $entities = $em->getRepository('EasymedBundle:Deal')->findByUser($user);
 
-        return array(
+        return [
             'entities' => $entities,
-        );
+        ];
     }
+
     /**
      * Creates a new Deal entity.
+     *
+     * @param Deal $deal Deal
+     *
+     * @return RedirectResponse|Response
      *
      * @Route("/", name="deal_create")
      * @Method("POST")
@@ -49,13 +58,8 @@ class DealController extends Controller
      */
     public function createAction(Request $request)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $entity = new Deal();
-        $form = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -64,13 +68,15 @@ class DealController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('deal_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('deal_show', [
+                'id' => $entity->getId(),
+            ]));
         }
 
-        return array(
+        return [
             'entity' => $entity,
-            'form' => $form->createView(),
-        );
+            'form'   => $form->createView(),
+        ];
     }
 
     /**
@@ -82,12 +88,14 @@ class DealController extends Controller
      */
     private function createCreateForm(Deal $entity)
     {
-        $form = $this->createForm(new DealType(), $entity, array(
+        $form = $this->createForm(new DealType(), $entity, [
             'action' => $this->generateUrl('deal_create'),
             'method' => 'POST',
-        ));
+        ]);
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', [
+            'label' => 'Create',
+        ]);
 
         return $form;
     }
@@ -95,92 +103,79 @@ class DealController extends Controller
     /**
      * Displays a form to create a new Deal entity.
      *
+     * @return Response
+     *
      * @Route("/new", name="deal_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
         $entity = new Deal();
-        $form = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($entity);
 
-        return array(
+        return [
             'entity' => $entity,
-            'form' => $form->createView(),
-        );
+            'form'   => $form->createView(),
+        ];
     }
 
     /**
      * Finds and displays a Deal entity.
      *
+     * @param Deal $deal Deal
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return Response
+     *
      * @Route("/{id}", name="deal_show")
      * @Method("GET")
+     * @ParamConverter("deal", class="EasymedBundle:Deal")
      * @Template()
      */
-    public function showAction($id)
+    public function showAction(Deal $deal)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
+        $deleteForm = $this->createDeleteForm($deal->getId());
 
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('EasymedBundle:Deal')->findOneBy(array(
-            'id' => $id,
-            'user' => $this->getUser(),
-        ));
-
-        if (!$entity) {
+        if ($this->getUser() !== $deal->getUser()) {
             throw $this->createNotFoundException('Unable to find Deal entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity' => $entity,
+        return [
+            'entity'      => $deal,
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
     }
 
     /**
      * Displays a form to edit an existing Deal entity.
      *
+     * @param Deal $deal Deal
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return Response
+     *
      * @Route("/{id}/edit", name="deal_edit")
      * @Method("GET")
+     * @ParamConverter("deal", class="EasymedBundle:Deal")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction(Deal $deal)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('EasymedBundle:Deal')->findOneBy(array(
-            'id' => $id,
-            'user' => $this->getUser(),
-        ));
-
-        if (!$entity) {
+        if ($this->getUser() !== $deal->getUser()) {
             throw $this->createNotFoundException('Unable to find Deal entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $editForm   = $this->createEditForm($deal);
+        $deleteForm = $this->createDeleteForm($deal->getId());
 
-        return array(
-            'entity' => $entity,
-            'edit_form' => $editForm->createView(),
+        return [
+            'entity'      => $deal,
+            'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
     }
 
     /**
@@ -188,88 +183,90 @@ class DealController extends Controller
      *
      * @param Deal $entity The entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return Form The form
      */
     private function createEditForm(Deal $entity)
     {
-        $form = $this->createForm(new DealType(), $entity, array(
-            'action' => $this->generateUrl('deal_show', array('id' => $entity->getId())),
+        $form = $this->createForm(new DealType(), $entity, [
+            'action' => $this->generateUrl('deal_show', [
+                'id' => $entity->getId(),
+            ]),
             'method' => 'PUT',
-        ));
+        ]);
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', [
+            'label' => 'Update',
+        ]);
 
         return $form;
     }
+
     /**
      * Edits an existing Deal entity.
      *
+     * @param Deal $deal Deal
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return RedirectResponse|Response
+     *
      * @Route("/{id}", name="deal_update")
      * @Method("PUT")
+     * @ParamConverter("deal", class="EasymedBundle:Deal")
      * @Template("EasymedBundle:Deal:edit.html.twig")
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, Deal $deal)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        if ($this->getUser() !== $deal->getUser()) {
+            throw $this->createNotFoundException('Unable to find Deal entity.');
         }
 
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('EasymedBundle:Deal')->findOneBy(array(
-            'id' => $id,
-            'user' => $this->getUser(),
-        ));
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Deal entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $deleteForm = $this->createDeleteForm($deal->getId());
+        $editForm   = $this->createEditForm($deal);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('deal_show', array('id' => $id)));
+            return $this->redirect($this->generateUrl('deal_show', [
+                'id' => $deal->getId(),
+            ]));
         }
 
-        return array(
-            'entity' => $entity,
-            'edit_form' => $editForm->createView(),
+        return [
+            'entity'      => $deal,
+            'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
     }
+
     /**
      * Deletes a Deal entity.
      *
+     * @param Deal $deal Deal
+     *
+     * @throws NotFoundHttpException
+     *
+     * @return RedirectResponse
+     *
      * @Route("/{id}", name="deal_delete")
      * @Method("DELETE")
+     * @ParamConverter("deal", class="EasymedBundle:Deal")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Request $request, Deal $deal)
     {
-        $securityContext = $this->container->get('security.authorization_checker');
-        if (!$securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
+        if ($this->getUser() !== $deal->getUser()) {
+            throw $this->createNotFoundException('Unable to find Deal entity.');
         }
 
-        $form = $this->createDeleteForm($id);
+        $form = $this->createDeleteForm($deal->getId());
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('EasymedBundle:Deal')->findOneBy(array(
-                'id' => $id,
-                'user' => $this->getUser(),
-            ));
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Deal entity.');
-            }
-
-            $em->remove($entity);
+            $em->remove($deal);
             $em->flush();
         }
 
@@ -281,15 +278,18 @@ class DealController extends Controller
      *
      * @param mixed $id The entity id
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return Form The form
      */
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('deal_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
+                    ->setAction($this->generateUrl('deal_delete', [
+                        'id' => $id,
+                    ]))
+                    ->setMethod('DELETE')
+                    ->add('submit', 'submit', [
+                        'label' => 'Delete',
+                    ])
+                    ->getForm();
     }
 }

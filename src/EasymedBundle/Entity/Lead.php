@@ -8,6 +8,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Lead.
  *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
+ *
  * @ORM\Table(name="lead")
  * @ORM\Entity()
  */
@@ -197,15 +199,15 @@ class Lead extends ContactBase
     /**
      * Returns array of statuses.
      *
-     * @return array
+     * @return []
      */
     public static function valuesOfStatus()
     {
-        return array(
+        return [
             self::STATUS_NEW => 'New',
             self::STATUS_WORKING => 'Working',
             self::STATUS_UNQUALIFIED => 'Unqualified',
-        );
+        ];
     }
 
     /**

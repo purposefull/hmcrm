@@ -8,6 +8,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Company.
  *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
+ *
  * @ORM\Table(name="company")
  * @ORM\Entity()
  */
@@ -110,29 +112,29 @@ class Company extends ContactBase
     /**
      * Returns array of customer statuses.
      *
-     * @return array
+     * @return []
      */
     public static function valuesOfCustomerStatus()
     {
-        return array(
-            self::STATUS_CUSTOMER => 'Customer',
+        return [
+            self::STATUS_CUSTOMER      => 'Customer',
             self::STATUS_PAST_CUSTOMER => 'Past Customer',
-            self::STATUS_NON_CUSTOMER => 'Non Customer',
-        );
+            self::STATUS_NON_CUSTOMER  => 'Non Customer',
+        ];
     }
 
     /**
      * Returns array of prospect statuses.
      *
-     * @return array
+     * @return []
      */
     public static function valuesOfProspectStatus()
     {
-        return array(
-            self::STATUS_PROSPECT => 'Prospect',
+        return [
+            self::STATUS_PROSPECT      => 'Prospect',
             self::STATUS_LOST_PROSPECT => 'Lost Prospect',
-            self::STATUS_NON_PROSPECT => 'Non Prospect',
-        );
+            self::STATUS_NON_PROSPECT  => 'Non Prospect',
+        ];
     }
 
     /**
