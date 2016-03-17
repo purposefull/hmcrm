@@ -8,6 +8,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Person.
  *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
+ *
  * @ORM\Table(name="person")
  * @ORM\Entity()
  */
@@ -94,6 +96,8 @@ class Person extends ContactBase
     public function setCustomerStatus($customerStatus)
     {
         $this->customerStatus = $customerStatus;
+
+        return $this;
     }
 
     /**
@@ -110,6 +114,8 @@ class Person extends ContactBase
     public function setProspectStatus($prospectStatus)
     {
         $this->prospectStatus = $prospectStatus;
+
+        return $this;
     }
 
     /**
@@ -126,6 +132,8 @@ class Person extends ContactBase
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
+
+        return $this;
     }
 
     /**
@@ -142,6 +150,8 @@ class Person extends ContactBase
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+
+        return $this;
     }
 
     /**
@@ -158,6 +168,8 @@ class Person extends ContactBase
     public function setCompanyName($companyName)
     {
         $this->companyName = $companyName;
+
+        return $this;
     }
 
     /**
@@ -174,6 +186,8 @@ class Person extends ContactBase
     public function setTitle($title)
     {
         $this->title = $title;
+
+        return $this;
     }
 
     /**
@@ -218,6 +232,8 @@ class Person extends ContactBase
     public function setUser($user)
     {
         $this->user = $user;
+
+        return $this;
     }
 
     /**
@@ -242,5 +258,7 @@ class Person extends ContactBase
     public function setContact($contact)
     {
         $this->contact = $contact;
+
+        return $this;
     }
 }

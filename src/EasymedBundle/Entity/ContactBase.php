@@ -5,6 +5,11 @@ namespace EasymedBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * ContactBase class
+ *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
+ */
 class ContactBase extends Base
 {
     /**
@@ -89,6 +94,8 @@ class ContactBase extends Base
     public function setEmail($email)
     {
         $this->email = $email;
+
+        return $this;
     }
 
     /**
@@ -105,6 +112,8 @@ class ContactBase extends Base
     public function setMobilePhone($mobilePhone)
     {
         $this->mobilePhone = $mobilePhone;
+
+        return $this;
     }
 
     /**
@@ -121,6 +130,8 @@ class ContactBase extends Base
     public function setWorkPhone($workPhone)
     {
         $this->workPhone = $workPhone;
+
+        return $this;
     }
 
     /**
@@ -137,6 +148,8 @@ class ContactBase extends Base
     public function setAddress($address)
     {
         $this->address = $address;
+
+        return $this;
     }
 
     /**
@@ -153,6 +166,8 @@ class ContactBase extends Base
     public function setCity($city)
     {
         $this->city = $city;
+
+        return $this;
     }
 
     /**
@@ -169,6 +184,8 @@ class ContactBase extends Base
     public function setZipCode($zipCode)
     {
         $this->zipCode = $zipCode;
+
+        return $this;
     }
 
     /**
@@ -185,6 +202,8 @@ class ContactBase extends Base
     public function setRegion($region)
     {
         $this->region = $region;
+
+        return $this;
     }
 
     /**
@@ -201,6 +220,8 @@ class ContactBase extends Base
     public function setCountry($country)
     {
         $this->country = $country;
+
+        return $this;
     }
 
     /**
@@ -217,5 +238,7 @@ class ContactBase extends Base
     public function setTags($tags)
     {
         $this->tags = $tags;
+
+        return $this;
     }
 }
