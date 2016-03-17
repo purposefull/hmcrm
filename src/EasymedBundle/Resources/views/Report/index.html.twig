@@ -13,3 +13,78 @@
             </ol>
         </div>
 {% endblock %}
+
+{% block body %}
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Line Chart Example
+                            <small>With custom colors.</small>
+                        </h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <canvas id="lineChart" height="246" width="528" style="width: 528px; height: 246px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Bar Chart Example</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <canvas id="barChart" height="246" width="528" style="width: 528px; height: 246px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Polar Area</h5>
+
+                    </div>
+                    <div class="ibox-content">
+                        <div class="text-center">
+                            <canvas id="polarChart" height="246" width="528" style="width: 528px; height: 246px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Pie </h5>
+
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <canvas id="doughnutChart" height="246" width="528" style="width: 528px; height: 246px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Radar Chart Example</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <canvas id="radarChart" height="563" width="1126" style="width: 1126px; height: 563px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
