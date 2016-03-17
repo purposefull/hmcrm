@@ -108,6 +108,8 @@ class ContactBase extends Base
 
     /**
      * @param string $mobilePhone
+     *
+     * @return $this
      */
     public function setMobilePhone($mobilePhone)
     {
@@ -126,6 +128,8 @@ class ContactBase extends Base
 
     /**
      * @param string $workPhone
+     *
+     * @return $this
      */
     public function setWorkPhone($workPhone)
     {
@@ -144,6 +148,8 @@ class ContactBase extends Base
 
     /**
      * @param string $address
+     *
+     * @return $this
      */
     public function setAddress($address)
     {
@@ -162,6 +168,8 @@ class ContactBase extends Base
 
     /**
      * @param string $city
+     *
+     * @return $this
      */
     public function setCity($city)
     {
@@ -180,6 +188,8 @@ class ContactBase extends Base
 
     /**
      * @param string $zipCode
+     *
+     * @return $this
      */
     public function setZipCode($zipCode)
     {
@@ -198,6 +208,8 @@ class ContactBase extends Base
 
     /**
      * @param string $region
+     *
+     * @return $this
      */
     public function setRegion($region)
     {
@@ -216,6 +228,8 @@ class ContactBase extends Base
 
     /**
      * @param string $country
+     *
+     * @return $this
      */
     public function setCountry($country)
     {
@@ -234,6 +248,8 @@ class ContactBase extends Base
 
     /**
      * @param string $tags
+     *
+     * @return $this
      */
     public function setTags($tags)
     {

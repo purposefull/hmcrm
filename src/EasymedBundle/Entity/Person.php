@@ -110,6 +110,8 @@ class Person extends ContactBase
 
     /**
      * @param string $prospectStatus
+     *
+     * @return $this
      */
     public function setProspectStatus($prospectStatus)
     {
@@ -128,6 +130,8 @@ class Person extends ContactBase
 
     /**
      * @param string $firstName
+     *
+     * @return $this
      */
     public function setFirstName($firstName)
     {
@@ -146,6 +150,8 @@ class Person extends ContactBase
 
     /**
      * @param string $lastName
+     *
+     * @return $this
      */
     public function setLastName($lastName)
     {
@@ -164,6 +170,8 @@ class Person extends ContactBase
 
     /**
      * @param string $companyName
+     *
+     * @return $this
      */
     public function setCompanyName($companyName)
     {
@@ -182,6 +190,8 @@ class Person extends ContactBase
 
     /**
      * @param string $title
+     *
+     * @return $this
      */
     public function setTitle($title)
     {
@@ -228,6 +238,8 @@ class Person extends ContactBase
 
     /**
      * @param mixed $user
+     *
+     * @return $this
      */
     public function setUser($user)
     {
@@ -254,6 +266,8 @@ class Person extends ContactBase
 
     /**
      * @param mixed $contact
+     *
+     * @return $this
      */
     public function setContact($contact)
     {

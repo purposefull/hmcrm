@@ -8,6 +8,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Company.
  *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
+ *
  * @ORM\Table(name="company")
  * @ORM\Entity()
  */
@@ -69,10 +71,14 @@ class Company extends ContactBase
 
     /**
      * @param mixed $name
+     *
+     * @return $this
      */
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -85,10 +91,14 @@ class Company extends ContactBase
 
     /**
      * @param mixed $customerStatus
+     *
+     * @return $this
      */
     public function setCustomerStatus($customerStatus)
     {
         $this->customerStatus = $customerStatus;
+
+        return $this;
     }
 
     /**
@@ -101,10 +111,14 @@ class Company extends ContactBase
 
     /**
      * @param mixed $prospectStatus
+     *
+     * @return $this
      */
     public function setProspectStatus($prospectStatus)
     {
         $this->prospectStatus = $prospectStatus;
+
+        return $this;
     }
 
     /**
@@ -145,10 +159,14 @@ class Company extends ContactBase
 
     /**
      * @param mixed $user
+     *
+     * @return $this
      */
     public function setUser($user)
     {
         $this->user = $user;
+
+        return $this;
     }
 
     /**
@@ -161,9 +179,13 @@ class Company extends ContactBase
 
     /**
      * @param mixed $contact
+     *
+     * @return $this
      */
     public function setContact($contact)
     {
         $this->contact = $contact;
+
+        return $this;
     }
 }
