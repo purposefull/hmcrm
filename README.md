@@ -49,6 +49,8 @@ http://easymed24.ru - SaaS implementation. Using temporary domain name, but serv
 
 3) User ACL
 
-4) Phone calls integration
+4) Func tests
 
-5) Voice control
+5) Phone calls integration
+
+6) Voice control
