@@ -251,8 +251,7 @@ class DealController extends Controller
      *
      * @return RedirectResponse
      *
-     * @Route("/{id}", name="deal_delete")
-     * @Method("DELETE")
+     * @Route("/delete/{id}", name="deal_delete")
      * @ParamConverter("deal", class="EasymedBundle:Deal")
      */
     public function deleteAction(Request $request, Deal $deal)
@@ -261,14 +260,9 @@ class DealController extends Controller
             throw $this->createNotFoundException('Unable to find Deal entity.');
         }
 
-        $form = $this->createDeleteForm($deal->getId());
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($deal);
-            $em->flush();
-        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($deal);
+        $em->flush();
 
         return $this->redirect($this->generateUrl('deal'));
     }
