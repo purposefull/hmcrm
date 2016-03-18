@@ -56,10 +56,14 @@ class Contact extends Base
 
     /**
      * @param mixed $person
+     *
+     * @return $this
      */
     public function setPerson($person)
     {
         $this->person = $person;
+
+        return $this;
     }
 
     /**
@@ -72,10 +76,14 @@ class Contact extends Base
 
     /**
      * @param mixed $company
+     *
+     * @return $this
      */
     public function setCompany($company)
     {
         $this->company = $company;
+
+        return $this;
     }
 
     /**
@@ -88,10 +96,14 @@ class Contact extends Base
 
     /**
      * @param int $type
+     *
+     * @return $this
      */
     public function setType($type)
     {
         $this->type = $type;
+
+        return $this;
     }
 
     /**
@@ -104,10 +116,14 @@ class Contact extends Base
 
     /**
      * @param mixed $deals
+     *
+     * @return $this
      */
     public function setDeals($deals)
     {
         $this->deals = $deals;
+
+        return $this;
     }
 
     /**
@@ -140,9 +156,13 @@ class Contact extends Base
 
     /**
      * @param mixed $user
+     *
+     * @return $this
      */
     public function setUser($user)
     {
         $this->user = $user;
+
+        return $this;
     }
 }

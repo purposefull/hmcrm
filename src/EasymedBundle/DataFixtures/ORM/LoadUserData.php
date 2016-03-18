@@ -2,12 +2,13 @@
 
 namespace EasymedBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class LoadUserData implements FixtureInterface, ContainerAwareInterface
+class LoadUserData extends AbstractFixture implements FixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface
@@ -28,7 +29,6 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
     public function load(ObjectManager $manager)
     {
         $userManager = $this->container->get('fos_user.user_manager');
-
         if (!$userManager->findUserByUsername('admin')) {
             $user = $userManager->createUser();
             $user->setUsername('admin');
@@ -36,8 +36,9 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
             $user->setPlainPassword('admin');
             $user->setEnabled(true);
             $user->setRoles(array('ROLE_SUPER_ADMIN'));
-
+            $this->setReference('user-admin', $user);
             $userManager->updateUser($user, true);
         }
+
     }
 }

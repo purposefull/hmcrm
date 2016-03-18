@@ -8,6 +8,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Person.
  *
+ * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
+ *
  * @ORM\Table(name="person")
  * @ORM\Entity()
  */
@@ -94,6 +96,8 @@ class Person extends ContactBase
     public function setCustomerStatus($customerStatus)
     {
         $this->customerStatus = $customerStatus;
+
+        return $this;
     }
 
     /**
@@ -106,10 +110,14 @@ class Person extends ContactBase
 
     /**
      * @param string $prospectStatus
+     *
+     * @return $this
      */
     public function setProspectStatus($prospectStatus)
     {
         $this->prospectStatus = $prospectStatus;
+
+        return $this;
     }
 
     /**
@@ -122,10 +130,14 @@ class Person extends ContactBase
 
     /**
      * @param string $firstName
+     *
+     * @return $this
      */
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
+
+        return $this;
     }
 
     /**
@@ -138,10 +150,14 @@ class Person extends ContactBase
 
     /**
      * @param string $lastName
+     *
+     * @return $this
      */
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+
+        return $this;
     }
 
     /**
@@ -154,10 +170,14 @@ class Person extends ContactBase
 
     /**
      * @param string $companyName
+     *
+     * @return $this
      */
     public function setCompanyName($companyName)
     {
         $this->companyName = $companyName;
+
+        return $this;
     }
 
     /**
@@ -170,10 +190,14 @@ class Person extends ContactBase
 
     /**
      * @param string $title
+     *
+     * @return $this
      */
     public function setTitle($title)
     {
         $this->title = $title;
+
+        return $this;
     }
 
     /**
@@ -214,10 +238,14 @@ class Person extends ContactBase
 
     /**
      * @param mixed $user
+     *
+     * @return $this
      */
     public function setUser($user)
     {
         $this->user = $user;
+
+        return $this;
     }
 
     /**
@@ -238,9 +266,13 @@ class Person extends ContactBase
 
     /**
      * @param mixed $contact
+     *
+     * @return $this
      */
     public function setContact($contact)
     {
         $this->contact = $contact;
+
+        return $this;
     }
 }

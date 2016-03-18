@@ -97,10 +97,14 @@ class Deal extends Base
 
     /**
      * @param string $name
+     *
+     * @return $this
      */
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -113,10 +117,14 @@ class Deal extends Base
 
     /**
      * @param string $value
+     *
+     * @return $this
      */
     public function setValue($value)
     {
         $this->value = $value;
+
+        return $this;
     }
 
     /**
@@ -129,10 +137,14 @@ class Deal extends Base
 
     /**
      * @param mixed $contact
+     *
+     * @return $this
      */
     public function setContact($contact)
     {
         $this->contact = $contact;
+
+        return $this;
     }
 
     /**
@@ -145,10 +157,14 @@ class Deal extends Base
 
     /**
      * @param string $currency
+     *
+     * @return $this
      */
     public function setCurrency($currency)
     {
         $this->currency = $currency;
+
+        return $this;
     }
 
     /**
@@ -161,10 +177,14 @@ class Deal extends Base
 
     /**
      * @param string $source
+     *
+     * @return $this
      */
     public function setSource($source)
     {
         $this->source = $source;
+
+        return $this;
     }
 
     /**
@@ -177,10 +197,14 @@ class Deal extends Base
 
     /**
      * @param string $tags
+     *
+     * @return $this
      */
     public function setTags($tags)
     {
         $this->tags = $tags;
+
+        return $this;
     }
 
     /**
@@ -193,10 +217,14 @@ class Deal extends Base
 
     /**
      * @param string $stage
+     *
+     * @return $this
      */
     public function setStage($stage)
     {
         $this->stage = $stage;
+
+        return $this;
     }
 
     /**
@@ -227,9 +255,13 @@ class Deal extends Base
 
     /**
      * @param mixed $user
+     *
+     * @return $this
      */
     public function setUser($user)
     {
         $this->user = $user;
+
+        return $this;
     }
 }
