@@ -2,6 +2,7 @@
 
 namespace EasymedBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -57,9 +58,17 @@ class Company extends ContactBase
     protected $user;
 
     /**
-     * @ORM\OneToOne(targetEntity="Contact", mappedBy="company", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="EasymedBundle\Entity\Contact", mappedBy="company", cascade={"all"}, orphanRemoval=true)
      */
-    protected $contact;
+    protected $contacts;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->contacts = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -170,22 +179,36 @@ class Company extends ContactBase
     }
 
     /**
-     * @return mixed
+     * Add contact
+     *
+     * @param Contact $contact Contact
+     *
+     * @return Company
      */
-    public function getContact()
+    public function addContact(Contact $contact)
     {
-        return $this->contact;
+        $this->contacts[] = $contact;
+
+        return $this;
     }
 
     /**
-     * @param mixed $contact
+     * Remove contact
      *
-     * @return $this
+     * @param Contact $contact Contact
      */
-    public function setContact($contact)
+    public function removeContact(Contact $contact)
     {
-        $this->contact = $contact;
+        $this->contacts->removeElement($contact);
+    }
 
-        return $this;
+    /**
+     * Get contacts
+     *
+     * @return ArrayCollection
+     */
+    public function getContacts()
+    {
+        return $this->contacts;
     }
 }

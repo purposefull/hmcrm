@@ -2,6 +2,7 @@
 
 namespace EasymedBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,13 +18,13 @@ class Contact extends Base
     const TYPE_COMPANY = 2;
 
     /**
-     * @ORM\OneToOne(targetEntity="Person", inversedBy="contact")
+     * @ORM\ManyToOne(targetEntity="EasymedBundle\Entity\Person", inversedBy="contacts")
      * @ORM\JoinColumn(name="person_id", referencedColumnName="id")
      */
     protected $person;
 
     /**
-     * @ORM\OneToOne(targetEntity="Company", inversedBy="contact")
+     * @ORM\ManyToOne(targetEntity="EasymedBundle\Entity\Company", inversedBy="contacts")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
      */
     protected $company;
@@ -45,6 +46,27 @@ class Contact extends Base
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->deals = new ArrayCollection();
+    }
+
+    /**
+     * Return array of contact type
+     *
+     * @return []
+     */
+    public static function valueOfContactType()
+    {
+        return [
+            self::TYPE_PERSON  => 'Person',
+            self::TYPE_COMPANY => 'Company',
+        ];
+    }
 
     /**
      * @return mixed
@@ -164,5 +186,29 @@ class Contact extends Base
         $this->user = $user;
 
         return $this;
+    }
+
+    /**
+     * Add deal
+     *
+     * @param Deal $deal Deal
+     *
+     * @return $this
+     */
+    public function addDeal(Deal $deal)
+    {
+        $this->deals[] = $deal;
+
+        return $this;
+    }
+
+    /**
+     * Remove deal
+     *
+     * @param Deal $deal Deal
+     */
+    public function removeDeal(Deal $deal)
+    {
+        $this->deals->removeElement($deal);
     }
 }

@@ -3,18 +3,33 @@
 namespace EasymedBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use EasymedBundle\Entity\Lead;
+use EasymedBundle\Entity\User;
 
 /**
  * LoadLeadData class
  *
  * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  */
-class LoadLeadData extends AbstractFixture
+class LoadLeadData extends AbstractFixture implements DependentFixtureInterface
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function getDependencies()
+    {
+        return [
+            'EasymedBundle\DataFixtures\ORM\LoadUserData',
+        ];
+    }
+
     public function load(ObjectManager $manager)
     {
+        /** @var User $userAdmin */
+        $userAdmin = $this->getReference('user-admin');
+
         $lead1 = (new Lead())
             ->setFirstName('Сергей')
             ->setLastName('Иванов')
@@ -28,7 +43,8 @@ class LoadLeadData extends AbstractFixture
             ->setRegion('Воронеж')
             ->setCountry('Россия')
             ->setTags('Новый клиент, перспективный')
-            ->setLeadStatus(1);
+            ->setLeadStatus(1)
+            ->setUser($userAdmin);
         $this->setReference('lead-1', $lead1);
         $manager->persist($lead1);
 
@@ -45,7 +61,8 @@ class LoadLeadData extends AbstractFixture
             ->setRegion('Киев')
             ->setCountry('Украина')
             ->setTags('Клиент')
-            ->setLeadStatus(1);
+            ->setLeadStatus(1)
+            ->setUser($userAdmin);
         $this->setReference('lead-2', $lead2);
         $manager->persist($lead2);
 
@@ -62,7 +79,8 @@ class LoadLeadData extends AbstractFixture
             ->setRegion('Харьков')
             ->setCountry('Украина')
             ->setTags('Клиент')
-            ->setLeadStatus(2);
+            ->setLeadStatus(2)
+            ->setUser($userAdmin);
         $this->setReference('lead-3', $lead3);
         $manager->persist($lead3);
 
