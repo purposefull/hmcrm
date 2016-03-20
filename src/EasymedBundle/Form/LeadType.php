@@ -22,7 +22,7 @@ class LeadType extends AbstractType
     {
         $builder
             ->add('submit', 'submit', [
-                'label' => 'name',
+                'label' => 'add',
             ])
             ->add('firstName', 'text', [
                 'label' => 'firstname',
