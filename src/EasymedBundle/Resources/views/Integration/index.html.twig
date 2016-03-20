@@ -1,0 +1,16 @@
+{% extends '::dashboard.html.twig' %}
+
+{% block body %}
+   <h2>Services for integration</h2>
+   <div>
+      <a href="https://www.wunderlist.com/oauth/authorize?client_id=ee4dbc5e2278c764e730&redirect_uri=http://127.0.0.1:8000/&state="{{ state }}>
+         <img src="/img/integration/wunderlist.png" />
+      </a>
+      <a href="https://todoist.com/oauth/authorize?client_id=fb1b86595c5d4c89a00c57ff38023794&scope=task:add,data:read,data:delete&state="{{ state }}>
+         <img src="/img/integration/todolist.png" />
+      </a>
+      <a href="https://app.asana.com/-/oauth_authorize?client_id=102860991320968&redirect_uri=http://127.0.0.1:8000/&response_type=code&state="{{ state }}>
+         <img src="/img/integration/asana.png" />
+      </a>
+   </div>
+{% endblock %}
