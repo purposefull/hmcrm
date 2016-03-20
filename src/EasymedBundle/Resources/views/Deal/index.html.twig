@@ -15,9 +15,9 @@
 {% endblock %}
 
 {% block body %}
-    {#<a class="btn btn-primary" href="{{ path('deal_new') }}">#}
-        {#{{ 'add'|trans }}#}
-    {#</a>#}
+    <a class="btn btn-primary" href="{{ path('deal_new') }}">
+        {{ 'add'|trans }}
+    </a>
 
         <div class="ibox-content m-b-sm border-bottom">
             <div class="row">
@@ -113,9 +113,9 @@
                                     </td>
                                     <td class="text-right footable-visible footable-last-column">
                                         <div class="btn-group">
-                                            <button class="btn-white btn btn-xs">View</button>
-                                            <button class="btn-white btn btn-xs">Edit</button>
-                                            <button class="btn-white btn btn-xs">Delete</button>
+                                            <a href="{{ path('deal_show', { 'id': entity.id }) }}"><button class="btn-white btn btn-xs">View</button></a>
+                                            <a href="{{ path('deal_edit', { 'id': entity.id }) }}"><button class="btn-white btn btn-xs">Edit</button></a>
+                                            <a href="{{ path('deal_delete', { 'id': entity.id }) }}"><button class="btn-white btn btn-xs">Delete</button></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -572,7 +572,7 @@
 
     <div class="ibox-content">
         <button class="btn btn-primary"><i class="fa fa fa-shopping-cart"></i> Add</button>
-        {#<button class="btn btn-white"><i class="fa fa-arrow-left"></i> Continue shopping</button>#}
+        <button class="btn btn-white"><i class="fa fa-arrow-left"></i> Continue shopping</button>
     </div>
 
 {% endblock %}
