@@ -1,6 +1,18 @@
 {% extends '::dashboard.html.twig' %}
 
-{% block title %} {{ 'lead.title'|trans }} {% endblock %}
+{% block title %}
+    <div class="col-sm-4">
+        <h2>{{ 'lead.title'|trans }}</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">{{ 'home'|trans }}</a>
+            </li>
+            <li class="active">
+                <strong>{{ 'lead.title'|trans }}</strong>
+            </li>
+        </ol>
+    </div>
+{% endblock %}
 
 {% block body -%}
     <table class="table table-striped table-hover">
