@@ -70,7 +70,7 @@ menu:
     manageUsers: Управление правами
     emailTemplates: Шаблоны писем
     tasksManagement: Управление задачами
-    integeration: Интеграция
+    integration: Интеграция Задач
 Header: 321
 report:
     title: Отчеты

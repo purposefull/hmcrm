@@ -78,5 +78,6 @@ menu:
     manageUsers: Manage Users
     emailTemplates: Email Templates
     tasksManagement: Tasks Management
-    integeration: Integration
+    integration: Tasks Integration
 Header: 123
+
