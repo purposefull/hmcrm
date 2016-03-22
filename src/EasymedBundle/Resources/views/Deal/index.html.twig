@@ -15,9 +15,9 @@
 {% endblock %}
 
 {% block body %}
-    <a class="btn btn-primary" href="{{ path('deal_new') }}">
-        {{ 'add'|trans }}
-    </a>
+    {#<a class="btn btn-primary" href="{{ path('deal_new') }}">#}
+        {#{{ 'add'|trans }}#}
+    {#</a>#}
 
         <div class="ibox-content m-b-sm border-bottom">
             <div class="row">
@@ -571,8 +571,7 @@
         </div>
 
     <div class="ibox-content">
-        <button class="btn btn-primary"><i class="fa fa fa-shopping-cart"></i> Add</button>
-        <button class="btn btn-white"><i class="fa fa-arrow-left"></i> Continue shopping</button>
+        <a href="{{ path('deal_new') }}" class="btn btn-primary"><i class="fa fa fa-shopping-cart"></i> Add</a>
     </div>
 
 {% endblock %}

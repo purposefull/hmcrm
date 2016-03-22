@@ -1,6 +1,18 @@
 {% extends '::dashboard.html.twig' %}
 
-{% block title %} {{ 'deal.edit'|trans }} {% endblock %}
+{% block title %}
+    <div class="col-sm-4">
+        <h2>{{ 'deal.edit'|trans }}</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">{{ 'home'|trans }}</a>
+            </li>
+            <li class="active">
+                <strong>{{ 'deal.edit'|trans }}</strong>
+            </li>
+        </ol>
+    </div>
+{% endblock %}
 
 {% block body -%}
     {{ form_start(edit_form) }}
