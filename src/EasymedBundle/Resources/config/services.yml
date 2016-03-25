@@ -2,11 +2,6 @@ services:
 #    easymed.example:
 #        class: EasymedBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
-    easymed.admin.med_card:
-        class: EasymedBundle\Admin\MedCardAdmin
-        arguments: [~, EasymedBundle\Entity\MedCard, SonataAdminBundle:CRUD]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: Test, label: MedCard, label_catalogue: GeneralSettings}
 
     easymed.locale_listener:
           class: EasymedBundle\EventListener\LocaleListener
