@@ -59,4 +59,4 @@ http://easymed24.ru - SaaS implementation. Using temporary domain name, but serv
 
 1) Project standards - https://github.com/FriendsOfPHP/PHP-CS-Fixer
 
-2) Fork and open Pull Requests on opened isues
+2) Fork the repo and open Pull Requests on an opened issues
