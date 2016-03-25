@@ -84,7 +84,7 @@ class Person extends ContactBase
     protected $contacts;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -217,9 +217,9 @@ class Person extends ContactBase
     public static function valuesOfCustomerStatus()
     {
         return [
-            self::STATUS_CUSTOMER      => 'Customer',
+            self::STATUS_CUSTOMER => 'Customer',
             self::STATUS_PAST_CUSTOMER => 'Past Customer',
-            self::STATUS_NON_CUSTOMER  => 'Non Customer',
+            self::STATUS_NON_CUSTOMER => 'Non Customer',
         ];
     }
 
@@ -231,9 +231,9 @@ class Person extends ContactBase
     public static function valuesOfProspectStatus()
     {
         return [
-            self::STATUS_PROSPECT      => 'Prospect',
+            self::STATUS_PROSPECT => 'Prospect',
             self::STATUS_LOST_PROSPECT => 'Lost Prospect',
-            self::STATUS_NON_PROSPECT  => 'Non Prospect',
+            self::STATUS_NON_PROSPECT => 'Non Prospect',
         ];
     }
 
@@ -266,7 +266,7 @@ class Person extends ContactBase
     }
 
     /**
-     * Add contact
+     * Add contact.
      *
      * @param Contact $contact Contact
      *
@@ -280,7 +280,7 @@ class Person extends ContactBase
     }
 
     /**
-     * Remove contact
+     * Remove contact.
      *
      * @param Contact $contact Contact
      */
@@ -290,7 +290,7 @@ class Person extends ContactBase
     }
 
     /**
-     * Get contacts
+     * Get contacts.
      *
      * @return ArrayCollection
      */

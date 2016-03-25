@@ -107,7 +107,7 @@ class DoctorController extends Controller
      *
      * @Route("/delete/{id}", name="doctor_delete")
      *
-     * @param Doctor  $doctor  Doctor
+     * @param Doctor $doctor Doctor
      *
      * @return RedirectResponse
      *

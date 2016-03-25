@@ -49,14 +49,14 @@ class ContactController extends Controller
             switch ($item->getType()) {
                 case Contact::TYPE_PERSON:
                     $resultArray[] = [
-                        'id'   => $item->getPerson()->getId(),
+                        'id' => $item->getPerson()->getId(),
                         'name' => $item->getName(),
                         'type' => 'person_show',
                     ];
                     break;
                 case Contact::TYPE_COMPANY:
                     $resultArray[] = [
-                        'id'   => $item->getCompany()->getId(),
+                        'id' => $item->getCompany()->getId(),
                         'name' => $item->getName(),
                         'type' => 'company_show',
                     ];
@@ -92,7 +92,7 @@ class ContactController extends Controller
         $deleteForm = $this->createDeleteForm($contact->getId());
 
         return [
-            'entity'      => $contact,
+            'entity' => $contact,
             'delete_form' => $deleteForm->createView(),
         ];
     }
@@ -111,7 +111,7 @@ class ContactController extends Controller
     public function createAction(Request $request)
     {
         $contact = new Contact();
-        $form    = $this->createForm(new ContactType(), $contact);
+        $form = $this->createForm(new ContactType(), $contact);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -151,12 +151,12 @@ class ContactController extends Controller
             throw $this->createNotFoundException('Unable to find Contact entity.');
         }
 
-        $editForm   = $this->createEditForm($contact);
+        $editForm = $this->createEditForm($contact);
         $deleteForm = $this->createDeleteForm($contact->getId());
 
         return [
-            'entity'      => $contact,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $contact,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ];
     }
@@ -185,7 +185,7 @@ class ContactController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $deleteForm = $this->createDeleteForm($contact->getId());
-        $editForm   = $this->createEditForm($contact);
+        $editForm = $this->createEditForm($contact);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
@@ -197,8 +197,8 @@ class ContactController extends Controller
         }
 
         return [
-            'entity'      => $contact->getId(),
-            'edit_form'   => $editForm->createView(),
+            'entity' => $contact->getId(),
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ];
     }

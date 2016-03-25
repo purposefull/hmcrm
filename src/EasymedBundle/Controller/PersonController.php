@@ -59,11 +59,11 @@ class PersonController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Person();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em      = $this->getDoctrine()->getManager();
+            $em = $this->getDoctrine()->getManager();
             $contact = new Contact();
             $contact->setType(Contact::TYPE_PERSON);
             $contact->setUser($this->getUser());
@@ -80,7 +80,7 @@ class PersonController extends Controller
 
         return [
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ];
     }
 
@@ -117,11 +117,11 @@ class PersonController extends Controller
     public function newAction()
     {
         $entity = new Person();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return [
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ];
     }
 
@@ -148,7 +148,7 @@ class PersonController extends Controller
         $deleteForm = $this->createDeleteForm($person->getId());
 
         return [
-            'entity'      => $person,
+            'entity' => $person,
             'delete_form' => $deleteForm->createView(),
         ];
     }
@@ -173,12 +173,12 @@ class PersonController extends Controller
             throw $this->createNotFoundException('Unable to find Person entity.');
         }
 
-        $editForm   = $this->createEditForm($person);
+        $editForm = $this->createEditForm($person);
         $deleteForm = $this->createDeleteForm($person->getId());
 
         return [
-            'entity'      => $person,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $person,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ];
     }
@@ -230,7 +230,7 @@ class PersonController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $deleteForm = $this->createDeleteForm($person->getId());
-        $editForm   = $this->createEditForm($person);
+        $editForm = $this->createEditForm($person);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
@@ -242,8 +242,8 @@ class PersonController extends Controller
         }
 
         return [
-            'entity'      => $person,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $person,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ];
     }

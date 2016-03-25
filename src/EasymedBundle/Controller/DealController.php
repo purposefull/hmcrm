@@ -37,7 +37,7 @@ class DealController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $user     = $this->getUser();
+        $user = $this->getUser();
         $entities = $em->getRepository('EasymedBundle:Deal')->findByUser($user);
 
         return [
@@ -59,7 +59,7 @@ class DealController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Deal();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -75,7 +75,7 @@ class DealController extends Controller
 
         return [
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ];
     }
 
@@ -112,11 +112,11 @@ class DealController extends Controller
     public function newAction()
     {
         $entity = new Deal();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return [
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ];
     }
 
@@ -143,7 +143,7 @@ class DealController extends Controller
         }
 
         return [
-            'entity'      => $deal,
+            'entity' => $deal,
             'delete_form' => $deleteForm->createView(),
         ];
     }
@@ -168,12 +168,12 @@ class DealController extends Controller
             throw $this->createNotFoundException('Unable to find Deal entity.');
         }
 
-        $editForm   = $this->createEditForm($deal);
+        $editForm = $this->createEditForm($deal);
         $deleteForm = $this->createDeleteForm($deal->getId());
 
         return [
-            'entity'      => $deal,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $deal,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ];
     }
@@ -224,7 +224,7 @@ class DealController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $deleteForm = $this->createDeleteForm($deal->getId());
-        $editForm   = $this->createEditForm($deal);
+        $editForm = $this->createEditForm($deal);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
@@ -236,8 +236,8 @@ class DealController extends Controller
         }
 
         return [
-            'entity'      => $deal,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $deal,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ];
     }

@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * CompanyType class
+ * CompanyType class.
  *
  * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  */
@@ -26,11 +26,11 @@ class CompanyType extends AbstractType
             ])
             ->add('customerStatus', 'choice', [
                 'choices' => Company::valuesOfCustomerStatus(),
-                'label'   => 'customerstatus',
+                'label' => 'customerstatus',
             ])
             ->add('prospectStatus', 'choice', [
         'choices' => Company::valuesOfProspectStatus(),
-        'label'   => 'prospectstatus',
+        'label' => 'prospectstatus',
     ])
         ->add('email', 'email', [
             'label' => 'Email',

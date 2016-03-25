@@ -14,7 +14,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use EasymedBundle\Entity\Company;
 use EasymedBundle\Form\CompanyType;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -39,7 +38,7 @@ class CompanyController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $user     = $this->getUser();
+        $user = $this->getUser();
         $entities = $em->getRepository('EasymedBundle:Company')->findByUser($user);
 
         return [
@@ -59,11 +58,11 @@ class CompanyController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Company();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em      = $this->getDoctrine()->getManager();
+            $em = $this->getDoctrine()->getManager();
             $contact = new Contact();
             $contact->setType(Contact::TYPE_COMPANY);
             $contact->setUser($this->getUser());
@@ -81,7 +80,7 @@ class CompanyController extends Controller
 
         return [
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ];
     }
 
@@ -91,7 +90,6 @@ class CompanyController extends Controller
      * @param Company $entity The entity
      *
      * @return Form
-     *
      * @return Form The form
      */
     private function createCreateForm(Company $entity)
@@ -120,11 +118,11 @@ class CompanyController extends Controller
     public function newAction()
     {
         $entity = new Company();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return [
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ];
     }
 
@@ -151,7 +149,7 @@ class CompanyController extends Controller
         }
 
         return [
-            'entity'      => $company,
+            'entity' => $company,
             'delete_form' => $deleteForm->createView(),
         ];
     }
@@ -172,7 +170,7 @@ class CompanyController extends Controller
      */
     public function editAction(Company $company)
     {
-        $editForm   = $this->createEditForm($company);
+        $editForm = $this->createEditForm($company);
         $deleteForm = $this->createDeleteForm($company->getId());
 
         if ($this->getUser() !== $company->getUser()) {
@@ -180,8 +178,8 @@ class CompanyController extends Controller
         }
 
         return [
-            'entity'      => $company,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $company,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ];
     }
@@ -233,7 +231,7 @@ class CompanyController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($company->getId());
-        $editForm   = $this->createEditForm($company);
+        $editForm = $this->createEditForm($company);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
@@ -245,8 +243,8 @@ class CompanyController extends Controller
         }
 
         return [
-            'entity'      => $company,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $company,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ];
     }

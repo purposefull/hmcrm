@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * ContactBase class
+ * ContactBase class.
  *
  * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  */

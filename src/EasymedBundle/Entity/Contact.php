@@ -48,7 +48,7 @@ class Contact extends Base
     protected $user;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -56,14 +56,14 @@ class Contact extends Base
     }
 
     /**
-     * Return array of contact type
+     * Return array of contact type.
      *
      * @return []
      */
     public static function valueOfContactType()
     {
         return [
-            self::TYPE_PERSON  => 'Person',
+            self::TYPE_PERSON => 'Person',
             self::TYPE_COMPANY => 'Company',
         ];
     }
@@ -189,7 +189,7 @@ class Contact extends Base
     }
 
     /**
-     * Add deal
+     * Add deal.
      *
      * @param Deal $deal Deal
      *
@@ -203,7 +203,7 @@ class Contact extends Base
     }
 
     /**
-     * Remove deal
+     * Remove deal.
      *
      * @param Deal $deal Deal
      */

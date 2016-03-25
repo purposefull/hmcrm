@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * ContactType class
+ * ContactType class.
  *
  * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  */
@@ -27,14 +27,14 @@ class ContactType extends AbstractType
                 'label' => 'Type',
             ])
             ->add('person', 'entity', [
-                'class'        => 'EasymedBundle:Person',
+                'class' => 'EasymedBundle:Person',
                 'choice_label' => 'title',
-                'label'        => 'person.title',
+                'label' => 'person.title',
             ])
             ->add('company', 'entity', [
-                'class'        => 'EasymedBundle:Company',
+                'class' => 'EasymedBundle:Company',
                 'choice_label' => 'name',
-                'label'        => 'company.title',
+                'label' => 'company.title',
             ]);
     }
 }

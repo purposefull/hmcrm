@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * DealType class
+ * DealType class.
  *
  * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  */
@@ -25,13 +25,13 @@ class DealType extends AbstractType
                 'label' => 'name',
             ])
             ->add('contact', 'entity', [
-                'class'        => 'EasymedBundle:Contact',
+                'class' => 'EasymedBundle:Contact',
                 'choice_label' => 'name',
-                'label'        => 'contact.title',
+                'label' => 'contact.title',
             ])
             ->add('stage', 'choice', [
                 'choices' => Deal::valuesOfStage(),
-                'label'   => 'stage',
+                'label' => 'stage',
             ])
             ->add('value', 'text', [
                 'label' => 'value',

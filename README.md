@@ -54,3 +54,9 @@ http://easymed24.ru - SaaS implementation. Using temporary domain name, but serv
 5) Phone calls integration
 
 6) Voice control
+
+# Contributing
+
+1) Project standards - https://github.com/FriendsOfPHP/PHP-CS-Fixer
+
+2) Fork and open Pull Requests on opened isues

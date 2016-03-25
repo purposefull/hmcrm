@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * LeadType class
+ * LeadType class.
  *
  * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  */
@@ -38,7 +38,7 @@ class LeadType extends AbstractType
             ])
             ->add('leadStatus', 'choice', [
                 'choices' => Lead::valuesOfStatus(),
-                'label'   => 'lead.status',
+                'label' => 'lead.status',
             ])
             ->add('email', 'text', [
                 'label' => 'email',

@@ -2,7 +2,6 @@
 
 namespace EasymedBundle\Controller;
 
-use Doctrine\ORM\EntityNotFoundException;
 use EasymedBundle\Entity\Patient;
 use EasymedBundle\Form\Type\PatientType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

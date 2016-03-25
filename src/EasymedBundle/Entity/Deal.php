@@ -235,13 +235,13 @@ class Deal extends Base
     public static function valuesOfStage()
     {
         return [
-            self::STAGE_INCOMING    => 'Incoming',
-            self::STAGE_QUALIFIED   => 'Qualified',
-            self::STAGE_QUOTE       => 'Quote',
-            self::STAGE_CLOSURE     => 'Closure',
-            self::STAGE_WON         => 'Won',
+            self::STAGE_INCOMING => 'Incoming',
+            self::STAGE_QUALIFIED => 'Qualified',
+            self::STAGE_QUOTE => 'Quote',
+            self::STAGE_CLOSURE => 'Closure',
+            self::STAGE_WON => 'Won',
             self::STAGE_UNQUALIFIED => 'Unqualified',
-            self::STAGE_LOST        => 'Lost',
+            self::STAGE_LOST => 'Lost',
         ];
     }
 

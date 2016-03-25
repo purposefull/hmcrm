@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * PersonType class
+ * PersonType class.
  *
  * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  */
@@ -35,11 +35,11 @@ class PersonType extends AbstractType
             ])
             ->add('customerStatus', 'choice', [
                 'choices' => Person::valuesOfCustomerStatus(),
-                'label'   => 'customerstatus',
+                'label' => 'customerstatus',
             ])
             ->add('prospectStatus', 'choice', [
                 'choices' => Person::valuesOfProspectStatus(),
-                'label'   => 'prospectstatus',
+                'label' => 'prospectstatus',
             ])
             ->add('email', 'text', [
                 'label' => 'email',
