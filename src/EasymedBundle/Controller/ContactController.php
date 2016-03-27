@@ -270,4 +270,17 @@ class ContactController extends Controller
                     ])
                     ->getForm();
     }
+
+    /**
+     * Import action
+     *
+     * @return RedirectResponse
+     *
+     * @Route("/import", name="import")
+     * @Template()
+     */
+    public function importAction()
+    {
+        return [];
+    }
 }
