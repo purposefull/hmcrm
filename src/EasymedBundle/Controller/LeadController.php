@@ -128,20 +128,22 @@ class LeadController extends Controller
     {
         if ($request->getMethod() == 'POST') {
             $form = $request->request->all();
-            if (!empty($form['userId']) && !empty($form['name']) && !empty($form['email'])) {
-                $lead = new Lead();
-                $lead->setLastName($form['name']);
-                $lead->setEmail($form['email']);
+            // var_dump($request->get('userId'));
+            $lead = new Lead();
+            if ($request->get('userId')) {
 
-                if (isset($form['phone']) && $form['phone']) {
-                    $lead->setMobilePhone($form['phone']);
+                $lead->setLastName($request->get('name'));
+                $lead->setEmail($request->get('email'));
+
+                if ($request->get('phone')) {
+                    $lead->setMobilePhone($request->get('phone'));
                 }
 
-                if (isset($form['product']) && $form['product']) {
-                    $lead->setProduct($form['product']);
+                if (isset($form['product']) && $request->get('product')) {
+                    $lead->setProduct($request->get('product'));
                 }
 
-                $user = $this->getDoctrine()->getRepository('ApplicationSonataUserBundle:User')->find($form['userId']);
+                $user = $this->getDoctrine()->getRepository('ApplicationSonataUserBundle:User')->find($request->get('userId'));
                 if ($user) {
                     $lead->setUser($user);
                 } else {
