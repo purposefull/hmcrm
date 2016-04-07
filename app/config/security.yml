@@ -59,7 +59,7 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/lead/lead_capture_form$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/lead/lead_capture_form/[0-9]{10}$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/lead/lead_capture_form/[0-9]{10}/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
         # Admin login page needs to be access without credential
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
