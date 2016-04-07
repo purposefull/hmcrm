@@ -128,12 +128,12 @@ class LeadController extends Controller
     {
         if ($request->getMethod() == 'POST') {
             $form = $request->request->all();
-            // var_dump($request->get('userId'));
+
             $lead = new Lead();
             if ($request->get('userId')) {
 
-                $lead->setLastName($request->get('name'));
-                $lead->setEmail($request->get('email'));
+                $lead->setLastName($request->get('name', 'healthyfood'));
+                $lead->setEmail($request->get('email', 'info@healthmarketing.me'));
 
                 if ($request->get('phone')) {
                     $lead->setMobilePhone($request->get('phone'));
@@ -143,7 +143,10 @@ class LeadController extends Controller
                     $lead->setProduct($request->get('product'));
                 }
 
-                $user = $this->getDoctrine()->getRepository('ApplicationSonataUserBundle:User')->find($request->get('userId'));
+                $user = $this->getDoctrine()
+                    ->getRepository('ApplicationSonataUserBundle:User')
+                    ->find($request->get('userId'));
+
                 if ($user) {
                     $lead->setUser($user);
                 } else {
