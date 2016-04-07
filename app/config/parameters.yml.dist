@@ -21,3 +21,4 @@ parameters:
 
     locale: en
     locales: [en, ru]
+    phone: "[0-9]{10}"
