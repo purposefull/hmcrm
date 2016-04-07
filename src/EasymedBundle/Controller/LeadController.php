@@ -16,6 +16,7 @@ use EasymedBundle\Entity\Lead;
 use EasymedBundle\Form\LeadType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Lead controller.
@@ -168,6 +169,7 @@ class LeadController extends Controller
      *
      * @Route("/lead_capture_form/{phone}", name="lead_capture_form_phone")
      * @Template()
+     * @Security("has_role('IS_AUTHENTICATED_ANONYMOUSLY')")
      */
     public function leadCaptureFormPhoneAction(Request $request)
     {
