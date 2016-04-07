@@ -4,6 +4,7 @@ namespace EasymedBundle\Controller;
 
 use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -19,7 +20,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Lead controller.
  *
- * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  *
  * @Route("/lead")
  */
@@ -157,6 +157,45 @@ class LeadController extends Controller
                 $em->flush();
 
                 return $this->redirect($request->get('redirectUrl'));
+            }
+        }
+    }
+
+    /**
+     * @throws EntityNotFoundException
+     *
+     * @return RedirectResponse
+     *
+     * @Route("/lead_capture_form/{phone}", name="lead_capture_form_phone")
+     * @Template()
+     */
+    public function leadCaptureFormPhoneAction(Request $request)
+    {
+        if ($request->getMethod() == 'POST') {
+            $form = $request->request->all();
+
+            $lead = new Lead();
+            if ($request->get('phone')) {
+
+                $lead->setLastName($request->get('name', 'healthyfood'));
+                $lead->setEmail($request->get('email', 'info@healthmarketing.me'));
+                $lead->setMobilePhone($request->get('phone'));
+
+                $user = $this->getDoctrine()
+                    ->getRepository('ApplicationSonataUserBundle:User')
+                    ->find(7);
+
+                if ($user) {
+                    $lead->setUser($user);
+                } else {
+                    throw new EntityNotFoundException();
+                }
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($lead);
+                $em->flush();
+
+                return new JsonResponse(true);
             }
         }
     }
