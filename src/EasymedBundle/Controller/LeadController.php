@@ -167,9 +167,8 @@ class LeadController extends Controller
      *
      * @return RedirectResponse
      *
-     * @Route("/lead_capture_form/{phone}", name="lead_capture_form_phone")
+     * @Route("/lead_capture_form/{phone}.js", name="lead_capture_form_phone")
      * @Template()
-     * @Security("has_role('IS_AUTHENTICATED_ANONYMOUSLY')")
      */
     public function leadCaptureFormPhoneAction(Request $request)
     {
