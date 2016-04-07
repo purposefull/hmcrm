@@ -32,18 +32,17 @@ security:
             anonymous:          true
 
         main:
-            anonymous: ~
-#            pattern:             .*
-#            context:             user
-#            form_login:
-#                provider:       fos_userbundle
-#                login_path:     /login
-#                use_forward:    false
-#                check_path:     /login_check
-#                failure_path:   null
-#                default_target_path:   /
-#            logout:             true
-#            anonymous:          true
+            pattern:             .*
+            context:             user
+            form_login:
+                provider:       fos_userbundle
+                login_path:     /login
+                use_forward:    false
+                check_path:     /login_check
+                failure_path:   null
+                default_target_path:   /
+            logout:             true
+            anonymous:          true
 
     acl:
         connection: default
