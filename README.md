@@ -3,13 +3,13 @@ HealthMarketing CRM
 
 Almost Free and Open Source CRM for Small Business
 
-http://easymed24.ru - SaaS implementation. Using temporary domain name, but service work in production environment.
+http://crm.healthmarketing.me - SaaS implementation.
 
 # System Requirements
 
-1) php 5.6 (php 7.x is better choice) - http://php.net
+1) php 5.6 (7.x is better choice)
 
-2) PostgreSQL 9.3 or MySQL 5.6 - http://www.postgresql.org/ or http://www.mysql.com/
+2) PostgreSQL 9.3 or MySQL 5.6
 
 3) Composer - https://getcomposer.org/
 
