@@ -73,7 +73,7 @@ class Lead extends ContactBase
     protected $source;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $building;
 
@@ -110,12 +110,12 @@ class Lead extends ContactBase
     }
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $deliveryDate;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $tariff;
 
