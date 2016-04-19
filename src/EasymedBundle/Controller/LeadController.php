@@ -133,16 +133,14 @@ class LeadController extends Controller
             $lead = new Lead();
             if ($request->get('userId')) {
 
-                $lead->setLastName($request->get('name', 'healthyfood'));
-                $lead->setEmail($request->get('email', 'info@healthmarketing.me'));
-
-                if ($request->get('phone')) {
-                    $lead->setMobilePhone($request->get('phone'));
-                }
-
-                if (isset($form['product']) && $request->get('product')) {
-                    $lead->setProduct($request->get('product'));
-                }
+                $lead->setFirstName($request->get('name'));
+                $lead->setLastName($request->get('surname'));
+                $lead->setAddress($request->get('address'));
+                $lead->setBuilding($request->get('building'));
+                $lead->setEmail($request->get('email'));
+                $lead->setMobilePhone($request->get('phone'));
+                $lead->setTariff($request->get('tariff'));
+                $lead->setDeliveryDate($request->get('delivery_date'));
 
                 $user = $this->getDoctrine()
                     ->getRepository('ApplicationSonataUserBundle:User')
@@ -153,11 +151,16 @@ class LeadController extends Controller
                 } else {
                     throw new EntityNotFoundException();
                 }
+                
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($lead);
                 $em->flush();
 
-                return $this->redirect($request->get('redirectUrl'));
+                if ($request->get('redirectUrl')) {
+                    return $this->redirect($request->get('redirectUrl'));
+                } else {
+                    return new JsonResponse(true);
+                }
             }
         }
     }
