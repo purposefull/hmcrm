@@ -72,6 +72,69 @@ class Lead extends ContactBase
      */
     protected $source;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $building;
+
+    /**
+     * @return mixed
+     */
+    public function getBuilding()
+    {
+        return $this->building;
+    }
+
+    /**
+     * @param mixed $building
+     */
+    public function setBuilding($building)
+    {
+        $this->building = $building;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDeliveryDate()
+    {
+        return $this->deliveryDate;
+    }
+
+    /**
+     * @param mixed $deliveryDate
+     */
+    public function setDeliveryDate($deliveryDate)
+    {
+        $this->deliveryDate = $deliveryDate;
+    }
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $deliveryDate;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $tariff;
+
+    /**
+     * @return mixed
+     */
+    public function getTariff()
+    {
+        return $this->tariff;
+    }
+
+    /**
+     * @param mixed $tariff
+     */
+    public function setTariff($tariff)
+    {
+        $this->tariff = $tariff;
+    }
+
 //    /**
 //     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="contacts")
 //     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")

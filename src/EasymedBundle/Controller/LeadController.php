@@ -173,14 +173,18 @@ class LeadController extends Controller
     public function leadCaptureFormPhoneAction(Request $request)
     {
         if ($request->getMethod() == 'POST') {
-            $form = $request->request->all();
 
             $lead = new Lead();
             if ($request->get('phone')) {
 
-                $lead->setLastName($request->get('name', 'healthyfood'));
-                $lead->setEmail($request->get('email', 'info@healthmarketing.me'));
+                $lead->setFirstName($request->get('name'));
+                $lead->setLastName($request->get('surname'));
+                $lead->setAddress($request->get('address'));
+                $lead->setBuilding($request->get('building'));
+                $lead->setEmail($request->get('email'));
                 $lead->setMobilePhone($request->get('phone'));
+                $lead->setTariff($request->get('tariff'));
+                $lead->setDeliveryDate($request->get('delivery_date'));
 
                 $user = $this->getDoctrine()
                     ->getRepository('ApplicationSonataUserBundle:User')
