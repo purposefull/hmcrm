@@ -127,7 +127,7 @@ class LeadController extends Controller
      */
     public function leadCaptureFormAction(Request $request)
     {
-        if ($request->getMethod() == 'POST') {
+        if ($request->getMethod() == 'POST' || $request->getMethod() == 'GET') {
             $form = $request->request->all();
 
             $lead = new Lead();
