@@ -7,9 +7,9 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 # System Requirements
 
-1) php 5.6 (7.x is better choice)
+1) PHP 7.0.x
 
-2) PostgreSQL 9.3 or MySQL 5.6
+2) PostgreSQL 9.3 or MySQL 5.7
 
 3) Composer - https://getcomposer.org/
 
