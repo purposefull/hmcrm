@@ -73,7 +73,7 @@ class Person extends ContactBase
     protected $prospectStatus;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="persons")
+     * @ORM\ManyToOne(targetEntity="EasymedBundle\Entity\User", inversedBy="persons")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;

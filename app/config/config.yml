@@ -54,7 +54,8 @@ assetic:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   pdo_pgsql
+#        driver:   pdo_pgsql
+        driver:   pdo_mysql
         host:     "%database_host%"
         port:     "%database_port%"
         dbname:   "%database_name%"
@@ -67,8 +68,8 @@ doctrine:
         #   2. Uncomment database_path in parameters.yml.dist
         #   3. Uncomment next line:
         #     path:     "%database_path%"
-        types:
-            json: Sonata\Doctrine\Types\JsonType
+#        types:
+#            json: Sonata\Doctrine\Types\JsonType
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
@@ -83,19 +84,19 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-sonata_user:
-    security_acl: true
-    manager_type: orm # can be orm or mongodb
+#sonata_user:
+#    security_acl: true
+#    manager_type: orm # can be orm or mongodb
 
-sonata_block:
-    default_contexts: [cms]
-    blocks:
-        sonata.admin.block.admin_list:
-            contexts:   [admin]
-        sonata.user.block.menu:    # used to display the menu in profile pages
-        sonata.user.block.account: # used to display menu option (login option)
-        sonata.block.service.text:
-        sonata.block.service.rss:
+#sonata_block:
+#    default_contexts: [cms]
+#    blocks:
+#        sonata.admin.block.admin_list:
+#            contexts:   [admin]
+#        sonata.user.block.menu:    # used to display the menu in profile pages
+#        sonata.user.block.account: # used to display menu option (login option)
+#        sonata.block.service.text:
+#        sonata.block.service.rss:
 
 # app/config/security.yml
 security:
@@ -110,15 +111,15 @@ security:
 fos_user:
     db_driver:      orm # can be orm or odm
     firewall_name:  main
-    user_class:     Application\Sonata\UserBundle\Entity\User
+    user_class:     EasymedBundle\Entity\User
 
 
-    group:
-        group_class:   Application\Sonata\UserBundle\Entity\Group
-        group_manager: sonata.user.orm.group_manager                    # If you're using doctrine orm (use sonata.user.mongodb.user_manager for mongodb)
-
-    service:
-        user_manager: sonata.user.orm.user_manager                      # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
+#    group:
+#        group_class:   Application\Sonata\UserBundle\Entity\Group
+#        group_manager: sonata.user.orm.group_manager                    # If you're using doctrine orm (use sonata.user.mongodb.user_manager for mongodb)
+#
+#    service:
+#        user_manager: sonata.user.orm.user_manager                      # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
 knp_menu:
     twig:
         template: EasymedBundle:Menu:main.html.twig

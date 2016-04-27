@@ -82,7 +82,7 @@ class Deal extends Base
     protected $tags;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="deals")
+     * @ORM\ManyToOne(targetEntity="EasymedBundle\Entity\User", inversedBy="deals")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;

@@ -136,13 +136,13 @@ class Lead extends ContactBase
     }
 
 //    /**
-//     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="contacts")
+//     * @ORM\ManyToOne(targetEntity="EasymedBundle\Entity\User", inversedBy="contacts")
 //     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
 //     */
 //    protected $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="leads")
+     * @ORM\ManyToOne(targetEntity="EasymedBundle\Entity\User", inversedBy="leads")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;

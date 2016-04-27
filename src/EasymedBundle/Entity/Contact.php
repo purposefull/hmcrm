@@ -42,7 +42,7 @@ class Contact extends Base
     protected $deals;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="contacts")
+     * @ORM\ManyToOne(targetEntity="EasymedBundle\Entity\User", inversedBy="contacts")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;

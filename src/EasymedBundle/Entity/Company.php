@@ -52,7 +52,7 @@ class Company extends ContactBase
     protected $prospectStatus;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="companies")
+     * @ORM\ManyToOne(targetEntity="EasymedBundle\Entity\User", inversedBy="companies")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
