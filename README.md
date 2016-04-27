@@ -19,15 +19,15 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 2) composer install
 
-3) php app/check.php
+3) php bin/symfony_requirements
 
-4) php app/console doctrine:database:create
+4) php bin/console doctrine:database:create
 
-5) php app/console doctrine:schema:update --force
+5) php bin/console doctrine:schema:update --force
 
-6) php app/console doctrine:fixtures:load
+6) php bin/console doctrine:fixtures:load
 
-7) php app/console server:start
+7) php bin/console server:start
 
 8) http://127.0.0.1:8000
 
