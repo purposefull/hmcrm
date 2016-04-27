@@ -2,6 +2,7 @@
 
 namespace EasymedBundle\Controller;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -281,7 +282,7 @@ class DealController extends Controller
                         'id' => $id,
                     ]))
                     ->setMethod('DELETE')
-                    ->add('submit', 'submit', [
+                    ->add('submit', SubmitType::class, [
                         'label' => 'Delete',
                     ])
                     ->getForm();

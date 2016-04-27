@@ -3,6 +3,7 @@
 namespace EasymedBundle\Controller;
 
 use Doctrine\ORM\EntityNotFoundException;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -387,7 +388,7 @@ class LeadController extends Controller
                         'id' => $id,
                     ]))
                     ->setMethod('DELETE')
-                    ->add('submit', 'submit', [
+                    ->add('submit', SubmitType::class, [
                         'label' => 'Delete',
                     ])
                     ->getForm();
