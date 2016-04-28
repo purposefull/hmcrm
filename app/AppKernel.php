@@ -13,28 +13,13 @@ class AppKernel extends Kernel
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
-
-            // These are the other bundles the SonataAdminBundle relies on
-//            new Sonata\CoreBundle\SonataCoreBundle(),
-//            new Sonata\BlockBundle\SonataBlockBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-
-            // And finally, the storage and SonataAdminBundle
-//            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
-//            new Sonata\AdminBundle\SonataAdminBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-//            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
-//            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new EasymedBundle\EasymedBundle(),
-//            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
-            new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
-//            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

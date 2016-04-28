@@ -1,7 +1,7 @@
 HealthMarketing CRM
 =======
 
-Almost Free and Open Source CRM for Small Business
+Open Source CRM for Small Business
 
 http://crm.healthmarketing.me - SaaS implementation.
 
@@ -13,7 +13,9 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 3) Composer - https://getcomposer.org/
 
-# Install [for Linux]
+4) Git
+
+# Install [Linux]
 
 1) git clone git@github.com:andreybolonin/hmcrm.git
 
@@ -31,16 +33,6 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 8) http://127.0.0.1:8000
 
-# Database [PostgreSQL]
-
-1) sudo apt-get install php7.0-postgresql
-
-2) sudo -u postgres psql postgres
-
-3) \password postgres
-
-4) Double type password for user postgres
-
 # Roadmap
 
 1) Import
@@ -49,11 +41,9 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 3) User ACL
 
-4) Func tests / Deploy
+4) Phone calls integration
 
-5) Phone calls integration
-
-6) Voice control
+5) Reports
 
 # Contributing
 
