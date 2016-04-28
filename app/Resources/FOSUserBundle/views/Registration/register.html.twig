@@ -26,7 +26,7 @@
             </div>
             <h3>Register to HealthMarkering CRM</h3>
             <p>Create account to see it in action.</p>
-            <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register m-t" role="form">
+            <form action="{{ path('fos_user_registration_register') }}" method="POST" class="fos_user_registration_register m-t" role="form">
                 <div class="form-group">
                     <p>{{ form_errors(form.username) }}</p>
                     {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder' : 'Name'}}) }}
