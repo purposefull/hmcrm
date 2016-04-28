@@ -144,7 +144,7 @@ class LeadController extends Controller
                 $lead->setDeliveryDate($request->get('delivery_date'));
 
                 $user = $this->getDoctrine()
-                    ->getRepository('ApplicationSonataUserBundle:User')
+                    ->getRepository('EasymedBundle:User')
                     ->find($request->get('userId'));
 
                 if ($user) {
@@ -191,7 +191,7 @@ class LeadController extends Controller
                 $lead->setDeliveryDate($request->get('delivery_date'));
 
                 $user = $this->getDoctrine()
-                    ->getRepository('ApplicationSonataUserBundle:User')
+                    ->getRepository('EasymedBundle:User')
                     ->find(7);
 
                 if ($user) {
