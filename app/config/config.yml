@@ -98,7 +98,7 @@ security:
 fos_user:
     db_driver:      orm # can be orm or odm
     firewall_name:  main
-    user_class:     EasymedBundle\Entity\User
+    user_class:     AppBundle\Entity\User
 
 
 #    group:
@@ -109,4 +109,4 @@ fos_user:
 #        user_manager: sonata.user.orm.user_manager                      # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
 knp_menu:
     twig:
-        template: EasymedBundle:Menu:main.html.twig
+        template: AppBundle:Menu:main.html.twig

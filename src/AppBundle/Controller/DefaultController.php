@@ -3,10 +3,7 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -55,7 +52,7 @@ class DefaultController extends Controller
      */
     public function registerAction(Request $request)
     {
-//        var_dump($request->get('name'));exit;
+        //        var_dump($request->get('name'));exit;
         $name = $request->get('name');
         $email = $request->get('email');
         $phone = $request->get('phone');
@@ -69,19 +66,19 @@ class DefaultController extends Controller
 
             // Define params
             $username = str_replace(array('@', '.'), '', $email);
-            $dbname = '' . $username;
-            $dir = $this->get('kernel')->getRootDir() . '/config';
-            $fileconfig = $dir . '/config_' . $username . '.yml';
+            $dbname = ''.$username;
+            $dir = $this->get('kernel')->getRootDir().'/config';
+            $fileconfig = $dir.'/config_'.$username.'.yml';
 
             // Create configs
-            $value = $yaml->parse(file_get_contents($dir . '/config_andreybolonin.yml'));
+            $value = $yaml->parse(file_get_contents($dir.'/config_andreybolonin.yml'));
             $value['parameters']['database_name'] = $dbname;
             $yaml = $dumper->dump($value);
             file_put_contents($fileconfig, $yaml);
 
             // Create database
             $pdo = $this->getDoctrine()->getConnection();
-            $query = 'CREATE DATABASE ' . $username;
+            $query = 'CREATE DATABASE '.$username;
             $pdo->exec($query);
 
 //            $process = new Process('cd .. && php app/console doctrine:database:create --connection=default --env='.$username, null, [$username]);
