@@ -10,8 +10,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 /**
  * IntegrationController class.
  *
- * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
- *
  * @Route("integration")
  */
 class IntegrationController extends Controller

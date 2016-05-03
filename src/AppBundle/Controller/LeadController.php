@@ -22,7 +22,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 /**
  * Lead controller.
  *
- *
  * @Route("/lead")
  */
 class LeadController extends Controller

@@ -19,8 +19,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Deal controller.
  *
- * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
- *
  * @Route("/deal")
  */
 class DealController extends Controller

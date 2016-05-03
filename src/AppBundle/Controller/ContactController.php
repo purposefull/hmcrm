@@ -18,8 +18,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Contact controller.
  *
- * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
- *
  * @Route("/contact")
  */
 class ContactController extends Controller

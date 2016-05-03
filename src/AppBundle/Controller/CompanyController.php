@@ -19,8 +19,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Company controller.
  *
- * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
- *
  * @Route("/company")
  */
 class CompanyController extends Controller

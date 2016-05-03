@@ -19,8 +19,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Person controller.
  *
- * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
- *
  * @Route("/person")
  */
 class PersonController extends Controller
