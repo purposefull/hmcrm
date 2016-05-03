@@ -45,7 +45,7 @@ class Builder implements ContainerAwareInterface
         // Add Menu items that are available for user
         $menu->addChild('menu.lead', [
             'route' => 'lead',
-        ])->setAttribute('icon', 'fa fa-users')->setAttribute('icon', 'fa fa-users');
+        ])->setAttribute('icon', 'fa fa-users');
 
         $menu->addChild('menu.contacts', [
             'route' => 'contact_list',
