@@ -1,7 +1,7 @@
 HealthMarketing CRM
 =======
 
-Open Source CRM for Small Business
+All-in-One Sales Platform for Small Business
 
 http://crm.healthmarketing.me - SaaS implementation.
 
@@ -15,7 +15,7 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 4) Git
 
-# Install [Linux]
+# Installation
 
 1) git clone git@github.com:andreybolonin/hmcrm.git
 
