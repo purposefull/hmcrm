@@ -16,6 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use AppBundle\Entity\Lead;
 use AppBundle\Form\LeadType;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
@@ -138,6 +139,7 @@ class LeadController extends Controller
                 $lead->setBuilding($request->get('building'));
                 $lead->setEmail($request->get('email'));
                 $lead->setMobilePhone($request->get('phone'));
+                //city and country
                 $lead->setTariff($request->get('tariff'));
                 $lead->setDeliveryDate($request->get('delivery_date'));
 
@@ -156,7 +158,11 @@ class LeadController extends Controller
                 $em->flush();
 
                 if ($request->get('redirectUrl')) {
-                    return $this->redirect($request->get('redirectUrl'));
+                    return new RedirectResponse($request->get('redirectUrl'), 302, [
+                        'order_id' => $lead->getId(),
+                        'name' => $request->get('name'),
+                        'surname' => $request->get('surname'),
+                    ]);
                 } else {
                     return new JsonResponse(true);
                 }

@@ -13,3 +13,4 @@
 *.php~
 /var/cache/*
 /var/logs/*
+/JavaApplication1/nbproject/private/
