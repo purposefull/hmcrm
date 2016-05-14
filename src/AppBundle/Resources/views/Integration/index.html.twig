@@ -1,5 +1,19 @@
 {% extends '::dashboard.html.twig' %}
 
+{% block title %}
+    <div class="col-sm-4">
+        <h2>{{ 'contact.import'|trans }}</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">{{ 'home'|trans }}</a>
+            </li>
+            <li class="active">
+                <strong>{{ 'contact.import'|trans }}</strong>
+            </li>
+        </ol>
+    </div>
+{% endblock %}
+
 {% block body %}
    <h2>Services for integration</h2>
    <div>
