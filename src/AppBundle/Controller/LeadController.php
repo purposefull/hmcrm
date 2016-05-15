@@ -129,9 +129,10 @@ class LeadController extends Controller
     public function leadCaptureFormAction(Request $request)
     {
         if ($request->getMethod() == 'POST' || $request->getMethod() == 'GET') {
-            $form = $request->request->all();
+            // $form = $request->request->all();
 
             $lead = new Lead();
+
             if ($request->get('userId')) {
                 $lead->setFirstName($request->get('name'));
                 $lead->setLastName($request->get('surname'));
@@ -158,12 +159,25 @@ class LeadController extends Controller
                 $em->flush();
 
                 if ($request->get('redirectUrl')) {
-                    return new RedirectResponse($request->get('redirectUrl'), 302, [
+                    $variables = [
                         'order_id' => $lead->getId(),
                         'name' => $request->get('name'),
                         'surname' => $request->get('surname'),
-                    ]);
+                        'email' => $request->get('surname'),
+                        'phone' => $request->get('phone'),
+                        'city' => $request->get('city'),
+                        'country' => $request->get('country'),
+                        'amount' => $request->get('amount')
+                    ];
+                    header('Location: '.$request->get('redirectUrl').'?'.http_build_query($variables));
+                    exit;
+                    /*return new RedirectResponse('/lead/test', 302, [
+                        'order_id' => $lead->getId(),
+                        'name' => $request->get('name'),
+                        'surname' => $request->get('surname'),
+                    ]);*/
                 } else {
+                    var_dump(12312312);exit;
                     return new JsonResponse(true);
                 }
             }
