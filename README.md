@@ -31,7 +31,7 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 7) php bin/console server:start
 
-8) http://127.0.0.1:8000
+8) http://127.0.0.1:8001
 
 # Roadmap
 
