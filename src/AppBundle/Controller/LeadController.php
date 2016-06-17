@@ -169,9 +169,9 @@ class LeadController extends Controller
 //                        'country' => $request->get('country'),
 //                        'amount' => $request->get('amount')
 //                    ];
-                    return new RedirectResponse('healthmarketing.me/thx');
+                    return new RedirectResponse('http://healthmarketing.me/thx/');
 //                    header('Location: '.$request->get('redirectUrl').'?'.http_build_query($variables));
-                    exit;
+//                    exit;
                     /*return new RedirectResponse('/lead/test', 302, [
                         'order_id' => $lead->getId(),
                         'name' => $request->get('name'),
