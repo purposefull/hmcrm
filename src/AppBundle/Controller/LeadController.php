@@ -135,14 +135,14 @@ class LeadController extends Controller
 
             if ($request->get('userId')) {
                 $lead->setFirstName($request->get('name'));
-                $lead->setLastName($request->get('surname'));
-                $lead->setAddress($request->get('address'));
-                $lead->setBuilding($request->get('building'));
+//                $lead->setLastName($request->get('surname'));
+//                $lead->setAddress($request->get('address'));
+//                $lead->setBuilding($request->get('building'));
                 $lead->setEmail($request->get('email'));
-                $lead->setMobilePhone($request->get('phone'));
+                $lead->setMobilePhone($request->get('phone1').$request->get('phone2').$request->get('phone3'));
                 //city and country
-                $lead->setTariff($request->get('tariff'));
-                $lead->setDeliveryDate($request->get('delivery_date'));
+//                $lead->setTariff($request->get('tariff'));
+//                $lead->setDeliveryDate($request->get('delivery_date'));
 
                 $user = $this->getDoctrine()
                     ->getRepository('AppBundle:User')
@@ -159,17 +159,18 @@ class LeadController extends Controller
                 $em->flush();
 
                 if ($request->get('redirectUrl')) {
-                    $variables = [
-                        'order_id' => $lead->getId(),
-                        'name' => $request->get('name'),
-                        'surname' => $request->get('surname'),
-                        'email' => $request->get('surname'),
-                        'phone' => $request->get('phone'),
-                        'city' => $request->get('city'),
-                        'country' => $request->get('country'),
-                        'amount' => $request->get('amount')
-                    ];
-                    header('Location: '.$request->get('redirectUrl').'?'.http_build_query($variables));
+//                    $variables = [
+//                        'order_id' => $lead->getId(),
+//                        'name' => $request->get('name'),
+////                        'surname' => $request->get('surname'),
+//                        'email' => $request->get('surname'),
+//                        'phone' => $request->get('phone1').$request->get('phone1').$request->get('phone2'),
+//                        'city' => $request->get('city'),
+//                        'country' => $request->get('country'),
+//                        'amount' => $request->get('amount')
+//                    ];
+                    return new RedirectResponse('healthmarketing.me/thx');
+//                    header('Location: '.$request->get('redirectUrl').'?'.http_build_query($variables));
                     exit;
                     /*return new RedirectResponse('/lead/test', 302, [
                         'order_id' => $lead->getId(),
@@ -177,7 +178,6 @@ class LeadController extends Controller
                         'surname' => $request->get('surname'),
                     ]);*/
                 } else {
-                    var_dump(12312312);exit;
                     return new JsonResponse(true);
                 }
             }
