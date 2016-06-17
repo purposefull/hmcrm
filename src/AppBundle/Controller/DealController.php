@@ -135,6 +135,8 @@ class DealController extends Controller
      */
     public function showAction(Deal $deal)
     {
+
+        
         $deleteForm = $this->createDeleteForm($deal->getId());
 
         if ($this->getUser() !== $deal->getUser()) {
