@@ -50,3 +50,13 @@ http://crm.healthmarketing.me - SaaS implementation.
 1) Project standards - https://github.com/FriendsOfPHP/PHP-CS-Fixer
 
 2) Fork the repo and open Pull Requests on an opened issues
+
+# Database [PostgreSQL]
+
+1) sudo apt-get install php7.0-postgresql
+
+2) sudo -u postgres psql postgres
+
+3) \password postgres
+
+4) Double type password for user postgres
