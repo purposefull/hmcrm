@@ -17,18 +17,18 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Deal controller.
+ * Event controller.
  *
- * @Route("/deal")
+ * @Route("/event")
  */
-class DealController extends Controller
+class EventController extends Controller
 {
     /**
-     * Lists all Deal entities.
+     * Lists all Event entities.
      *
      * @return Response
      *
-     * @Route("/", name="deal")
+     * @Route("/", name="event")
      * @Method("GET")
      * @Template()
      */
@@ -45,13 +45,13 @@ class DealController extends Controller
     }
 
     /**
-     * Creates a new Deal entity.
+     * Creates a new Event entity.
      *
      * @param Deal $deal Deal
      *
      * @return RedirectResponse|Response
      *
-     * @Route("/", name="deal_create")
+     * @Route("/", name="event_create")
      * @Method("POST")
      * @Template("AppBundle:Deal:new.html.twig")
      */
@@ -104,7 +104,7 @@ class DealController extends Controller
      *
      * @return Response
      *
-     * @Route("/new", name="deal_new")
+     * @Route("/new", name="event_new")
      * @Method("GET")
      * @Template()
      */
@@ -128,7 +128,7 @@ class DealController extends Controller
      *
      * @return Response
      *
-     * @Route("/{id}", name="deal_show")
+     * @Route("/{id}", name="event_show")
      * @Method("GET")
      * @ParamConverter("deal", class="AppBundle:Deal")
      * @Template()
@@ -156,7 +156,7 @@ class DealController extends Controller
      *
      * @return Response
      *
-     * @Route("/{id}/edit", name="deal_edit")
+     * @Route("/{id}/edit", name="event_edit")
      * @Method("GET")
      * @ParamConverter("deal", class="AppBundle:Deal")
      * @Template()
@@ -209,7 +209,7 @@ class DealController extends Controller
      *
      * @return RedirectResponse|Response
      *
-     * @Route("/{id}", name="deal_update")
+     * @Route("/{id}", name="event_update")
      * @Method("PUT")
      * @ParamConverter("deal", class="AppBundle:Deal")
      * @Template("AppBundle:Deal:edit.html.twig")
@@ -276,13 +276,13 @@ class DealController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-                    ->setAction($this->generateUrl('deal_delete', [
-                        'id' => $id,
-                    ]))
-                    ->setMethod('DELETE')
-                    ->add('submit', SubmitType::class, [
-                        'label' => 'Delete',
-                    ])
-                    ->getForm();
+            ->setAction($this->generateUrl('deal_delete', [
+                'id' => $id,
+            ]))
+            ->setMethod('DELETE')
+            ->add('submit', SubmitType::class, [
+                'label' => 'Delete',
+            ])
+            ->getForm();
     }
 }
