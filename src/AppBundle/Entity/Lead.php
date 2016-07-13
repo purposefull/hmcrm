@@ -78,6 +78,27 @@ class Lead extends ContactBase
     protected $building;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $event;
+
+    /**
+     * @return mixed
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
+
+    /**
+     * @param mixed $event
+     */
+    public function setEvent($event)
+    {
+        $this->event = $event;
+    }
+
+    /**
      * @return mixed
      */
     public function getBuilding()

@@ -139,6 +139,7 @@ class LeadController extends Controller
 //                $lead->setAddress($request->get('address'));
 //                $lead->setBuilding($request->get('building'));
                 $lead->setEmail($request->get('email'));
+                $lead->setEvent($request->get('event'));
                 $lead->setMobilePhone($request->get('phone1').$request->get('phone2').$request->get('phone3'));
                 //city and country
 //                $lead->setTariff($request->get('tariff'));
