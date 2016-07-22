@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use MailerLiteApi\MailerLite;
 
 /**
  * Lead controller.
@@ -158,6 +159,21 @@ class LeadController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($lead);
                 $em->flush();
+
+                // MailerLite adding subscriber
+                $mailerLite = new \MailerLiteApi\MailerLite("d4d847245983c24a7400a97546d12b40");
+                $groupsApi = $mailerLite->groups();
+
+                $subscriber = [
+                    'email' => $request->get('email'),
+                    'fields' => [
+                        'name' => $request->get('name'),
+                    ]
+                ];
+
+                // Fixed hardcode GROUP_ID
+                $response = $groupsApi->addSubscriber('4284365', $subscriber); // Change GROUP_ID with ID of group you want to add subscriber to
+
 
                 if ($request->get('redirectUrl')) {
 //                    $variables = [

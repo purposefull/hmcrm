@@ -24,7 +24,8 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "doctrine/doctrine-fixtures-bundle": "^2.2",
         "knplabs/knp-menu-bundle": "^2.0",
-        "symfony/security-acl": "^3.0"
+        "symfony/security-acl": "^3.0",
+        "mailerlite/mailerlite-api-v2-php-sdk": "^0.1.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
