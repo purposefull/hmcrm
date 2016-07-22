@@ -7,7 +7,7 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 # System Requirements
 
-1) PHP 7.0.x
+1) PHP 7.x
 
 2) PostgreSQL 9.3 or MySQL 5.7
 
@@ -39,7 +39,7 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 2) Tasks integration
 
-3) User ACL
+3) Email intregration
 
 4) Phone calls integration
 
