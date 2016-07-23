@@ -60,3 +60,11 @@ http://crm.healthmarketing.me - SaaS implementation.
 3) \password postgres
 
 4) Double type password for user postgres
+
+# Database [MySQL]
+
+1) apt-get install mysql
+
+2) 213
+
+3) 213
