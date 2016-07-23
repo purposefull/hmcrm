@@ -65,6 +65,6 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 1) apt-get install mysql
 
-2) 213
+2)
 
-3) 213
+3)
