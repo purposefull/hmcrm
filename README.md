@@ -39,7 +39,7 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 2) Tasks integration (Wunderlist, Todoist, Asana, Trello)
 
-3) Email intregration (MailerLite, GetResponse)
+3) Email intregration (MailerLite, GetResponse, MailChimp, Aweber)
 
 4) Phone calls integration
 
