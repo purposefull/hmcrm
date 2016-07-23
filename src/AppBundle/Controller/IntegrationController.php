@@ -19,10 +19,25 @@ class IntegrationController extends Controller
      *
      * @return Response
      *
-     * @Route("/", name="integration_index")
+     * @Route("/", name="tasks")
      * @Template()
      */
     public function indexAction()
+    {
+        return [
+            'state' => md5(str_shuffle('abcdefghijklmnopqr')),
+        ];
+    }
+
+    /**
+     * Returns list of integration services.
+     *
+     * @return Response
+     *
+     * @Route("/", name="email")
+     * @Template()
+     */
+    public function emailAction()
     {
         return [
             'state' => md5(str_shuffle('abcdefghijklmnopqr')),

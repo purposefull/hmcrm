@@ -4,9 +4,170 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9dc45458a5c99ea6edfabd7de4ff9f96",
-    "content-hash": "b5ecb994c98dbd6b038c0cec1b81aca7",
+    "hash": "f182a10d5417b2c468a9cf60b70b17f3",
+    "content-hash": "7d39df2e3130b1a9d7323d6b2faa1cd0",
     "packages": [
+        {
+            "name": "adoy/oauth2",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adoy/PHP-OAuth2.git",
+                "reference": "617d8605955cbb0ca929358fda74eab308c39cfa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adoy/PHP-OAuth2/zipball/617d8605955cbb0ca929358fda74eab308c39cfa",
+                "reference": "617d8605955cbb0ca929358fda74eab308c39cfa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "OAuth2": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Berejeb Anis",
+                    "email": "anis.berejeb@gmail.com"
+                },
+                {
+                    "name": "Charron Pierrick",
+                    "email": "pierrick@webstart.fr"
+                }
+            ],
+            "description": "Light PHP wrapper for the OAuth 2.0 protocol (based on OAuth 2.0 Authorization Protocol draft-ietf-oauth-v2-15)",
+            "time": "2015-08-03 19:57:06"
+        },
+        {
+            "name": "asana/asana",
+            "version": "v0.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Asana/php-asana.git",
+                "reference": "fb058b834a7f52e8dd77e7e81f6099fcb2c6e77c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Asana/php-asana/zipball/fb058b834a7f52e8dd77e7e81f6099fcb2c6e77c",
+                "reference": "fb058b834a7f52e8dd77e7e81f6099fcb2c6e77c",
+                "shasum": ""
+            },
+            "require": {
+                "adoy/oauth2": "^1.2.0",
+                "nategood/httpful": "~0.2",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "instaclick/php-code-sniffer": "dev-master",
+                "phpunit/phpunit": "4.5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Asana\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A PHP client for the Asana API",
+            "homepage": "https://github.com/Asana/php-asana",
+            "keywords": [
+                "asana",
+                "client"
+            ],
+            "time": "2016-03-04 01:49:29"
+        },
+        {
+            "name": "aweber/aweber",
+            "version": "v1.1.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aweber/AWeber-API-PHP-Library.git",
+                "reference": "509abd47ae05f760239f2f5d12eef7ba330b111a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aweber/AWeber-API-PHP-Library/zipball/509abd47ae05f760239f2f5d12eef7ba330b111a",
+                "reference": "509abd47ae05f760239f2f5d12eef7ba330b111a",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "": "aweber_api/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "description": "The official AWeber API client library.",
+            "homepage": "https://www.aweber.com",
+            "keywords": [
+                "api",
+                "client",
+                "email"
+            ],
+            "time": "2015-02-19 18:16:21"
+        },
+        {
+            "name": "cdaguerre/php-trello-api",
+            "version": "0.9.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cdaguerre/php-trello-api.git",
+                "reference": "b1205d9ac9b24df03c2db5aa9a8c7418d28c0b78"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cdaguerre/php-trello-api/zipball/b1205d9ac9b24df03c2db5aa9a8c7418d28c0b78",
+                "reference": "b1205d9ac9b24df03c2db5aa9a8c7418d28c0b78",
+                "shasum": ""
+            },
+            "require": {
+                "guzzle/guzzle": "~3.7",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=4.1"
+            },
+            "suggest": {
+                "symfony/http-foundation": "Needed for the Trello webhook service"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Trello\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Daguerre",
+                    "email": "christian@daguer.re"
+                }
+            ],
+            "description": "Trello API v1 client",
+            "homepage": "https://github.com/cdaguerre/php-trello-api",
+            "keywords": [
+                "trello"
+            ],
+            "time": "2015-06-16 14:25:56"
+        },
         {
             "name": "clue/stream-filter",
             "version": "v1.3.0",
@@ -1009,6 +1170,146 @@
             "time": "2016-07-19 12:01:22"
         },
         {
+            "name": "getresponse/getresponse",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GetResponse/getresponse-api-php.git",
+                "reference": "a33b1081eeb7c0937e46383344068a2a6e847ce5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GetResponse/getresponse-api-php/zipball/a33b1081eeb7c0937e46383344068a2a6e847ce5",
+                "reference": "a33b1081eeb7c0937e46383344068a2a6e847ce5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/GetResponseAPI3.class.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pawel Maslak",
+                    "email": "pawel.maslak@getresponse.com"
+                },
+                {
+                    "name": "Grzegorz Struczynski",
+                    "email": "grzegorz.struczynski@getresponse.com"
+                }
+            ],
+            "description": "GetResponse API v3 client library.",
+            "homepage": "https://github.com/GetResponse/getresponse-api-php",
+            "keywords": [
+                "api",
+                "email",
+                "getresponse"
+            ],
+            "time": "2015-11-25 12:38:33"
+        },
+        {
+            "name": "guzzle/guzzle",
+            "version": "v3.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle.git",
+                "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/4de0618a01b34aa1c8c33a3f13f396dcd3882eba",
+                "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.3",
+                "symfony/event-dispatcher": ">=2.1"
+            },
+            "replace": {
+                "guzzle/batch": "self.version",
+                "guzzle/cache": "self.version",
+                "guzzle/common": "self.version",
+                "guzzle/http": "self.version",
+                "guzzle/inflection": "self.version",
+                "guzzle/iterator": "self.version",
+                "guzzle/log": "self.version",
+                "guzzle/parser": "self.version",
+                "guzzle/plugin": "self.version",
+                "guzzle/plugin-async": "self.version",
+                "guzzle/plugin-backoff": "self.version",
+                "guzzle/plugin-cache": "self.version",
+                "guzzle/plugin-cookie": "self.version",
+                "guzzle/plugin-curlauth": "self.version",
+                "guzzle/plugin-error-response": "self.version",
+                "guzzle/plugin-history": "self.version",
+                "guzzle/plugin-log": "self.version",
+                "guzzle/plugin-md5": "self.version",
+                "guzzle/plugin-mock": "self.version",
+                "guzzle/plugin-oauth": "self.version",
+                "guzzle/service": "self.version",
+                "guzzle/stream": "self.version"
+            },
+            "require-dev": {
+                "doctrine/cache": "*",
+                "monolog/monolog": "1.*",
+                "phpunit/phpunit": "3.7.*",
+                "psr/log": "1.0.*",
+                "symfony/class-loader": "*",
+                "zendframework/zend-cache": "<2.3",
+                "zendframework/zend-log": "<2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Guzzle": "src/",
+                    "Guzzle\\Tests": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Guzzle Community",
+                    "homepage": "https://github.com/guzzle/guzzle/contributors"
+                }
+            ],
+            "description": "Guzzle is a PHP HTTP client library and framework for building RESTful web service clients",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http client",
+                "rest",
+                "web service"
+            ],
+            "abandoned": "guzzlehttp/guzzle",
+            "time": "2014-01-28 22:29:15"
+        },
+        {
             "name": "guzzlehttp/psr7",
             "version": "1.3.1",
             "source": {
@@ -1168,6 +1469,53 @@
             "time": "2014-01-12 16:20:24"
         },
         {
+            "name": "jeroendesloovere/wunderlist-php-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jeroendesloovere/wunderlist-php-api.git",
+                "reference": "719876a7eb9d0ce339a4d855c17f22b33580ceb2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jeroendesloovere/wunderlist-php-api/zipball/719876a7eb9d0ce339a4d855c17f22b33580ceb2",
+                "reference": "719876a7eb9d0ce339a4d855c17f22b33580ceb2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "JeroenDesloovere\\Wunderlist\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeroen Desloovere",
+                    "email": "info@jeroendesloovere.be",
+                    "homepage": "http://jeroendesloovere.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This Wunderlist PHP class connects to Wunderlist API.",
+            "homepage": "https://github.com/jeroendesloovere/wunderlist-php-api",
+            "keywords": [
+                "Tasks",
+                "api",
+                "php",
+                "reminders",
+                "to-do",
+                "wunderlist"
+            ],
+            "time": "2014-06-10 08:20:31"
+        },
+        {
             "name": "knplabs/knp-menu",
             "version": "v2.1.1",
             "source": {
@@ -1291,6 +1639,52 @@
             "time": "2016-06-21 06:53:03"
         },
         {
+            "name": "mailchimp/mailchimp",
+            "version": "2.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/mailchimp/mailchimp-api-php.git",
+                "reference": "7ac99b5ac746d5875c5c350ad7e3b83674c83ec1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/mailchimp/mailchimp-api-php/get/7ac99b5ac746d5875c5c350ad7e3b83674c83ec1.zip",
+                "reference": "7ac99b5ac746d5875c5c350ad7e3b83674c83ec1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "require-dev": {
+                "apigen/apigen": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Mailchimp": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MailChimp Devs",
+                    "email": "api@mailchimp.com",
+                    "homepage": "http://mailchimp.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "API client library for the MailChimp bulk email as a service platform",
+            "homepage": "https://bitbucket.org/mailchimp/mailchimp-api-php",
+            "keywords": [
+                "api",
+                "email"
+            ],
+            "time": "2014-10-30 20:38:12"
+        },
+        {
             "name": "mailerlite/mailerlite-api-v2-php-sdk",
             "version": "0.1.5",
             "source": {
@@ -1335,6 +1729,49 @@
                 "sdk"
             ],
             "time": "2016-07-03 13:44:03"
+        },
+        {
+            "name": "minneola/todoist",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Minneola/php-todoist.git",
+                "reference": "c0ca7b43d173d389d3e8bf459d0a4029522857ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Minneola/php-todoist/zipball/c0ca7b43d173d389d3e8bf459d0a4029522857ff",
+                "reference": "c0ca7b43d173d389d3e8bf459d0a4029522857ff",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Minneola\\Todoist\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Maxham",
+                    "email": "git2015@maxham.de"
+                }
+            ],
+            "description": "A PHP package to use the todoist.com API.",
+            "homepage": "http://maxham.de",
+            "keywords": [
+                "kraut",
+                "maxham",
+                "minneola",
+                "todoist"
+            ],
+            "time": "2015-08-22 14:27:25"
         },
         {
             "name": "monolog/monolog",
@@ -1413,6 +1850,56 @@
                 "psr-3"
             ],
             "time": "2016-07-02 14:02:10"
+        },
+        {
+            "name": "nategood/httpful",
+            "version": "0.2.20",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nategood/httpful.git",
+                "reference": "c1cd4d46a4b281229032cf39d4dd852f9887c0f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nategood/httpful/zipball/c1cd4d46a4b281229032cf39d4dd852f9887c0f6",
+                "reference": "c1cd4d46a4b281229032cf39d4dd852f9887c0f6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Httpful": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nate Good",
+                    "email": "me@nategood.com",
+                    "homepage": "http://nategood.com"
+                }
+            ],
+            "description": "A Readable, Chainable, REST friendly, PHP HTTP Client",
+            "homepage": "http://github.com/nategood/httpful",
+            "keywords": [
+                "api",
+                "curl",
+                "http",
+                "requests",
+                "rest",
+                "restful"
+            ],
+            "time": "2015-10-26 16:11:30"
         },
         {
             "name": "paragonie/random_compat",
@@ -2859,7 +3346,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "friendsofsymfony/user-bundle": 20
+        "friendsofsymfony/user-bundle": 20,
+        "minneola/todoist": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

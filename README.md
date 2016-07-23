@@ -37,9 +37,9 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 1) Import and Export
 
-2) Tasks integration
+2) Tasks integration (Wunderlist, Todoist, Asana, Trello)
 
-3) Email intregration
+3) Email intregration (MailerLite, GetResponse)
 
 4) Phone calls integration
 

@@ -25,7 +25,14 @@
         "doctrine/doctrine-fixtures-bundle": "^2.2",
         "knplabs/knp-menu-bundle": "^2.0",
         "symfony/security-acl": "^3.0",
-        "mailerlite/mailerlite-api-v2-php-sdk": "^0.1.5"
+        "mailerlite/mailerlite-api-v2-php-sdk": "^0.1.5",
+        "asana/asana": "^0.4.1",
+        "jeroendesloovere/wunderlist-php-api": "^1.0",
+        "cdaguerre/php-trello-api": "^0.9.3",
+        "getresponse/getresponse": "^0.0.2",
+        "mailchimp/mailchimp": "^2.0",
+        "minneola/todoist": "dev-master",
+        "aweber/aweber": "^1.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
