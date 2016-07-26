@@ -70,13 +70,13 @@ class Builder implements ContainerAwareInterface
             'route' => 'import',
         ])->setAttribute('icon', 'fa fa-user');
 
-        $menu->addChild('menu.tasks', [
-            'route' => 'integration_index',
-        ])->setAttribute('icon', 'fa fa-user');
+//        $menu->addChild('menu.tasks', [
+//            'route' => 'integration_index',
+//        ])->setAttribute('icon', 'fa fa-user');
 
-        $menu->addChild('menu.email', [
-            'route' => 'email_index',
-        ])->setAttribute('icon', 'fa fa-user');
+//        $menu->addChild('menu.email', [
+//            'route' => 'email_index',
+//        ])->setAttribute('icon', 'fa fa-user');
 
         //        $menu->addChild('menu.import', ['route' => 'deal'])->setAttribute('icon', 'fa fa-download');
         //        $menu->addChild('menu.export', ['route' => 'deal'])->setAttribute('icon', 'fa fa-upload');
