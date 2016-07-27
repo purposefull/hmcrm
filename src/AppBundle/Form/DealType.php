@@ -4,13 +4,14 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\Deal;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * DealType class.
  *
- * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  */
 class DealType extends AbstractType
 {
@@ -21,7 +22,7 @@ class DealType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text', [
+            ->add('name', TextType::class, [
                 'label' => 'name',
             ])
             ->add('contact', 'entity', [
@@ -29,20 +30,20 @@ class DealType extends AbstractType
                 'choice_label' => 'name',
                 'label' => 'contact.title',
             ])
-            ->add('stage', 'choice', [
+            ->add('stage', ChoiceType::class, [
                 'choices' => Deal::valuesOfStage(),
                 'label' => 'stage',
             ])
-            ->add('value', 'text', [
+            ->add('value', TextType::class, [
                 'label' => 'value',
             ])
-            ->add('currency', 'text', [
+            ->add('currency', TextType::class, [
                 'label' => 'currency',
             ])
-            ->add('source', 'text', [
+            ->add('source', TextType::class, [
                 'label' => 'source',
             ])
-            ->add('tags', 'text', [
+            ->add('tags', TextType::class, [
                 'label' => 'tags',
             ]);
 
