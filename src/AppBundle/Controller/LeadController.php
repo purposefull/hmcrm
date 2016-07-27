@@ -201,63 +201,6 @@ class LeadController extends Controller
         }
     }
 
-    /**
-     * @throws EntityNotFoundException
-     *
-     * @return RedirectResponse
-     *
-     * @Route("/lead_capture_form/{phone}", name="lead_capture_form_phone")
-     * @Template()
-     */
-    public function leadCaptureFormPhoneAction(Request $request)
-    {
-        if ($request->getMethod() == 'POST') {
-            $lead = new Lead();
-            if ($request->get('phone')) {
-                $lead->setFirstName($request->get('name'));
-                $lead->setLastName($request->get('surname'));
-                $lead->setAddress($request->get('address'));
-                $lead->setBuilding($request->get('building'));
-                $lead->setEmail($request->get('email'));
-                $lead->setMobilePhone($request->get('phone'));
-                $lead->setTariff($request->get('tariff'));
-                $lead->setDeliveryDate($request->get('delivery_date'));
-
-                $user = $this->getDoctrine()
-                    ->getRepository('AppBundle:User')
-                    ->find(7);
-
-                if ($user) {
-                    $lead->setUser($user);
-                } else {
-                    throw new EntityNotFoundException();
-                }
-
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($lead);
-                $em->flush();
-
-                return new JsonResponse(true);
-            }
-        }
-    }
-
-    /**
-     * @return RedirectResponse|Response
-     *
-     * @Route("/lead_capture_form_settings", name="lead_capture_form_settings")
-     * @Template()
-     */
-    public function leadCaptureFormSettingsAction()
-    {
-        $securityContext = $this->container->get('security.authorization_checker');
-
-        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return [];
-        } else {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-    }
 
     /**
      * Finds and displays a Lead entity.
