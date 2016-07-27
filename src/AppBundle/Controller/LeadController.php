@@ -83,23 +83,6 @@ class LeadController extends Controller
     }
 
     /**
-     * Creates a form to create a Lead entity.
-     *
-     * @param Lead $entity The entity
-     *
-     * @return Form The form
-     */
-    private function createCreateForm(Lead $entity)
-    {
-        $form = $this->createForm(new LeadType(), $entity, [
-            'action' => $this->generateUrl('lead_create'),
-            'method' => 'POST',
-        ]);
-
-        return $form;
-    }
-
-    /**
      * Displays a form to create a new Lead entity.
      *
      * @return Response
@@ -111,12 +94,37 @@ class LeadController extends Controller
     public function newAction()
     {
         $entity = new Lead();
-        $form = $this->createCreateForm($entity);
+
+        $form = $this->createForm(
+            LeadType::class,
+            $entity,
+            [
+                'action' => $this->generateUrl('lead_create'),
+                'method' => 'POST',
+            ]
+        );
 
         return [
             'entity' => $entity,
             'form' => $form->createView(),
         ];
+    }
+
+    /**
+     * Creates a form to create a Lead entity.
+     *
+     * @param Lead $entity The entity
+     *
+     * @return Form The form
+     */
+    private function createCreateForm(Lead $entity)
+    {
+        $form = $this->createForm(LeadType::class, $entity, [
+            'action' => $this->generateUrl('lead_create'),
+            'method' => 'POST',
+        ]);
+
+        return $form;
     }
 
     /**

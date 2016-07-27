@@ -4,6 +4,10 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\Lead;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -11,7 +15,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 /**
  * LeadType class.
  *
- * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  */
 class LeadType extends AbstractType
 {
@@ -25,49 +28,20 @@ class LeadType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => 'add',
             ])
-            ->add('firstName', 'text', [
+            ->add('firstName', TextType::class, [
                 'label' => 'firstname',
             ])
-            ->add('lastName', 'text', [
-                'label' => 'lastName',
-            ])
-            ->add('companyName', 'text', [
-                'label' => 'company.title',
-            ])
-            ->add('title', 'text', [
-                'label' => 'title',
-            ])
-            ->add('leadStatus', 'choice', [
+            ->add('leadStatus', ChoiceType::class, [
                 'choices' => Lead::valuesOfStatus(),
                 'label' => 'lead.status',
             ])
-            ->add('email', 'text', [
+            ->add('email', EmailType::class, [
                 'label' => 'email',
             ])
-            ->add('mobilePhone', 'text', [
+            ->add('mobilePhone', NumberType::class, [
                 'label' => 'mobilephone',
             ])
-            ->add('workPhone', 'text', [
-                'label' => 'workphone',
-            ])
-            ->add('address', 'text', [
-                'label' => 'address',
-            ])
-            ->add('city', 'text', [
-                'label' => 'city',
-            ])
-            ->add('zipCode', 'text', [
-                'label' => 'zipcode',
-            ])
-            ->add('region', 'text', [
-                'label' => 'region',
-            ])
-            ->add('country', 'text', [
-                'label' => 'country',
-            ])
-            ->add('tags', 'text', [
-                'label' => 'tags',
-            ]);
+        ;
 
         $builder->setRequired(false);
     }

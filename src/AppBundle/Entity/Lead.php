@@ -31,8 +31,6 @@ class Lead extends ContactBase
     /**
      * @var string
      *
-     * @Assert\NotBlank()
-     *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $lastName;
