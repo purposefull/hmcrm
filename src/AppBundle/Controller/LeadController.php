@@ -144,15 +144,9 @@ class LeadController extends Controller
 
             if ($request->get('userId')) {
                 $lead->setFirstName($request->get('name'));
-//                $lead->setLastName($request->get('surname'));
-//                $lead->setAddress($request->get('address'));
-//                $lead->setBuilding($request->get('building'));
                 $lead->setEmail($request->get('email'));
                 $lead->setEvent($request->get('event'));
                 $lead->setMobilePhone($request->get('phone1').$request->get('phone2').$request->get('phone3'));
-                //city and country
-//                $lead->setTariff($request->get('tariff'));
-//                $lead->setDeliveryDate($request->get('delivery_date'));
 
                 $user = $this->getDoctrine()
                     ->getRepository('AppBundle:User')
@@ -168,19 +162,19 @@ class LeadController extends Controller
                 $em->persist($lead);
                 $em->flush();
 
-                // MailerLite adding subscriber
-                $mailerLite = new \MailerLiteApi\MailerLite("d4d847245983c24a7400a97546d12b40");
-                $groupsApi = $mailerLite->groups();
-
-                $subscriber = [
-                    'email' => $request->get('email'),
-                    'fields' => [
-                        'name' => $request->get('name'),
-                    ]
-                ];
+//                // MailerLite adding subscriber
+//                $mailerLite = new \MailerLiteApi\MailerLite("d4d847245983c24a7400a97546d12b40");
+//                $groupsApi = $mailerLite->groups();
+//
+//                $subscriber = [
+//                    'email' => $request->get('email'),
+//                    'fields' => [
+//                        'name' => $request->get('name'),
+//                    ]
+//                ];
 
                 // Fixed hardcode GROUP_ID
-                $response = $groupsApi->addSubscriber('4284365', $subscriber); // Change GROUP_ID with ID of group you want to add subscriber to
+//                $response = $groupsApi->addSubscriber('4284365', $subscriber); // Change GROUP_ID with ID of group you want to add subscriber to
 
 
                 if ($request->get('redirectUrl')) {
