@@ -10,7 +10,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * CompanyType class.
  *
- * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  */
 class CompanyType extends AbstractType
 {
@@ -29,36 +28,36 @@ class CompanyType extends AbstractType
                 'label' => 'customerstatus',
             ])
             ->add('prospectStatus', 'choice', [
-        'choices' => Company::valuesOfProspectStatus(),
-        'label' => 'prospectstatus',
-    ])
-        ->add('email', 'email', [
-            'label' => 'Email',
-        ])
-        ->add('mobilePhone', 'text', [
-            'label' => 'mobilephone',
-        ])
-        ->add('workPhone', 'text', [
-            'label' => 'workphone',
-        ])
-        ->add('address', 'text', [
-            'label' => 'address',
-        ])
-        ->add('city', 'text', [
-            'label' => 'city',
-        ])
-        ->add('zipCode', 'text', [
-            'label' => 'zipcode',
-        ])
-        ->add('region', 'text', [
-            'label' => 'region',
-        ])
-        ->add('country', 'text', [
-            'label' => 'country',
-        ])
-        ->add('tags', 'text', [
-            'label' => 'tags',
-        ]);
+                'choices' => Company::valuesOfProspectStatus(),
+                'label' => 'prospectstatus',
+            ])
+            ->add('email', 'email', [
+                'label' => 'Email',
+            ])
+            ->add('mobilePhone', 'text', [
+                'label' => 'mobilephone',
+            ])
+            ->add('workPhone', 'text', [
+                'label' => 'workphone',
+            ])
+            ->add('address', 'text', [
+                'label' => 'address',
+            ])
+            ->add('city', 'text', [
+                'label' => 'city',
+            ])
+            ->add('zipCode', 'text', [
+                'label' => 'zipcode',
+            ])
+            ->add('region', 'text', [
+                'label' => 'region',
+            ])
+            ->add('country', 'text', [
+                'label' => 'country',
+            ])
+            ->add('tags', 'text', [
+                'label' => 'tags',
+            ]);
 
         $builder->setRequired(false);
     }

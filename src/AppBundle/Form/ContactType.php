@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
@@ -20,7 +21,7 @@ class ContactType extends AbstractType
             ->add('submit', 'submit', [
                 'label' => 'add',
             ])
-            ->add('type', 'choice', [
+            ->add('type', ChoiceType::class, [
                 'choices' => Contact::valueOfContactType(),
                 'label' => 'Type',
             ])

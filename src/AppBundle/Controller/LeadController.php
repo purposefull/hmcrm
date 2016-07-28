@@ -83,23 +83,6 @@ class LeadController extends Controller
     }
 
     /**
-     * Creates a form to create a Lead entity.
-     *
-     * @param Lead $entity The entity
-     *
-     * @return Form The form
-     */
-    private function createCreateForm(Lead $entity)
-    {
-        $form = $this->createForm(new LeadType(), $entity, [
-            'action' => $this->generateUrl('lead_create'),
-            'method' => 'POST',
-        ]);
-
-        return $form;
-    }
-
-    /**
      * Displays a form to create a new Lead entity.
      *
      * @return Response
@@ -111,12 +94,37 @@ class LeadController extends Controller
     public function newAction()
     {
         $entity = new Lead();
-        $form = $this->createCreateForm($entity);
+
+        $form = $this->createForm(
+            LeadType::class,
+            $entity,
+            [
+                'action' => $this->generateUrl('lead_create'),
+                'method' => 'POST',
+            ]
+        );
 
         return [
             'entity' => $entity,
             'form' => $form->createView(),
         ];
+    }
+
+    /**
+     * Creates a form to create a Lead entity.
+     *
+     * @param Lead $entity The entity
+     *
+     * @return Form The form
+     */
+    private function createCreateForm(Lead $entity)
+    {
+        $form = $this->createForm(LeadType::class, $entity, [
+            'action' => $this->generateUrl('lead_create'),
+            'method' => 'POST',
+        ]);
+
+        return $form;
     }
 
     /**
@@ -136,15 +144,9 @@ class LeadController extends Controller
 
             if ($request->get('userId')) {
                 $lead->setFirstName($request->get('name'));
-//                $lead->setLastName($request->get('surname'));
-//                $lead->setAddress($request->get('address'));
-//                $lead->setBuilding($request->get('building'));
                 $lead->setEmail($request->get('email'));
                 $lead->setEvent($request->get('event'));
                 $lead->setMobilePhone($request->get('phone1').$request->get('phone2').$request->get('phone3'));
-                //city and country
-//                $lead->setTariff($request->get('tariff'));
-//                $lead->setDeliveryDate($request->get('delivery_date'));
 
                 $user = $this->getDoctrine()
                     ->getRepository('AppBundle:User')
@@ -160,19 +162,19 @@ class LeadController extends Controller
                 $em->persist($lead);
                 $em->flush();
 
-                // MailerLite adding subscriber
-                $mailerLite = new \MailerLiteApi\MailerLite("d4d847245983c24a7400a97546d12b40");
-                $groupsApi = $mailerLite->groups();
-
-                $subscriber = [
-                    'email' => $request->get('email'),
-                    'fields' => [
-                        'name' => $request->get('name'),
-                    ]
-                ];
+//                // MailerLite adding subscriber
+//                $mailerLite = new \MailerLiteApi\MailerLite("d4d847245983c24a7400a97546d12b40");
+//                $groupsApi = $mailerLite->groups();
+//
+//                $subscriber = [
+//                    'email' => $request->get('email'),
+//                    'fields' => [
+//                        'name' => $request->get('name'),
+//                    ]
+//                ];
 
                 // Fixed hardcode GROUP_ID
-                $response = $groupsApi->addSubscriber('4284365', $subscriber); // Change GROUP_ID with ID of group you want to add subscriber to
+//                $response = $groupsApi->addSubscriber('4284365', $subscriber); // Change GROUP_ID with ID of group you want to add subscriber to
 
 
                 if ($request->get('redirectUrl')) {
@@ -201,63 +203,6 @@ class LeadController extends Controller
         }
     }
 
-    /**
-     * @throws EntityNotFoundException
-     *
-     * @return RedirectResponse
-     *
-     * @Route("/lead_capture_form/{phone}", name="lead_capture_form_phone")
-     * @Template()
-     */
-    public function leadCaptureFormPhoneAction(Request $request)
-    {
-        if ($request->getMethod() == 'POST') {
-            $lead = new Lead();
-            if ($request->get('phone')) {
-                $lead->setFirstName($request->get('name'));
-                $lead->setLastName($request->get('surname'));
-                $lead->setAddress($request->get('address'));
-                $lead->setBuilding($request->get('building'));
-                $lead->setEmail($request->get('email'));
-                $lead->setMobilePhone($request->get('phone'));
-                $lead->setTariff($request->get('tariff'));
-                $lead->setDeliveryDate($request->get('delivery_date'));
-
-                $user = $this->getDoctrine()
-                    ->getRepository('AppBundle:User')
-                    ->find(7);
-
-                if ($user) {
-                    $lead->setUser($user);
-                } else {
-                    throw new EntityNotFoundException();
-                }
-
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($lead);
-                $em->flush();
-
-                return new JsonResponse(true);
-            }
-        }
-    }
-
-    /**
-     * @return RedirectResponse|Response
-     *
-     * @Route("/lead_capture_form_settings", name="lead_capture_form_settings")
-     * @Template()
-     */
-    public function leadCaptureFormSettingsAction()
-    {
-        $securityContext = $this->container->get('security.authorization_checker');
-
-        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return [];
-        } else {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-    }
 
     /**
      * Finds and displays a Lead entity.
