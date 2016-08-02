@@ -9,7 +9,6 @@ use AppBundle\Entity\Company;
 /**
  * LoadCompanyData class.
  *
- * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  */
 class LoadCompanyData extends AbstractFixture
 {

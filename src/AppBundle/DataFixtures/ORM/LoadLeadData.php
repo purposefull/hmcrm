@@ -10,8 +10,6 @@ use AppBundle\Entity\User;
 
 /**
  * LoadLeadData class.
- *
- * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  */
 class LoadLeadData extends AbstractFixture implements DependentFixtureInterface
 {

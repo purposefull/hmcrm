@@ -18,12 +18,6 @@ class Contact extends Base
     const TYPE_COMPANY = 2;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Person", inversedBy="contacts")
-     * @ORM\JoinColumn(name="person_id", referencedColumnName="id")
-     */
-    protected $person;
-
-    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company", inversedBy="contacts")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
      */

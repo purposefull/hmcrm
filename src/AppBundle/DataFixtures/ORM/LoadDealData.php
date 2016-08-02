@@ -12,7 +12,6 @@ use AppBundle\Entity\User;
 /**
  * LoadDealData class.
  *
- * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  */
 class LoadDealData extends AbstractFixture implements DependentFixtureInterface
 {
@@ -23,7 +22,7 @@ class LoadDealData extends AbstractFixture implements DependentFixtureInterface
     {
         return [
             'AppBundle\DataFixtures\ORM\LoadUserData',
-            'AppBundle\DataFixtures\ORM\LoadPersonData',
+//            'AppBundle\DataFixtures\ORM\LoadPersonData',
             'AppBundle\DataFixtures\ORM\LoadCompanyData',
             'AppBundle\DataFixtures\ORM\LoadContactData',
         ];

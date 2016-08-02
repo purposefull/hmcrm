@@ -9,7 +9,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Company.
  *
- * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  *
  * @ORM\Table(name="company")
  * @ORM\Entity()

@@ -13,7 +13,6 @@ use AppBundle\Entity\User;
 /**
  * LoadContactData class.
  *
- * @author Yevgeniy Zholkevskiy <blackbullet@i.ua>
  */
 class LoadContactData extends AbstractFixture implements DependentFixtureInterface
 {
@@ -24,7 +23,7 @@ class LoadContactData extends AbstractFixture implements DependentFixtureInterfa
     {
         return [
             'AppBundle\DataFixtures\ORM\LoadUserData',
-            'AppBundle\DataFixtures\ORM\LoadPersonData',
+//            'AppBundle\DataFixtures\ORM\LoadPersonData',
             'AppBundle\DataFixtures\ORM\LoadCompanyData',
         ];
     }
@@ -40,9 +39,9 @@ class LoadContactData extends AbstractFixture implements DependentFixtureInterfa
         /** @var Person $person1 */
         /* @var Person $person2 */
         /* @var Person $person3 */
-        $person1 = $this->getReference('person-1');
-        $person2 = $this->getReference('person-2');
-        $person3 = $this->getReference('person-3');
+//        $person1 = $this->getReference('person-1');
+//        $person2 = $this->getReference('person-2');
+//        $person3 = $this->getReference('person-3');
 
         /** @var Company $company1 */
         /* @var Company $company2 */
@@ -53,7 +52,7 @@ class LoadContactData extends AbstractFixture implements DependentFixtureInterfa
 
         $contact1 = (new Contact())
             ->setCompany($company1)
-            ->setPerson($person1)
+//            ->setPerson($person1)
             ->setUser($userAdmin)
             ->setType(1);
         $this->setReference('contact-1', $contact1);
@@ -61,7 +60,7 @@ class LoadContactData extends AbstractFixture implements DependentFixtureInterfa
 
         $contact2 = (new Contact())
             ->setCompany($company2)
-            ->setPerson($person2)
+//            ->setPerson($person2)
             ->setUser($userAdmin)
             ->setType(2);
         $this->setReference('contact-2', $contact1);
@@ -69,7 +68,7 @@ class LoadContactData extends AbstractFixture implements DependentFixtureInterfa
 
         $contact3 = (new Contact())
             ->setCompany($company3)
-            ->setPerson($person3)
+//            ->setPerson($person3)
             ->setUser($userAdmin)
             ->setType(2);
         $this->setReference('contact-3', $contact1);
