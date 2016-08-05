@@ -174,8 +174,11 @@ class LeadController extends Controller
                 ];
 
                 // Fixed hardcode GROUP_ID
-                $response = $groupsApi->addSubscriber('4284365', $subscriber); // Change GROUP_ID with ID of group you want to add subscriber to
-
+                if ($request->get('event') == 'healthmarketing') {
+                    $groupsApi->addSubscriber('4336713', $subscriber);
+                } else {
+                    $groupsApi->addSubscriber('4284365', $subscriber);
+                }
 
                 if ($request->get('redirectUrl')) {
 //                    $variables = [
