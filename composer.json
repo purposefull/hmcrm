@@ -2,6 +2,8 @@
     "name": "andreybolonin/hmcrm",
     "license": "proprietary",
     "type": "project",
+    "description": "All-in-one sales platform",
+    "keywords": ["crm","hmcrm","sales", "marketing"],
     "autoload": {
         "psr-4": {
             "": "src/"
@@ -25,13 +27,13 @@
         "doctrine/doctrine-fixtures-bundle": "^2.2",
         "knplabs/knp-menu-bundle": "^2.0",
         "symfony/security-acl": "^3.0",
-        "mailerlite/mailerlite-api-v2-php-sdk": "^0.1.5",
         "asana/asana": "^0.4.1",
         "jeroendesloovere/wunderlist-php-api": "^1.0",
         "cdaguerre/php-trello-api": "^0.9.3",
+        "minneola/todoist": "dev-master",
+        "mailerlite/mailerlite-api-v2-php-sdk": "^0.1.5",
         "getresponse/getresponse": "^0.0.2",
         "mailchimp/mailchimp": "^2.0",
-        "minneola/todoist": "dev-master",
         "aweber/aweber": "^1.1",
         "fungio/dataexporter-bundle": "dev-master"
     },
