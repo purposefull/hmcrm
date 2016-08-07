@@ -12,8 +12,6 @@ class ProfileController extends Controller
      */
     public function profileAction()
     {
-
-        
         return $this->redirect($this->generateUrl('homepage'));
     }
 }

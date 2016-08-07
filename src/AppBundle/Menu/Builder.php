@@ -63,7 +63,11 @@ class Builder implements ContainerAwareInterface
         ])->setAttribute('icon', 'fa fa-pie-chart');
 
         $menu->addChild('menu.leadCaptureForm', [
-            'route' => 'lead_capture_form',
+            'route' => 'lead_capture_form_settings',
+        ])->setAttribute('icon', 'fa fa-user');
+
+        $menu->addChild('menu.leadCaptureForm', [
+            'route' => 'lead_capture_form_settings',
         ])->setAttribute('icon', 'fa fa-user');
 
         $menu->addChild('menu.import', [

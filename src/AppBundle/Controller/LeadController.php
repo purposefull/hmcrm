@@ -206,6 +206,22 @@ class LeadController extends Controller
         }
     }
 
+    /**
+     * @return RedirectResponse|Response
+     *
+     * @Route("/lead_capture_form_settings", name="lead_capture_form_settings")
+     * @Template()
+     */
+    public function leadCaptureFormSettingsAction()
+    {
+        $securityContext = $this->container->get('security.authorization_checker');
+
+        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return [];
+        } else {
+                return $this->redirect($this->generateUrl('fos_user_security_login'));
+        }
+    }
 
     /**
      * Finds and displays a Lead entity.
@@ -348,9 +364,10 @@ class LeadController extends Controller
             throw $this->createNotFoundException('Unable to find Lead entity.');
         }
 
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($lead);
-        $em->flush();
+        // insurance
+//        $em = $this->getDoctrine()->getManager();
+//        $em->remove($lead);
+//        $em->flush();
 
         return $this->redirect($this->generateUrl('lead'));
     }
