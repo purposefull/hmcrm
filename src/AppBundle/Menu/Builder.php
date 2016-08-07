@@ -66,13 +66,17 @@ class Builder implements ContainerAwareInterface
             'route' => 'lead_capture_form_settings',
         ])->setAttribute('icon', 'fa fa-user');
 
-        $menu->addChild('menu.leadCaptureForm', [
-            'route' => 'lead_capture_form_settings',
-        ])->setAttribute('icon', 'fa fa-user');
-
         $menu->addChild('menu.import', [
             'route' => 'import',
-        ])->setAttribute('icon', 'fa fa-user');
+        ])->setAttribute('icon', 'fa fa-download');
+
+        $menu->addChild('menu.export', [
+            'route' => 'export',
+        ])->setAttribute('icon', 'fa fa-upload');
+
+        $menu->addChild('Settings', [
+            'route' => 'settings',
+        ])->setAttribute('icon', 'fa fa-cog');
 
 //        $menu->addChild('menu.tasks', [
 //            'route' => 'integration_index',

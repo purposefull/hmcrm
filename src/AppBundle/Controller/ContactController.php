@@ -44,22 +44,11 @@ class ContactController extends Controller
         $resultArray = [];
 
         foreach ($query as $item) {
-            switch ($item->getType()) {
-                case Contact::TYPE_PERSON:
-                    $resultArray[] = [
-                        'id' => $item->getPerson()->getId(),
-                        'name' => $item->getName(),
-                        'type' => 'person_show',
-                    ];
-                    break;
-                case Contact::TYPE_COMPANY:
-                    $resultArray[] = [
-                        'id' => $item->getCompany()->getId(),
-                        'name' => $item->getName(),
-                        'type' => 'company_show',
-                    ];
-                    break;
-            }
+            $resultArray[] = [
+                'id' => $item->getId(),
+                'name' => $item->getName(),
+                'type' => 'person_show',
+            ];
         }
 
         return [
@@ -267,18 +256,5 @@ class ContactController extends Controller
                         'label' => 'Delete',
                     ])
                     ->getForm();
-    }
-
-    /**
-     * Import action.
-     *
-     * @return RedirectResponse
-     *
-     * @Route("/import", name="import")
-     * @Template()
-     */
-    public function importAction()
-    {
-        return [];
     }
 }

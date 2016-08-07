@@ -13,10 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Contact extends Base
 {
-    const TYPE_PERSON = 1;
-
-    const TYPE_COMPANY = 2;
-
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company", inversedBy="contacts")
      * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
@@ -47,39 +43,6 @@ class Contact extends Base
     public function __construct()
     {
         $this->deals = new ArrayCollection();
-    }
-
-    /**
-     * Return array of contact type.
-     *
-     * @return []
-     */
-    public static function valueOfContactType()
-    {
-        return [
-            self::TYPE_PERSON => 'Person',
-            self::TYPE_COMPANY => 'Company',
-        ];
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPerson()
-    {
-        return $this->person;
-    }
-
-    /**
-     * @param mixed $person
-     *
-     * @return $this
-     */
-    public function setPerson($person)
-    {
-        $this->person = $person;
-
-        return $this;
     }
 
     /**
@@ -147,17 +110,7 @@ class Contact extends Base
      */
     public function getName()
     {
-        $name = null;
-        switch ($this->getType()) {
-
-            case self::TYPE_PERSON:
-                $name = $this->getPerson()->getFullName();
-                break;
-
-            case self::TYPE_COMPANY:
-                $name = $this->getCompany()->getName();
-                break;
-        }
+        $name = $this->getCompany()->getName();
 
         return $name;
     }

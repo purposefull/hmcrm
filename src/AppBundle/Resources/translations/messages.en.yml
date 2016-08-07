@@ -54,6 +54,8 @@ contact:
     title: Contact
     newPerson: New person
     newCompany: New company
+    export: Export
+    import: Import
 company:
     title: Companies
     edit: Company edit
@@ -81,4 +83,6 @@ menu:
     tasks: Tasks
     email: Email
 Header: 123
+settings:
+    index: Settings
 

@@ -8,18 +8,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
- * IntegrationController class.
+ * SettingsController class.
  *
- * @Route("integration")
  */
-class IntegrationController extends Controller
+class SettingsController extends Controller
 {
     /**
      * Returns list of integration services.
      *
      * @return Response
      *
-     * @Route("/", name="tasks")
+     * @Route("/settings", name="settings")
      * @Template()
      */
     public function indexAction()
@@ -34,7 +33,7 @@ class IntegrationController extends Controller
      *
      * @return Response
      *
-     * @Route("/", name="email")
+     * @Route("/email", name="email")
      * @Template()
      */
     public function emailAction()

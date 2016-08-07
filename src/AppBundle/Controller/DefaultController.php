@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,5 +47,31 @@ class DefaultController extends Controller
         return $this->render('lp_ru.html.twig', array(
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
         ));
+    }
+
+    /**
+     * Import action.
+     *
+     * @return RedirectResponse
+     *
+     * @Route("/import", name="import")
+     * @Template()
+     */
+    public function importAction()
+    {
+        return [];
+    }
+
+    /**
+     * Export action.
+     *
+     * @return RedirectResponse
+     *
+     * @Route("/export", name="export")
+     * @Template()
+     */
+    public function exportAction()
+    {
+        return [];
     }
 }

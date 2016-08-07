@@ -61,10 +61,6 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 4) Double type password for user postgres
 
-# Database [MySQL]
+# UI
 
-1) apt-get install mysql
-
-2)
-
-3)
+https://wrapbootstrap.com/theme/inspinia-responsive-admin-theme-WB0R5L90S
