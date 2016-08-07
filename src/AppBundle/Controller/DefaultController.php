@@ -72,6 +72,15 @@ class DefaultController extends Controller
      */
     public function exportAction()
     {
+//        $exporter = $this->get('ee.dataexporter');
+//        $testObject = new TestObject();
+//
+//        $exporter->setOptions('xls', array('fileName' => 'file'));
+//        $exporter->setColumns(array('col1' => 'Label1', 'col2' => 'Label2', 'col3.col1' => 'From object two'));
+//        $exporter->setData(array($testObject));
+//
+//        return $exporter->render();
+
         return [];
     }
 }

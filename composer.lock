@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f182a10d5417b2c468a9cf60b70b17f3",
-    "content-hash": "7d39df2e3130b1a9d7323d6b2faa1cd0",
+    "hash": "6bf81203d5606b63bb009861e8cb3889",
+    "content-hash": "b3b936785ce709a3db1245935028ee40",
     "packages": [
         {
             "name": "adoy/oauth2",
@@ -1171,6 +1171,63 @@
                 "User management"
             ],
             "time": "2016-08-04 10:13:39"
+        },
+        {
+            "name": "fungio/dataexporter-bundle",
+            "version": "dev-master",
+            "target-dir": "Fungio/DataExporterBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fungio/FungioDataExporterBundle.git",
+                "reference": "101b3b4cf1e414de1a0299d90ecf3895e0b912ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fungio/FungioDataExporterBundle/zipball/101b3b4cf1e414de1a0299d90ecf3895e0b912ec",
+                "reference": "101b3b4cf1e414de1a0299d90ecf3895e0b912ec",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0",
+                "symfony/framework-bundle": "3.1.*",
+                "symfony/http-foundation": "3.1.*",
+                "symfony/property-access": "3.1.*"
+            },
+            "require-dev": {
+                "symfony/yaml": "~2.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Fungio\\DataExporterBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Piotr Antosik",
+                    "email": "mail@piotrantosik.com",
+                    "homepage": "http://piotrantosik.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Pierrick AUBIN",
+                    "email": "pierrick.aubin@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easy export data to CSV, XML, HTML, JSON or XLS",
+            "keywords": [
+                "csv",
+                "exporter",
+                "json",
+                "xls",
+                "xml"
+            ],
+            "time": "2016-07-19 07:28:14"
         },
         {
             "name": "getresponse/getresponse",
@@ -3410,7 +3467,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "friendsofsymfony/user-bundle": 20,
-        "minneola/todoist": 20
+        "minneola/todoist": 20,
+        "fungio/dataexporter-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

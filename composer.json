@@ -32,7 +32,8 @@
         "getresponse/getresponse": "^0.0.2",
         "mailchimp/mailchimp": "^2.0",
         "minneola/todoist": "dev-master",
-        "aweber/aweber": "^1.1"
+        "aweber/aweber": "^1.1",
+        "fungio/dataexporter-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
