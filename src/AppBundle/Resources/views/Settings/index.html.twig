@@ -15,33 +15,37 @@
 {% endblock %}
 
 {% block body %}
-    1) Email service integration<br>
-    <form>
-        <select name="email">
-            <option value="mailerlite">MailerLite</option>
-            <option value="getreponse">GetResponse</option>
-            <option value="mailchimp">MailChimp</option>
-            <option value="aweber">Aweber</option>
-            <br><br>
-            <input type="text" name="apikey" placeholder="API key">
-            <br>
-            <input type="submit">
-        </select>
-    </form>
-    <br>
-    2) Task service integration
-    <form>
-        <select name="email">
-            <option value="wunderlist">WunderList</option>
-            <option value="todoist">Todoist</option>
-            <option value="asana">MailChimp</option>
-            <option value="trello">Trello</option>
-            <br><br>
-            <input type="text" name="apikey" placeholder="API key">
-            <br>
-            <input type="submit">
-        </select>
-    </form>
+
+    {{ form(form) }}
+    {#{{ form_errors(form) }}#}
+    {#{{ form_rest(form) }}#}
+    {#1) Email service integration<br>#}
+    {#<form>#}
+        {#<select name="email">#}
+            {#<option value="mailerlite">MailerLite</option>#}
+            {#<option value="getreponse">GetResponse</option>#}
+            {#<option value="mailchimp">MailChimp</option>#}
+            {#<option value="aweber">Aweber</option>#}
+            {#<br><br>#}
+            {#<input type="text" name="apikey" placeholder="API key">#}
+            {#<br>#}
+            {#<input type="submit">#}
+        {#</select>#}
+    {#</form>#}
+    {#<br>#}
+    {#2) Task service integration#}
+    {#<form>#}
+        {#<select name="email">#}
+            {#<option value="wunderlist">WunderList</option>#}
+            {#<option value="todoist">Todoist</option>#}
+            {#<option value="asana">MailChimp</option>#}
+            {#<option value="trello">Trello</option>#}
+            {#<br><br>#}
+            {#<input type="text" name="apikey" placeholder="API key">#}
+            {#<br>#}
+            {#<input type="submit">#}
+        {#</select>#}
+    {#</form>#}
     {#<table class="table table-striped table-hover">#}
     {#<tbody>#}
     {#<tr>#}
