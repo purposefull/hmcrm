@@ -43,6 +43,12 @@ class Deal extends Base
     protected $contact;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="deals")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
+
+    /**
      * @var string
      *
      * @Assert\NotBlank()
@@ -79,11 +85,7 @@ class Deal extends Base
      */
     protected $tags;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="deals")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    protected $user;
+
 
     /**
      * @return string

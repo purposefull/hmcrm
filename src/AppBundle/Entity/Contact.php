@@ -13,11 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Contact extends Base
 {
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company", inversedBy="contacts")
-     * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
-     */
-    protected $company;
 
     /**
      * @var int
@@ -25,6 +20,13 @@ class Contact extends Base
      * @ORM\Column(type="integer", length=255)
      */
     protected $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $name;
 
     /**
      * @ORM\OneToMany(targetEntity="Deal", mappedBy="contact")
@@ -46,23 +48,19 @@ class Contact extends Base
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getCompany()
+    public function getName()
     {
-        return $this->company;
+        return $this->name;
     }
 
     /**
-     * @param mixed $company
-     *
-     * @return $this
+     * @param string $name
      */
-    public function setCompany($company)
+    public function setName($name)
     {
-        $this->company = $company;
-
-        return $this;
+        $this->name = $name;
     }
 
     /**
@@ -103,16 +101,6 @@ class Contact extends Base
         $this->deals = $deals;
 
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        $name = $this->getCompany()->getName();
-
-        return $name;
     }
 
     /**

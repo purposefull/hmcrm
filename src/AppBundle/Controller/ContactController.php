@@ -32,7 +32,7 @@ class ContactController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         $query = $em->getRepository('AppBundle:Contact')->createQueryBuilder('c')
                     ->where('c.user = :user')
