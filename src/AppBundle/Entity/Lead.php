@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Lead.
@@ -151,12 +150,6 @@ class Lead extends ContactBase
     {
         $this->tariff = $tariff;
     }
-
-//    /**
-//     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="contacts")
-//     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-//     */
-//    protected $user;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="leads")

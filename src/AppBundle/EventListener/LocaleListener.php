@@ -9,8 +9,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 
 /**
- * Class LocaleListener
- * @package SkyFlow\AppBundle\EventListener
+ * Class LocaleListener.
  */
 class LocaleListener implements EventSubscriberInterface
 {
@@ -26,9 +25,9 @@ class LocaleListener implements EventSubscriberInterface
      */
     public function __construct($defaultLocale = 'en', $availableLocales, Router $router)
     {
-        $this->defaultLocale    = $defaultLocale;
+        $this->defaultLocale = $defaultLocale;
         $this->availableLocales = $availableLocales;
-        $this->router           = $router;
+        $this->router = $router;
     }
 
     /**
@@ -43,19 +42,18 @@ class LocaleListener implements EventSubscriberInterface
         }
 
         $localeFromSession = $request->getSession()->get('_locale');
-        $localeFromRoute   = $request->query->get('_locale');
-        $localeFromHeader  = $request->getPreferredLanguage($this->availableLocales);
+        $localeFromRoute = $request->query->get('_locale');
+        $localeFromHeader = $request->getPreferredLanguage($this->availableLocales);
 
         // при переключении языка в веб-интерфейсе (язык в роуте)
         if ($localeFromRoute) {
-
             $request->getSession()->set('_locale', $localeFromRoute);
             $request->setLocale($localeFromSession);
 
             $route = $event->getRequest()->get('_route');
 
             $params = $request->attributes->get('_route_params');
-            $url    = $this->router->generate($route, $params);
+            $url = $this->router->generate($route, $params);
 
             $response = new RedirectResponse($url);
             $event->setResponse($response);

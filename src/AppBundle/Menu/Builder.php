@@ -3,13 +3,11 @@
 namespace AppBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
-use Knp\Menu\MenuItem;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
 /**
- * Builder class
- *
+ * Builder class.
  */
 class Builder implements ContainerAwareInterface
 {
@@ -26,19 +24,19 @@ class Builder implements ContainerAwareInterface
     private $router;
 
     /**
-     * Builds main menu
+     * Builds main menu.
      */
     public function mainMenu(FactoryInterface $factory, array $options)
     {
         $this->factory = $factory;
-        $this->router  = $this->container->get('router');
+        $this->router = $this->container->get('router');
 
         // Create menu
         $menu = $this->factory->createItem('Header', [
             'attributes' => [
                 'class' => 'nav metismenu',
             ],
-            'id'         => 'side-menu',
+            'id' => 'side-menu',
         ]);
 
         // Add Menu items that are available for user

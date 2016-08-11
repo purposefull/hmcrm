@@ -5,8 +5,6 @@ namespace AppBundle\Form;
 use AppBundle\Entity\Lead;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,7 +12,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * SettingsType class.
- *
  */
 class SettingsType extends AbstractType
 {
@@ -31,7 +28,7 @@ class SettingsType extends AbstractType
                     'MailerLite' => 'mailerlite',
                     'GetResponse' => 'getresponse',
                     'MailChimp' => 'mailchimp',
-                    'Aweber' => 'aweber'
+                    'Aweber' => 'aweber',
                 ],
 //                'label' => 'firstname',
             ])
@@ -41,7 +38,7 @@ class SettingsType extends AbstractType
                     'Todoist' => 'todoist',
                     'MailChimp' => 'mailchimp',
                     'Trello' => 'trello',
-                    'Asana' => 'asana'
+                    'Asana' => 'asana',
                 ],
 //                'label' => 'lead.status',
             ])

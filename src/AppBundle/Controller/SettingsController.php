@@ -10,7 +10,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
  * SettingsController class.
- *
  */
 class SettingsController extends Controller
 {
@@ -27,9 +26,10 @@ class SettingsController extends Controller
         $form = $this->createForm(SettingsType::class, $this->getUser());
 
         if ($form->isValid()) {
-            var_dump(123);exit;
+            var_dump(123);
+            exit;
         } else {
-//            var_dump($form->getErrors());
+            //            var_dump($form->getErrors());
         }
 
         return [

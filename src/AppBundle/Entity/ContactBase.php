@@ -7,7 +7,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ContactBase class.
- *
  */
 class ContactBase extends Base
 {

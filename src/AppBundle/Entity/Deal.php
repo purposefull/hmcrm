@@ -85,8 +85,6 @@ class Deal extends Base
      */
     protected $tags;
 
-
-
     /**
      * @return string
      */

@@ -7,10 +7,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Process\Exception\ProcessFailedException;
-use Symfony\Component\Process\Process;
-use Symfony\Component\Yaml\Dumper;
-use Symfony\Component\Yaml\Parser;
 
 class DefaultController extends Controller
 {
@@ -72,7 +68,7 @@ class DefaultController extends Controller
      */
     public function exportAction()
     {
-//        $exporter = $this->get('ee.dataexporter');
+        //        $exporter = $this->get('ee.dataexporter');
 //        $testObject = new TestObject();
 //
 //        $exporter->setOptions('xls', array('fileName' => 'file'));

@@ -12,7 +12,6 @@ use AppBundle\Entity\User;
 
 /**
  * LoadContactData class.
- *
  */
 class LoadContactData extends AbstractFixture implements DependentFixtureInterface
 {
@@ -36,7 +35,7 @@ class LoadContactData extends AbstractFixture implements DependentFixtureInterfa
         /** @var User $userAdmin */
         $userAdmin = $this->getReference('user-admin');
 
-        /** @var Person $person1 */
+        /* @var Person $person1 */
         /* @var Person $person2 */
         /* @var Person $person3 */
 //        $person1 = $this->getReference('person-1');

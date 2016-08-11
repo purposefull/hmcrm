@@ -16,7 +16,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use AppBundle\Entity\Lead;
 use AppBundle\Form\LeadType;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MailerLiteApi\MailerLite;
@@ -163,14 +162,14 @@ class LeadController extends Controller
                 $em->flush();
 
 //                // MailerLite adding subscriber
-                $mailerLite = new \MailerLiteApi\MailerLite("d4d847245983c24a7400a97546d12b40");
+                $mailerLite = new \MailerLiteApi\MailerLite('d4d847245983c24a7400a97546d12b40');
                 $groupsApi = $mailerLite->groups();
 
                 $subscriber = [
                     'email' => $request->get('email'),
                     'fields' => [
                         'name' => $request->get('name'),
-                    ]
+                    ],
                 ];
 
                 // Fixed hardcode GROUP_ID
@@ -181,7 +180,7 @@ class LeadController extends Controller
                 }
 
                 if ($request->get('redirectUrl')) {
-//                    $variables = [
+                    //                    $variables = [
 //                        'order_id' => $lead->getId(),
 //                        'name' => $request->get('name'),
 ////                        'surname' => $request->get('surname'),
@@ -219,7 +218,7 @@ class LeadController extends Controller
         if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             return [];
         } else {
-                return $this->redirect($this->generateUrl('fos_user_security_login'));
+            return $this->redirect($this->generateUrl('fos_user_security_login'));
         }
     }
 

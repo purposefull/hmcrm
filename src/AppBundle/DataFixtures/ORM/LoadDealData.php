@@ -11,7 +11,6 @@ use AppBundle\Entity\User;
 
 /**
  * LoadDealData class.
- *
  */
 class LoadDealData extends AbstractFixture implements DependentFixtureInterface
 {

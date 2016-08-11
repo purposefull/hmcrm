@@ -9,7 +9,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * CompanyType class.
- *
  */
 class CompanyType extends AbstractType
 {

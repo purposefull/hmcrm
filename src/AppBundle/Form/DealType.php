@@ -11,7 +11,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * DealType class.
- *
  */
 class DealType extends AbstractType
 {

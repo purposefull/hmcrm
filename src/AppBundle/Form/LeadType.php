@@ -14,7 +14,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * LeadType class.
- *
  */
 class LeadType extends AbstractType
 {
