@@ -41,7 +41,7 @@ class SettingsType extends AbstractType
                     'Todoist' => 'todoist',
                     'MailChimp' => 'mailchimp',
                     'Trello' => 'trello',
-                    'Asans' => 'asana'
+                    'Asana' => 'asana'
                 ],
 //                'label' => 'lead.status',
             ])
