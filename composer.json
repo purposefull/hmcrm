@@ -27,6 +27,7 @@
         "doctrine/doctrine-fixtures-bundle": "^2.2",
         "knplabs/knp-menu-bundle": "^2.0",
         "symfony/security-acl": "^3.0",
+        "fungio/dataexporter-bundle": "dev-master",
         "asana/asana": "^0.4.1",
         "jeroendesloovere/wunderlist-php-api": "^1.0",
         "cdaguerre/php-trello-api": "^0.9.3",
@@ -35,7 +36,7 @@
         "getresponse/getresponse": "^0.0.2",
         "mailchimp/mailchimp": "^2.0",
         "aweber/aweber": "^1.1",
-        "fungio/dataexporter-bundle": "dev-master"
+        "constantcontact/constantcontact": "^2.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

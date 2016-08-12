@@ -29,6 +29,7 @@ class SettingsType extends AbstractType
                     'GetResponse' => 'getresponse',
                     'MailChimp' => 'mailchimp',
                     'Aweber' => 'aweber',
+                    'ConstantContact' => 'constantcontact'
                 ],
 //                'label' => 'firstname',
             ])
@@ -40,9 +41,8 @@ class SettingsType extends AbstractType
                 'choices' => [
                     'WunderList' => 'wunderlist',
                     'Todoist' => 'todoist',
-                    'MailChimp' => 'mailchimp',
-                    'Trello' => 'trello',
                     'Asana' => 'asana',
+                    'Trello' => 'trello',
                 ],
 //                'label' => 'lead.status',
             ])
