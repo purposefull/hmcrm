@@ -23,7 +23,7 @@ class LoadContactData extends AbstractFixture implements DependentFixtureInterfa
         return [
             'AppBundle\DataFixtures\ORM\LoadUserData',
 //            'AppBundle\DataFixtures\ORM\LoadPersonData',
-            'AppBundle\DataFixtures\ORM\LoadCompanyData',
+//            'AppBundle\DataFixtures\ORM\LoadCompanyData',
         ];
     }
 
@@ -50,7 +50,7 @@ class LoadContactData extends AbstractFixture implements DependentFixtureInterfa
         $company3 = $this->getReference('company-3');
 
         $contact1 = (new Contact())
-            ->setCompany($company1)
+//            ->setCompany($company1)
 //            ->setPerson($person1)
             ->setUser($userAdmin)
             ->setType(1);
@@ -58,7 +58,7 @@ class LoadContactData extends AbstractFixture implements DependentFixtureInterfa
         $manager->persist($contact1);
 
         $contact2 = (new Contact())
-            ->setCompany($company2)
+//            ->setCompany($company2)
 //            ->setPerson($person2)
             ->setUser($userAdmin)
             ->setType(2);
@@ -66,7 +66,7 @@ class LoadContactData extends AbstractFixture implements DependentFixtureInterfa
         $manager->persist($contact2);
 
         $contact3 = (new Contact())
-            ->setCompany($company3)
+//            ->setCompany($company3)
 //            ->setPerson($person3)
             ->setUser($userAdmin)
             ->setType(2);

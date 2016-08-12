@@ -22,7 +22,7 @@ class LoadDealData extends AbstractFixture implements DependentFixtureInterface
         return [
             'AppBundle\DataFixtures\ORM\LoadUserData',
 //            'AppBundle\DataFixtures\ORM\LoadPersonData',
-            'AppBundle\DataFixtures\ORM\LoadCompanyData',
+//            'AppBundle\DataFixtures\ORM\LoadCompanyData',
             'AppBundle\DataFixtures\ORM\LoadContactData',
         ];
     }

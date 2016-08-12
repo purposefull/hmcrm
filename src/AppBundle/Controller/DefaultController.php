@@ -34,16 +34,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/lp/ru", name="lp_ru")
-     */
-    public function lpRuAction(Request $request)
-    {
-        return $this->render('lp_ru.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-        ));
-    }
-
-    /**
      * Import action.
      *
      * @return RedirectResponse
