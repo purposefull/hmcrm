@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Form\SettingsType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -21,15 +22,18 @@ class SettingsController extends Controller
      * @Route("/settings", name="settings")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $form = $this->createForm(SettingsType::class, $this->getUser());
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+
+        $form = $this->createForm(SettingsType::class, $user);
+        $form->handleRequest($request);
 
         if ($form->isValid()) {
-            var_dump(123);
-            exit;
-        } else {
-            //            var_dump($form->getErrors());
+            $user = $form->getData();
+            $em->persist($user);
+            $em->flush();
         }
 
         return [

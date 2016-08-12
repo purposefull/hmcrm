@@ -32,6 +32,10 @@ class SettingsType extends AbstractType
                 ],
 //                'label' => 'firstname',
             ])
+            ->add('emailApiKey', TextType::class, [
+                'label' => 'Email API key',
+            ])
+
             ->add('taskService', ChoiceType::class, [
                 'choices' => [
                     'WunderList' => 'wunderlist',
@@ -41,9 +45,6 @@ class SettingsType extends AbstractType
                     'Asana' => 'asana',
                 ],
 //                'label' => 'lead.status',
-            ])
-            ->add('emailApiKey', TextType::class, [
-                'label' => 'Email API key',
             ])
             ->add('taskApiKey', TextType::class, [
                 'label' => 'Task API key',
