@@ -12,6 +12,7 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
+     * @Template()
      */
     public function indexAction(Request $request)
     {
@@ -20,19 +21,16 @@ class DefaultController extends Controller
             return $this->redirect($this->generateUrl('lp'));
         }
 
-        return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-        ));
+        return [];
     }
 
     /**
      * @Route("/lp", name="lp")
+     * @Template()
      */
     public function lpAction(Request $request)
     {
-        return $this->render('lp.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-        ));
+        return [];
     }
 
     /**
