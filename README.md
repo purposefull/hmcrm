@@ -41,9 +41,11 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 3) Email intregration (MailerLite, GetResponse, MailChimp, Aweber)
 
-4) Phone calls integration
+4) VoIP providers integration
 
-5) Reports
+5) SMS providers integration
+
+6) Reports
 
 # Contributing
 

@@ -48,6 +48,52 @@ class User extends BaseUser
     protected $taskApiKey;
 
     /**
+     * @return mixed
+     */
+    public function getSmsService()
+    {
+        return $this->smsService;
+    }
+
+    /**
+     * @param mixed $smsService
+     */
+    public function setSmsService($smsService)
+    {
+        $this->smsService = $smsService;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSmsApiKey()
+    {
+        return $this->smsApiKey;
+    }
+
+    /**
+     * @param mixed $smsApiKey
+     */
+    public function setSmsApiKey($smsApiKey)
+    {
+        $this->smsApiKey = $smsApiKey;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $smsService;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $smsApiKey;
+
+    /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Lead", mappedBy="user")
      */
     protected $leads;

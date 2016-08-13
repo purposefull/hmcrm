@@ -49,6 +49,24 @@ class SettingsType extends AbstractType
             ->add('taskApiKey', TextType::class, [
                 'label' => 'Task API key',
             ])
+
+            //https://github.com/SimpleSoftwareIO/simple-sms
+            ->add('smsService', ChoiceType::class, [
+                'choices' => [
+                    'Plivo' => 'plivo',
+                    'Clickatell' => 'clickatell',
+                    'Twilio' => 'twilio',
+                    'Nexmo' => 'nexmo',
+                    'Tropo' => 'tropo',
+                    'SMSRU' => 'smsru',
+                    'TurboSMS' => 'turbosms',
+                ],
+//                'label' => 'lead.status',
+            ])
+            ->add('smsApiKey', TextType::class, [
+                'label' => 'Task API key',
+            ])
+
             ->add('submit', SubmitType::class, [
                 'label' => 'Submit',
             ])

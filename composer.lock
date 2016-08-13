@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "886eee40725883d7177eb5956e50aec2",
-    "content-hash": "774cc21ce89bc7971613200643ea88f6",
+    "hash": "adbd629369770a745bf7ff19743b9882",
+    "content-hash": "bc9e4aa7395e5a2f72d1b3aac68bc7cb",
     "packages": [
         {
             "name": "adoy/oauth2",
@@ -46,6 +46,54 @@
             ],
             "description": "Light PHP wrapper for the OAuth 2.0 protocol (based on OAuth 2.0 Authorization Protocol draft-ietf-oauth-v2-15)",
             "time": "2015-08-03 19:57:06"
+        },
+        {
+            "name": "arcturial/clickatell",
+            "version": "2.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arcturial/clickatell.git",
+                "reference": "d348e41a4052547d60d17737bf1993dd794b5ca1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arcturial/clickatell/zipball/d348e41a4052547d60d17737bf1993dd794b5ca1",
+                "reference": "d348e41a4052547d60d17737bf1993dd794b5ca1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.3.*"
+            },
+            "suggest": {
+                "symfony/config": "For usage with the Symfony Framework",
+                "symfony/dependency-injection": "For usage with the Symfony Framework",
+                "symfony/http-kernel": "For usage with the Symfony Framework"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Clickatell\\": [
+                        "src",
+                        "test"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GNU General Public License"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Brand",
+                    "email": "webmaster@cainsvault.com"
+                }
+            ],
+            "description": "Standalone PHP library to integrate with the Clickatell SMS gateway",
+            "homepage": "http://www.cainsvault.com",
+            "time": "2016-03-19 21:20:59"
         },
         {
             "name": "asana/asana",
@@ -120,6 +168,50 @@
                 "email"
             ],
             "time": "2015-02-19 18:16:21"
+        },
+        {
+            "name": "camcima/tropo-webapi-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/camcima/tropo-webapi-php.git",
+                "reference": "97fbee4359556d489c51e5b3b5c14420e8e3d95a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/camcima/tropo-webapi-php/zipball/97fbee4359556d489c51e5b3b5c14420e8e3d95a",
+                "reference": "97fbee4359556d489c51e5b3b5c14420e8e3d95a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Tropo": "Package"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Carlos Cima",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Refactored Tropo PHP 5 package",
+            "homepage": "https://github.com/camcima/tropo-webapi-php",
+            "keywords": [
+                "cloud",
+                "php",
+                "sms",
+                "tropo",
+                "voip"
+            ],
+            "time": "2013-02-07 19:19:01"
         },
         {
             "name": "cdaguerre/php-trello-api",
@@ -218,26 +310,69 @@
             "time": "2015-11-08 23:41:30"
         },
         {
-            "name": "constantcontact/constantcontact",
-            "version": "2.1.4",
+            "name": "connect-corp/nexmo-client",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/constantcontact/php-sdk.git",
-                "reference": "4546700862f7832aa3d18e02cf77bf5d3c2ab277"
+                "url": "https://github.com/ConnectCorp/nexmo-client.git",
+                "reference": "f37e3b98e9a4c96a1b545d3fbe0afb8033c5043b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/constantcontact/php-sdk/zipball/4546700862f7832aa3d18e02cf77bf5d3c2ab277",
-                "reference": "4546700862f7832aa3d18e02cf77bf5d3c2ab277",
+                "url": "https://api.github.com/repos/ConnectCorp/nexmo-client/zipball/f37e3b98e9a4c96a1b545d3fbe0afb8033c5043b",
+                "reference": "f37e3b98e9a4c96a1b545d3fbe0afb8033c5043b",
                 "shasum": ""
             },
             "require": {
-                "ext-curl": "*",
-                "guzzlehttp/guzzle": "^5.1.0",
-                "php": ">=5.4.0"
+                "guzzlehttp/guzzle": "~6.0",
+                "php": ">=5.5.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.4.1"
+                "phpunit/phpunit": "~4.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nexmo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Unofficial Nexmo Rest Client",
+            "keywords": [
+                "lib",
+                "nexmo",
+                "sdk"
+            ],
+            "time": "2016-04-19 18:05:56"
+        },
+        {
+            "name": "constantcontact/constantcontact",
+            "version": "3.0.0-alpha",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/constantcontact/php-sdk.git",
+                "reference": "687a61e5928ad30f0c173c67919b5d3503c796a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/constantcontact/php-sdk/zipball/687a61e5928ad30f0c173c67919b5d3503c796a1",
+                "reference": "687a61e5928ad30f0c173c67919b5d3503c796a1",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.1.1",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.8.21"
             },
             "type": "library",
             "autoload": {
@@ -264,7 +399,7 @@
                 "ctct",
                 "email marketing"
             ],
-            "time": "2016-02-17 14:19:57"
+            "time": "2016-03-29 22:39:51"
         },
         {
             "name": "doctrine/annotations",
@@ -1421,28 +1556,38 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "5.3.1",
+            "version": "6.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "70f1fa53b71c4647bf2762c09068a95f77e12fb8"
+                "reference": "3f808fba627f2c5b69e2501217bf31af349c1427"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/70f1fa53b71c4647bf2762c09068a95f77e12fb8",
-                "reference": "70f1fa53b71c4647bf2762c09068a95f77e12fb8",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/3f808fba627f2c5b69e2501217bf31af349c1427",
+                "reference": "3f808fba627f2c5b69e2501217bf31af349c1427",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/ringphp": "^1.1",
-                "php": ">=5.4.0"
+                "guzzlehttp/promises": "^1.0",
+                "guzzlehttp/psr7": "^1.3.1",
+                "php": ">=5.5"
             },
             "require-dev": {
                 "ext-curl": "*",
-                "phpunit/phpunit": "^4.0"
+                "phpunit/phpunit": "^4.0",
+                "psr/log": "^1.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.2-dev"
+                }
+            },
             "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
                 "psr-4": {
                     "GuzzleHttp\\": "src/"
                 }
@@ -1458,7 +1603,7 @@
                     "homepage": "https://github.com/mtdowling"
                 }
             ],
-            "description": "Guzzle is a PHP HTTP client library and framework for building RESTful web service clients",
+            "description": "Guzzle is a PHP HTTP client library",
             "homepage": "http://guzzlephp.org/",
             "keywords": [
                 "client",
@@ -1469,7 +1614,58 @@
                 "rest",
                 "web service"
             ],
-            "time": "2016-07-15 19:28:39"
+            "time": "2016-07-15 17:22:37"
+        },
+        {
+            "name": "guzzlehttp/promises",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/promises.git",
+                "reference": "c10d860e2a9595f8883527fa0021c7da9e65f579"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/c10d860e2a9595f8883527fa0021c7da9e65f579",
+                "reference": "c10d860e2a9595f8883527fa0021c7da9e65f579",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Promise\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle promises library",
+            "keywords": [
+                "promise"
+            ],
+            "time": "2016-05-18 16:56:05"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -1528,107 +1724,6 @@
                 "uri"
             ],
             "time": "2016-06-24 23:00:38"
-        },
-        {
-            "name": "guzzlehttp/ringphp",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/RingPHP.git",
-                "reference": "dbbb91d7f6c191e5e405e900e3102ac7f261bc0b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/RingPHP/zipball/dbbb91d7f6c191e5e405e900e3102ac7f261bc0b",
-                "reference": "dbbb91d7f6c191e5e405e900e3102ac7f261bc0b",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/streams": "~3.0",
-                "php": ">=5.4.0",
-                "react/promise": "~2.0"
-            },
-            "require-dev": {
-                "ext-curl": "*",
-                "phpunit/phpunit": "~4.0"
-            },
-            "suggest": {
-                "ext-curl": "Guzzle will use specific adapters if cURL is present"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Ring\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Provides a simple API and specification that abstracts away the details of HTTP into a single PHP function.",
-            "time": "2015-05-20 03:37:09"
-        },
-        {
-            "name": "guzzlehttp/streams",
-            "version": "3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/streams.git",
-                "reference": "47aaa48e27dae43d39fc1cea0ccf0d84ac1a2ba5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/streams/zipball/47aaa48e27dae43d39fc1cea0ccf0d84ac1a2ba5",
-                "reference": "47aaa48e27dae43d39fc1cea0ccf0d84ac1a2ba5",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Stream\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Provides a simple abstraction over streams of data",
-            "homepage": "http://guzzlephp.org/",
-            "keywords": [
-                "Guzzle",
-                "stream"
-            ],
-            "time": "2014-10-12 19:18:40"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -2553,6 +2648,54 @@
             "time": "2016-01-26 13:27:02"
         },
         {
+            "name": "plivo/plivo-php",
+            "version": "v1.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/plivo/plivo-php.git",
+                "reference": "4d5ef0aac6bdd8698465a83fd3b46f0fb81f3cdf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/plivo/plivo-php/zipball/4d5ef0aac6bdd8698465a83fd3b46f0fb81f3cdf",
+                "reference": "4d5ef0aac6bdd8698465a83fd3b46f0fb81f3cdf",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "plivo.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Radu Topala",
+                    "email": "radu.topala@trisoft.ro"
+                },
+                {
+                    "name": "Adam Homsi",
+                    "email": "adam.homsi@gmail.com"
+                },
+                {
+                    "name": "Plivo Team",
+                    "email": "hello@plivo.com"
+                },
+                {
+                    "name": "Ben McInturff",
+                    "email": "benmcinturff@gmail.com"
+                }
+            ],
+            "description": "Plivo PHP helper library to access PlivoCloud API and generate Plivo XML",
+            "time": "2016-06-02 10:16:04"
+        },
+        {
             "name": "psr/cache",
             "version": "1.0.1",
             "source": {
@@ -2685,50 +2828,6 @@
                 "psr-3"
             ],
             "time": "2012-12-21 11:40:51"
-        },
-        {
-            "name": "react/promise",
-            "version": "v2.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/promise.git",
-                "reference": "8025426794f1944de806618671d4fa476dc7626f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/8025426794f1944de806618671d4fa476dc7626f",
-                "reference": "8025426794f1944de806618671d4fa476dc7626f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "React\\Promise\\": "src/"
-                },
-                "files": [
-                    "src/functions_include.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jan Sorgalla",
-                    "email": "jsorgalla@gmail.com"
-                }
-            ],
-            "description": "A lightweight implementation of CommonJS Promises/A for PHP",
-            "time": "2016-05-03 17:50:52"
         },
         {
             "name": "sensio/distribution-bundle",
@@ -2887,6 +2986,98 @@
             ],
             "description": "A security checker for your composer.lock",
             "time": "2015-11-07 08:07:40"
+        },
+        {
+            "name": "sunra/turbosms-bundle",
+            "version": "dev-master",
+            "target-dir": "Sunra/TurbosmsBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sunra/SunraTurbosmsBundle.git",
+                "reference": "57d5ef74dfc92afc59ad3a1aac2ef703c55c5d32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sunra/SunraTurbosmsBundle/zipball/57d5ef74dfc92afc59ad3a1aac2ef703c55c5d32",
+                "reference": "57d5ef74dfc92afc59ad3a1aac2ef703c55c5d32",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "sunra/turbosms-soapgate-client-php": "dev-master",
+                "symfony/framework-bundle": ">=2.1.0",
+                "symfony/yaml": ">=2.1.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Sunra\\TurbosmsBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "sunra",
+                    "email": "sunra@yandex.ru",
+                    "homepage": "http://github.com/sunra"
+                }
+            ],
+            "description": "A Turbosms bundle for Symfony2",
+            "homepage": "https://github.com/sunra/SunraTurbosmsBundle",
+            "keywords": [
+                "sms",
+                "symfony",
+                "turbosms"
+            ],
+            "time": "2013-12-08 18:41:11"
+        },
+        {
+            "name": "sunra/turbosms-soapgate-client-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sunra/turbosms-soapgate-client-php.git",
+                "reference": "8a05035fd89fb41072c7187b2c265bb13d22fc8a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sunra/turbosms-soapgate-client-php/zipball/8a05035fd89fb41072c7187b2c265bb13d22fc8a",
+                "reference": "8a05035fd89fb41072c7187b2c265bb13d22fc8a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-soap": "*",
+                "lib-iconv": "*",
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Turbosms": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "sunra",
+                    "email": "sunra@yandex.ru",
+                    "homepage": "http://github.com/sunra"
+                }
+            ],
+            "description": "Client library for connect to soap gate of TurboSMS.ua",
+            "homepage": "http://github.com/sunra/turbosms-soapgate-client-php",
+            "keywords": [
+                "gate",
+                "sms",
+                "soap"
+            ],
+            "time": "2012-11-30 16:14:16"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3599,6 +3790,147 @@
                 "templating"
             ],
             "time": "2016-05-30 09:11:59"
+        },
+        {
+            "name": "twilio/sdk",
+            "version": "4.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twilio/twilio-php.git",
+                "reference": "c538caccdb916bbed59b88f069f5a10d2544a2ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/c538caccdb916bbed59b88f069f5a10d2544a2ff",
+                "reference": "c538caccdb916bbed59b88f069f5a10d2544a2ff",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.1"
+            },
+            "require-dev": {
+                "mockery/mockery": ">=0.7.2",
+                "phpunit/phpunit": "4.5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "Services/Twilio.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Burke",
+                    "email": "kevin@twilio.com"
+                },
+                {
+                    "name": "Kyle Conroy",
+                    "email": "kyle+pear@twilio.com"
+                }
+            ],
+            "description": "A PHP wrapper for Twilio's API",
+            "homepage": "http://github.com/twilio/twilio-php",
+            "keywords": [
+                "api",
+                "sms",
+                "twilio"
+            ],
+            "time": "2016-08-09 20:42:01"
+        },
+        {
+            "name": "vresh/twilio-bundle",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fridolin-koch/VreshTwilioBundle.git",
+                "reference": "6e7f2820a8cd0e5a57ad253b311f9e5259a33320"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fridolin-koch/VreshTwilioBundle/zipball/6e7f2820a8cd0e5a57ad253b311f9e5259a33320",
+                "reference": "6e7f2820a8cd0e5a57ad253b311f9e5259a33320",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/framework-bundle": "~2.1|~3.0",
+                "twilio/sdk": ">=4.0.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.1",
+                "satooshi/php-coveralls": "~1.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Vresh\\TwilioBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fridolin Koch",
+                    "email": "info@fridokoch.de"
+                }
+            ],
+            "description": "A simple Symfony 2, 3 bundle for the official sdk provided by Twilio.",
+            "homepage": "https://github.com/fridolin-koch/VreshTwilioBundle",
+            "keywords": [
+                "twilio"
+            ],
+            "time": "2016-06-14 11:51:28"
+        },
+        {
+            "name": "zelenin/smsru",
+            "version": "4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zelenin/sms_ru.git",
+                "reference": "54dda335d6cbdb34c2cbfa570c330626a95ad6f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zelenin/sms_ru/zipball/54dda335d6cbdb34c2cbfa570c330626a95ad6f9",
+                "reference": "54dda335d6cbdb34c2cbfa570c330626a95ad6f9",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6",
+                "php": ">=5.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Zelenin\\SmsRu\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aleksandr Zelenin",
+                    "email": "aleksandr@zelenin.me",
+                    "homepage": "http://zelenin.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP-класс для работы с api сервиса [sms.ru](http://sms.ru)",
+            "homepage": "https://github.com/zelenin/sms_ru",
+            "keywords": [
+                "api",
+                "sms",
+                "sms.ru"
+            ],
+            "time": "2016-03-30 21:59:27"
         }
     ],
     "packages-dev": [
@@ -3715,7 +4047,12 @@
     "stability-flags": {
         "friendsofsymfony/user-bundle": 20,
         "fungio/dataexporter-bundle": 20,
-        "minneola/todoist": 20
+        "minneola/todoist": 20,
+        "constantcontact/constantcontact": 15,
+        "sunra/turbosms-soapgate-client-php": 20,
+        "sunra/turbosms-bundle": 20,
+        "connect-corp/nexmo-client": 20,
+        "camcima/tropo-webapi-php": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
