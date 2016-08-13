@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "06a242638a1aac841915c40dadf9b6a0",
-    "content-hash": "2eb60519700b0a4ff9c64dfb9c710f0c",
+    "hash": "886eee40725883d7177eb5956e50aec2",
+    "content-hash": "774cc21ce89bc7971613200643ea88f6",
     "packages": [
         {
             "name": "adoy/oauth2",
@@ -3714,8 +3714,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "friendsofsymfony/user-bundle": 20,
-        "minneola/todoist": 20,
-        "fungio/dataexporter-bundle": 20
+        "fungio/dataexporter-bundle": 20,
+        "minneola/todoist": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

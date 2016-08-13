@@ -76,3 +76,7 @@ security:
         - { path: ^/deal, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/lead, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/person, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/settings, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/import, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/export, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/report, role: IS_AUTHENTICATED_FULLY }
