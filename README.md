@@ -41,9 +41,9 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 3) Email intregration (MailerLite, GetResponse, MailChimp, Aweber)
 
-4) VoIP providers integration
+4) VoIP providers integration ()
 
-5) SMS providers integration
+5) SMS providers integration (Nexmo, Twilio, Clickatell, Plivo, Tropo, TurboSMS, SMSRU)
 
 6) Reports
 
