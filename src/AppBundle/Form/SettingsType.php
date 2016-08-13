@@ -64,7 +64,7 @@ class SettingsType extends AbstractType
 //                'label' => 'lead.status',
             ])
             ->add('smsApiKey', TextType::class, [
-                'label' => 'Task API key',
+                'label' => 'SMS API key',
             ])
 
             ->add('submit', SubmitType::class, [
