@@ -3793,16 +3793,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "5.0.0",
+            "version": "5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "f907461ea5fd0a1d6850415b0a07117a980aae61"
+                "reference": "f8a4589aa716deea0f1eaf017d667fd4af793cc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/f907461ea5fd0a1d6850415b0a07117a980aae61",
-                "reference": "f907461ea5fd0a1d6850415b0a07117a980aae61",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/f8a4589aa716deea0f1eaf017d667fd4af793cc1",
+                "reference": "f8a4589aa716deea0f1eaf017d667fd4af793cc1",
                 "shasum": ""
             },
             "require": {
@@ -3835,7 +3835,7 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2016-08-15 19:35:00"
+            "time": "2016-08-16 17:48:53"
         },
         {
             "name": "vresh/twilio-bundle",
