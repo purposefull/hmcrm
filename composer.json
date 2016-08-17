@@ -44,7 +44,8 @@
         "arcturial/clickatell": "^2.1",
         "plivo/plivo-php": "^1.1",
         "connect-corp/nexmo-client": "dev-master",
-        "camcima/tropo-webapi-php": "dev-master"
+        "camcima/tropo-webapi-php": "dev-master",
+        "archer/clickatell-bundle": "^0.1.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

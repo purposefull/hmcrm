@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "adbd629369770a745bf7ff19743b9882",
-    "content-hash": "bc9e4aa7395e5a2f72d1b3aac68bc7cb",
+    "hash": "bf0c5262468c3c087ad206b3799f3b5d",
+    "content-hash": "ae950321701e8d0bd2b3bbfc8092c8b7",
     "packages": [
         {
             "name": "adoy/oauth2",
@@ -46,6 +46,55 @@
             ],
             "description": "Light PHP wrapper for the OAuth 2.0 protocol (based on OAuth 2.0 Authorization Protocol draft-ietf-oauth-v2-15)",
             "time": "2015-08-03 19:57:06"
+        },
+        {
+            "name": "archer/clickatell-bundle",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/archer-soft/ClickatellBundle.git",
+                "reference": "c64d63663d92e959191bda52c295c81b44296159"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/archer-soft/ClickatellBundle/zipball/c64d63663d92e959191bda52c295c81b44296159",
+                "reference": "c64d63663d92e959191bda52c295c81b44296159",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9",
+                "symfony/framework-bundle": "~2.8|~3.0"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "~1.6",
+                "symfony/validator": "~2.8|~3.0",
+                "symfony/yaml": "~2.8|~3.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Archer\\ClickatellBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrey Samusev",
+                    "email": "andrey@4devs.pro"
+                },
+                {
+                    "name": "Archer Soft Community",
+                    "homepage": "https://github.com/archer-soft/ClickatellBundle/contributors"
+                }
+            ],
+            "description": "Symfony ClickatellBundle",
+            "keywords": [
+                "clickatell"
+            ],
+            "time": "2016-08-17 12:37:39"
         },
         {
             "name": "arcturial/clickatell",
