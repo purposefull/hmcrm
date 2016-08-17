@@ -6,4 +6,8 @@ php:
 before_script:
     - COMPOSER_ROOT_VERSION=dev-master composer --prefer-source --dev install
 
-script: phpunit --coverage-text
+script: phpunit --coverage-text`
+
+services:
+  - mysql
+  - postgresql
