@@ -37,7 +37,6 @@
         "mailchimp/mailchimp": "^2.0",
         "aweber/aweber": "^1.1",
         "constantcontact/constantcontact": "3.0.0-alpha",
-        "sunra/turbosms-soapgate-client-php": "dev-master",
         "sunra/turbosms-bundle": "dev-master",
         "zelenin/smsru": "^4.1",
         "vresh/twilio-bundle": "^1.0",
