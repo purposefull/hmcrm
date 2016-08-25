@@ -37,7 +37,7 @@
         "mailchimp/mailchimp": "^2.0",
         "aweber/aweber": "^1.1",
         "constantcontact/constantcontact": "3.0.0-alpha",
-        "sunra/turbosms-bundle": "dev-master",
+        "sunra/turbosms-bundle": "^0.1.0",
         "zelenin/smsru": "^4.1",
         "vresh/twilio-bundle": "^1.0",
         "arcturial/clickatell": "^2.1",

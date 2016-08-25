@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bf0c5262468c3c087ad206b3799f3b5d",
-    "content-hash": "ae950321701e8d0bd2b3bbfc8092c8b7",
+    "hash": "1a0f1263ce47383fc12da87eb52f42bd",
+    "content-hash": "77f21c2da2429ea52311923a92db4ae6",
     "packages": [
         {
             "name": "adoy/oauth2",
@@ -3038,24 +3038,24 @@
         },
         {
             "name": "sunra/turbosms-bundle",
-            "version": "dev-master",
+            "version": "0.1.0",
             "target-dir": "Sunra/TurbosmsBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sunra/SunraTurbosmsBundle.git",
-                "reference": "57d5ef74dfc92afc59ad3a1aac2ef703c55c5d32"
+                "reference": "6401968064d8559f5f5a9618bec2f4364666275d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sunra/SunraTurbosmsBundle/zipball/57d5ef74dfc92afc59ad3a1aac2ef703c55c5d32",
-                "reference": "57d5ef74dfc92afc59ad3a1aac2ef703c55c5d32",
+                "url": "https://api.github.com/repos/sunra/SunraTurbosmsBundle/zipball/6401968064d8559f5f5a9618bec2f4364666275d",
+                "reference": "6401968064d8559f5f5a9618bec2f4364666275d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3",
-                "sunra/turbosms-soapgate-client-php": "dev-master",
-                "symfony/framework-bundle": ">=2.1.0",
-                "symfony/yaml": ">=2.1.0"
+                "php": ">=5.3.9",
+                "sunra/turbosms-soapgate-client-php": "0.4.0",
+                "symfony/framework-bundle": "~2.8|~3.0",
+                "symfony/yaml": "~2.8|~3.0"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -3070,8 +3070,7 @@
             "authors": [
                 {
                     "name": "sunra",
-                    "email": "sunra@yandex.ru",
-                    "homepage": "http://github.com/sunra"
+                    "email": "sunra@yandex.ru"
                 }
             ],
             "description": "A Turbosms bundle for Symfony2",
@@ -3081,11 +3080,11 @@
                 "symfony",
                 "turbosms"
             ],
-            "time": "2013-12-08 18:41:11"
+            "time": "2016-08-24 19:01:18"
         },
         {
             "name": "sunra/turbosms-soapgate-client-php",
-            "version": "dev-master",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sunra/turbosms-soapgate-client-php.git",
@@ -4098,8 +4097,6 @@
         "fungio/dataexporter-bundle": 20,
         "minneola/todoist": 20,
         "constantcontact/constantcontact": 15,
-        "sunra/turbosms-soapgate-client-php": 20,
-        "sunra/turbosms-bundle": 20,
         "connect-corp/nexmo-client": 20,
         "camcima/tropo-webapi-php": 20
     },
