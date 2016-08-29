@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1a0f1263ce47383fc12da87eb52f42bd",
-    "content-hash": "77f21c2da2429ea52311923a92db4ae6",
+    "hash": "d25c65c38149cb0cb2c5e6d125c203cc",
+    "content-hash": "c5bc8c1cd48fbcdff337d97fe581a033",
     "packages": [
         {
             "name": "adoy/oauth2",
@@ -2136,6 +2136,47 @@
                 "sdk"
             ],
             "time": "2016-08-08 10:57:07"
+        },
+        {
+            "name": "markroland/ontraport-api-php-class",
+            "version": "v0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/markroland/ontraport-api-php-class.git",
+                "reference": "32fb1d96e3d07c231fb6ba6e838926d2d7f18c58"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/markroland/ontraport-api-php-class/zipball/32fb1d96e3d07c231fb6ba6e838926d2d7f18c58",
+                "reference": "32fb1d96e3d07c231fb6ba6e838926d2d7f18c58",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "markroland\\Ontraport\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Roland",
+                    "homepage": "http://markroland.com"
+                }
+            ],
+            "description": "A PHP class that acts as wrapper for the Ontraport API",
+            "homepage": "https://github.com/markroland/ontraport-api-php-class",
+            "keywords": [
+                "api",
+                "ontraport"
+            ],
+            "time": "2015-11-10 18:33:43"
         },
         {
             "name": "minneola/todoist",
