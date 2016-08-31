@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d25c65c38149cb0cb2c5e6d125c203cc",
-    "content-hash": "c5bc8c1cd48fbcdff337d97fe581a033",
+    "hash": "2cae55cafeffe532a40859e51d531331",
+    "content-hash": "4d923c30de085eaabb334df62cdd5ba1",
     "packages": [
         {
             "name": "adoy/oauth2",
@@ -1340,12 +1340,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "07ec96d93f03650e7480e0637fcd51eee6575c12"
+                "reference": "147ca6888712365e5ad3b7906f7b6e8654da2f48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/07ec96d93f03650e7480e0637fcd51eee6575c12",
-                "reference": "07ec96d93f03650e7480e0637fcd51eee6575c12",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/147ca6888712365e5ad3b7906f7b6e8654da2f48",
+                "reference": "147ca6888712365e5ad3b7906f7b6e8654da2f48",
                 "shasum": ""
             },
             "require": {
@@ -1404,7 +1404,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2016-08-04 10:13:39"
+            "time": "2016-08-31 11:01:35"
         },
         {
             "name": "fungio/dataexporter-bundle",
@@ -2350,6 +2350,56 @@
             "time": "2015-10-26 16:11:30"
         },
         {
+            "name": "nixsolutions/yandex-php-library",
+            "version": "2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nixsolutions/yandex-php-library.git",
+                "reference": "05b8ac44208ab016b9f0825f226965bbd0072e52"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nixsolutions/yandex-php-library/zipball/05b8ac44208ab016b9f0825f226965bbd0072e52",
+                "reference": "05b8ac44208ab016b9f0825f226965bbd0072e52",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~0.6",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Yandex": "src/",
+                    "Yandex\\Tests": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "NIX Solutions Ltd",
+                    "email": "github@nixsolutions.com"
+                },
+                {
+                    "name": "Yandex PHP library Contributors",
+                    "homepage": "https://github.com/nixsolutions/yandex-php-library/graphs/contributors"
+                }
+            ],
+            "description": "Official Yandex PHP library",
+            "keywords": [
+                "sdk",
+                "yandex"
+            ],
+            "time": "2016-03-11 17:09:30"
+        },
+        {
             "name": "paragonie/random_compat",
             "version": "v2.0.2",
             "source": {
@@ -2399,16 +2449,16 @@
         },
         {
             "name": "php-http/curl-client",
-            "version": "v1.5.0",
+            "version": "v1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/curl-client.git",
-                "reference": "fc7209fd29858718d444d41eb88f42188aeb7af4"
+                "reference": "8603d1529163fe4f353c61e7abb4e4ec0630dab3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/curl-client/zipball/fc7209fd29858718d444d41eb88f42188aeb7af4",
-                "reference": "fc7209fd29858718d444d41eb88f42188aeb7af4",
+                "url": "https://api.github.com/repos/php-http/curl-client/zipball/8603d1529163fe4f353c61e7abb4e4ec0630dab3",
+                "reference": "8603d1529163fe4f353c61e7abb4e4ec0630dab3",
                 "shasum": ""
             },
             "require": {
@@ -2451,7 +2501,7 @@
                 "curl",
                 "http"
             ],
-            "time": "2016-08-03 08:46:57"
+            "time": "2016-08-29 07:54:59"
         },
         {
             "name": "php-http/discovery",
@@ -2517,16 +2567,16 @@
         },
         {
             "name": "php-http/httplug",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/httplug.git",
-                "reference": "2061047ca53a08a6b8f52e997b2a76f386b397dd"
+                "reference": "1c6381726c18579c4ca2ef1ec1498fdae8bdf018"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/httplug/zipball/2061047ca53a08a6b8f52e997b2a76f386b397dd",
-                "reference": "2061047ca53a08a6b8f52e997b2a76f386b397dd",
+                "url": "https://api.github.com/repos/php-http/httplug/zipball/1c6381726c18579c4ca2ef1ec1498fdae8bdf018",
+                "reference": "1c6381726c18579c4ca2ef1ec1498fdae8bdf018",
                 "shasum": ""
             },
             "require": {
@@ -2569,7 +2619,7 @@
                 "client",
                 "http"
             ],
-            "time": "2016-01-26 14:34:50"
+            "time": "2016-08-31 08:30:17"
         },
         {
             "name": "php-http/message",

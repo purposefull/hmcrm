@@ -45,8 +45,8 @@
         "connect-corp/nexmo-client": "dev-master",
         "camcima/tropo-webapi-php": "dev-master",
         "archer/clickatell-bundle": "^0.1.0",
-        "markroland/ontraport-api-php-class": "^0.3.0",
-        "nixsolutions/yandex-php-library": "^2.0"
+
+        "markroland/ontraport-api-php-class": "^0.3.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
