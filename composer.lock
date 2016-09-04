@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2cae55cafeffe532a40859e51d531331",
-    "content-hash": "4d923c30de085eaabb334df62cdd5ba1",
+    "hash": "d25c65c38149cb0cb2c5e6d125c203cc",
+    "content-hash": "c5bc8c1cd48fbcdff337d97fe581a033",
     "packages": [
         {
             "name": "adoy/oauth2",
@@ -2350,56 +2350,6 @@
             "time": "2015-10-26 16:11:30"
         },
         {
-            "name": "nixsolutions/yandex-php-library",
-            "version": "2.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nixsolutions/yandex-php-library.git",
-                "reference": "05b8ac44208ab016b9f0825f226965bbd0072e52"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nixsolutions/yandex-php-library/zipball/05b8ac44208ab016b9f0825f226965bbd0072e52",
-                "reference": "05b8ac44208ab016b9f0825f226965bbd0072e52",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "~6.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0",
-                "satooshi/php-coveralls": "~0.6",
-                "squizlabs/php_codesniffer": "~2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Yandex": "src/",
-                    "Yandex\\Tests": "tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "NIX Solutions Ltd",
-                    "email": "github@nixsolutions.com"
-                },
-                {
-                    "name": "Yandex PHP library Contributors",
-                    "homepage": "https://github.com/nixsolutions/yandex-php-library/graphs/contributors"
-                }
-            ],
-            "description": "Official Yandex PHP library",
-            "keywords": [
-                "sdk",
-                "yandex"
-            ],
-            "time": "2016-03-11 17:09:30"
-        },
-        {
             "name": "paragonie/random_compat",
             "version": "v2.0.2",
             "source": {
@@ -3735,16 +3685,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v3.1.3",
+            "version": "v3.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "4478f047409028dc6e3ab320590f1247fec7a850"
+                "reference": "65ca9e4fbdb34f6d463ef77898ca583b101a4162"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/4478f047409028dc6e3ab320590f1247fec7a850",
-                "reference": "4478f047409028dc6e3ab320590f1247fec7a850",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/65ca9e4fbdb34f6d463ef77898ca583b101a4162",
+                "reference": "65ca9e4fbdb34f6d463ef77898ca583b101a4162",
                 "shasum": ""
             },
             "require": {
@@ -3762,6 +3712,9 @@
             "conflict": {
                 "phpdocumentor/reflection-docblock": "<3.0",
                 "phpdocumentor/type-resolver": "<0.2.0"
+            },
+            "provide": {
+                "psr/cache-implementation": "1.0"
             },
             "replace": {
                 "symfony/asset": "self.version",
@@ -3784,6 +3737,7 @@
                 "symfony/framework-bundle": "self.version",
                 "symfony/http-foundation": "self.version",
                 "symfony/http-kernel": "self.version",
+                "symfony/inflector": "self.version",
                 "symfony/intl": "self.version",
                 "symfony/ldap": "self.version",
                 "symfony/monolog-bridge": "self.version",
@@ -3867,7 +3821,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-07-30 09:31:00"
+            "time": "2016-09-03 15:28:43"
         },
         {
             "name": "twig/twig",
@@ -4127,16 +4081,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v3.1.3",
+            "version": "v3.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "eeb3bf9a195df7552fdda46f4724a9442d157413"
+                "reference": "1f4e2059cf4ecae1053b9c3027b3fc548fd077b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/eeb3bf9a195df7552fdda46f4724a9442d157413",
-                "reference": "eeb3bf9a195df7552fdda46f4724a9442d157413",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/1f4e2059cf4ecae1053b9c3027b3fc548fd077b9",
+                "reference": "1f4e2059cf4ecae1053b9c3027b3fc548fd077b9",
                 "shasum": ""
             },
             "require": {
@@ -4178,7 +4132,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2016-06-29 05:42:25"
+            "time": "2016-08-19 06:48:39"
         }
     ],
     "aliases": [],
