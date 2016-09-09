@@ -23,7 +23,7 @@ class LocaleListener implements EventSubscriberInterface
      *
      * @param string $defaultLocale
      */
-    public function __construct($defaultLocale = 'en', $availableLocales, Router $router)
+    public function __construct($defaultLocale, $availableLocales, Router $router)
     {
         $this->defaultLocale = $defaultLocale;
         $this->availableLocales = $availableLocales;

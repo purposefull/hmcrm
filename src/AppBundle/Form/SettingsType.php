@@ -29,7 +29,7 @@ class SettingsType extends AbstractType
                     'GetResponse' => 'getresponse',
                     'MailChimp' => 'mailchimp',
                     'Aweber' => 'aweber',
-                    'ConstantContact' => 'constantcontact'
+                    'ConstantContact' => 'constantcontact',
                 ],
 //                'label' => 'firstname',
             ])
