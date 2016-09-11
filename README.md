@@ -9,7 +9,9 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 1) PHP 7.x
 
-2) PostgreSQL 9.3 or MySQL 5.7
+2) PostgreSQL 9.3 or MySQL 5.7 
+
+http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/platforms.html
 
 3) Composer - https://getcomposer.org/
 
@@ -66,4 +68,5 @@ http://crm.healthmarketing.me - SaaS implementation.
 # UI
 
 https://wrapbootstrap.com/theme/inspinia-responsive-admin-theme-WB0R5L90S
+
 http://blog.getbase.com/30-million-and-the-dawn-of-the-sales-platform
