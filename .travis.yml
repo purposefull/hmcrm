@@ -5,8 +5,8 @@ php:
   - 7.1
 
 before_script:
-    - COMPOSER_ROOT_VERSION=dev-master composer --prefer-source --dev install
     - psql -c 'create database travis_ci_test;' -U postgres
+    - COMPOSER_ROOT_VERSION=dev-master composer --prefer-source --dev install
 
 script: phpunit --coverage-text`
 
