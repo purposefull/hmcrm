@@ -45,9 +45,9 @@ class LoadContactData extends AbstractFixture implements DependentFixtureInterfa
         /** @var Company $company1 */
         /* @var Company $company2 */
         /* @var Company $company3 */
-        $company1 = $this->getReference('company-1');
-        $company2 = $this->getReference('company-2');
-        $company3 = $this->getReference('company-3');
+//        $company1 = $this->getReference('company-1');
+//        $company2 = $this->getReference('company-2');
+//        $company3 = $this->getReference('company-3');
 
         $contact1 = (new Contact())
 //            ->setCompany($company1)
