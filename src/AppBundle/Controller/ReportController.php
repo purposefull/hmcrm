@@ -14,6 +14,14 @@ class ReportController extends Controller
      */
     public function indexAction()
     {
-        return [];
+        $em = $this->getDoctrine()->getManager();
+        $leads = $em->getRepository('AppBundle:Lead')->findAll();
+        $deals = $em->getRepository('AppBundle:Deal')->findAll();
+
+        return [
+            'leads' => $leads,
+            'deals' => $deals,
+            'average_deal' => []
+        ];
     }
 }
