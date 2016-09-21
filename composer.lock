@@ -1413,12 +1413,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fungio/FungioDataExporterBundle.git",
-                "reference": "101b3b4cf1e414de1a0299d90ecf3895e0b912ec"
+                "reference": "42ecba5c42b1d2af914259d12cedb3982c606b72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fungio/FungioDataExporterBundle/zipball/101b3b4cf1e414de1a0299d90ecf3895e0b912ec",
-                "reference": "101b3b4cf1e414de1a0299d90ecf3895e0b912ec",
+                "url": "https://api.github.com/repos/fungio/FungioDataExporterBundle/zipball/42ecba5c42b1d2af914259d12cedb3982c606b72",
+                "reference": "42ecba5c42b1d2af914259d12cedb3982c606b72",
                 "shasum": ""
             },
             "require": {
@@ -1461,7 +1461,7 @@
                 "xls",
                 "xml"
             ],
-            "time": "2016-07-19 07:28:14"
+            "time": "2016-09-20 08:24:42"
         },
         {
             "name": "getresponse/getresponse",
