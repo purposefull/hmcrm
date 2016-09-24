@@ -21,7 +21,7 @@ class ReportController extends Controller
         return [
             'leads' => $leads,
             'deals' => $deals,
-            'average_deal' => []
+            'average_deal' => [],
         ];
     }
 }
