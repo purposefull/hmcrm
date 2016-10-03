@@ -67,4 +67,17 @@ class DefaultController extends Controller
 
         return [];
     }
+
+    /**
+     * Task action.
+     *
+     * @return RedirectResponse
+     *
+     * @Route("/task", name="task")
+     * @Template()
+     */
+    public function taskAction()
+    {
+        return [];
+    }
 }

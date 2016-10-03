@@ -70,3 +70,13 @@ http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/plat
 https://wrapbootstrap.com/theme/inspinia-responsive-admin-theme-WB0R5L90S
 
 http://blog.getbase.com/30-million-and-the-dawn-of-the-sales-platform
+
+# Build with love by
+
+Symfony Framework
+
+ChartJS
+
+Font Awesome
+
+Bootstrap

@@ -46,9 +46,9 @@ report:
 #    exampleOfForm: Example of form
     status: Report status
 deal:
-    title: Deals
+    title: Sales Pipeline
     edit: Deal edit
-    list: Deals
+    list: Sales Pipeline
     adding: Deal adding
 contact:
     title: Contact
@@ -71,7 +71,8 @@ menu:
     contacts: Contacts
     person: Person
     company: Company
-    deal: Deals
+    deal: Sales Pipeline
+    task: Tasks
     reports: Reports
     leadCaptureForm: Lead Capture Form
     import: Import
