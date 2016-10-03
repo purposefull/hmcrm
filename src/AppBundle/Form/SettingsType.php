@@ -23,6 +23,19 @@ class SettingsType extends AbstractType
     {
         $builder
 
+            ->add('taskService', ChoiceType::class, [
+                'choices' => [
+                    'WunderList' => 'wunderlist',
+                    'Todoist' => 'todoist',
+                    'Asana' => 'asana',
+                    'Trello' => 'trello',
+                ],
+//                'label' => 'lead.status',
+            ])
+            ->add('taskApiKey', TextType::class, [
+                'label' => 'Task API key',
+            ])
+
             ->add('emailService', ChoiceType::class, [
                 'choices' => [
                     'MailerLite' => 'mailerlite',
@@ -35,19 +48,6 @@ class SettingsType extends AbstractType
             ])
             ->add('emailApiKey', TextType::class, [
                 'label' => 'Email API key',
-            ])
-
-            ->add('taskService', ChoiceType::class, [
-                'choices' => [
-                    'WunderList' => 'wunderlist',
-                    'Todoist' => 'todoist',
-                    'Asana' => 'asana',
-                    'Trello' => 'trello',
-                ],
-//                'label' => 'lead.status',
-            ])
-            ->add('taskApiKey', TextType::class, [
-                'label' => 'Task API key',
             ])
 
             //https://github.com/SimpleSoftwareIO/simple-sms
