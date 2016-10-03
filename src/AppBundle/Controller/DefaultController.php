@@ -80,4 +80,17 @@ class DefaultController extends Controller
     {
         return [];
     }
+
+    /**
+     * Task action.
+     *
+     * @return RedirectResponse
+     *
+     * @Route("/calendar", name="calendar")
+     * @Template()
+     */
+    public function calendarAction()
+    {
+        return [];
+    }
 }

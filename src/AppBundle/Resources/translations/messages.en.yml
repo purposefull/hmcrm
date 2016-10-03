@@ -73,6 +73,7 @@ menu:
     company: Company
     deal: Sales Pipeline
     task: Tasks
+    calendar: Calendar
     reports: Reports
     leadCaptureForm: Lead Capture Form
     import: Import

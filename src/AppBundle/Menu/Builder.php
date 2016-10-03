@@ -60,6 +60,10 @@ class Builder implements ContainerAwareInterface
             'route' => 'task',
         ])->setAttribute('icon', 'fa fa-check-square-o');
 
+        $menu->addChild('menu.calendar', [
+            'route' => 'calendar',
+        ])->setAttribute('icon', 'fa fa-calendar');
+
         $menu->addChild('menu.reports', [
             'route' => 'report',
         ])->setAttribute('icon', 'fa fa-pie-chart');
