@@ -12,7 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Template extends Base
 {
-
     /**
      * @var string
      *
