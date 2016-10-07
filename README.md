@@ -39,9 +39,9 @@ http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/plat
 
 1) Import and Export
 
-2) Tasks integration (Wunderlist, Todoist, Asana, Trello)
+2) Calendar and Tasks (Google Calendar + Wunderlist)
 
-3) Email intregration (MailerLite, GetResponse, MailChimp, Aweber)
+3) Email autoresponders (MailerLite, GetResponse, MailChimp, Aweber)
 
 4) VoIP providers integration ()
 
@@ -50,6 +50,13 @@ http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/plat
 6) Reports (ChartJS)
 
 7) API
+
+8) Products
+
+9) Email Templates + Email Server Config
+
+10) Lead Prioritization (Scoring)
+
 
 # Contributing
 
