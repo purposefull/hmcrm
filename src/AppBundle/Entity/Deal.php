@@ -49,6 +49,12 @@ class Deal extends Base
     protected $user;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="deals")
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     */
+    protected $product;
+
+    /**
      * @var string
      *
      * @Assert\NotBlank()

@@ -81,13 +81,6 @@ class Lead extends Base
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $groupId;
-
-    /**
-     * @var string
-     *
      * @Assert\Email(
      *     message = "The email '{{ value }}' is not a valid email.",
      *     checkMX = true
@@ -130,28 +123,13 @@ class Lead extends Base
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $zipCode;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $region;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     protected $country;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="leads")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    protected $tags;
+    protected $user;
 
     /**
      * @return string
@@ -256,46 +234,6 @@ class Lead extends Base
     /**
      * @return string
      */
-    public function getZipCode()
-    {
-        return $this->zipCode;
-    }
-
-    /**
-     * @param string $zipCode
-     *
-     * @return $this
-     */
-    public function setZipCode($zipCode)
-    {
-        $this->zipCode = $zipCode;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRegion()
-    {
-        return $this->region;
-    }
-
-    /**
-     * @param string $region
-     *
-     * @return $this
-     */
-    public function setRegion($region)
-    {
-        $this->region = $region;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
     public function getCountry()
     {
         return $this->country;
@@ -311,42 +249,6 @@ class Lead extends Base
         $this->country = $country;
 
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
-    /**
-     * @param string $tags
-     *
-     * @return $this
-     */
-    public function setTags($tags)
-    {
-        $this->tags = $tags;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getGroupId()
-    {
-        return $this->groupId;
-    }
-
-    /**
-     * @param string $groupId
-     */
-    public function setGroupId($groupId)
-    {
-        $this->groupId = $groupId;
     }
 
     /**
@@ -422,12 +324,6 @@ class Lead extends Base
     {
         $this->tariff = $tariff;
     }
-
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="leads")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    protected $user;
 
     /**
      * @return mixed

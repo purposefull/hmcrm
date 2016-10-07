@@ -18,7 +18,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * CRUD for email templates stored in db
+     * CRUD for email templates stored in db.
      *
      * @Route("/email_template", name="email_template")
      * @Template()
@@ -29,7 +29,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * CRUD for products stored in db
+     * CRUD for products stored in db.
      *
      * @Route("/product", name="product")
      * @Template()

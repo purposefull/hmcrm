@@ -23,6 +23,13 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="user")
+     */
+    protected $products;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $emailService;
