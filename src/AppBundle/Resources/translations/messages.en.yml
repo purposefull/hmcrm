@@ -74,6 +74,8 @@ menu:
     deal: Sales Pipeline
     task: Tasks
     calendar: Calendar
+    emailTemplate: Email Templates
+    product: Products
     reports: Reports
     leadCaptureForm: Lead Capture Form
     import: Import

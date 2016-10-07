@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -29,6 +30,84 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @Assert\Ip
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $emailServer;
+
+    /**
+     * @return string
+     */
+    public function getEmailServer()
+    {
+        return $this->emailServer;
+    }
+
+    /**
+     * @param string $emailServer
+     */
+    public function setEmailServer($emailServer)
+    {
+        $this->emailServer = $emailServer;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmailLogin()
+    {
+        return $this->emailLogin;
+    }
+
+    /**
+     * @param string $emailLogin
+     */
+    public function setEmailLogin($emailLogin)
+    {
+        $this->emailLogin = $emailLogin;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmailPassword()
+    {
+        return $this->emailPassword;
+    }
+
+    /**
+     * @param string $emailPassword
+     */
+    public function setEmailPassword($emailPassword)
+    {
+        $this->emailPassword = $emailPassword;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $emailLogin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $emailPassword;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $emailServiceAuto;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $emailApiKey;
@@ -46,6 +125,22 @@ class User extends BaseUser
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $taskApiKey;
+
+    /**
+     * @return string
+     */
+    public function getEmailServiceAuto()
+    {
+        return $this->emailServiceAuto;
+    }
+
+    /**
+     * @param string $emailServiceAuto
+     */
+    public function setEmailServiceAuto($emailServiceAuto)
+    {
+        $this->emailServiceAuto = $emailServiceAuto;
+    }
 
     /**
      * @return mixed

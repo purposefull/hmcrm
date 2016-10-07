@@ -72,6 +72,14 @@ class Builder implements ContainerAwareInterface
             'route' => 'lead_capture_form_settings',
         ])->setAttribute('icon', 'fa fa-user');
 
+        $menu->addChild('menu.emailTemplate', [
+            'route' => 'email_template',
+        ])->setAttribute('icon', 'fa fa-file-text');
+
+        $menu->addChild('menu.product', [
+            'route' => 'product',
+        ])->setAttribute('icon', 'fa fa-product-hunt');
+
         $menu->addChild('menu.import', [
             'route' => 'import',
         ])->setAttribute('icon', 'fa fa-download');

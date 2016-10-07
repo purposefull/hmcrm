@@ -6,6 +6,7 @@ use AppBundle\Entity\Lead;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -23,53 +24,63 @@ class SettingsType extends AbstractType
     {
         $builder
 
-            ->add('taskService', ChoiceType::class, [
-                'choices' => [
-                    'WunderList' => 'wunderlist',
-                    'Todoist' => 'todoist',
-                    'Asana' => 'asana',
-                    'Trello' => 'trello',
-                ],
-//                'label' => 'lead.status',
-            ])
-            ->add('taskApiKey', TextType::class, [
-                'label' => 'Task API key',
-            ])
+//            ->add('taskService', ChoiceType::class, [
+//                'choices' => [
+//                    'WunderList' => 'wunderlist',
+//                    'Todoist' => 'todoist',
+//                    'Asana' => 'asana',
+//                    'Trello' => 'trello',
+//                ],
+////                'label' => 'lead.status',
+//            ])
+//            ->add('taskApiKey', TextType::class, [
+//                'label' => 'Task API key',
+//            ])
 
-            ->add('emailService', ChoiceType::class, [
-                'choices' => [
-                    'MailerLite' => 'mailerlite',
-                    'GetResponse' => 'getresponse',
-                    'MailChimp' => 'mailchimp',
-                    'Aweber' => 'aweber',
-                    'ConstantContact' => 'constantcontact',
-                ],
-//                'label' => 'firstname',
+//            ->add('emailServiceAuto', ChoiceType::class, [
+//                'choices' => [
+//                    'MailerLite' => 'mailerlite',
+//                    'GetResponse' => 'getresponse',
+//                    'MailChimp' => 'mailchimp',
+//                    'Aweber' => 'aweber',
+//                    'ConstantContact' => 'constantcontact',
+//                ],
+////                'label' => 'firstname',
+//            ])
+//            ->add('emailApiKey', TextType::class, [
+//                'label' => 'Email API key',
+//            ])
+
+            ->add('emailServer', TextType::class, [
+                'label' => 'Email server: ',
             ])
-            ->add('emailApiKey', TextType::class, [
-                'label' => 'Email API key',
+            ->add('emailLogin', TextType::class, [
+                'label' => 'Email login: ',
+            ])
+            ->add('emailPassword', TextType::class, [
+                'label' => 'Email password: ',
             ])
 
             //https://github.com/SimpleSoftwareIO/simple-sms
-            ->add('smsService', ChoiceType::class, [
-                'choices' => [
-                    'Plivo' => 'plivo',
-                    'Clickatell' => 'clickatell',
-                    'Twilio' => 'twilio',
-                    'Nexmo' => 'nexmo',
-                    'Tropo' => 'tropo',
-                    'SMSRU' => 'smsru',
-                    'TurboSMS' => 'turbosms',
-                ],
-//                'label' => 'lead.status',
-            ])
-            ->add('smsApiKey', TextType::class, [
-                'label' => 'SMS API key',
-            ])
-
-            ->add('submit', SubmitType::class, [
-                'label' => 'Submit',
-            ])
+//            ->add('smsService', ChoiceType::class, [
+//                'choices' => [
+//                    'Plivo' => 'plivo',
+//                    'Clickatell' => 'clickatell',
+//                    'Twilio' => 'twilio',
+//                    'Nexmo' => 'nexmo',
+//                    'Tropo' => 'tropo',
+//                    'SMSRU' => 'smsru',
+//                    'TurboSMS' => 'turbosms',
+//                ],
+////                'label' => 'lead.status',
+//            ])
+//            ->add('smsApiKey', TextType::class, [
+//                'label' => 'SMS API key',
+//            ])
+//
+//            ->add('submit', SubmitType::class, [
+//                'label' => 'Submit',
+//            ])
         ;
 
 //        $builder->setRequired(false);
