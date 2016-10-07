@@ -38,9 +38,9 @@ class LoadLeadData extends AbstractFixture implements DependentFixtureInterface
             ->setWorkPhone('+38098453345')
             ->setAddress('проулок Победы 12')
             ->setCity('Воронеж')
-            ->setRegion('Воронеж')
+//            ->setRegion('Воронеж')
             ->setCountry('Россия')
-            ->setTags('Новый клиент, перспективный')
+//            ->setTags('Новый клиент, перспективный')
             ->setLeadStatus(1)
             ->setUser($userAdmin);
         $this->setReference('lead-1', $lead1);
@@ -56,9 +56,9 @@ class LoadLeadData extends AbstractFixture implements DependentFixtureInterface
             ->setWorkPhone('+38098723345')
             ->setAddress('проулок Свобооды 72')
             ->setCity('Киев')
-            ->setRegion('Киев')
+//            ->setRegion('Киев')
             ->setCountry('Украина')
-            ->setTags('Клиент')
+//            ->setTags('Клиент')
             ->setLeadStatus(1)
             ->setUser($userAdmin);
         $this->setReference('lead-2', $lead2);
@@ -74,9 +74,9 @@ class LoadLeadData extends AbstractFixture implements DependentFixtureInterface
             ->setWorkPhone('+38098543345')
             ->setAddress('улица Центральная 18, кв 19')
             ->setCity('Харьков')
-            ->setRegion('Харьков')
+//            ->setRegion('Харьков')
             ->setCountry('Украина')
-            ->setTags('Клиент')
+//            ->setTags('Клиент')
             ->setLeadStatus(2)
             ->setUser($userAdmin);
         $this->setReference('lead-3', $lead3);

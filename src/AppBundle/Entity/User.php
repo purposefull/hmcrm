@@ -201,6 +201,11 @@ class User extends BaseUser
     protected $leads;
 
     /**
+     * @ORM\OneToMany(targetEntity="Template", mappedBy="user")
+     */
+    protected $templates;
+
+    /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contact", mappedBy="user")
      */
     protected $contacts;
