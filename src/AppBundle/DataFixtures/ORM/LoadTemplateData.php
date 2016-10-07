@@ -27,11 +27,11 @@ class LoadTemplateData extends AbstractFixture
         /** @var User $userAdmin */
         $userAdmin = $this->getReference('user-admin');
 
-//        $lead1 = (new Template())
-//            ->setName('Upsell message')
-//            ->setCode("{{ 'twig' }}")
-//            ->setUser($userAdmin);
-//        $manager->persist($lead1);
+        $lead1 = (new Template())
+            ->setName('Upsell message')
+            ->setCode("{{ 'twig' }}")
+            ->setUser($userAdmin);
+        $manager->persist($lead1);
 
         $lead2 = new Template();
         $lead2->setCode('sadsadsa');
