@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Lead.
  *
- * @ORM\Table(name="product")
+ * @ORM\Table(name="template")
  * @ORM\Entity()
  */
 class Template extends Base

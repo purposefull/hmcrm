@@ -48,7 +48,8 @@
         "markroland/ontraport-api-php-class": "^0.3.0",
         "google/apiclient": "^2.0",
         "lexik/mailer-bundle": "^2.0",
-        "craue/config-bundle": "^1.4"
+        "craue/config-bundle": "^1.4",
+        "doctrine/doctrine-migrations-bundle": "^1.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

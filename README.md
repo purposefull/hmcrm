@@ -49,6 +49,8 @@ http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/plat
 
 6) Reports (ChartJS)
 
+7) API
+
 # Contributing
 
 1) Project standards - https://github.com/FriendsOfPHP/PHP-CS-Fixer
