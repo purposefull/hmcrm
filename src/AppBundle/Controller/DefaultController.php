@@ -58,13 +58,13 @@ class DefaultController extends Controller
      */
     public function exportAction()
     {
-//        $exporter = $this->get('fungio.dataexporter');
+        //        $exporter = $this->get('fungio.dataexporter');
 //        $Lead = new Lead();
-//
+
 //        $exporter->setOptions('json', array('fileName' => 'file', 'separator' => ';'));
 //        $exporter->setColumns(array('firstName' => 'firstName', 'mobilePhone' => 'mobilePhone', 'country' => 'country'));
 //        $exporter->setData(array($Lead));
-//
+
 //        return $exporter->render();
 
         return [];
@@ -94,7 +94,6 @@ class DefaultController extends Controller
     public function calendarAction()
     {
         return [];
-
     }
 
     /**
@@ -116,8 +115,7 @@ class DefaultController extends Controller
 
         $lead = [];
 
-        foreach ($leads as $lead)
-        {
+        foreach ($leads as $lead) {
             $lead[] = $leads;
         }
 
@@ -137,7 +135,6 @@ class DefaultController extends Controller
      */
     public function exportHTMLAction()
     {
-
         $exporter = $this->get('fungio.dataexporter');
 
         $em = $this->getDoctrine()->getManager();
@@ -148,8 +145,7 @@ class DefaultController extends Controller
 
         $lead1 = [];
 
-        foreach ($leads as $lead)
-        {
+        foreach ($leads as $lead) {
             $lead1[] = $lead;
         }
 
@@ -169,7 +165,6 @@ class DefaultController extends Controller
      */
     public function exportCSVAction()
     {
-
         $exporter = $this->get('fungio.dataexporter');
 
         $em = $this->getDoctrine()->getManager();
@@ -180,8 +175,7 @@ class DefaultController extends Controller
 
         $lead2 = [];
 
-        foreach ($leads as $lead)
-        {
+        foreach ($leads as $lead) {
             $lead2[] = $lead;
         }
 
@@ -192,7 +186,6 @@ class DefaultController extends Controller
         return $exporter->render();
     }
 
-
     /**
      * Export action.
      *
@@ -202,7 +195,6 @@ class DefaultController extends Controller
      */
     public function exportXMLAction()
     {
-
         $exporter = $this->get('fungio.dataexporter');
 
         $em = $this->getDoctrine()->getManager();
@@ -213,8 +205,7 @@ class DefaultController extends Controller
 
         $lead3 = array();
 
-        foreach ($leads as $lead)
-        {
+        foreach ($leads as $lead) {
             $lead3[] = $lead;
         }
 
@@ -234,7 +225,6 @@ class DefaultController extends Controller
      */
     public function exportXLSAction()
     {
-
         $exporter = $this->get('fungio.dataexporter');
 
         $em = $this->getDoctrine()->getManager();
@@ -243,8 +233,7 @@ class DefaultController extends Controller
 
         $leads = $em->getRepository('AppBundle:Lead')->findByUser($user);
 
-        foreach ($leads as $lead)
-        {
+        foreach ($leads as $lead) {
             $lead4[] = $lead;
         }
 
@@ -259,7 +248,6 @@ class DefaultController extends Controller
      * @return RedirectResponse
      *
      * @Route("/export_pdf", name="pdf")
-     *
      */
     public function exportPDFAction()
     {
@@ -277,7 +265,7 @@ class DefaultController extends Controller
             $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
             200,
             [
-                 'Content-Type'        => 'application/pdf',
+                 'Content-Type' => 'application/pdf',
                 'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
             ]
         );

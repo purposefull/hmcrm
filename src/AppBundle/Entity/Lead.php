@@ -521,6 +521,4 @@ class Lead extends Base
     {
         $this->createdAt = new \DateTime();
     }
-
-
 }

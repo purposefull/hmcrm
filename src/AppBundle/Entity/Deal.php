@@ -273,5 +273,4 @@ class Deal extends Base
     {
         $this->createdAt = new \DateTime();
     }
-
 }

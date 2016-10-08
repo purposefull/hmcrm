@@ -287,5 +287,4 @@ class User extends BaseUser
     {
         $this->taskApiKey = $taskApiKey;
     }
-
 }
