@@ -44,6 +44,8 @@ class Contact extends Base
     public function __construct()
     {
         $this->deals = new ArrayCollection();
+        $this->createdAt = new \DateTime();
+
     }
 
     /**
@@ -145,4 +147,5 @@ class Contact extends Base
     {
         $this->deals->removeElement($deal);
     }
+
 }

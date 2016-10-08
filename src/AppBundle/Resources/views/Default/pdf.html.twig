@@ -1,0 +1,21 @@
+{# src/AppBundle/Resources/views/Demo/pdf.html.twig #}
+
+
+{% block content %}
+    <p>This is the PDF content.</p>
+
+    <table>
+        <tr>
+            <td>First Name</td>
+            <td>Mobile Phone</td>
+            <td>Country</td>
+        </tr>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.firstName }}</td>
+                <td>{{ entity.mobilePhone }}</td>
+                <td>{{ entity.Country }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

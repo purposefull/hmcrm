@@ -46,6 +46,8 @@
         "camcima/tropo-webapi-php": "dev-master",
         "archer/clickatell-bundle": "^0.1.0",
         "markroland/ontraport-api-php-class": "^0.3.0",
+        "knplabs/knp-snappy-bundle": "^1.4",
+        "h4cc/wkhtmltopdf-amd64": "^0.12.3",
         "google/apiclient": "^2.0",
         "lexik/mailer-bundle": "^2.0",
         "craue/config-bundle": "^1.4",

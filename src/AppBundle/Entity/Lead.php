@@ -516,4 +516,11 @@ class Lead extends Base
 
         return $this;
     }
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+
 }

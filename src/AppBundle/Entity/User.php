@@ -221,6 +221,7 @@ class User extends BaseUser
         $this->leads = new ArrayCollection();
         $this->contacts = new ArrayCollection();
         $this->deals = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     /**
@@ -286,4 +287,5 @@ class User extends BaseUser
     {
         $this->taskApiKey = $taskApiKey;
     }
+
 }

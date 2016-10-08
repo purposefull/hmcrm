@@ -95,7 +95,6 @@ abstract class Base
      */
     public function prePersist()
     {
-        $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
     }
 

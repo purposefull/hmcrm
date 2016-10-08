@@ -82,6 +82,101 @@ class LoadLeadData extends AbstractFixture implements DependentFixtureInterface
         $this->setReference('lead-3', $lead3);
         $manager->persist($lead3);
 
+        $lead4 = (new Lead())
+            ->setFirstName('Игорь')
+            ->setLastName('Лапун')
+            ->setCompanyName('Мистраль')
+            ->setTitle('Мистраль')
+            ->setEmail('iga_mistrag@gmail.com')
+            ->setMobilePhone('+38093941289')
+            ->setWorkPhone('+38098543345')
+            ->setAddress('улица Центральная 18, кв 19')
+            ->setCity('Харьков')
+            ->setRegion('Харьков')
+            ->setCountry('Украина')
+            ->setTags('Клиент')
+            ->setLeadStatus(2)
+            ->setCreatedAt(new \DateTime('-1 month'))
+            ->setUser($userAdmin);
+        $this->setReference('lead-4', $lead4);
+        $manager->persist($lead4);
+
+        $lead5 = (new Lead())
+            ->setFirstName('Игорь')
+            ->setLastName('Лапун')
+            ->setCompanyName('Мистраль')
+            ->setTitle('Мистраль')
+            ->setEmail('iga_mistrag@gmail.com')
+            ->setMobilePhone('+38093941289')
+            ->setWorkPhone('+38098543345')
+            ->setAddress('улица Центральная 18, кв 19')
+            ->setCity('Харьков')
+            ->setRegion('Харьков')
+            ->setCountry('Украина')
+            ->setTags('Клиент')
+            ->setLeadStatus(3)
+            ->setCreatedAt(new \DateTime('+1 month'))
+            ->setUser($userAdmin);
+        $this->setReference('lead-5', $lead5);
+        $manager->persist($lead5);
+
+        $lead6 = (new Lead())
+            ->setFirstName('Игорь')
+            ->setLastName('Лапун')
+            ->setCompanyName('Мистраль')
+            ->setTitle('Мистраль')
+            ->setEmail('iga_mistrag@gmail.com')
+            ->setMobilePhone('+38093941289')
+            ->setWorkPhone('+38098543345')
+            ->setAddress('улица Центральная 18, кв 19')
+            ->setCity('Харьков')
+            ->setRegion('Харьков')
+            ->setCountry('Украина')
+            ->setTags('Клиент')
+            ->setLeadStatus(3)
+            ->setCreatedAt(new \DateTime('+3 month'))
+            ->setUser($userAdmin);
+        $this->setReference('lead-6', $lead6);
+        $manager->persist($lead6);
+
+        $lead7 = (new Lead())
+            ->setFirstName('Игорь')
+            ->setLastName('Лапун')
+            ->setCompanyName('Мистраль')
+            ->setTitle('Мистраль')
+            ->setEmail('iga_mistrag@gmail.com')
+            ->setMobilePhone('+38093941289')
+            ->setWorkPhone('+38098543345')
+            ->setAddress('улица Центральная 18, кв 19')
+            ->setCity('Харьков')
+            ->setRegion('Харьков')
+            ->setCountry('Украина')
+            ->setTags('Клиент')
+            ->setLeadStatus(3)
+            ->setCreatedAt(new \DateTime('-9 month'))
+            ->setUser($userAdmin);
+        $this->setReference('lead-7', $lead7);
+        $manager->persist($lead7);
+
+        $lead8 = (new Lead())
+            ->setFirstName('Игорь')
+            ->setLastName('Лапун')
+            ->setCompanyName('Мистраль')
+            ->setTitle('Мистраль')
+            ->setEmail('iga_mistrag@gmail.com')
+            ->setMobilePhone('+38093941289')
+            ->setWorkPhone('+38098543345')
+            ->setAddress('улица Центральная 18, кв 19')
+            ->setCity('Харьков')
+            ->setRegion('Харьков')
+            ->setCountry('Украина')
+            ->setTags('Клиент')
+            ->setLeadStatus(3)
+            ->setCreatedAt(new \DateTime('+5 month'))
+            ->setUser($userAdmin);
+        $this->setReference('lead-8', $lead8);
+        $manager->persist($lead8);
+
         $manager->flush();
     }
 }
