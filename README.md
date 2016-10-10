@@ -49,9 +49,9 @@ http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/plat
 
 6) Reports (ChartJS)
 
-7) API
+7) RESTful API (RestBundle)
 
-8) Products
+8) Product list
 
 9) Email Templates + Email Server Config
 
