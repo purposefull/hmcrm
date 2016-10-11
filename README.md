@@ -7,9 +7,9 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 # System Requirements
 
-1) PHP 7.x
+1) PHP 7+
 
-2) PostgreSQL 9.3 or MySQL 5.7
+2) PostgreSQL 9.3+
 
 http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/platforms.html
 
