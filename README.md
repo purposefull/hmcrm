@@ -11,8 +11,6 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 2) PostgreSQL 9.3+
 
-http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/platforms.html
-
 3) Composer - https://getcomposer.org/
 
 4) Git
