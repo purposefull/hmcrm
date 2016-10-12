@@ -3,14 +3,12 @@ language: php
 php:
   - 7.0
   - 7.1
-  - hhvm
 
 before_script:
     - psql -c 'create database travis_ci_test;' -U postgres
     - COMPOSER_ROOT_VERSION=dev-master composer --prefer-source --dev install
 
-script: phpunit
+script: vendor/bin/phpunit
 
 services:
-  - mysql
   - postgresql

@@ -7,11 +7,9 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 # System Requirements
 
-1) PHP 7.x
+1) PHP 7+
 
-2) PostgreSQL 9.3 or MySQL 5.7
-
-http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/platforms.html
+2) PostgreSQL 9.3+
 
 3) Composer - https://getcomposer.org/
 
@@ -37,25 +35,19 @@ http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/plat
 
 # Roadmap
 
-1) Import and Export
+1) Import
 
 2) Calendar and Tasks (Google Calendar + Wunderlist)
 
 3) Email autoresponders (MailerLite, GetResponse, MailChimp, Aweber)
 
-4) VoIP providers integration ()
+4) RESTful API (RestBundle)
 
-5) SMS providers integration (Nexmo, Twilio, Clickatell, Plivo, Tropo, TurboSMS, SMSRU)
+5) Product list
 
-6) Reports (ChartJS)
+6) Email Templates + Email Server Config
 
-7) API
-
-8) Products
-
-9) Email Templates + Email Server Config
-
-10) Lead Prioritization (Scoring)
+7) Lead Prioritization (Scoring)
 
 
 # Contributing
@@ -82,13 +74,15 @@ http://blog.getbase.com/30-million-and-the-dawn-of-the-sales-platform
 
 # Build with love by
 
-Symfony Framework
+Symfony
+
+PostgreSQL
 
 ChartJS
 
 Font Awesome
 
-Bootstrap
+Twitter Bootstrap
 
 Google Calendar
 

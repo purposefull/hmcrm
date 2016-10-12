@@ -21,6 +21,9 @@
         code {
             white-space: normal;
         }
+        .file-box {
+            width: auto;
+        }
     </style>
     <p>{{ 'lead.LCFdesc'|trans }}</p>
 
@@ -57,34 +60,6 @@
     </form>
 
     Code:
-    <code>
-        <div class="row">
-            &lt;form action="http://crm.healthmarketing.me/lead/lead_capture_form" method="post"&gt;
-        </div>
-
-        <div class="row">
-            &lt;input name="name" class="form-control" type="text" placeholder="{{ 'name'|trans }}" required&gt;
-        </div>
-        <div class="row">
-            &lt;input name="email" class="form-control" type="email" placeholder="{{ 'email'|trans }}" required&gt;
-        </div>
-        <div class="row">
-            &lt;input name="phone" class="form-control" type="text" placeholder="{{ 'phone'|trans }}" required&gt;
-        </div>
-        <div class="row">
-            &lt;input name="userId" class="form-control" type="hidden" value="{{ app.user.getId() }}" required&gt;
-        </div>
-        <div class="row">
-            &lt;input name="redirectUrl" class="form-control" type="hidden" value="http://healthmareting.me/thx"
-            placeholder="userId" required&gt;
-        </div>
-        <div class="row">
-            &lt;input class="btn btn-primary" type="button" value="{{ 'submit'|trans }}"&gt;
-        </div>
-        <div class="row">
-            &lt;form&gt;
-        </div>
-
-    </code>
+    <script src="https://gist.github.com/andreybolonin/a9b9d4153d9c07a29e67703e628a72b3.js"></script>
 
 {% endblock %}

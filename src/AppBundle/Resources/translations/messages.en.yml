@@ -9,7 +9,9 @@ name: Name
 firstname: First name
 lastName: Last name
 title: Title
-email: Email
+email:
+    list: Email templates
+    edit: Email template edit
 mobilephone: Mobile phone
 workphone: Work phone
 address: Address
@@ -90,4 +92,7 @@ Header: 123
 settings:
     index: Settings
 Settings: Settings
+product:
+    edit: Product edit
+    list: Products
 
