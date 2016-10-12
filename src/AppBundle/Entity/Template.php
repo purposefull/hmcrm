@@ -37,6 +37,11 @@ class Template extends Base
      */
     protected $deals;
 
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
     /**
      * @return mixed
      */

@@ -18,7 +18,18 @@ class ReportController extends Controller
         $leads = $em->getRepository('AppBundle:Lead')->findAll();
         $deals = $em->getRepository('AppBundle:Deal')->findAll();
 
+        $connection = $em->getConnection();
+
+        $stmt = $connection->prepare('SELECT COUNT(lead.id) AS leadcount FROM lead GROUP BY EXTRACT(MONTH FROM created_at) ORDER BY EXTRACT(MONTH FROM created_at);');
+        $stmt->execute();
+
+        $results = $stmt->fetchAll();
+
+        $leadcount = array_column($results, 'leadcount');
+
+//['January' => 10, 'February' => 20]
         return [
+            'results' => $leadcount,
             'leads' => $leads,
             'deals' => $deals,
             'average_deal' => [],
