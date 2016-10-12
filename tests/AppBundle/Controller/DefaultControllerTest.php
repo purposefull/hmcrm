@@ -9,10 +9,10 @@ class DefaultControllerTest extends WebTestCase
 {
     public function testIndex()
     {
-//        $client = static::createClient();
-//
+        //        $client = static::createClient();
+
 //        $crawler = $client->request('GET', '/login');
-//
+
 //        $this->assertEquals(200, $client->getResponse()->getStatusCode());
 //        $this->assertContains('Welcome to Symfony', $crawler->filter('#container h1')->text());
     }
@@ -61,5 +61,4 @@ class DefaultControllerTest extends WebTestCase
 
         static::assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
     }
-
 }
