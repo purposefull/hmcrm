@@ -1665,12 +1665,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "42691e1806aa3faff2622dbdaae1c3562c925906"
+                "reference": "67197694ab1e74b046eebdf4321cae8bed515218"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/42691e1806aa3faff2622dbdaae1c3562c925906",
-                "reference": "42691e1806aa3faff2622dbdaae1c3562c925906",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/67197694ab1e74b046eebdf4321cae8bed515218",
+                "reference": "67197694ab1e74b046eebdf4321cae8bed515218",
                 "shasum": ""
             },
             "require": {
@@ -1734,7 +1734,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2016-10-11 13:29:39"
+            "time": "2016-10-12 12:49:21"
         },
         {
             "name": "fungio/dataexporter-bundle",
