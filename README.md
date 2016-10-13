@@ -1,7 +1,7 @@
 HealthMarketing CRM
 =======
 
-[https://travis-ci.org/andreybolonin/hmcrm.svg?branch=master](123)
+[![Build Status](https://travis-ci.org/andreybolonin/hmcrm.svg?branch=master)](https://travis-ci.org/andreybolonin/hmcrm)
 
 All-in-One Sales Platform for Small Business
 

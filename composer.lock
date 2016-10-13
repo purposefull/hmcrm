@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "10d5dff8896a680b8c5548d1be8fb867",
-    "content-hash": "22f855d49ba68d34f23be4cabf53c30d",
+    "hash": "31fa098a5cb0dcd073308e91753c5106",
+    "content-hash": "08da33e6925d8602690df27c45cf7fca",
     "packages": [
         {
             "name": "adoy/oauth2",
@@ -46,103 +46,6 @@
             ],
             "description": "Light PHP wrapper for the OAuth 2.0 protocol (based on OAuth 2.0 Authorization Protocol draft-ietf-oauth-v2-15)",
             "time": "2015-08-03 19:57:06"
-        },
-        {
-            "name": "archer/clickatell-bundle",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/archer-soft/ClickatellBundle.git",
-                "reference": "c64d63663d92e959191bda52c295c81b44296159"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/archer-soft/ClickatellBundle/zipball/c64d63663d92e959191bda52c295c81b44296159",
-                "reference": "c64d63663d92e959191bda52c295c81b44296159",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9",
-                "symfony/framework-bundle": "~2.8|~3.0"
-            },
-            "require-dev": {
-                "doctrine/doctrine-bundle": "~1.6",
-                "symfony/validator": "~2.8|~3.0",
-                "symfony/yaml": "~2.8|~3.0"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Archer\\ClickatellBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Andrey Samusev",
-                    "email": "andrey@4devs.pro"
-                },
-                {
-                    "name": "Archer Soft Community",
-                    "homepage": "https://github.com/archer-soft/ClickatellBundle/contributors"
-                }
-            ],
-            "description": "Symfony ClickatellBundle",
-            "keywords": [
-                "clickatell"
-            ],
-            "time": "2016-08-17 12:37:39"
-        },
-        {
-            "name": "arcturial/clickatell",
-            "version": "2.1.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/arcturial/clickatell.git",
-                "reference": "d348e41a4052547d60d17737bf1993dd794b5ca1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/arcturial/clickatell/zipball/d348e41a4052547d60d17737bf1993dd794b5ca1",
-                "reference": "d348e41a4052547d60d17737bf1993dd794b5ca1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.3.*"
-            },
-            "suggest": {
-                "symfony/config": "For usage with the Symfony Framework",
-                "symfony/dependency-injection": "For usage with the Symfony Framework",
-                "symfony/http-kernel": "For usage with the Symfony Framework"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Clickatell\\": [
-                        "src",
-                        "test"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GNU General Public License"
-            ],
-            "authors": [
-                {
-                    "name": "Chris Brand",
-                    "email": "webmaster@cainsvault.com"
-                }
-            ],
-            "description": "Standalone PHP library to integrate with the Clickatell SMS gateway",
-            "homepage": "http://www.cainsvault.com",
-            "time": "2016-03-19 21:20:59"
         },
         {
             "name": "asana/asana",
@@ -217,50 +120,6 @@
                 "email"
             ],
             "time": "2015-02-19 18:16:21"
-        },
-        {
-            "name": "camcima/tropo-webapi-php",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/camcima/tropo-webapi-php.git",
-                "reference": "97fbee4359556d489c51e5b3b5c14420e8e3d95a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/camcima/tropo-webapi-php/zipball/97fbee4359556d489c51e5b3b5c14420e8e3d95a",
-                "reference": "97fbee4359556d489c51e5b3b5c14420e8e3d95a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Tropo": "Package"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Carlos Cima",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Refactored Tropo PHP 5 package",
-            "homepage": "https://github.com/camcima/tropo-webapi-php",
-            "keywords": [
-                "cloud",
-                "php",
-                "sms",
-                "tropo",
-                "voip"
-            ],
-            "time": "2013-02-07 19:19:01"
         },
         {
             "name": "cdaguerre/php-trello-api",
@@ -357,98 +216,6 @@
                 "stream_filter_register"
             ],
             "time": "2015-11-08 23:41:30"
-        },
-        {
-            "name": "connect-corp/nexmo-client",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ConnectCorp/nexmo-client.git",
-                "reference": "f37e3b98e9a4c96a1b545d3fbe0afb8033c5043b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ConnectCorp/nexmo-client/zipball/f37e3b98e9a4c96a1b545d3fbe0afb8033c5043b",
-                "reference": "f37e3b98e9a4c96a1b545d3fbe0afb8033c5043b",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "~6.0",
-                "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.5"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Nexmo\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Unofficial Nexmo Rest Client",
-            "keywords": [
-                "lib",
-                "nexmo",
-                "sdk"
-            ],
-            "time": "2016-04-19 18:05:56"
-        },
-        {
-            "name": "constantcontact/constantcontact",
-            "version": "3.0.0-alpha",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/constantcontact/php-sdk.git",
-                "reference": "687a61e5928ad30f0c173c67919b5d3503c796a1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/constantcontact/php-sdk/zipball/687a61e5928ad30f0c173c67919b5d3503c796a1",
-                "reference": "687a61e5928ad30f0c173c67919b5d3503c796a1",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.1.1",
-                "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.8.21"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Ctct": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Constant Contact Web Services",
-                    "email": "webservices@constantcontact.com",
-                    "homepage": "http://developer.constantcontact.com"
-                }
-            ],
-            "description": "Constant Contact PHP SDK for v2",
-            "homepage": "http://developer.constantcontact.com",
-            "keywords": [
-                "constant contact",
-                "constantcontact",
-                "ctct",
-                "email marketing"
-            ],
-            "time": "2016-03-29 22:39:51"
         },
         {
             "name": "craue/config-bundle",
@@ -3640,54 +3407,6 @@
             "time": "2016-10-04 00:57:04"
         },
         {
-            "name": "plivo/plivo-php",
-            "version": "v1.1.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/plivo/plivo-php.git",
-                "reference": "4d5ef0aac6bdd8698465a83fd3b46f0fb81f3cdf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/plivo/plivo-php/zipball/4d5ef0aac6bdd8698465a83fd3b46f0fb81f3cdf",
-                "reference": "4d5ef0aac6bdd8698465a83fd3b46f0fb81f3cdf",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "plivo.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Radu Topala",
-                    "email": "radu.topala@trisoft.ro"
-                },
-                {
-                    "name": "Adam Homsi",
-                    "email": "adam.homsi@gmail.com"
-                },
-                {
-                    "name": "Plivo Team",
-                    "email": "hello@plivo.com"
-                },
-                {
-                    "name": "Ben McInturff",
-                    "email": "benmcinturff@gmail.com"
-                }
-            ],
-            "description": "Plivo PHP helper library to access PlivoCloud API and generate Plivo XML",
-            "time": "2016-06-02 10:16:04"
-        },
-        {
             "name": "psr/cache",
             "version": "1.0.1",
             "source": {
@@ -3987,97 +3706,6 @@
             ],
             "description": "A security checker for your composer.lock",
             "time": "2016-09-23 18:09:57"
-        },
-        {
-            "name": "sunra/turbosms-bundle",
-            "version": "0.1.0",
-            "target-dir": "Sunra/TurbosmsBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sunra/SunraTurbosmsBundle.git",
-                "reference": "6401968064d8559f5f5a9618bec2f4364666275d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sunra/SunraTurbosmsBundle/zipball/6401968064d8559f5f5a9618bec2f4364666275d",
-                "reference": "6401968064d8559f5f5a9618bec2f4364666275d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.9",
-                "sunra/turbosms-soapgate-client-php": "0.4.0",
-                "symfony/framework-bundle": "~2.8|~3.0",
-                "symfony/yaml": "~2.8|~3.0"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-0": {
-                    "Sunra\\TurbosmsBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "sunra",
-                    "email": "sunra@yandex.ru"
-                }
-            ],
-            "description": "A Turbosms bundle for Symfony2",
-            "homepage": "https://github.com/sunra/SunraTurbosmsBundle",
-            "keywords": [
-                "sms",
-                "symfony",
-                "turbosms"
-            ],
-            "time": "2016-08-24 19:01:18"
-        },
-        {
-            "name": "sunra/turbosms-soapgate-client-php",
-            "version": "0.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sunra/turbosms-soapgate-client-php.git",
-                "reference": "8a05035fd89fb41072c7187b2c265bb13d22fc8a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sunra/turbosms-soapgate-client-php/zipball/8a05035fd89fb41072c7187b2c265bb13d22fc8a",
-                "reference": "8a05035fd89fb41072c7187b2c265bb13d22fc8a",
-                "shasum": ""
-            },
-            "require": {
-                "ext-soap": "*",
-                "lib-iconv": "*",
-                "php": ">=5.3.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Turbosms": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "sunra",
-                    "email": "sunra@yandex.ru",
-                    "homepage": "http://github.com/sunra"
-                }
-            ],
-            "description": "Client library for connect to soap gate of TurboSMS.ua",
-            "homepage": "http://github.com/sunra/turbosms-soapgate-client-php",
-            "keywords": [
-                "gate",
-                "sms",
-                "soap"
-            ],
-            "time": "2012-11-30 16:14:16"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -4797,102 +4425,6 @@
             "time": "2016-10-05 18:57:41"
         },
         {
-            "name": "twilio/sdk",
-            "version": "4.12.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "6e4b45fc3f8b56c088dfecf4bced76c712cb6182"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/6e4b45fc3f8b56c088dfecf4bced76c712cb6182",
-                "reference": "6e4b45fc3f8b56c088dfecf4bced76c712cb6182",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.1"
-            },
-            "require-dev": {
-                "mockery/mockery": ">=0.7.2",
-                "phpunit/phpunit": "4.5.*"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "Services/Twilio.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kevin Burke",
-                    "email": "kevin@twilio.com"
-                },
-                {
-                    "name": "Kyle Conroy",
-                    "email": "kyle+pear@twilio.com"
-                }
-            ],
-            "description": "A PHP wrapper for Twilio's API",
-            "homepage": "http://github.com/twilio/twilio-php",
-            "keywords": [
-                "api",
-                "sms",
-                "twilio"
-            ],
-            "time": "2016-09-01 18:42:52"
-        },
-        {
-            "name": "vresh/twilio-bundle",
-            "version": "1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fridolin-koch/VreshTwilioBundle.git",
-                "reference": "95b432962d3dd1e430d6a012348a31b97bf03181"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fridolin-koch/VreshTwilioBundle/zipball/95b432962d3dd1e430d6a012348a31b97bf03181",
-                "reference": "95b432962d3dd1e430d6a012348a31b97bf03181",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2",
-                "symfony/framework-bundle": "~2.1|~3.0",
-                "twilio/sdk": ">=4.0.2 <5.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.1",
-                "satooshi/php-coveralls": "~1.0"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Vresh\\TwilioBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fridolin Koch",
-                    "email": "info@fridokoch.de"
-                }
-            ],
-            "description": "A simple Symfony 2, 3 bundle for the official sdk provided by Twilio.",
-            "homepage": "https://github.com/fridolin-koch/VreshTwilioBundle",
-            "keywords": [
-                "twilio"
-            ],
-            "time": "2016-08-17 18:09:02"
-        },
-        {
             "name": "willdurand/jsonp-callback-validator",
             "version": "v1.1.0",
             "source": {
@@ -4983,51 +4515,6 @@
                 "negotiation"
             ],
             "time": "2016-09-21 11:26:55"
-        },
-        {
-            "name": "zelenin/smsru",
-            "version": "4.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zelenin/sms_ru.git",
-                "reference": "54dda335d6cbdb34c2cbfa570c330626a95ad6f9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zelenin/sms_ru/zipball/54dda335d6cbdb34c2cbfa570c330626a95ad6f9",
-                "reference": "54dda335d6cbdb34c2cbfa570c330626a95ad6f9",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "~6",
-                "php": ">=5.5.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Zelenin\\SmsRu\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Aleksandr Zelenin",
-                    "email": "aleksandr@zelenin.me",
-                    "homepage": "http://zelenin.me",
-                    "role": "Developer"
-                }
-            ],
-            "description": "PHP-класс для работы с api сервиса [sms.ru](http://sms.ru)",
-            "homepage": "https://github.com/zelenin/sms_ru",
-            "keywords": [
-                "api",
-                "sms",
-                "sms.ru"
-            ],
-            "time": "2016-03-30 21:59:27"
         },
         {
             "name": "zendframework/zend-code",
@@ -6449,10 +5936,7 @@
     "stability-flags": {
         "friendsofsymfony/user-bundle": 20,
         "fungio/dataexporter-bundle": 20,
-        "minneola/todoist": 20,
-        "constantcontact/constantcontact": 15,
-        "connect-corp/nexmo-client": 20,
-        "camcima/tropo-webapi-php": 20
+        "minneola/todoist": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
