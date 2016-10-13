@@ -2,6 +2,6 @@ services:
 
     appbundle.locale_listener:
           class: AppBundle\EventListener\LocaleListener
-          arguments: ["%kernel.default_locale%", %locales%, "@router"]
+          arguments: ["%kernel.default_locale%", "%locales%", "@router"]
           tags:
               - { name: kernel.event_subscriber }
