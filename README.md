@@ -15,8 +15,6 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 3) Composer
 
-4) Git
-
 # Installation
 
 1) composer create-project andreybolonin/hmcrm
