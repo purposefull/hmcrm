@@ -1,6 +1,8 @@
 HealthMarketing CRM
 =======
 
+https://travis-ci.org/andreybolonin/hmcrm.svg?branch=master
+
 All-in-One Sales Platform for Small Business
 
 http://crm.healthmarketing.me - SaaS implementation.
