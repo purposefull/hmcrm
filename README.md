@@ -13,27 +13,25 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 2) PostgreSQL 9.3+
 
-3) Composer - https://getcomposer.org/
+3) Composer
 
 4) Git
 
 # Installation
 
-1) git clone git@github.com:andreybolonin/hmcrm.git
+1) composer create-project andreybolonin/hmcrm
 
-2) composer install
+2) bin/symfony_requirements
 
-3) php bin/symfony_requirements
+3) bin/console doctrine:database:create
 
-4) php bin/console doctrine:database:create
+4) bin/console doctrine:schema:update --force
 
-5) php bin/console doctrine:schema:update --force
+5) bin/console doctrine:fixtures:load
 
-6) php bin/console doctrine:fixtures:load
+6) bin/console server:start
 
-7) php bin/console server:start
-
-8) http://127.0.0.1:8000
+7) http://127.0.0.1:8000/login
 
 # Roadmap
 
@@ -54,9 +52,10 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 # Contributing
 
-1) Project standards - https://github.com/FriendsOfPHP/PHP-CS-Fixer
+1) Coding standards - https://github.com/FriendsOfPHP/PHP-CS-Fixer
 
-2) Fork the repo and open Pull Requests on an opened issues
+2) Phpunit tests will be passed
+
 
 # Database [PostgreSQL]
 
@@ -68,11 +67,13 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 4) Double type password for user postgres
 
+
 # UI
 
 https://wrapbootstrap.com/theme/inspinia-responsive-admin-theme-WB0R5L90S
 
 http://blog.getbase.com/30-million-and-the-dawn-of-the-sales-platform
+
 
 # Build with love by
 
