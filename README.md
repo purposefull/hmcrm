@@ -19,21 +19,17 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 1) composer create-project andreybolonin/hmcrm
 
-2) bin/symfony_requirements
+2) bin/console doctrine:database:create && doctrine:schema:update --force
 
-3) bin/console doctrine:database:create
+3) bin/console doctrine:fixtures:load
 
-4) bin/console doctrine:schema:update --force
+4) bin/console server:start
 
-5) bin/console doctrine:fixtures:load
-
-6) bin/console server:start
-
-7) http://127.0.0.1:8000/login
+5) http://127.0.0.1:8000/login
 
 # Roadmap
 
-1) Import
+1) Import & Export
 
 2) Calendar and Tasks (Google Calendar + Wunderlist)
 
