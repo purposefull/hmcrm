@@ -20,13 +20,13 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>New Leads by Month
+                        <h5>Leads by Month
                             {#<small>With custom colors.</small>#}
                         </h5>
                     </div>
                     <div class="ibox-content">
                         <div>
-                            <canvas id="lineChart" width="528" height="246"></canvas>
+                            <canvas id="leadChart" width="528" height="246"></canvas>
                             {#<canvas id="lineChart" height="246" width="528" style="width: 528px; height: 246px;"></canvas>#}
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                     </div>
                     <div class="ibox-content">
                         <div>
-                            <canvas id="lineChart" width="528" height="246"></canvas>
+                            <canvas id="dealChart" width="528" height="246"></canvas>
                             {#<canvas id="lineChart" height="246" width="528" style="width: 528px; height: 246px;"></canvas>#}
                         </div>
                     </div>
@@ -104,14 +104,51 @@
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
     <script>
-        var ctx = document.getElementById("lineChart");
-        var lineChart = new Chart(ctx, {
+        var ctx = document.getElementById("leadChart");
+        var leadChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: ["Jan", "Feb", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
                 datasets: [{
                     label: '# of Leads',
-                    data: [{{ results|join(',') }}],
+                    data: [{{ leads|join(',') }}],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+        var ctx = document.getElementById("dealChart");
+        var dealChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["Jan", "Feb", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                datasets: [{
+                    label: '# of Deals',
+                    data: [{{ deals|join(',') }}],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',

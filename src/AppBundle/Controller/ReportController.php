@@ -15,24 +15,33 @@ class ReportController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $leads = $em->getRepository('AppBundle:Lead')->findAll();
-        $deals = $em->getRepository('AppBundle:Deal')->findAll();
-
         $connection = $em->getConnection();
 
-        $stmt = $connection->prepare('SELECT COUNT(lead.id) AS leadcount FROM lead GROUP BY EXTRACT(MONTH FROM created_at) ORDER BY EXTRACT(MONTH FROM created_at);');
+        // leads by months
+        $stmt = $connection->prepare(
+'SELECT COUNT(lead.id) AS leadcount 
+FROM lead 
+GROUP BY EXTRACT(MONTH FROM created_at) 
+ORDER BY EXTRACT(MONTH FROM created_at);');
         $stmt->execute();
+        $leads = $stmt->fetchAll();
 
-        $results = $stmt->fetchAll();
+        // deals by months
+        $stmt = $connection->prepare(
+'SELECT COUNT(deal.id) AS dealcount 
+FROM deal 
+GROUP BY EXTRACT(MONTH FROM created_at) 
+ORDER BY EXTRACT(MONTH FROM created_at);'
+        );
+        $stmt->execute();
+        $deals = $stmt->fetchAll();
 
-        $leadcount = array_column($results, 'leadcount');
+        $leadcount = array_column($leads, 'leadcount');
+        $dealcount = array_column($deals, 'dealcount');
 
-//['January' => 10, 'February' => 20]
         return [
-            'results' => $leadcount,
-            'leads' => $leads,
-            'deals' => $deals,
-            'average_deal' => [],
+            'leads' => $leadcount,
+            'deals' => $dealcount,
         ];
     }
 }
