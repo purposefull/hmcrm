@@ -17,13 +17,13 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 # Installation
 
-1) composer create-project andreybolonin/hmcrm
+1) $ composer create-project andreybolonin/hmcrm
 
-2) bin/console doctrine:database:create && doctrine:schema:update --force
+2) $ bin/console doctrine:database:create && doctrine:schema:update --force
 
-3) bin/console doctrine:fixtures:load
+3) $ bin/console doctrine:fixtures:load
 
-4) bin/console server:start
+4) $ bin/console server:start
 
 5) http://127.0.0.1:8000/login
 
