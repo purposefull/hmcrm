@@ -53,11 +53,11 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 # Database [PostgreSQL]
 
-1) sudo apt-get install php7.0-postgresql
+1) $ sudo apt-get install php7.0-postgresql
 
-2) sudo -u postgres psql postgres
+2) $ sudo -u postgres psql postgres
 
-3) \password postgres
+3) $ \password postgres
 
 4) Double type password for user postgres
 
