@@ -113,15 +113,16 @@ class DefaultController extends Controller
 
         $leads = $em->getRepository('AppBundle:Lead')->findByUser($user);
 
-        $lead = [];
+        $lead0 = [];
 
         foreach ($leads as $lead) {
-            $lead[] = $leads;
+
+            $lead0[] = $lead;
         }
 
         $exporter->setOptions('json', array('fileName' => 'file'));
         $exporter->setColumns(array('firstName' => 'firstName', 'mobilePhone' => 'mobilePhone', 'country' => 'country'));
-        $exporter->setData($lead);
+        $exporter->setData($lead0);
 
         return $exporter->render();
     }
@@ -206,6 +207,7 @@ class DefaultController extends Controller
         $lead3 = array();
 
         foreach ($leads as $lead) {
+
             $lead3[] = $lead;
         }
 
@@ -234,6 +236,7 @@ class DefaultController extends Controller
         $leads = $em->getRepository('AppBundle:Lead')->findByUser($user);
 
         foreach ($leads as $lead) {
+
             $lead4[] = $lead;
         }
 
