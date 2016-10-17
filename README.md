@@ -46,7 +46,7 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 # Contributing
 
-1) Coding standards - https://github.com/FriendsOfPHP/PHP-CS-Fixer
+1) Coding standards - http://symfony.com/doc/current/contributing/code/standards.html
 
 2) Phpunit tests will be passed
 
