@@ -55,15 +55,7 @@ class DealType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\Deal',
+            'data_class' => Deal::class,
         ]);
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'AppBundle_deal';
     }
 }

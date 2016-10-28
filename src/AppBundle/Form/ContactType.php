@@ -6,6 +6,7 @@ use AppBundle\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * ContactType class.
@@ -35,5 +36,15 @@ class ContactType extends AbstractType
                 'choice_label' => 'name',
                 'label' => 'company.title',
             ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => Contact::class,
+        ]);
     }
 }
