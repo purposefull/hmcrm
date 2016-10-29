@@ -134,6 +134,7 @@ class DefaultControllerTest extends BaseTestCase
             'event' => 'test_event'
         ]);
 
+
         static::assertTrue($client->getResponse()->isRedirect('http://foxweb24.ru/php_coaching/'));
         static::assertEquals(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
     }

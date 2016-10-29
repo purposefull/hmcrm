@@ -38,6 +38,13 @@ class Lead extends Base
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    protected $zipCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     protected $companyName;
 
     /**
@@ -116,6 +123,13 @@ class Lead extends Base
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    protected $region;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     protected $city;
 
     /**
@@ -174,6 +188,22 @@ class Lead extends Base
     /**
      * @return string
      */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    /**
+     * @param string $region
+     */
+    public function setRegion($region)
+    {
+        $this->region = $region;
+    }
+
+    /**
+     * @return string
+     */
     public function getWorkPhone()
     {
         return $this->workPhone;
@@ -210,6 +240,7 @@ class Lead extends Base
 
         return $this;
     }
+
 
     /**
      * @return string
@@ -363,6 +394,22 @@ class Lead extends Base
         $this->firstName = $firstName;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getZipCode()
+    {
+        return $this->zipCode;
+    }
+
+    /**
+     * @param string $zipCode
+     */
+    public function setZipCode($zipCode)
+    {
+        $this->zipCode = $zipCode;
     }
 
     /**

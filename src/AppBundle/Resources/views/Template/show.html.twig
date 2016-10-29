@@ -1,0 +1,91 @@
+{% extends '::dashboard.html.twig' %}
+
+{% block title %}
+    <div class="col-sm-4">
+        <h2>{{ 'lead.title'|trans }}</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">{{ 'home'|trans }}</a>
+            </li>
+            <li class="active">
+                <strong>{{ 'lead.title'|trans }}</strong>
+            </li>
+        </ol>
+    </div>
+{% endblock %}
+
+{% block body -%}
+    <table class="table table-striped table-hover">
+        <tbody>
+            <tr>
+                <th>{{ 'firstname'|trans }}</th>
+                <td>{{ entity.firstName }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'lastname'|trans }}</th>
+                <td>{{ entity.lastName }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'company.title'|trans }}</th>
+                <td>{{ entity.companyName }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'title'|trans }}</th>
+                <td>{{ entity.title }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'lead.status'|trans }}</th>
+                <td>{{ entity.leadStatus }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'source'|trans }}</th>
+                <td>{{ entity.source }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'email'|trans }}</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'mobilephone'|trans }}</th>
+                <td>{{ entity.mobilePhone }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'workphone'|trans }}</th>
+                <td>{{ entity.workPhone }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'address'|trans }}</th>
+                <td>{{ entity.address }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'city'|trans }}</th>
+                <td>{{ entity.city }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'zipcode'|trans }}</th>
+                <td>{{ entity.zipCode }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'region'|trans }}</th>
+                <td>{{ entity.region }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'country'|trans }}</th>
+                <td>{{ entity.country }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="actions">
+        <a class="btn btn-default" href="{{ path('lead') }}">
+            {{ 'backToTheList'|trans }}
+        </a>
+
+        <a class="btn btn-default"  href="{{ path('lead_edit', { 'id': entity.id }) }}">
+            {{ 'edit'|trans }}
+        </a>
+        {{ form_start(delete_form) }}
+            {{ form_widget(delete_form.submit) }}
+        {{ form_end(delete_form) }}
+    </div>
+{% endblock %}
