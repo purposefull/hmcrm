@@ -52,12 +52,4 @@ class ProductType extends AbstractType
             'data_class' => 'AppBundle\Entity\Product',
         ]);
     }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'product';
-    }
 }

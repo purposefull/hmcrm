@@ -127,101 +127,6 @@ class ProductController extends Controller
         return $form;
     }
 
-    /**
-     * @throws EntityNotFoundException
-     *
-     * @return RedirectResponse
-     *
-     * @Route("/product_capture_form", name="product_capture_form")
-     * @Template()
-     */
-    public function productCaptureFormAction(Request $request)
-    {
-        if ($request->getMethod() == 'POST' || $request->getMethod() == 'GET') {
-            // $form = $request->request->all();
-
-            $product = new Product();
-
-            if ($request->get('userId')) {
-                $product->setName($request->get('name'));
-                $product->setPrice($request->get('price'));
-                $product->setDeals($request->get('deals'));
-                $product->setCurrency($request->get('currency'));
-
-                $user = $this->getDoctrine()
-                    ->getRepository('AppBundle:User')
-                    ->find($request->get('userId'));
-
-                if ($user) {
-                    $product->setUser($user);
-                } else {
-                    throw new EntityNotFoundException();
-                }
-
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($product);
-                $em->flush();
-
-//                // MailerLite adding subscriber
-                $mailerLite = new \MailerLiteApi\MailerLite('d4d847245983c24a7400a97546d12b40');
-                $groupsApi = $mailerLite->groups();
-
-                $subscriber = [
-                    'email' => $request->get('email'),
-                    'fields' => [
-                        'name' => $request->get('name'),
-                    ],
-                ];
-
-                // Fixed hardcode GROUP_ID
-                if ($request->get('event') == 'healthmarketing') {
-                    $groupsApi->addSubscriber('4336713', $subscriber);
-                } else {
-                    $groupsApi->addSubscriber('4284365', $subscriber);
-                }
-
-                if ($request->get('redirectUrl')) {
-                    //                    $variables = [
-//                        'order_id' => $lead->getId(),
-//                        'name' => $request->get('name'),
-////                        'surname' => $request->get('surname'),
-//                        'email' => $request->get('surname'),
-//                        'phone' => $request->get('phone1').$request->get('phone1').$request->get('phone2'),
-//                        'city' => $request->get('city'),
-//                        'country' => $request->get('country'),
-//                        'amount' => $request->get('amount')
-//                    ];
-                    return new RedirectResponse($request->get('redirectUrl'));
-//                    header('Location: '.$request->get('redirectUrl').'?'.http_build_query($variables));
-//                    exit;
-                    /*return new RedirectResponse('/lead/test', 302, [
-                        'order_id' => $lead->getId(),
-                        'name' => $request->get('name'),
-                        'surname' => $request->get('surname'),
-                    ]);*/
-                } else {
-                    return new JsonResponse(true);
-                }
-            }
-        }
-    }
-
-    /**
-     * @return RedirectResponse|Response
-     *
-     * @Route("/product_capture_form_settings", name="product_capture_form_settings")
-     * @Template()
-     */
-    public function productCaptureFormSettingsAction()
-    {
-        $securityContext = $this->container->get('security.authorization_checker');
-
-        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return [];
-        } else {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-    }
 
     /**
      * Finds and displays a Product entity.
@@ -262,16 +167,19 @@ class ProductController extends Controller
      *
      * @Route("/edit/{id}", name="product_edit")
      * @Method("GET")
-     * @ParamConverter("product", class="AppBundle:Product")
+     //* @ParamConverter("product", class="AppBundle:Product")
      * @Template()
      */
-    public function editAction(Product $product)
+    public function editAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $product = $em->getRepository(Product::class)->find($request->get('id'));
+
         if ($this->getUser() !== $product->getUser()) {
             throw $this->createNotFoundException('Unable to find Product entity.');
         }
 
-        $editForm = $this->createEditForm($product);
+        $editForm = $this->createForm(ProductType::class, $product);
         $deleteForm = $this->createDeleteForm($product->getId());
 
         return [
@@ -281,28 +189,27 @@ class ProductController extends Controller
         ];
     }
 
-    /**
-     * Creates a form to edit a Product entity.
-     *
-     * @param Product $entity The entity
-     *
-     * @return Form The form
-     */
-    private function createEditForm(Product $entity)
-    {
-        $form = $this->createForm(new ProductType(), $entity, [
-            'action' => $this->generateUrl('product_update', [
-                'id' => $entity->getId(),
-            ]),
-            'method' => 'PUT',
-        ]);
-
-        $form->add('submit', 'submit', [
-            'label' => 'Update',
-        ]);
-
-        return $form;
-    }
+//    /**
+//     * Creates a form to edit a Product entity.
+//     *
+//     * @param Product $entity The entity
+//     *
+//     * @return Form The form
+//     */
+//    private function createEditForm(Product $entity)
+//    {
+//        $form = $this->createForm(new ProductType(), $entity, [
+//            'action' => $this->generateUrl('product_update', [
+//                'id' => $entity->getId(),
+//            ]),
+//        ]);
+//
+//        $form->add('submit', 'submit', [
+//            'label' => 'Update',
+//        ]);
+//
+//        return $form;
+//    }
 
     /**
      * Edits an existing Product entity.

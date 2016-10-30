@@ -28,14 +28,4 @@ class ProfileController extends Controller
         return [];
     }
 
-//    /**
-//     * CRUD for products stored in db.
-//     *
-//     * @Route("/product", name="product")
-//     * @Template()
-//     */
-//    public function productAction()
-//    {
-//        return [];
-//    }
 }

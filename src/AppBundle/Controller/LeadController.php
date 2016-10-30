@@ -363,10 +363,10 @@ class LeadController extends Controller
             throw $this->createNotFoundException('Unable to find Lead entity.');
         }
 
-        // insurance
-//        $em = $this->getDoctrine()->getManager();
-//        $em->remove($lead);
-//        $em->flush();
+         insurance;
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($lead);
+        $em->flush();
 
         return $this->redirect($this->generateUrl('lead'));
     }
