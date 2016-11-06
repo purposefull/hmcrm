@@ -3,6 +3,8 @@ HealthMarketing CRM
 
 [![Build Status](https://travis-ci.org/andreybolonin/hmcrm.svg?branch=master)](https://travis-ci.org/andreybolonin/hmcrm)
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/acb14000-150b-41f6-a287-1b3d7e5805df/big.png)](https://insight.sensiolabs.com/projects/acb14000-150b-41f6-a287-1b3d7e5805df)
+
 All-in-One Sales Platform for Small Business
 
 http://crm.healthmarketing.me - SaaS implementation.
