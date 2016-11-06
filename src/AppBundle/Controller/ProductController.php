@@ -159,7 +159,7 @@ class ProductController extends Controller
     /**
      * Displays a form to edit an existing Product entity.
      *
-     * @param Product $product Product
+     * @param Request $request
      *
      * @throws NotFoundHttpException
      *
@@ -181,6 +181,13 @@ class ProductController extends Controller
 
         $editForm = $this->createForm(ProductType::class, $product);
         $deleteForm = $this->createDeleteForm($product->getId());
+        $editForm->handleRequest($request);
+
+        if ($editForm->isValid()) {
+            $product = $editForm->getData();
+            $em->persist($product);
+            $em->flush();
+        }
 
         return [
             'entity' => $product,
@@ -211,47 +218,47 @@ class ProductController extends Controller
 //        return $form;
 //    }
 
-    /**
-     * Edits an existing Product entity.
-     *
-     * @param Request $request Request
-     * @param Product    $product    Product
-     *
-     * @throws NotFoundHttpException
-     *
-     * @return RedirectResponse|Response
-     *
-     * @Route("/update/{id}", name="product_update")
-     * @Method("PUT")
-     * @ParamConverter("product", class="AppBundle:Product")
-     * @Template("AppBundle:Product:edit.html.twig")
-     */
-    public function updateAction(Request $request, Product $product)
-    {
-        if ($this->getUser() !== $product->getUser()) {
-            throw $this->createNotFoundException('Unable to find Product entity.');
-        }
-
-        $em = $this->getDoctrine()->getManager();
-
-        $deleteForm = $this->createDeleteForm($product->getId());
-        $editForm = $this->createEditForm($product);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isValid()) {
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('product_show', [
-                'id' => $product->getId(),
-            ]));
-        }
-
-        return [
-            'entity' => $product->getId(),
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ];
-    }
+//    /**
+//     * Edits an existing Product entity.
+//     *
+//     * @param Request $request Request
+//     * @param Product    $product    Product
+//     *
+//     * @throws NotFoundHttpException
+//     *
+//     * @return RedirectResponse|Response
+//     *
+//     * @Route("/update/{id}", name="product_update")
+//     * @Method("PUT")
+//     * @ParamConverter("product", class="AppBundle:Product")
+//     * @Template("AppBundle:Product:edit.html.twig")
+//     */
+//    public function updateAction(Request $request, Product $product)
+//    {
+//        if ($this->getUser() !== $product->getUser()) {
+//            throw $this->createNotFoundException('Unable to find Product entity.');
+//        }
+//
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $deleteForm = $this->createDeleteForm($product->getId());
+//        $editForm = $this->createEditForm($product);
+//        $editForm->handleRequest($request);
+//
+//        if ($editForm->isValid()) {
+//            $em->flush();
+//
+//            return $this->redirect($this->generateUrl('product_show', [
+//                'id' => $product->getId(),
+//            ]));
+//        }
+//
+//        return [
+//            'entity' => $product->getId(),
+//            'edit_form' => $editForm->createView(),
+//            'delete_form' => $deleteForm->createView(),
+//        ];
+//    }
 
     /**
      * Deletes a Product entity.

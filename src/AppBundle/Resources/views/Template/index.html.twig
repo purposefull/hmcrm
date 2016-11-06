@@ -2,13 +2,13 @@
 
 {% block title %}
     <div class="col-sm-4">
-        <h2>{{ 'lead.title'|trans }}</h2>
+        <h2>{{ 'Templates'|trans }}</h2>
         <ol class="breadcrumb">
             <li>
                 <a href="/">{{ 'home'|trans }}</a>
             </li>
             <li class="active">
-                <strong>{{ 'lead.list'|trans }}</strong>
+                <strong>{{ ''|trans }}</strong>
             </li>
         </ol>
     </div>
@@ -73,14 +73,8 @@
                         <tr>
                             <th class="footable-visible footable-first-column footable-sortable">Id<span class="footable-sort-indicator"></span></th>
                             <th data-hide="phone" class="footable-visible footable-sortable">Name<span class="footable-sort-indicator"></span></th>
-                            <th data-hide="phone" class="footable-visible footable-sortable">Surname<span class="footable-sort-indicator"></span></th>
-                            <th data-hide="phone" class="footable-visible footable-sortable">Phone<span class="footable-sort-indicator"></span></th>
-                            <th data-hide="phone,tablet" class="footable-visible footable-sortable">Email<span class="footable-sort-indicator"></span></th>
-                            <!-- <th data-hide="phone" class="footable-visible footable-sortable">Order Id<span class="footable-sort-indicator"></span></th> -->
-                            <th data-hide="phone" class="footable-visible footable-sortable">Added<span class="footable-sort-indicator"></span></th>
-                            <th data-hide="phone" class="footable-visible footable-sortable">Event<span class="footable-sort-indicator"></span></th>
-                            <th data-hide="phone" class="footable-visible footable-sortable">Group ID<span class="footable-sort-indicator"></span></th>
-                            <!-- <th data-hide="phone" class="footable-visible footable-sortable">Status<span class="footable-sort-indicator"></span></th> -->
+                            <th data-hide="phone" class="footable-visible footable-sortable">Code<span class="footable-sort-indicator"></span></th>
+                            <th data-hide="phone" class="footable-visible footable-sortable">Added<span class="footable-sort-indicator"></span></th>acl_security_identities
                             <th class="text-right footable-visible footable-last-column footable-sortable">Action<span class="footable-sort-indicator"></span></th>
                         </tr>
                         </thead>
@@ -89,40 +83,23 @@
                             <tr class="footable-even" style="display: table-row;">
                                 <td class="footable-visible footable-first-column">
                                     <span class="footable-toggle"></span>
-                                    <a href="{{ path('lead_show', { 'id' : entity.getId() }) }}">{{ entity.getId() }}</a>
+                                    <a href="{{ path('template_show', { 'id' : entity.getId() }) }}">{{ entity.getId() }}</a>
                                 </td>
                                 <td class="footable-visible">
-                                    {{ entity.getFirstName() }}
+                                    {{ entity.getName() }}
                                 </td>
                                 <td class="footable-visible">
-                                    {{ entity.getLastName() }}
+                                    {{ entity.getCode() }}
                                 </td>
-                                <td class="footable-visible">
-                                    {{ entity.getMobilephone() }}
-                                </td>
-                                <td class="footable-visible">
-                                    {{ entity.getEmail }}
-                                </td>
-                                <!-- <td class="footable-visible">
-                                    {{ entity.getId() }}
-                                </td> -->
                                 <td class="footable-visible">
                                     {{ entity.updatedAt|date('Y-m-d H:i:s') }}
                                 </td>
-                                <td class="footable-visible">
-                                    {{ entity.getEvent() }}
-                                </td>
-                                <td class="footable-visible">
-                                    {#{{ entity.getGroupId() }}#}
-                                </td>
-                                <!-- <td class="footable-visible">
-                                    <span class="label label-primary">Pending</span>
-                                </td> -->
                                 <td class="text-right footable-visible footable-last-column">
                                     <div class="btn-group">
-                                        <a href="/lead/show/{{ entity.getId }}" class="btn-white btn btn-xs">View</a>
-                                        <a href="/lead/edit/{{ entity.getId }}" class="btn-white btn btn-xs">Edit</a>
-                                        <a href="/lead/delete/{{ entity.getId }}" class="btn-white btn btn-xs">Delete</a>
+                                        <a href="{{ path('template_show', { 'id': entity.id }) }}" class="btn-white btn btn-xs">View</a>
+                                        <a href="{{ path('template_edit', { 'id': entity.id }) }}" class="btn-white btn btn-xs">Edit</a>
+                                        <a href="{{ path('template_delete', { 'id': entity.id }) }}" class="btn-white btn btn-xs">Delete</a>
+
                                     </div>
                                 </td>
                             </tr>
@@ -587,7 +564,7 @@
     </div>
 
     <div class="ibox-content">
-        <a href="new" class="btn btn-primary"><i class="fa fa fa-user"></i> Add</a>
+        <a href="{{ path('template_new') }}" class="btn btn-primary"><i class="fa fa fa-user"></i> Add</a>
         {#<button class="btn btn-white"><i class="fa fa-arrow-left"></i> Continue shopping</button>#}
     </div>
 {% endblock %}

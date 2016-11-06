@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Template;
 use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Form;
@@ -11,36 +12,31 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use AppBundle\Entity\Lead;
-use AppBundle\Form\LeadType;
+use AppBundle\Form\TemplateType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MailerLiteApi\MailerLite;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template as TemplateAnnotation;
 
-/**
- * Lead controller.
- *
- * @Route("/email_template")
- */
-class LeadController extends Controller
+class TemplateController extends Controller
 {
     /**
-     * Lists all Lead entities.
+     * Lists all Template entities.
      *
      * @return Response
      *
-     * @Route("/", name="lead")
+     * @Route("/email_template", name="email_template")
      * @Method("GET")
-     * @Template()
+     * @TemplateAnnotation()
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AppBundle:Lead')->findByUser($this->getUser());
+        $entities = $em->getRepository('AppBundle:Template')->findByUser($this->getUser());
 
         return [
             'entities' => $entities,
@@ -48,20 +44,23 @@ class LeadController extends Controller
     }
 
     /**
-     * Creates a new Lead entity.
+     * Creates a new Template entity.
      *
      * @param Request $request Request
      *
      * @return RedirectResponse|Response
      *
-     * @Route("/", name="lead_create")
+     * @Route("/email_template/create", name="template_create")
      * @Method("POST")
-     * @Template("AppBundle:Lead:new.html.twig")
+     * @TemplateAnnotation("AppBundle:Template:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new Lead();
-        $form = $this->createCreateForm($entity);
+        $entity = new Template();
+        $form = $this->createForm(Template::class, $entity, [
+            'action' => $this->generateUrl('template_create'),
+            'method' => 'POST',
+        ]);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -70,7 +69,7 @@ class LeadController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('lead_show', [
+            return $this->redirect($this->generateUrl('template_show', [
                 'id' => $entity->getId(),
             ]));
         }
@@ -82,23 +81,23 @@ class LeadController extends Controller
     }
 
     /**
-     * Displays a form to create a new Lead entity.
+     * Displays a form to create a new Template entity.
      *
      * @return Response
      *
-     * @Route("/new", name="lead_new")
+     * @Route("/email_template/new", name="template_new")
      * @Method("GET")
-     * @Template()
+     * @TemplateAnnotation()
      */
     public function newAction()
     {
-        $entity = new Lead();
+        $entity = new Template();
 
         $form = $this->createForm(
-            LeadType::class,
+            TemplateType::class,
             $entity,
             [
-                'action' => $this->generateUrl('lead_create'),
+                'action' => $this->generateUrl('template_create'),
                 'method' => 'POST',
             ]
         );
@@ -110,284 +109,101 @@ class LeadController extends Controller
     }
 
     /**
-     * Creates a form to create a Lead entity.
+     * Finds and displays a Template entity.
      *
-     * @param Lead $entity The entity
-     *
-     * @return Form The form
-     */
-    private function createCreateForm(Lead $entity)
-    {
-        $form = $this->createForm(LeadType::class, $entity, [
-            'action' => $this->generateUrl('lead_create'),
-            'method' => 'POST',
-        ]);
-
-        return $form;
-    }
-
-    /**
-     * @throws EntityNotFoundException
-     *
-     * @return RedirectResponse
-     *
-     * @Route("/lead_capture_form", name="lead_capture_form")
-     * @Template()
-     */
-    public function leadCaptureFormAction(Request $request)
-    {
-        if ($request->getMethod() == 'POST' || $request->getMethod() == 'GET') {
-            // $form = $request->request->all();
-
-            $lead = new Lead();
-
-            if ($request->get('userId')) {
-                $lead->setFirstName($request->get('name'));
-                $lead->setEmail($request->get('email'));
-                $lead->setEvent($request->get('event'));
-                $lead->setMobilePhone($request->get('phone1').$request->get('phone2').$request->get('phone3'));
-
-                $user = $this->getDoctrine()
-                    ->getRepository('AppBundle:User')
-                    ->find($request->get('userId'));
-
-                if ($user) {
-                    $lead->setUser($user);
-                } else {
-                    throw new EntityNotFoundException();
-                }
-
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($lead);
-                $em->flush();
-
-//                // MailerLite adding subscriber
-                $mailerLite = new \MailerLiteApi\MailerLite('d4d847245983c24a7400a97546d12b40');
-                $groupsApi = $mailerLite->groups();
-
-                $subscriber = [
-                    'email' => $request->get('email'),
-                    'fields' => [
-                        'name' => $request->get('name'),
-                    ],
-                ];
-
-                // Fixed hardcode GROUP_ID
-                if ($request->get('event') == 'healthmarketing') {
-                    $groupsApi->addSubscriber('4336713', $subscriber);
-                } else {
-                    $groupsApi->addSubscriber('4284365', $subscriber);
-                }
-
-                if ($request->get('redirectUrl')) {
-                    //                    $variables = [
-//                        'order_id' => $lead->getId(),
-//                        'name' => $request->get('name'),
-////                        'surname' => $request->get('surname'),
-//                        'email' => $request->get('surname'),
-//                        'phone' => $request->get('phone1').$request->get('phone1').$request->get('phone2'),
-//                        'city' => $request->get('city'),
-//                        'country' => $request->get('country'),
-//                        'amount' => $request->get('amount')
-//                    ];
-                    return new RedirectResponse($request->get('redirectUrl'));
-//                    header('Location: '.$request->get('redirectUrl').'?'.http_build_query($variables));
-//                    exit;
-                    /*return new RedirectResponse('/lead/test', 302, [
-                        'order_id' => $lead->getId(),
-                        'name' => $request->get('name'),
-                        'surname' => $request->get('surname'),
-                    ]);*/
-                } else {
-                    return new JsonResponse(true);
-                }
-            }
-        }
-    }
-
-    /**
-     * @return RedirectResponse|Response
-     *
-     * @Route("/lead_capture_form_settings", name="lead_capture_form_settings")
-     * @Template()
-     */
-    public function leadCaptureFormSettingsAction()
-    {
-        $securityContext = $this->container->get('security.authorization_checker');
-
-        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return [];
-        } else {
-            return $this->redirect($this->generateUrl('fos_user_security_login'));
-        }
-    }
-
-    /**
-     * Finds and displays a Lead entity.
-     *
-     * @param Lead $lead Lead
+     * @param Template $template Template
      *
      * @throws NotFoundHttpException
      *
      * @return Response
      *
-     * @Route("/show/{id}", name="lead_show")
+     * @Route("/email_template/show/{id}", name="template_show")
      * @Method("GET")
-     * @ParamConverter("lead", class="AppBundle:Lead")
-     * @Template()
+     * @ParamConverter("template", class="AppBundle:Template")
+     * @TemplateAnnotation()
      */
-    public function showAction(Lead $lead)
+    public function showAction(Template $template)
     {
-        if ($this->getUser() !== $lead->getUser()) {
-            throw $this->createNotFoundException('Unable to find Lead entity.');
+        if ($this->getUser() !== $template->getUser()) {
+            throw $this->createNotFoundException('Unable to find Template entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($lead->getId());
+        $deleteForm = $this->createDeleteForm($template->getId());
 
         return [
-            'entity' => $lead,
+            'entity' => $template,
             'delete_form' => $deleteForm->createView(),
         ];
     }
 
     /**
-     * Displays a form to edit an existing Lead entity.
-     *
-     * @param Lead $lead Lead
-     *
-     * @throws NotFoundHttpException
-     *
-     * @return Response
-     *
-     * @Route("/edit/{id}", name="lead_edit")
-     * @Method("GET")
-     * @ParamConverter("lead", class="AppBundle:Lead")
-     * @Template()
-     */
-    public function editAction(Lead $lead)
-    {
-        if ($this->getUser() !== $lead->getUser()) {
-            throw $this->createNotFoundException('Unable to find Lead entity.');
-        }
-
-        $editForm = $this->createEditForm($lead);
-        $deleteForm = $this->createDeleteForm($lead->getId());
-
-        return [
-            'entity' => $lead,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ];
-    }
-
-    /**
-     * Creates a form to edit a Lead entity.
-     *
-     * @param Lead $entity The entity
-     *
-     * @return Form The form
-     */
-    private function createEditForm(Lead $entity)
-    {
-        $form = $this->createForm(new LeadType(), $entity, [
-            'action' => $this->generateUrl('lead_update', [
-                'id' => $entity->getId(),
-            ]),
-            'method' => 'PUT',
-        ]);
-
-        $form->add('submit', 'submit', [
-            'label' => 'Update',
-        ]);
-
-        return $form;
-    }
-
-    /**
-     * Edits an existing Lead entity.
+     * Edits an existing Template entity.
      *
      * @param Request $request Request
-     * @param Lead    $lead    Lead
+     * @param Template    $template    Template
      *
      * @throws NotFoundHttpException
      *
      * @return RedirectResponse|Response
      *
-     * @Route("/update/{id}", name="lead_update")
-     * @Method("PUT")
-     * @ParamConverter("lead", class="AppBundle:Lead")
-     * @Template("AppBundle:Lead:edit.html.twig")
+     * @Route("/email_template/edit/ac/{id}", name="template_edit")
+
+     * @TemplateAnnotation("AppBundle:Template:edit.html.twig")
      */
-    public function updateAction(Request $request, Lead $lead)
+    public function editAction(Request $request)
     {
-        if ($this->getUser() !== $lead->getUser()) {
-            throw $this->createNotFoundException('Unable to find Lead entity.');
+        $em = $this->getDoctrine()->getManager();
+        $template = $em->getRepository(Template::class)->find($request->get('id'));
+
+        if ($this->getUser() !== $template->getUser()) {
+            throw $this->createNotFoundException('Unable to find Template entity.');
         }
 
-        $em = $this->getDoctrine()->getManager();
+        $editForm = $this->createForm(TemplateType::class, $template, [
+            'action' => $this->generateUrl('template_edit', [
+                'id' => $template->getId(),
+            ]),
+        ]);
 
-        $deleteForm = $this->createDeleteForm($lead->getId());
-        $editForm = $this->createEditForm($lead);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $template = $editForm->getData();
+            $em->persist($template);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('lead_show', [
-                'id' => $lead->getId(),
-            ]));
         }
 
         return [
-            'entity' => $lead->getId(),
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'entity' => $template,
+            'edit_form' => $editForm->createView()
         ];
     }
 
     /**
-     * Deletes a Lead entity.
+     * Deletes a Template entity.
      *
-     * @param Lead $lead Lead
+     * @param Request $request
      *
      * @throws NotFoundHttpException
      *
      * @return RedirectResponse
      *
-     * @Route("/delete/{id}", name="lead_delete")
-     * @ParamConverter("lead", class="AppBundle:Lead")
+     * @Route("/email_template/delete/{id}", name="template_delete")
      */
-    public function deleteAction(Lead $lead)
+    public function deleteAction(Request $request)
     {
-        if ($this->getUser() !== $lead->getUser()) {
-            throw $this->createNotFoundException('Unable to find Lead entity.');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $template = $em->getRepository('AppBundle:Template')->find($request->get('id'));
+
+        if ($this->getUser() !== $template->getUser()) {
+            throw $this->createNotFoundException('Unable to find Template entity.');
         }
 
-        // insurance
-//        $em = $this->getDoctrine()->getManager();
-//        $em->remove($lead);
-//        $em->flush();
+        $em->remove($template);
+        $em->flush();
 
-        return $this->redirect($this->generateUrl('lead'));
-    }
-
-    /**
-     * Creates a form to delete a Lead entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('lead_delete', [
-                'id' => $id,
-            ]))
-            ->setMethod('DELETE')
-            ->add('submit', SubmitType::class, [
-                'label' => 'Delete',
-            ])
-            ->getForm();
+        return $this->redirect($this->generateUrl('email_template'));
     }
 }

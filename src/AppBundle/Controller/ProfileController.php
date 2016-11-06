@@ -16,16 +16,4 @@ class ProfileController extends Controller
         // edit password, email, phone
         return $this->redirect($this->generateUrl('homepage'));
     }
-
-    /**
-     * CRUD for email templates stored in db.
-     *
-     * @Route("/email_template", name="email_template")
-     * @Template()
-     */
-    public function emailTemplateAction()
-    {
-        return [];
-    }
-
 }

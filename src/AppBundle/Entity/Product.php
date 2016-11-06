@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Lead.
+ * Product.
  *
  * @ORM\Table(name="product")
  * @ORM\Entity()
