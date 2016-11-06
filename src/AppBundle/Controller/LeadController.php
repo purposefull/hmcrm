@@ -19,11 +19,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use MailerLiteApi\MailerLite;
 
-/**
- * Lead controller.
- *
- * @Route("/lead")
- */
 class LeadController extends Controller
 {
     /**
@@ -31,7 +26,7 @@ class LeadController extends Controller
      *
      * @return Response
      *
-     * @Route("/", name="lead")
+     * @Route("/lead", name="lead")
      * @Method("GET")
      * @Template()
      */
@@ -53,7 +48,7 @@ class LeadController extends Controller
      *
      * @return RedirectResponse|Response
      *
-     * @Route("/", name="lead_create")
+     * @Route("/lead", name="lead_create")
      * @Method("POST")
      * @Template("AppBundle:Lead:new.html.twig")
      */
@@ -85,7 +80,7 @@ class LeadController extends Controller
      *
      * @return Response
      *
-     * @Route("/new", name="lead_new")
+     * @Route("/lead/new", name="lead_new")
      * @Method("GET")
      * @Template()
      */
@@ -130,7 +125,7 @@ class LeadController extends Controller
      *
      * @return RedirectResponse
      *
-     * @Route("/lead_capture_form", name="lead_capture_form")
+     * @Route("/lead/lead_capture_form", name="lead_capture_form")
      * @Template()
      */
     public function leadCaptureFormAction(Request $request)
@@ -169,7 +164,7 @@ class LeadController extends Controller
                     ],
                 ];
 
-                // Fixed hardcode GROUP_ID
+                // TODO save GROUP_ID with database
                 if ($request->get('event') == 'healthmarketing') {
                     $groupsApi->addSubscriber('4336713', $subscriber);
                 } else {
@@ -188,7 +183,7 @@ class LeadController extends Controller
     /**
      * @return RedirectResponse|Response
      *
-     * @Route("/lead_capture_form_settings", name="lead_capture_form_settings")
+     * @Route("/lead/lead_capture_form_settings", name="lead_capture_form_settings")
      * @Template()
      */
     public function leadCaptureFormSettingsAction()
@@ -211,22 +206,21 @@ class LeadController extends Controller
      *
      * @return Response
      *
-     * @Route("/show/{id}", name="lead_show")
+     * @Route("/lead/show/{id}", name="lead_show")
      * @Method("GET")
-     * @ParamConverter("lead", class="AppBundle:Lead")
      * @Template()
      */
-    public function showAction(Lead $lead)
+    public function showAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $lead = $em->getRepository(Lead::class)->find($request->get('id'));
+
         if ($this->getUser() !== $lead->getUser()) {
             throw $this->createNotFoundException('Unable to find Lead entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($lead->getId());
-
         return [
             'entity' => $lead,
-            'delete_form' => $deleteForm->createView(),
         ];
     }
 
@@ -239,7 +233,7 @@ class LeadController extends Controller
      *
      * @return Response
      *
-     * @Route("/edit/{id}", name="lead_edit")
+     * @Route("/lead/edit/{id}", name="lead_edit")
      * @Method("GET")
      * @ParamConverter("lead", class="AppBundle:Lead")
      * @Template()
@@ -269,15 +263,11 @@ class LeadController extends Controller
      */
     private function createEditForm(Lead $entity)
     {
-        $form = $this->createForm(new LeadType(), $entity, [
+        $form = $this->createForm(LeadType::class, $entity, [
             'action' => $this->generateUrl('lead_update', [
                 'id' => $entity->getId(),
             ]),
             'method' => 'PUT',
-        ]);
-
-        $form->add('submit', 'submit', [
-            'label' => 'Update',
         ]);
 
         return $form;
@@ -293,7 +283,7 @@ class LeadController extends Controller
      *
      * @return RedirectResponse|Response
      *
-     * @Route("/update/{id}", name="lead_update")
+     * @Route("/lead/update/{id}", name="lead_update")
      * @Method("PUT")
      * @ParamConverter("lead", class="AppBundle:Lead")
      * @Template("AppBundle:Lead:edit.html.twig")
@@ -334,7 +324,7 @@ class LeadController extends Controller
      *
      * @return RedirectResponse
      *
-     * @Route("/delete/{id}", name="lead_delete")
+     * @Route("/lead/delete/{id}", name="lead_delete")
      * @ParamConverter("lead", class="AppBundle:Lead")
      */
     public function deleteAction(Lead $lead)
@@ -364,9 +354,6 @@ class LeadController extends Controller
                         'id' => $id,
                     ]))
                     ->setMethod('DELETE')
-                    ->add('submit', SubmitType::class, [
-                        'label' => 'Delete',
-                    ])
                     ->getForm();
     }
 }

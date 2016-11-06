@@ -3,10 +3,12 @@
 namespace AppBundle\Form\Type;
 
 use AppBundle\Entity\Contact;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
  * ContactType class.
@@ -19,23 +21,16 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('submit', 'submit', [
+            ->add('name', TextType::class, [
+
+            ])
+            ->add('submit', SubmitType::class, [
                 'label' => 'add',
-            ])
-            ->add('type', ChoiceType::class, [
-                'choices' => Contact::valueOfContactType(),
-                'label' => 'Type',
-            ])
-            ->add('person', 'entity', [
-                'class' => 'AppBundle:Person',
-                'choice_label' => 'title',
-                'label' => 'person.title',
-            ])
-            ->add('company', 'entity', [
-                'class' => 'AppBundle:Company',
-                'choice_label' => 'name',
-                'label' => 'company.title',
             ]);
+//            ->add('type', ChoiceType::class, [
+//                'choices' => Contact::valueOfContactType(),
+//                'label' => 'Type',
+//            ])
     }
 
     /**

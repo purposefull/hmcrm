@@ -32,7 +32,7 @@ class DefaultControllerTest extends BaseTestCase
 
     public function testIndex()
     {
-        //        $client = static::createClient();
+//        $client = static::createClient();
 
 //        $crawler = $client->request('GET', '/login');
 
@@ -50,9 +50,9 @@ class DefaultControllerTest extends BaseTestCase
         $form['_password'] = 'admin';
         $crawler = $client->submit($form);
 
-//        $crawler = $client->request('GET', '/export_json');
+        $crawler = $client->request('GET', '/export_json');
 
-//        static::assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
+        static::assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
     }
 
     public function testExportPdf()
@@ -78,9 +78,9 @@ class DefaultControllerTest extends BaseTestCase
         $form = $crawler->selectButton('Login')->form();
         $form['_username'] = 'admin';
         $form['_password'] = 'admin';
-        $crawler = $client->submit($form);
+        $client->submit($form);
 
-        $crawler = $client->request('GET', '/export_xml');
+        $client->request('GET', '/export_xml');
 
         static::assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
     }

@@ -3,9 +3,10 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Lead.
+ * Template class.
  *
  * @ORM\Table(name="template")
  * @ORM\Entity()
@@ -33,7 +34,7 @@ class Template extends Base
     protected $code;
 
     /**
-     * @ORM\OneToMany(targetEntity="Deal", mappedBy="product")
+     * @ORM\OneToMany(targetEntity="Deal", mappedBy="template")
      */
     protected $deals;
 
@@ -52,6 +53,8 @@ class Template extends Base
 
     /**
      * @param mixed $user
+     *
+     * @return $this
      */
     public function setUser($user)
     {
@@ -70,6 +73,8 @@ class Template extends Base
 
     /**
      * @param string $code
+     *
+     * @return $this
      */
     public function setCode($code)
     {
@@ -88,6 +93,8 @@ class Template extends Base
 
     /**
      * @param string $name
+     *
+     * @return $this
      */
     public function setName($name)
     {
@@ -106,6 +113,8 @@ class Template extends Base
 
     /**
      * @param mixed $deals
+     *
+     * @return $this
      */
     public function setDeals($deals)
     {
