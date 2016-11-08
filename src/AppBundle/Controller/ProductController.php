@@ -237,7 +237,7 @@ class ProductController extends Controller
     /**
      * Displays a form to edit an existing Product entity.
      *
-     * @param Product $product Product
+     * @param Request $request
      *
      * @throws NotFoundHttpException
      *
@@ -265,28 +265,6 @@ class ProductController extends Controller
             'delete_form' => $deleteForm->createView(),
         ];
     }
-
-//    /**
-//     * Creates a form to edit a Product entity.
-//     *
-//     * @param Product $entity The entity
-//     *
-//     * @return Form The form
-//     */
-//    private function createEditForm(Product $entity)
-//    {
-//        $form = $this->createForm(new ProductType(), $entity, [
-//            'action' => $this->generateUrl('product_update', [
-//                'id' => $entity->getId(),
-//            ]),
-//        ]);
-//
-//        $form->add('submit', 'submit', [
-//            'label' => 'Update',
-//        ]);
-//
-//        return $form;
-//    }
 
     /**
      * Edits an existing Product entity.
