@@ -17,7 +17,6 @@ use AppBundle\Entity\Lead;
 use AppBundle\Form\Type\LeadType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MailerLiteApi\MailerLite;
 
 /**
@@ -137,8 +136,6 @@ class LeadController extends Controller
     public function leadCaptureFormAction(Request $request)
     {
         if ($request->getMethod() == 'POST' || $request->getMethod() == 'GET') {
-            // $form = $request->request->all();
-
             $lead = new Lead();
 
             if ($request->get('userId')) {
@@ -161,8 +158,8 @@ class LeadController extends Controller
                 $em->persist($lead);
                 $em->flush();
 
-//                // MailerLite adding subscriber
-                $mailerLite = new \MailerLiteApi\MailerLite('d4d847245983c24a7400a97546d12b40');
+                // MailerLite adding subscriber
+                $mailerLite = new MailerLite('d4d847245983c24a7400a97546d12b40');
                 $groupsApi = $mailerLite->groups();
 
                 $subscriber = [
@@ -180,24 +177,7 @@ class LeadController extends Controller
                 }
 
                 if ($request->get('redirectUrl')) {
-                    //                    $variables = [
-//                        'order_id' => $lead->getId(),
-//                        'name' => $request->get('name'),
-////                        'surname' => $request->get('surname'),
-//                        'email' => $request->get('surname'),
-//                        'phone' => $request->get('phone1').$request->get('phone1').$request->get('phone2'),
-//                        'city' => $request->get('city'),
-//                        'country' => $request->get('country'),
-//                        'amount' => $request->get('amount')
-//                    ];
                     return new RedirectResponse($request->get('redirectUrl'));
-//                    header('Location: '.$request->get('redirectUrl').'?'.http_build_query($variables));
-//                    exit;
-                    /*return new RedirectResponse('/lead/test', 302, [
-                        'order_id' => $lead->getId(),
-                        'name' => $request->get('name'),
-                        'surname' => $request->get('surname'),
-                    ]);*/
                 } else {
                     return new JsonResponse(true);
                 }
@@ -363,10 +343,9 @@ class LeadController extends Controller
             throw $this->createNotFoundException('Unable to find Lead entity.');
         }
 
-        // insurance
-//        $em = $this->getDoctrine()->getManager();
-//        $em->remove($lead);
-//        $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($lead);
+        $em->flush();
 
         return $this->redirect($this->generateUrl('lead'));
     }

@@ -139,7 +139,6 @@ class ProductController extends Controller
     public function productCaptureFormAction(Request $request)
     {
         if ($request->getMethod() == 'POST' || $request->getMethod() == 'GET') {
-            // $form = $request->request->all();
 
             $product = new Product();
 
@@ -182,24 +181,7 @@ class ProductController extends Controller
                 }
 
                 if ($request->get('redirectUrl')) {
-                    //                    $variables = [
-//                        'order_id' => $lead->getId(),
-//                        'name' => $request->get('name'),
-////                        'surname' => $request->get('surname'),
-//                        'email' => $request->get('surname'),
-//                        'phone' => $request->get('phone1').$request->get('phone1').$request->get('phone2'),
-//                        'city' => $request->get('city'),
-//                        'country' => $request->get('country'),
-//                        'amount' => $request->get('amount')
-//                    ];
                     return new RedirectResponse($request->get('redirectUrl'));
-//                    header('Location: '.$request->get('redirectUrl').'?'.http_build_query($variables));
-//                    exit;
-                    /*return new RedirectResponse('/lead/test', 302, [
-                        'order_id' => $lead->getId(),
-                        'name' => $request->get('name'),
-                        'surname' => $request->get('surname'),
-                    ]);*/
                 } else {
                     return new JsonResponse(true);
                 }
@@ -365,10 +347,9 @@ class ProductController extends Controller
             throw $this->createNotFoundException('Unable to find Product entity.');
         }
 
-        // insurance
-//        $em = $this->getDoctrine()->getManager();
-//        $em->remove($lead);
-//        $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($product);
+        $em->flush();
 
         return $this->redirect($this->generateUrl('product'));
     }
