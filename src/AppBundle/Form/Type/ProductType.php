@@ -52,12 +52,4 @@ class ProductType extends AbstractType
             'data_class' => Product::class,
         ]);
     }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'product';
-    }
 }

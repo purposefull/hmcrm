@@ -27,4 +27,5 @@ class ProfileController extends Controller
     {
         return [];
     }
+
 }

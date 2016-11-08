@@ -245,16 +245,18 @@ class ProductController extends Controller
      *
      * @Route("/edit/{id}", name="product_edit")
      * @Method("GET")
-     * @ParamConverter("product", class="AppBundle:Product")
      * @Template()
      */
-    public function editAction(Product $product)
+    public function editAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $product = $em->getRepository(Product::class)->find($request->get('id'));
+
         if ($this->getUser() !== $product->getUser()) {
             throw $this->createNotFoundException('Unable to find Product entity.');
         }
 
-        $editForm = $this->createEditForm($product);
+        $editForm = $this->createForm(ProductType::class, $product);
         $deleteForm = $this->createDeleteForm($product->getId());
 
         return [
@@ -264,28 +266,27 @@ class ProductController extends Controller
         ];
     }
 
-    /**
-     * Creates a form to edit a Product entity.
-     *
-     * @param Product $entity The entity
-     *
-     * @return Form The form
-     */
-    private function createEditForm(Product $entity)
-    {
-        $form = $this->createForm(new ProductType(), $entity, [
-            'action' => $this->generateUrl('product_update', [
-                'id' => $entity->getId(),
-            ]),
-            'method' => 'PUT',
-        ]);
-
-        $form->add('submit', 'submit', [
-            'label' => 'Update',
-        ]);
-
-        return $form;
-    }
+//    /**
+//     * Creates a form to edit a Product entity.
+//     *
+//     * @param Product $entity The entity
+//     *
+//     * @return Form The form
+//     */
+//    private function createEditForm(Product $entity)
+//    {
+//        $form = $this->createForm(new ProductType(), $entity, [
+//            'action' => $this->generateUrl('product_update', [
+//                'id' => $entity->getId(),
+//            ]),
+//        ]);
+//
+//        $form->add('submit', 'submit', [
+//            'label' => 'Update',
+//        ]);
+//
+//        return $form;
+//    }
 
     /**
      * Edits an existing Product entity.
