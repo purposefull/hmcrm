@@ -71,32 +71,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * Task action.
-     *
-     * @return RedirectResponse
-     *
-     * @Route("/task", name="task")
-     * @Template()
-     */
-    public function taskAction()
-    {
-        return [];
-    }
-
-    /**
-     * Task action.
-     *
-     * @return RedirectResponse
-     *
-     * @Route("/calendar", name="calendar")
-     * @Template()
-     */
-    public function calendarAction()
-    {
-        return [];
-    }
-
-    /**
      * Export action.
      *
      * @return RedirectResponse
