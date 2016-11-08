@@ -1,12 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: andreybolonin
- * Date: 10/4/16
- * Time: 8:25 AM
- */
-<?php
-
 /*
  * This file is part of the Symfony package.
  *
