@@ -1,20 +1,21 @@
 <?php
 
-namespace AppBundle\Form;
+namespace AppBundle\Form\Type;
 
-use AppBundle\Entity\Product;
+use AppBundle\Entity\Lead;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\CurrencyType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
- * ProductType class.
+ * LeadType class.
  */
-class ProductType extends AbstractType
+class LeadType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -26,17 +27,18 @@ class ProductType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => 'add',
             ])
-            ->add('name', TextType::class, [
-                'label' => 'name',
+            ->add('firstName', TextType::class, [
+                'label' => 'firstname',
             ])
-            ->add('price', NumberType::class, [
-                'label' => 'price',
+            ->add('leadStatus', ChoiceType::class, [
+                'choices' => Lead::valuesOfStatus(),
+                'label' => 'lead.status',
             ])
-            ->add('currency', CurrencyType::class, [
-                'label' => 'currency',
+            ->add('email', EmailType::class, [
+                'label' => 'email',
             ])
-            ->add('title', TextType::class, [
-                'label' => 'title',
+            ->add('mobilePhone', NumberType::class, [
+                'label' => 'mobilephone',
             ])
         ;
 
@@ -49,15 +51,7 @@ class ProductType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\Product',
+            'data_class' => Lead::class,
         ]);
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'product';
     }
 }

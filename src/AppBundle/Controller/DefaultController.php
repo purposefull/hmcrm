@@ -58,15 +58,6 @@ class DefaultController extends Controller
      */
     public function exportAction()
     {
-        //        $exporter = $this->get('fungio.dataexporter');
-//        $Lead = new Lead();
-
-//        $exporter->setOptions('json', array('fileName' => 'file', 'separator' => ';'));
-//        $exporter->setColumns(array('firstName' => 'firstName', 'mobilePhone' => 'mobilePhone', 'country' => 'country'));
-//        $exporter->setData(array($Lead));
-
-//        return $exporter->render();
-
         return [];
     }
 
