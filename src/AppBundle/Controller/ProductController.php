@@ -245,7 +245,6 @@ class ProductController extends Controller
      *
      * @Route("/edit/{id}", name="product_edit")
      * @Method("GET")
-     //* @ParamConverter("product", class="AppBundle:Product")
      * @Template()
      */
     public function editAction(Request $request)
