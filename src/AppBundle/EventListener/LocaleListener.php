@@ -14,14 +14,11 @@ use Symfony\Bundle\FrameworkBundle\Routing\Router;
 class LocaleListener implements EventSubscriberInterface
 {
     /**
-     * @var string
-     */
-    private $defaultLocale;
-
-    /**
      * LocaleListener constructor.
      *
      * @param string $defaultLocale
+     * @param array $availableLocales
+     * @param Router $router
      */
     public function __construct($defaultLocale, $availableLocales, Router $router)
     {
