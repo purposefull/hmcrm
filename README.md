@@ -31,11 +31,11 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 # Roadmap
 
-1) Import & Export
+1) Import & Export (xls, xml, json, pdf)
 
-2) Calendar and Tasks (Google Calendar + Wunderlist)
+2) Calendar and Email (Google Calendar + Gmail/Outlook)
 
-3) Email autoresponders (MailerLite, GetResponse, MailChimp, Aweber)
+3) Tasks (Wunderlist)
 
 4) RESTful API (RestBundle)
 
@@ -44,6 +44,12 @@ http://crm.healthmarketing.me - SaaS implementation.
 6) Email Templates + Email Server Config
 
 7) Lead Prioritization (Scoring)
+
+8) Marketing Platform Integration (HubSpot, Marketo)
+
+9) Support Platform Integration (ZenDesk, FreshDesk)
+
+10) Email autoresponders (MailerLite, GetResponse, MailChimp, Aweber)
 
 
 # Contributing
