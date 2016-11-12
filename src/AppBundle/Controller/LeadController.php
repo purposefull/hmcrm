@@ -61,7 +61,12 @@ class LeadController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Lead();
-        $form = $this->createCreateForm($entity);
+
+        $form = $this->createForm(LeadType::class, $entity, [
+            'action' => $this->generateUrl('lead_create'),
+            'method' => 'POST',
+        ]);
+
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -107,23 +112,6 @@ class LeadController extends Controller
             'entity' => $entity,
             'form' => $form->createView(),
         ];
-    }
-
-    /**
-     * Creates a form to create a Lead entity.
-     *
-     * @param Lead $entity The entity
-     *
-     * @return Form The form
-     */
-    private function createCreateForm(Lead $entity)
-    {
-        $form = $this->createForm(LeadType::class, $entity, [
-            'action' => $this->generateUrl('lead_create'),
-            'method' => 'POST',
-        ]);
-
-        return $form;
     }
 
     /**
@@ -253,95 +241,44 @@ class LeadController extends Controller
     /**
      * Displays a form to edit an existing Lead entity.
      *
-     * @param Lead $lead Lead
-     *
-     * @throws NotFoundHttpException
-     *
-     * @return Response
-     *
-     * @Route("/edit/{id}", name="lead_edit")
-     * @Method("GET")
-     * @ParamConverter("lead", class="AppBundle:Lead")
-     * @Template()
-     */
-    public function editAction(Lead $lead)
-    {
-        if ($this->getUser() !== $lead->getUser()) {
-            throw $this->createNotFoundException('Unable to find Lead entity.');
-        }
-
-        $editForm = $this->createEditForm($lead);
-        $deleteForm = $this->createDeleteForm($lead->getId());
-
-        return [
-            'entity' => $lead,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ];
-    }
-
-    /**
-     * Creates a form to edit a Lead entity.
-     *
-     * @param Lead $entity The entity
-     *
-     * @return Form The form
-     */
-    private function createEditForm(Lead $entity)
-    {
-        $form = $this->createForm(new LeadType(), $entity, [
-            'action' => $this->generateUrl('lead_update', [
-                'id' => $entity->getId(),
-            ]),
-            'method' => 'PUT',
-        ]);
-
-        $form->add('submit', 'submit', [
-            'label' => 'Update',
-        ]);
-
-        return $form;
-    }
-
-    /**
-     * Edits an existing Lead entity.
-     *
-     * @param Request $request Request
-     * @param Lead    $lead    Lead
+     * @param Request $request
      *
      * @throws NotFoundHttpException
      *
      * @return RedirectResponse|Response
      *
-     * @Route("/update/{id}", name="lead_update")
-     * @Method("PUT")
-     * @ParamConverter("lead", class="AppBundle:Lead")
-     * @Template("AppBundle:Lead:edit.html.twig")
+     * @Route("/edit/{id}", name="lead_edit")
+     *
+     * @Template()
      */
-    public function updateAction(Request $request, Lead $lead)
+    public function editAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $lead = $em->getRepository(Lead::class)->find($request->get('id'));
+
         if ($this->getUser() !== $lead->getUser()) {
             throw $this->createNotFoundException('Unable to find Lead entity.');
         }
 
-        $em = $this->getDoctrine()->getManager();
+        $editForm = $this->createForm(LeadType::class,
+            $lead,
+            [
+                'action' => $this->generateUrl('lead_edit', [
+                    'id' => $lead->getId(),
+                ]),
+            ]);
 
-        $deleteForm = $this->createDeleteForm($lead->getId());
-        $editForm = $this->createEditForm($lead);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $lead = $editForm->getData();
+            $em->persist($lead);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('lead_show', [
-                'id' => $lead->getId(),
-            ]));
         }
 
         return [
-            'entity' => $lead->getId(),
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'entity' => $lead,
+            'edit_form' => $editForm->createView()
         ];
     }
 
@@ -363,7 +300,6 @@ class LeadController extends Controller
             throw $this->createNotFoundException('Unable to find Lead entity.');
         }
 
-         insurance;
         $em = $this->getDoctrine()->getManager();
         $em->remove($lead);
         $em->flush();

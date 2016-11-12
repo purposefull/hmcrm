@@ -18,8 +18,6 @@ use Doctrine\ORM\EntityNotFoundException;
 use AppBundle\Form\ProductType;
 
 /**
- * Lead controller.
- *
  * @Route("/product")
  */
 class ProductController extends Controller
@@ -60,7 +58,16 @@ class ProductController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Product();
-        $form = $this->createCreateForm($entity);
+
+        $form = $this->createForm(
+            ProductType::class,
+            $entity,
+            [
+                'action' => $this->generateUrl('product_create'),
+                'method' => 'POST',
+            ]
+        );
+
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -81,7 +88,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Displays a form to create a new Product entity.
+     * Displays a form to create a new Lead entity.
      *
      * @return Response
      *
@@ -109,29 +116,9 @@ class ProductController extends Controller
     }
 
     /**
-     * Creates a form to create a Product entity.
-     *
-     * @param Product $entity The entity
-     *
-     * @return Form The form
-     */
-    private function createCreateForm(Product $entity)
-    {
-        $form = $this->createForm(ProductType::class,
-            $entity,
-            [
-               'action' => $this->generateUrl('product_create'),
-               'method' => 'POST',
-            ]);
-
-        return $form;
-    }
-
-
-    /**
      * Finds and displays a Product entity.
      *
-     * @param Product $product Product
+     * @param Request $request
      *
      * @throws NotFoundHttpException
      *
@@ -139,20 +126,19 @@ class ProductController extends Controller
      *
      * @Route("/show/{id}", name="product_show")
      * @Method("GET")
-     * @ParamConverter("product", class="AppBundle:Product")
      * @Template()
      */
-    public function showAction(Product $product)
+    public function showAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $product = $em->getRepository(Product::class)->find($request->get('id'));
+
         if ($this->getUser() !== $product->getUser()) {
             throw $this->createNotFoundException('Unable to find Product entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($product->getId());
-
         return [
-            'entity' => $product,
-            'delete_form' => $deleteForm->createView(),
+            'entity' => $product
         ];
     }
 
@@ -166,8 +152,7 @@ class ProductController extends Controller
      * @return Response
      *
      * @Route("/edit/{id}", name="product_edit")
-     * @Method("GET")
-     //* @ParamConverter("product", class="AppBundle:Product")
+     * 
      * @Template()
      */
     public function editAction(Request $request)
@@ -179,8 +164,11 @@ class ProductController extends Controller
             throw $this->createNotFoundException('Unable to find Product entity.');
         }
 
-        $editForm = $this->createForm(ProductType::class, $product);
-        $deleteForm = $this->createDeleteForm($product->getId());
+        $editForm = $this->createForm(ProductType::class, $product, [
+            'action' => $this->generateUrl('product_edit', [
+                'id' => $product->getId(),
+            ]),
+        ]);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
@@ -191,118 +179,33 @@ class ProductController extends Controller
 
         return [
             'entity' => $product,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'edit_form' => $editForm->createView()
         ];
     }
-
-//    /**
-//     * Creates a form to edit a Product entity.
-//     *
-//     * @param Product $entity The entity
-//     *
-//     * @return Form The form
-//     */
-//    private function createEditForm(Product $entity)
-//    {
-//        $form = $this->createForm(new ProductType(), $entity, [
-//            'action' => $this->generateUrl('product_update', [
-//                'id' => $entity->getId(),
-//            ]),
-//        ]);
-//
-//        $form->add('submit', 'submit', [
-//            'label' => 'Update',
-//        ]);
-//
-//        return $form;
-//    }
-
-//    /**
-//     * Edits an existing Product entity.
-//     *
-//     * @param Request $request Request
-//     * @param Product    $product    Product
-//     *
-//     * @throws NotFoundHttpException
-//     *
-//     * @return RedirectResponse|Response
-//     *
-//     * @Route("/update/{id}", name="product_update")
-//     * @Method("PUT")
-//     * @ParamConverter("product", class="AppBundle:Product")
-//     * @Template("AppBundle:Product:edit.html.twig")
-//     */
-//    public function updateAction(Request $request, Product $product)
-//    {
-//        if ($this->getUser() !== $product->getUser()) {
-//            throw $this->createNotFoundException('Unable to find Product entity.');
-//        }
-//
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $deleteForm = $this->createDeleteForm($product->getId());
-//        $editForm = $this->createEditForm($product);
-//        $editForm->handleRequest($request);
-//
-//        if ($editForm->isValid()) {
-//            $em->flush();
-//
-//            return $this->redirect($this->generateUrl('product_show', [
-//                'id' => $product->getId(),
-//            ]));
-//        }
-//
-//        return [
-//            'entity' => $product->getId(),
-//            'edit_form' => $editForm->createView(),
-//            'delete_form' => $deleteForm->createView(),
-//        ];
-//    }
 
     /**
      * Deletes a Product entity.
      *
-     * @param Product $product Product
+     * @param Request $request
      *
      * @throws NotFoundHttpException
      *
      * @return RedirectResponse
      *
      * @Route("/delete/{id}", name="product_delete")
-     * @ParamConverter("product", class="AppBundle:Product")
      */
-    public function deleteAction(Product $product)
+    public function deleteAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $product = $em->getRepository(Product::class)->find($request->get('id'));
+
         if ($this->getUser() !== $product->getUser()) {
             throw $this->createNotFoundException('Unable to find Product entity.');
         }
 
-        // insurance
-//        $em = $this->getDoctrine()->getManager();
-//        $em->remove($lead);
-//        $em->flush();
+        $em->remove($product);
+        $em->flush();
 
         return $this->redirect($this->generateUrl('product'));
-    }
-
-    /**
-     * Creates a form to delete a Product entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('product_delete', [
-                'id' => $id,
-            ]))
-            ->setMethod('DELETE')
-            ->add('submit', SubmitType::class, [
-                'label' => 'Delete',
-            ])
-            ->getForm();
     }
 }

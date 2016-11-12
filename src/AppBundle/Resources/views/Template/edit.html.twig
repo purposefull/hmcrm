@@ -2,13 +2,13 @@
 
 {% block title %}
     <div class="col-sm-4">
-        <h2>{{ 'lead.edit'|trans }}</h2>
+        <h2>{{ 'Edit Template'|trans }}</h2>
         <ol class="breadcrumb">
             <li>
                 <a href="/">{{ 'home'|trans }}</a>
             </li>
             <li class="active">
-                <strong>{{ 'lead.edit'|trans }}</strong>
+                <strong>{{ 'Edit Template'|trans }}</strong>
             </li>
         </ol>
     </div>
@@ -19,7 +19,7 @@
     <div class="form-actions">
         <div class="col-sm-12">
             {{ form_widget(edit_form.submit, { 'attr': {'class': 'btn btn-primary'}}) }}
-            <a class="btn btn-default" href="{{ path('lead') }}">
+            <a class="btn btn-default" href="{{ path('email_template') }}">
                 {{ 'backToTheList'|trans }}
             </a>
         </div>

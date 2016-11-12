@@ -56,11 +56,15 @@ class TemplateController extends Controller
      */
     public function createAction(Request $request)
     {
+
         $entity = new Template();
-        $form = $this->createForm(Template::class, $entity, [
-            'action' => $this->generateUrl('template_create'),
-            'method' => 'POST',
-        ]);
+        $form = $this->createForm(TemplateType::class,
+            $entity,
+            [
+              'action' => $this->generateUrl('template_create'),
+              'method' => 'POST',
+            ]);
+
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -111,7 +115,7 @@ class TemplateController extends Controller
     /**
      * Finds and displays a Template entity.
      *
-     * @param Template $template Template
+     * @param Request $request
      *
      * @throws NotFoundHttpException
      *
@@ -119,20 +123,19 @@ class TemplateController extends Controller
      *
      * @Route("/email_template/show/{id}", name="template_show")
      * @Method("GET")
-     * @ParamConverter("template", class="AppBundle:Template")
      * @TemplateAnnotation()
      */
-    public function showAction(Template $template)
+    public function showAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $template = $em->getRepository(Template::class)->find($request->get('id'));
+
         if ($this->getUser() !== $template->getUser()) {
             throw $this->createNotFoundException('Unable to find Template entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($template->getId());
-
         return [
-            'entity' => $template,
-            'delete_form' => $deleteForm->createView(),
+            'entity' => $template
         ];
     }
 
@@ -140,14 +143,13 @@ class TemplateController extends Controller
      * Edits an existing Template entity.
      *
      * @param Request $request Request
-     * @param Template    $template    Template
      *
      * @throws NotFoundHttpException
      *
      * @return RedirectResponse|Response
      *
-     * @Route("/email_template/edit/ac/{id}", name="template_edit")
-
+     * @Route("/email_template/edit/{id}", name="template_edit")
+     *
      * @TemplateAnnotation("AppBundle:Template:edit.html.twig")
      */
     public function editAction(Request $request)
@@ -160,10 +162,10 @@ class TemplateController extends Controller
         }
 
         $editForm = $this->createForm(TemplateType::class, $template, [
-            'action' => $this->generateUrl('template_edit', [
-                'id' => $template->getId(),
-            ]),
-        ]);
+        'action' => $this->generateUrl('template_edit', [
+            'id' => $template->getId(),
+        ]),
+    ]);
 
         $editForm->handleRequest($request);
 
@@ -192,10 +194,9 @@ class TemplateController extends Controller
      */
     public function deleteAction(Request $request)
     {
-
         $em = $this->getDoctrine()->getManager();
 
-        $template = $em->getRepository('AppBundle:Template')->find($request->get('id'));
+        $template = $em->getRepository(Template::class)->find($request->get('id'));
 
         if ($this->getUser() !== $template->getUser()) {
             throw $this->createNotFoundException('Unable to find Template entity.');
