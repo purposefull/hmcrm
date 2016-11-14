@@ -7,7 +7,7 @@ HealthMarketing CRM
 
 All-in-One Sales Platform for Small Business
 
-http://crm.healthmarketing.me - SaaS implementation.
+http://crm.foxweb24.ru - SaaS implementation.
 
 # System Requirements
 
