@@ -163,7 +163,6 @@ class LeadController extends Controller
                     ],
                 ];
 
-                // TODO save GROUP_ID with database
                 if ($request->get('event') == 'healthmarketing') {
                     $groupsApi->addSubscriber('4336713', $subscriber);
                 } else {
