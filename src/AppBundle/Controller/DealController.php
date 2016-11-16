@@ -144,12 +144,10 @@ class DealController extends Controller
         }
 
         $editForm = $this->createEditForm($deal);
-//        $deleteForm = $this->createDeleteForm($deal->getId());
 
         return [
             'entity' => $deal,
             'edit_form' => $editForm->createView(),
-//            'delete_form' => $deleteForm->createView(),
         ];
     }
 
