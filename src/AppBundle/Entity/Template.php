@@ -33,10 +33,6 @@ class Template extends Base
      */
     protected $code;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Deal", mappedBy="template")
-     */
-    protected $deals;
 
     public function __construct()
     {
@@ -99,26 +95,6 @@ class Template extends Base
     public function setName($name)
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDeals()
-    {
-        return $this->deals;
-    }
-
-    /**
-     * @param mixed $deals
-     *
-     * @return $this
-     */
-    public function setDeals($deals)
-    {
-        $this->deals = $deals;
 
         return $this;
     }

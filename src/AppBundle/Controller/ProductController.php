@@ -244,7 +244,6 @@ class ProductController extends Controller
      * @return Response
      *
      * @Route("/edit/{id}", name="product_edit")
-     * @Method("GET")
      * @Template()
      */
     public function editAction(Request $request)
@@ -272,70 +271,6 @@ class ProductController extends Controller
             'delete_form' => $deleteForm->createView(),
         ];
     }
-
-//    /**
-//     * Creates a form to edit a Product entity.
-//     *
-//     * @param Product $entity The entity
-//     *
-//     * @return Form The form
-//     */
-//    private function createEditForm(Product $entity)
-//    {
-//        $form = $this->createForm(new ProductType(), $entity, [
-//            'action' => $this->generateUrl('product_update', [
-//                'id' => $entity->getId(),
-//            ]),
-//        ]);
-//
-//        $form->add('submit', 'submit', [
-//            'label' => 'Update',
-//        ]);
-//
-//        return $form;
-//    }
-
-//    /**
-//     * Edits an existing Product entity.
-//     *
-//     * @param Request $request Request
-//     * @param Product    $product    Product
-//     *
-//     * @throws NotFoundHttpException
-//     *
-//     * @return RedirectResponse|Response
-//     *
-//     * @Route("/update/{id}", name="product_update")
-//     * @Method("PUT")
-//     * @ParamConverter("product", class="AppBundle:Product")
-//     * @Template("AppBundle:Product:edit.html.twig")
-//     */
-//    public function updateAction(Request $request, Product $product)
-//    {
-//        if ($this->getUser() !== $product->getUser()) {
-//            throw $this->createNotFoundException('Unable to find Product entity.');
-//        }
-//
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $deleteForm = $this->createDeleteForm($product->getId());
-//        $editForm = $this->createEditForm($product);
-//        $editForm->handleRequest($request);
-//
-//        if ($editForm->isValid()) {
-//            $em->flush();
-//
-//            return $this->redirect($this->generateUrl('product_show', [
-//                'id' => $product->getId(),
-//            ]));
-//        }
-//
-//        return [
-//            'entity' => $product->getId(),
-//            'edit_form' => $editForm->createView(),
-//            'delete_form' => $deleteForm->createView(),
-//        ];
-//    }
 
     /**
      * Deletes a Product entity.
