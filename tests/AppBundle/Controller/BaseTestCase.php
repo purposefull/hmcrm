@@ -47,8 +47,8 @@ abstract class BaseTestCase extends WebTestCase
      */
     public static function setUpMysql()
     {
-        self::runAppConsoleCommand("doctrine:database:create");
-        self::runAppConsoleCommand("doctrine:schema:update --force");
+        self::runAppConsoleCommand("doctrine:database:create -q");
+        self::runAppConsoleCommand("doctrine:schema:update --force -q");
     }
 
     /**
@@ -65,5 +65,18 @@ abstract class BaseTestCase extends WebTestCase
     public static function tearDownMysql()
     {
         self::runAppConsoleCommand("doctrine:database:drop --force");
+    }
+
+    public function login()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/login');
+        $form = $crawler->selectButton('Login')->form();
+        $form['_username'] = 'admin';
+        $form['_password'] = 'admin';
+        $client->submit($form);
+
+        return $client;
     }
 }

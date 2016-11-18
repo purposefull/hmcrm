@@ -14,16 +14,6 @@ class Builder implements ContainerAwareInterface
     use ContainerAwareTrait;
 
     /**
-     * @var FactoryInterface
-     */
-    private $factory;
-
-    /**
-     * @var \Symfony\Component\Routing\RouterInterface
-     */
-    private $router;
-
-    /**
      * Builds main menu.
      */
     public function mainMenu(FactoryInterface $factory, array $options)
@@ -47,10 +37,6 @@ class Builder implements ContainerAwareInterface
         $menu->addChild('menu.contacts', [
             'route' => 'contact_list',
         ])->setAttribute('icon', 'fa fa-phone');
-
-        // you can also add sub level's to your menu's as follows
-        //        $menu['menu.contacts']->addChild('menu.person', ['route' => 'person']);
-        //        $menu['menu.contacts']->addChild('menu.company', ['route' => 'company']));
 
         $menu->addChild('menu.deal', [
             'route' => 'deal',
@@ -91,21 +77,6 @@ class Builder implements ContainerAwareInterface
         $menu->addChild('Settings', [
             'route' => 'settings',
         ])->setAttribute('icon', 'fa fa-cog');
-
-//        $menu->addChild('menu.tasks', [
-//            'route' => 'integration_index',
-//        ])->setAttribute('icon', 'fa fa-user');
-
-//        $menu->addChild('menu.email', [
-//            'route' => 'email_index',
-//        ])->setAttribute('icon', 'fa fa-user');
-
-        //        $menu->addChild('menu.import', ['route' => 'deal'])->setAttribute('icon', 'fa fa-download');
-        //        $menu->addChild('menu.export', ['route' => 'deal'])->setAttribute('icon', 'fa fa-upload');
-        //        $menu->addChild('menu.products', ['route' => 'deal'])->setAttribute('icon', 'fa fa-cube');
-        //        $menu->addChild('menu.manageUsers', ['route' => 'deal'])->setAttribute('icon', 'fa fa-unlock-alt');
-        //        $menu->addChild('menu.emailTemplates', ['route' => 'deal'])->setAttribute('icon', 'fa fa-envelope');
-        //        $menu->addChild('menu.tasksManagement', ['route' => 'deal'])->setAttribute('icon', 'fa fa-check-square');
 
         return $menu;
     }

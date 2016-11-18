@@ -3,9 +3,11 @@ HealthMarketing CRM
 
 [![Build Status](https://travis-ci.org/andreybolonin/hmcrm.svg?branch=master)](https://travis-ci.org/andreybolonin/hmcrm)
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/acb14000-150b-41f6-a287-1b3d7e5805df/big.png)](https://insight.sensiolabs.com/projects/acb14000-150b-41f6-a287-1b3d7e5805df)
+
 All-in-One Sales Platform for Small Business
 
-http://crm.healthmarketing.me - SaaS implementation.
+http://crm.foxweb24.ru - SaaS implementation.
 
 # System Requirements
 
@@ -29,11 +31,11 @@ http://crm.healthmarketing.me - SaaS implementation.
 
 # Roadmap
 
-1) Import & Export
+1) Import & Export (xls, xml, json, pdf)
 
-2) Calendar and Tasks (Google Calendar + Wunderlist)
+2) Calendar and Email (Google Calendar + Gmail/Outlook)
 
-3) Email autoresponders (MailerLite, GetResponse, MailChimp, Aweber)
+3) Tasks (Wunderlist)
 
 4) RESTful API (RestBundle)
 
@@ -42,6 +44,12 @@ http://crm.healthmarketing.me - SaaS implementation.
 6) Email Templates + Email Server Config
 
 7) Lead Prioritization (Scoring)
+
+8) Marketing Platform Integration (HubSpot, Marketo)
+
+9) Support Platform Integration (ZenDesk, FreshDesk)
+
+10) Email autoresponders (MailerLite, GetResponse, MailChimp, Aweber)
 
 
 # Contributing

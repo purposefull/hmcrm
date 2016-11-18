@@ -1,21 +1,20 @@
 <?php
 
-namespace AppBundle\Form;
+namespace AppBundle\Form\Type;
 
-use AppBundle\Entity\Lead;
+use AppBundle\Entity\Product;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\CurrencyType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
- * LeadType class.
+ * ProductType class.
  */
-class LeadType extends AbstractType
+class ProductType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -27,18 +26,17 @@ class LeadType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => 'add',
             ])
-            ->add('firstName', TextType::class, [
-                'label' => 'firstname',
+            ->add('name', TextType::class, [
+                'label' => 'name',
             ])
-            ->add('leadStatus', ChoiceType::class, [
-                'choices' => Lead::valuesOfStatus(),
-                'label' => 'lead.status',
+            ->add('price', NumberType::class, [
+                'label' => 'price',
             ])
-            ->add('email', EmailType::class, [
-                'label' => 'email',
+            ->add('currency', CurrencyType::class, [
+                'label' => 'currency',
             ])
-            ->add('mobilePhone', NumberType::class, [
-                'label' => 'mobilephone',
+            ->add('title', TextType::class, [
+                'label' => 'title',
             ])
         ;
 
@@ -51,7 +49,7 @@ class LeadType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Lead::class,
+            'data_class' => Product::class,
         ]);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Lead;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -57,41 +56,6 @@ class DefaultController extends Controller
      * @Template()
      */
     public function exportAction()
-    {
-        //        $exporter = $this->get('fungio.dataexporter');
-//        $Lead = new Lead();
-
-//        $exporter->setOptions('json', array('fileName' => 'file', 'separator' => ';'));
-//        $exporter->setColumns(array('firstName' => 'firstName', 'mobilePhone' => 'mobilePhone', 'country' => 'country'));
-//        $exporter->setData(array($Lead));
-
-//        return $exporter->render();
-
-        return [];
-    }
-
-    /**
-     * Task action.
-     *
-     * @return RedirectResponse
-     *
-     * @Route("/task", name="task")
-     * @Template()
-     */
-    public function taskAction()
-    {
-        return [];
-    }
-
-    /**
-     * Task action.
-     *
-     * @return RedirectResponse
-     *
-     * @Route("/calendar", name="calendar")
-     * @Template()
-     */
-    public function calendarAction()
     {
         return [];
     }
