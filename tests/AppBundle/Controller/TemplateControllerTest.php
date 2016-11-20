@@ -8,7 +8,7 @@ use Tests\AppBundle\Controller\BaseTestCase;
 
 require_once 'BaseTestCase.php';
 
-class ProductControllerTest extends BaseTestCase
+class TemplateControllerTest extends BaseTestCase
 {
     public static function setUpBeforeClass()
     {
@@ -21,7 +21,7 @@ class ProductControllerTest extends BaseTestCase
     {
         $client = $this->login();
 
-        $client->request('GET', '/product/');
+        $client->request('GET', '/email_template');
 
         static::assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
     }
@@ -30,7 +30,7 @@ class ProductControllerTest extends BaseTestCase
     {
         $client = $this->login();
 
-        $client->request('GET', '/product/show/1');
+        $client->request('GET', '/email_template/show/1');
 
         static::assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
     }
@@ -39,7 +39,7 @@ class ProductControllerTest extends BaseTestCase
     {
         $client = $this->login();
 
-        $client->request('GET', '/product/edit/1');
+        $client->request('GET', '/email_template/edit/1');
 
         static::assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
     }
@@ -48,7 +48,7 @@ class ProductControllerTest extends BaseTestCase
     {
         $client = $this->login();
 
-        $client->request('GET', '/product/delete/3');
+        $client->request('GET', '/email_template/delete/3');
 
         static::assertEquals(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
     }

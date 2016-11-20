@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use AppBundle\Entity\Product;
 use Doctrine\ORM\EntityNotFoundException;
-use AppBundle\Form\ProductType;
+use AppBundle\Form\Type\ProductType;
 
 /**
  * @Route("/product")

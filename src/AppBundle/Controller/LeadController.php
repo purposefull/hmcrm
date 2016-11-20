@@ -14,17 +14,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use AppBundle\Entity\Lead;
-use AppBundle\Form\LeadType;
+use AppBundle\Form\Type\LeadType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use MailerLiteApi\MailerLite;
 
-/**
- * Lead controller.
- *
- * @Route("/lead")
- */
 class LeadController extends Controller
 {
     /**
@@ -32,7 +27,7 @@ class LeadController extends Controller
      *
      * @return Response
      *
-     * @Route("/", name="lead")
+     * @Route("/lead", name="lead")
      * @Method("GET")
      * @Template()
      */
@@ -54,7 +49,7 @@ class LeadController extends Controller
      *
      * @return RedirectResponse|Response
      *
-     * @Route("/", name="lead_create")
+     * @Route("/lead", name="lead_create")
      * @Method("POST")
      * @Template("AppBundle:Lead:new.html.twig")
      */
@@ -91,7 +86,7 @@ class LeadController extends Controller
      *
      * @return Response
      *
-     * @Route("/new", name="lead_new")
+     * @Route("/lead/new", name="lead_new")
      * @Method("GET")
      * @Template()
      */
@@ -119,7 +114,7 @@ class LeadController extends Controller
      *
      * @return RedirectResponse
      *
-     * @Route("/lead_capture_form", name="lead_capture_form")
+     * @Route("/lead/lead_capture_form", name="lead_capture_form")
      * @Template()
      */
     public function leadCaptureFormAction(Request $request)
@@ -196,7 +191,7 @@ class LeadController extends Controller
     /**
      * @return RedirectResponse|Response
      *
-     * @Route("/lead_capture_form_settings", name="lead_capture_form_settings")
+     * @Route("/lead/lead_capture_form_settings", name="lead_capture_form_settings")
      * @Template()
      */
     public function leadCaptureFormSettingsAction()
@@ -219,7 +214,7 @@ class LeadController extends Controller
      *
      * @return Response
      *
-     * @Route("/show/{id}", name="lead_show")
+     * @Route("/lead/show/{id}", name="lead_show")
      * @Method("GET")
      * @ParamConverter("lead", class="AppBundle:Lead")
      * @Template()
@@ -247,7 +242,7 @@ class LeadController extends Controller
      *
      * @return RedirectResponse|Response
      *
-     * @Route("/edit/{id}", name="lead_edit")
+     * @Route("/lead/edit/{id}", name="lead_edit")
      *
      * @Template()
      */
@@ -291,7 +286,7 @@ class LeadController extends Controller
      *
      * @return RedirectResponse
      *
-     * @Route("/delete/{id}", name="lead_delete")
+     * @Route("/lead/delete/{id}", name="lead_delete")
      * @ParamConverter("lead", class="AppBundle:Lead")
      */
     public function deleteAction(Lead $lead)
