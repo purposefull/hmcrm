@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Template class.
@@ -32,11 +31,6 @@ class Template extends Base
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $code;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Deal", mappedBy="template")
-     */
-    protected $deals;
 
     public function __construct()
     {
@@ -99,26 +93,6 @@ class Template extends Base
     public function setName($name)
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDeals()
-    {
-        return $this->deals;
-    }
-
-    /**
-     * @param mixed $deals
-     *
-     * @return $this
-     */
-    public function setDeals($deals)
-    {
-        $this->deals = $deals;
 
         return $this;
     }

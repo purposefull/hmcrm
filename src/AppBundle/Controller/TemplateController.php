@@ -3,22 +3,14 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Template;
-use Doctrine\ORM\EntityNotFoundException;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Form;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use AppBundle\Entity\Lead;
 use AppBundle\Form\Type\TemplateType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use MailerLiteApi\MailerLite;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template as TemplateAnnotation;
 
 class TemplateController extends Controller

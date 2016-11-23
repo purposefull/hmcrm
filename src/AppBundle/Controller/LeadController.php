@@ -4,7 +4,6 @@ namespace AppBundle\Controller;
 
 use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,7 +17,6 @@ use AppBundle\Form\Type\LeadType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use MailerLiteApi\MailerLite;
 
 class LeadController extends Controller
 {
@@ -120,7 +118,6 @@ class LeadController extends Controller
     public function leadCaptureFormAction(Request $request)
     {
         if ($request->getMethod() == 'POST' || $request->getMethod() == 'GET') {
-            // $form = $request->request->all();
 
             $lead = new Lead();
 
@@ -163,19 +160,7 @@ class LeadController extends Controller
                 }
 
                 if ($request->get('redirectUrl')) {
-                    //                    $variables = [
-//                        'order_id' => $lead->getId(),
-//                        'name' => $request->get('name'),
-////                        'surname' => $request->get('surname'),
-//                        'email' => $request->get('surname'),
-//                        'phone' => $request->get('phone1').$request->get('phone1').$request->get('phone2'),
-//                        'city' => $request->get('city'),
-//                        'country' => $request->get('country'),
-//                        'amount' => $request->get('amount')
-//                    ];
                     return new RedirectResponse($request->get('redirectUrl'));
-//                    header('Location: '.$request->get('redirectUrl').'?'.http_build_query($variables));
-//                    exit;
                     /*return new RedirectResponse('/lead/test', 302, [
                         'order_id' => $lead->getId(),
                         'name' => $request->get('name'),
