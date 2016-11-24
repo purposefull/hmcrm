@@ -2,13 +2,13 @@
 
 {% block title %}
     <div class="col-sm-4">
-        <h2>{{ 'lead.new'|trans }}</h2>
+        <h2>{{ 'Product Create'|trans }}</h2>
         <ol class="breadcrumb">
             <li>
                 <a href="/">{{ 'home'|trans }}</a>
             </li>
             <li class="active">
-                <strong>{{ 'lead.new'|trans }}</strong>
+                <strong>{{ 'Product Create'|trans }}</strong>
             </li>
         </ol>
     </div>
@@ -19,7 +19,7 @@
         <div class="form-actions">
             <div class="col-sm-12">
                 {{ form_widget(form.submit, { 'attr': {'class': 'btn btn-primary'}}) }}
-                <a class="btn btn-default" href="{{ path('lead') }}">
+                <a class="btn btn-default" href="{{ path('product') }}">
                     {{ 'backToTheList'|trans }}
                 </a>
             </div>

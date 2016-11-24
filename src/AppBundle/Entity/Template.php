@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Lead.
+ * Template class.
  *
  * @ORM\Table(name="template")
  * @ORM\Entity()
@@ -32,11 +32,6 @@ class Template extends Base
      */
     protected $code;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Deal", mappedBy="product")
-     */
-    protected $deals;
-
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -52,6 +47,8 @@ class Template extends Base
 
     /**
      * @param mixed $user
+     *
+     * @return $this
      */
     public function setUser($user)
     {
@@ -70,6 +67,8 @@ class Template extends Base
 
     /**
      * @param string $code
+     *
+     * @return $this
      */
     public function setCode($code)
     {
@@ -88,28 +87,12 @@ class Template extends Base
 
     /**
      * @param string $name
+     *
+     * @return $this
      */
     public function setName($name)
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDeals()
-    {
-        return $this->deals;
-    }
-
-    /**
-     * @param mixed $deals
-     */
-    public function setDeals($deals)
-    {
-        $this->deals = $deals;
 
         return $this;
     }

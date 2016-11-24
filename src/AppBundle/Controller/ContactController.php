@@ -15,11 +15,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-/**
- * Contact controller.
- *
- * @Route("/contact")
- */
 class ContactController extends Controller
 {
     /**
@@ -27,7 +22,7 @@ class ContactController extends Controller
      *
      * @return Response
      *
-     * @Route("/", name="contact_list")
+     * @Route("/contact", name="contact_list")
      * @Template()
      */
     public function indexAction()
@@ -65,7 +60,7 @@ class ContactController extends Controller
      *
      * @return Response
      *
-     * @Route("/show/{id}", name="contact_show")
+     * @Route("/contact/show/{id}", name="contact_show")
      * @Method("GET")
      * @ParamConverter("contact", class="AppBundle:Contact")
      * @Template()
@@ -91,7 +86,7 @@ class ContactController extends Controller
      *
      * @return RedirectResponse|Response
      *
-     * @Route("/new", name="contact_new")
+     * @Route("/contact/new", name="contact_new")
      * @Method({"GET", "POST"})
      * @Template("AppBundle:Contact:new.html.twig")
      */
@@ -127,7 +122,7 @@ class ContactController extends Controller
      *
      * @return Response
      *
-     * @Route("/edit/{id}", name="contact_edit")
+     * @Route("/contact/edit/{id}", name="contact_edit")
      * @Method("GET")
      * @ParamConverter("contact", class="AppBundle:Contact")
      * @Template()
@@ -139,12 +134,10 @@ class ContactController extends Controller
         }
 
         $editForm = $this->createEditForm($contact);
-        $deleteForm = $this->createDeleteForm($contact->getId());
 
         return [
             'entity' => $contact,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ];
     }
 
@@ -158,7 +151,7 @@ class ContactController extends Controller
      *
      * @return RedirectResponse|Response
      *
-     * @Route("/update/{id}", name="contact_update")
+     * @Route("/contact/update/{id}", name="contact_update")
      * @Method({"GET", "PUT"})
      * @ParamConverter("contact", class="AppBundle:Contact")
      * @Template("AppBundle:Contact:edit.html.twig")
@@ -199,7 +192,7 @@ class ContactController extends Controller
      *
      * @return RedirectResponse
      *
-     * @Route("/delete/{id}", name="contact_delete")
+     * @Route("/contact/delete/{id}", name="contact_delete")
      * @ParamConverter("contact", class="AppBundle:Contact")
      */
     public function deleteAction(Contact $contact)
@@ -224,15 +217,10 @@ class ContactController extends Controller
      */
     private function createEditForm(Contact $entity)
     {
-        $form = $this->createForm(new ContactType(), $entity, [
+        $form = $this->createForm(ContactType::class, $entity, [
             'action' => $this->generateUrl('contact_update', [
                 'id' => $entity->getId(),
             ]),
-            'method' => 'PUT',
-        ]);
-
-        $form->add('submit', 'submit', [
-            'label' => 'Update',
         ]);
 
         return $form;
@@ -252,9 +240,6 @@ class ContactController extends Controller
                         'id' => $id,
                     ]))
                     ->setMethod('DELETE')
-                    ->add('submit', 'submit', [
-                        'label' => 'Delete',
-                    ])
                     ->getForm();
     }
 }

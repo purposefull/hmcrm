@@ -16,11 +16,6 @@ use AppBundle\Form\Type\DealType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-/**
- * Deal controller.
- *
- * @Route("/deal")
- */
 class DealController extends Controller
 {
     /**
@@ -28,7 +23,7 @@ class DealController extends Controller
      *
      * @return Response
      *
-     * @Route("/", name="deal")
+     * @Route("/deal", name="deal")
      * @Method("GET")
      * @Template()
      */
@@ -79,32 +74,11 @@ class DealController extends Controller
     }
 
     /**
-     * Creates a form to create a Deal entity.
-     *
-     * @param Deal $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createCreateForm(Deal $entity)
-    {
-        $form = $this->createForm(new DealType(), $entity, [
-            'action' => $this->generateUrl('deal_create'),
-            'method' => 'POST',
-        ]);
-
-        $form->add('submit', 'submit', [
-            'label' => 'Create',
-        ]);
-
-        return $form;
-    }
-
-    /**
      * Displays a form to create a new Deal entity.
      *
      * @return Response
      *
-     * @Route("/new", name="deal_new")
+     * @Route("/deal/new", name="deal_new")
      * @Method("GET")
      * @Template()
      */
@@ -128,7 +102,7 @@ class DealController extends Controller
      *
      * @return Response
      *
-     * @Route("/{id}", name="deal_show")
+     * @Route("/deal/{id}", name="deal_show")
      * @Method("GET")
      * @ParamConverter("deal", class="AppBundle:Deal")
      * @Template()
@@ -156,24 +130,24 @@ class DealController extends Controller
      *
      * @return Response
      *
-     * @Route("/{id}/edit", name="deal_edit")
+     * @Route("/deal/edit/{id}", name="deal_edit")
      * @Method("GET")
-     * @ParamConverter("deal", class="AppBundle:Deal")
      * @Template()
      */
-    public function editAction(Deal $deal)
+    public function editAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $deal = $em->getRepository(Deal::class)->find($request->get('id'));
+
         if ($this->getUser() !== $deal->getUser()) {
             throw $this->createNotFoundException('Unable to find Deal entity.');
         }
 
         $editForm = $this->createEditForm($deal);
-        $deleteForm = $this->createDeleteForm($deal->getId());
 
         return [
             'entity' => $deal,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ];
     }
 
@@ -186,15 +160,11 @@ class DealController extends Controller
      */
     private function createEditForm(Deal $entity)
     {
-        $form = $this->createForm(new DealType(), $entity, [
+        $form = $this->createForm(DealType::class, $entity, [
             'action' => $this->generateUrl('deal_show', [
                 'id' => $entity->getId(),
             ]),
             'method' => 'PUT',
-        ]);
-
-        $form->add('submit', 'submit', [
-            'label' => 'Update',
         ]);
 
         return $form;
@@ -209,7 +179,7 @@ class DealController extends Controller
      *
      * @return RedirectResponse|Response
      *
-     * @Route("/{id}", name="deal_update")
+     * @Route("/deal/{id}", name="deal_update")
      * @Method("PUT")
      * @ParamConverter("deal", class="AppBundle:Deal")
      * @Template("AppBundle:Deal:edit.html.twig")
@@ -250,7 +220,7 @@ class DealController extends Controller
      *
      * @return RedirectResponse
      *
-     * @Route("/delete/{id}", name="deal_delete")
+     * @Route("/deal/delete/{id}", name="deal_delete")
      * @ParamConverter("deal", class="AppBundle:Deal")
      */
     public function deleteAction(Request $request, Deal $deal)
@@ -284,5 +254,26 @@ class DealController extends Controller
                         'label' => 'Delete',
                     ])
                     ->getForm();
+    }
+
+    /**
+     * Creates a form to create a Deal entity.
+     *
+     * @param Deal $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCreateForm(Deal $entity)
+    {
+        $form = $this->createForm(new DealType(), $entity, [
+            'action' => $this->generateUrl('deal_create'),
+            'method' => 'POST',
+        ]);
+
+        $form->add('submit', 'submit', [
+            'label' => 'Create',
+        ]);
+
+        return $form;
     }
 }

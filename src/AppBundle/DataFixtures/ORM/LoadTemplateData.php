@@ -27,24 +27,23 @@ class LoadTemplateData extends AbstractFixture
         /** @var User $userAdmin */
         $userAdmin = $this->getReference('user-admin');
 
-        $lead1 = (new Template())
-            ->setName('Upsell message')
-            ->setCode("{{ 'twig' }}")
-            ->setUser($userAdmin);
-        $manager->persist($lead1);
+        $template1 = new Template();
+        $template1->setName('god');
+        $template1->setCode('twig');
+        $template1->setUser($userAdmin);
+        $manager->persist($template1);
 
-        $lead2 = new Template();
-        $lead2->setCode('sadsadsa');
-//        $lead2->setName('Downsell message')
-//            ->set("{{ 'twig' }}")
-//            ->setUser($userAdmin);
-        $manager->persist($lead2);
+        $template2 = new Template();
+        $template2->setName('seregaaa@gmail.com');
+        $template2->setCode('sadsadsa');
+        $template2->setUser($userAdmin);
+        $manager->persist($template2);
 
-        $lead3 = (new Template())
-            ->setName('Close message')
-            ->setCode("{{ 'twig' }}")
-            ->setUser($userAdmin);
-        $manager->persist($lead3);
+        $template3 = new Template();
+        $template3->setName('seregaaa@gmail.com');
+        $template3->setCode('sadsadsa');
+        $template3->setUser($userAdmin);
+        $manager->persist($template3);
 
         $manager->flush();
     }

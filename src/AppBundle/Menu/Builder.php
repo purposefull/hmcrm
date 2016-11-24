@@ -14,16 +14,6 @@ class Builder implements ContainerAwareInterface
     use ContainerAwareTrait;
 
     /**
-     * @var FactoryInterface
-     */
-    private $factory;
-
-    /**
-     * @var \Symfony\Component\Routing\RouterInterface
-     */
-    private $router;
-
-    /**
      * Builds main menu.
      */
     public function mainMenu(FactoryInterface $factory, array $options)

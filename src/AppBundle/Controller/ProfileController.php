@@ -3,7 +3,6 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ProfileController extends Controller
@@ -16,16 +15,4 @@ class ProfileController extends Controller
         // edit password, email, phone
         return $this->redirect($this->generateUrl('homepage'));
     }
-
-    /**
-     * CRUD for email templates stored in db.
-     *
-     * @Route("/email_template", name="email_template")
-     * @Template()
-     */
-    public function emailTemplateAction()
-    {
-        return [];
-    }
-
 }
