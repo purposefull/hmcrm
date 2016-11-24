@@ -16,7 +16,6 @@ use AppBundle\Entity\Lead;
 use AppBundle\Form\Type\LeadType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class LeadController extends Controller
 {
@@ -161,11 +160,6 @@ class LeadController extends Controller
 
                 if ($request->get('redirectUrl')) {
                     return new RedirectResponse($request->get('redirectUrl'));
-                    /*return new RedirectResponse('/lead/test', 302, [
-                        'order_id' => $lead->getId(),
-                        'name' => $request->get('name'),
-                        'surname' => $request->get('surname'),
-                    ]);*/
                 } else {
                     return new JsonResponse(true);
                 }
