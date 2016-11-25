@@ -27,7 +27,7 @@
         "doctrine/doctrine-fixtures-bundle": "^2.2",
         "knplabs/knp-menu-bundle": "^2.0",
         "symfony/security-acl": "^3.0",
-        "fungio/dataexporter-bundle": "dev-master",
+        "fungio/dataexporter-bundle": "0.1.x-dev",
         "jeroendesloovere/wunderlist-php-api": "^1.0",
         "mailerlite/mailerlite-api-v2-php-sdk": "^0.1.5",
         "knplabs/knp-snappy-bundle": "^1.4",

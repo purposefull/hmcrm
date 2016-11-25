@@ -8,9 +8,9 @@ use Symfony\Component\Console\Input\StringInput;
 
 /**
  * Class BaseTestCase
- * @package UmberFirm\Bundle\ManufacturerBundle\Tests
+ * @package Tests\AppBundle\Controller
  */
-abstract class BaseTestCase extends WebTestCase
+class BaseTestCase extends WebTestCase
 {
 
     /**
@@ -56,7 +56,7 @@ abstract class BaseTestCase extends WebTestCase
      */
     public static function setUpMysqlFixtures()
     {
-        self::runAppConsoleCommand("doctrine:fixtures:load --purge-with-truncate --append");
+        self::runAppConsoleCommand("doctrine:fixtures:load -q");
     }
 
     /**
@@ -64,7 +64,7 @@ abstract class BaseTestCase extends WebTestCase
      */
     public static function tearDownMysql()
     {
-        self::runAppConsoleCommand("doctrine:database:drop --force");
+        self::runAppConsoleCommand("doctrine:database:drop --force -q");
     }
 
     public function login()

@@ -2,11 +2,7 @@
 
 namespace Tests\AppBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
-use Tests\AppBundle\Controller\BaseTestCase;
-
-require_once 'BaseTestCase.php';
 
 class ProductControllerTest extends BaseTestCase
 {
