@@ -77,22 +77,22 @@
     {% endif %}
 {% endblock %}
 
-{% block dividerElement %}
-    {% if item.level == 1 %}
-        <li class="divider-vertical"></li>
-    {% else %}
-        <li class="divider"></li>
-    {% endif %}
-{% endblock %}
+{#{% block dividerElement %}#}
+    {#{% if item.level == 1 %}#}
+        {#<li class="divider-vertical"></li>#}
+    {#{% else %}#}
+        {#<li class="divider"></li>#}
+    {#{% endif %}#}
+{#{% endblock %}#}
 
-{% block dropdownElement %}
-    {%- set classes = item.linkAttribute('class') is not empty ? [item.linkAttribute('class')] : [] %}
-    {%- set classes = classes|merge(['dropdown-toggle']) %}
-    {%- set attributes = item.linkAttributes %}
-    {%- set attributes = attributes|merge({'class': classes|join(' ')}) %}
-    {%- set attributes = attributes|merge({'data-toggle': 'dropdown'}) %}
-    <a href="{{ item.uri }}"{{ macros.attributes(attributes) }}>{{ block('label') }} <b class="caret"></b></a>
-{% endblock %}
+{#{% block dropdownElement %}#}
+    {#{%- set classes = item.linkAttribute('class') is not empty ? [item.linkAttribute('class')] : [] %}#}
+    {#{%- set classes = classes|merge(['dropdown-toggle']) %}#}
+    {#{%- set attributes = item.linkAttributes %}#}
+    {#{%- set attributes = attributes|merge({'class': classes|join(' ')}) %}#}
+    {#{%- set attributes = attributes|merge({'data-toggle': 'dropdown'}) %}#}
+    {#<a href="{{ item.uri }}"{{ macros.attributes(attributes) }}>{{ block('label') }} <b class="caret"></b></a>#}
+{#{% endblock %}#}
 
 {% block label %}{{ item.label|trans }}{% endblock %}
 

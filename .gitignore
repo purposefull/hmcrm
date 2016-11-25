@@ -9,7 +9,6 @@
 /composer.phar
 /vendor/
 /web/bundles/
-/.idea
 *.php~
 /var/cache/*
 /var/logs/*
