@@ -22,20 +22,32 @@ class LeadController extends Controller
     /**
      * Lists all Lead entities.
      *
+     * @param Request $request Request
+     *
      * @return Response
      *
      * @Route("/lead", name="lead")
      * @Method("GET")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AppBundle:Lead')->findByUser($this->getUser());
+//        $entities = $em->getRepository('AppBundle:Lead')->findByUser($this->getUser());
+        $dql   = "SELECT a FROM AppBundle:Lead a WHERE a.user = " . $this->getUser()->getId();
+        $query = $em->createQuery($dql);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
 
         return [
-            'entities' => $entities,
+//            'entities' => $entities,
+            'pagination' => $pagination
         ];
     }
 

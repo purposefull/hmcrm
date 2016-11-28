@@ -85,51 +85,57 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for entity in entities %}
+                        {% for lead in pagination %}
                             <tr class="footable-even" style="display: table-row;">
                                 <td class="footable-visible footable-first-column">
                                     <span class="footable-toggle"></span>
-                                    <a href="{{ path('lead_show', { 'id' : entity.getId() }) }}">{{ entity.getId() }}</a>
+                                    <a href="{{ path('lead_show', { 'id' : lead.getId() }) }}">{{ lead.getId() }}</a>
                                 </td>
                                 <td class="footable-visible">
-                                    {{ entity.getFirstName() }}
+                                    {{ lead.getFirstName() }}
                                 </td>
                                 <td class="footable-visible">
-                                    {{ entity.getLastName() }}
+                                    {{ lead.getLastName() }}
                                 </td>
                                 <td class="footable-visible">
-                                    {{ entity.getMobilephone() }}
+                                    {{ lead.getMobilephone() }}
                                 </td>
                                 <td class="footable-visible">
-                                    {{ entity.getEmail }}
+                                    {{ lead.getEmail }}
                                 </td>
                                 <!-- <td class="footable-visible">
-                                    {{ entity.getId() }}
+                                    {{ lead.getId() }}
                                 </td> -->
                                 <td class="footable-visible">
-                                    {{ entity.updatedAt|date('Y-m-d H:i:s') }}
+                                    {{ lead.updatedAt|date('Y-m-d H:i:s') }}
                                 </td>
                                 <td class="footable-visible">
-                                    {{ entity.getEvent() }}
+                                    {{ lead.getEvent() }}
                                 </td>
                                 <td class="footable-visible">
-                                    {#{{ entity.getGroupId() }}#}
+                                    {#{{ lead.getGroupId() }}#}
                                 </td>
                                 <!-- <td class="footable-visible">
                                     <span class="label label-primary">Pending</span>
                                 </td> -->
                                 <td class="text-right footable-visible footable-last-column">
                                     <div class="btn-group">
-                                        <a href="/lead/show/{{ entity.getId }}" class="btn-white btn btn-xs">View</a>
-                                        <a href="/lead/edit/{{ entity.getId }}" class="btn-white btn btn-xs">Edit</a>
-                                        <a href="/lead/delete/{{ entity.getId }}" class="btn-white btn btn-xs">Delete</a>
+                                        <a href="/lead/show/{{ lead.getId }}" class="btn-white btn btn-xs">View</a>
+                                        <a href="/lead/edit/{{ lead.getId }}" class="btn-white btn btn-xs">Edit</a>
+                                        <a href="/lead/delete/{{ lead.getId }}" class="btn-white btn btn-xs">Delete</a>
                                     </div>
                                 </td>
                             </tr>
                         {% endfor %}
                         </tbody>
                         <tfoot>
+                        {#{{ pagination.getTotalItemCount }}#}
+                        {#<th>{{ knp_pagination_sortable(pagination, 'Id'|trans({foo:'bar'},'messages'), 'a.id' )|raw }}</th>#}
+                        {#<th{% if pagination.isSorted('a.Title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Title', 'a.title')|raw }}</th>#}
+                        {#<th>{{ knp_pagination_sortable(pagination, 'Author'|trans({}, 'messages'), 'a.author' )|raw }}</th>#}
+                        {#<tr>{{ knp_pagination_render(pagination) }}</tr>#}
                         <tr>
+                            {#{{ knp_pagination_render(pagination) }}#}
                             <td colspan="7" class="footable-visible">
                                 <ul class="pagination pull-right">
                                     <li class="footable-page-arrow disabled">
@@ -145,7 +151,9 @@
                         </tr>
                         </tfoot>
                     </table>
-
+                    <div class="navigation">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
                 </div>
             </div>
         </div>
