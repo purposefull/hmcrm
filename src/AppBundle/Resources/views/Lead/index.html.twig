@@ -129,38 +129,18 @@
                         {% endfor %}
                         </tbody>
                         <tfoot>
-                        {#{{ pagination.getTotalItemCount }}#}
-                        {#<th>{{ knp_pagination_sortable(pagination, 'Id'|trans({foo:'bar'},'messages'), 'a.id' )|raw }}</th>#}
-                        {#<th{% if pagination.isSorted('a.Title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Title', 'a.title')|raw }}</th>#}
-                        {#<th>{{ knp_pagination_sortable(pagination, 'Author'|trans({}, 'messages'), 'a.author' )|raw }}</th>#}
-                        {#<tr>{{ knp_pagination_render(pagination) }}</tr>#}
                         <tr>
-                            {#{{ knp_pagination_render(pagination) }}#}
-                            <td colspan="7" class="footable-visible">
-                                <ul class="pagination pull-right">
-                                    <li class="footable-page-arrow disabled">
-                                        <a data-page="first" href="">«</a></li>
-                                    <li class="footable-page-arrow disabled"><a data-page="prev" href="">‹</a></li>
-                                    <li class="footable-page active"><a data-page="0" href="">1</a></li>
-                                    <li class="footable-page"><a data-page="1" href="">2</a></li>
-                                    <li class="footable-page"><a data-page="2" href="">3</a></li>
-                                    <li class="footable-page-arrow"><a data-page="next" href="">›</a></li>
-                                    <li class="footable-page-arrow"><a data-page="last" href="">»</a></li>
-                                </ul>
-                            </td>
+                            {{ knp_pagination_render(pagination) }}
                         </tr>
                         </tfoot>
                     </table>
-                    <div class="navigation">
-                        {{ knp_pagination_render(pagination) }}
-                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 
     <div class="ibox-content">
-        <a href="/lead/new" class="btn btn-primary"><i class="fa fa fa-user"></i> Add</a>
-        {#<button class="btn btn-white"><i class="fa fa-arrow-left"></i> Continue shopping</button>#}
+        <a href="{{ path('lead_new') }}" class="btn btn-primary"><i class="fa fa fa-user"></i> Add</a>
     </div>
 {% endblock %}

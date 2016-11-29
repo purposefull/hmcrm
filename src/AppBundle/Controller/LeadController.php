@@ -33,20 +33,18 @@ class LeadController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $paginator  = $this->get('knp_paginator');
 
-//        $entities = $em->getRepository('AppBundle:Lead')->findByUser($this->getUser());
         $dql   = "SELECT a FROM AppBundle:Lead a WHERE a.user = " . $this->getUser()->getId();
         $query = $em->createQuery($dql);
 
-        $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
-            10/*limit per page*/
+            3/*limit per page*/
         );
 
         return [
-//            'entities' => $entities,
             'pagination' => $pagination
         ];
     }
