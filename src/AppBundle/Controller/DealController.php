@@ -56,7 +56,7 @@ class DealController extends Controller
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity->setUser($this->getUser());
             $em->persist($entity);
@@ -196,7 +196,7 @@ class DealController extends Controller
         $editForm = $this->createEditForm($deal);
         $editForm->handleRequest($request);
 
-        if ($editForm->isValid()) {
+        if ($editForm->isValid() && $editForm->isValid()) {
             $em->flush();
 
             return $this->redirect($this->generateUrl('deal_show', [

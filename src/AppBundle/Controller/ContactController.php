@@ -96,7 +96,7 @@ class ContactController extends Controller
         $form = $this->createForm(new ContactType(), $contact);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $contact->setUser($this->getUser());
 
             $em = $this->getDoctrine()->getManager();
@@ -168,7 +168,7 @@ class ContactController extends Controller
         $editForm = $this->createEditForm($contact);
         $editForm->handleRequest($request);
 
-        if ($editForm->isValid()) {
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em->flush();
 
             return $this->redirect($this->generateUrl('contact_show', [

@@ -59,7 +59,7 @@ class TemplateController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity->setUser($this->getUser());
             $em->persist($entity);
@@ -161,7 +161,7 @@ class TemplateController extends Controller
 
         $editForm->handleRequest($request);
 
-        if ($editForm->isValid()) {
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
             $template = $editForm->getData();
             $em->persist($template);
             $em->flush();

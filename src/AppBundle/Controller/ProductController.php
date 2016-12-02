@@ -66,7 +66,7 @@ class ProductController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity->setUser($this->getUser());
             $em->persist($entity);
@@ -167,7 +167,7 @@ class ProductController extends Controller
         ]);
         $editForm->handleRequest($request);
 
-        if ($editForm->isValid()) {
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
             $product = $editForm->getData();
             $em->persist($product);
             $em->flush();
