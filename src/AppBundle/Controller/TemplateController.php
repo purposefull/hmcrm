@@ -48,7 +48,6 @@ class TemplateController extends Controller
      */
     public function createAction(Request $request)
     {
-
         $entity = new Template();
         $form = $this->createForm(TemplateType::class,
             $entity,

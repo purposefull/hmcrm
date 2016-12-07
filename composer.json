@@ -37,7 +37,8 @@
         "doctrine/doctrine-migrations-bundle": "^1.2",
         "ryanwinchester/hubspot-php": "^0.9.11",
         "zendesk/zendesk_api_client_php": "^2.1",
-        "knplabs/knp-paginator-bundle": "^2.5"
+        "knplabs/knp-paginator-bundle": "^2.5",
+        "misd/phone-number-bundle": "^1.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
