@@ -15,7 +15,7 @@
     },
     "require": {
         "php": ">=7.0",
-        "symfony/symfony": "3.1.*",
+        "symfony/symfony": "3.2.*",
         "doctrine/orm": "2.5.*",
         "doctrine/doctrine-bundle": "~1.6",
         "symfony/swiftmailer-bundle": "~2.3",
@@ -27,7 +27,7 @@
         "doctrine/doctrine-fixtures-bundle": "^2.2",
         "knplabs/knp-menu-bundle": "^2.0",
         "symfony/security-acl": "^3.0",
-        "fungio/dataexporter-bundle": "0.1.x-dev",
+        "fungio/dataexporter-bundle": "dev-master",
         "jeroendesloovere/wunderlist-php-api": "^1.0",
         "mailerlite/mailerlite-api-v2-php-sdk": "^0.1.5",
         "knplabs/knp-snappy-bundle": "^1.4",

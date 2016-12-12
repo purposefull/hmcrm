@@ -30,7 +30,7 @@ class SettingsController extends Controller
         $form = $this->createForm(SettingsType::class, $user);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
             $em->persist($user);
             $em->flush();

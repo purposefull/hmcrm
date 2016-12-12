@@ -71,7 +71,7 @@ class LeadController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity->setUser($this->getUser());
             $em->persist($entity);
@@ -254,7 +254,7 @@ class LeadController extends Controller
 
         $editForm->handleRequest($request);
 
-        if ($editForm->isValid()) {
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
             $lead = $editForm->getData();
             $em->persist($lead);
             $em->flush();
