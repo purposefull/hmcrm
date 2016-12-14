@@ -98,7 +98,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for entity in entities %}
+                            {% for entity in pagination %}
                                 <tr class="footable-even" style="display: table-row;">
                                     <td class="footable-visible footable-first-column">
                                         <span class="footable-toggle"></span>
@@ -142,31 +142,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="7" class="footable-visible">
-                                    <ul class="pagination pull-right">
-                                        <li class="footable-page-arrow disabled">
-                                            <a data-page="first" href="">«</a>
-                                        </li>
-                                        <li class="footable-page-arrow disabled">
-                                            <a data-page="prev" href="">‹</a>
-                                        </li>
-                                        <li class="footable-page active">
-                                            <a data-page="0" href="">1</a>
-                                        </li>
-                                        <li class="footable-page">
-                                            <a data-page="1" href="">2</a>
-                                        </li>
-                                        <li class="footable-page">
-                                            <a data-page="2" href="">3</a>
-                                        </li>
-                                        <li class="footable-page-arrow">
-                                            <a data-page="next" href="">›</a>
-                                        </li>
-                                        <li class="footable-page-arrow">
-                                            <a data-page="last" href="">»</a>
-                                        </li>
-                                    </ul>
-                                </td>
+                                {{ knp_pagination_render(pagination) }}
                             </tr>
                         </tfoot>
                     </table>

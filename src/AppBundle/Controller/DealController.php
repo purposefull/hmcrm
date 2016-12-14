@@ -27,15 +27,22 @@ class DealController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $paginator  = $this->get('knp_paginator');
 
-        $user = $this->getUser();
-        $entities = $em->getRepository('AppBundle:Deal')->findByUser($user);
+        $dql   = "SELECT a FROM AppBundle:Deal a WHERE a.user = :user";
+        $query = $em->createQuery($dql)->setParameters(['user' => $this->getUser()->getId()]);
+
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            $this->getParameter('limit_per_page')/*limit per page*/
+        );
 
         return [
-            'entities' => $entities,
+            'pagination' => $pagination,
         ];
     }
 

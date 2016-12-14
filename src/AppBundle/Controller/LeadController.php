@@ -41,7 +41,7 @@ class LeadController extends Controller
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
-            3/*limit per page*/
+            $this->getParameter('limit_per_page')/*limit per page*/
         );
 
         return [
@@ -150,23 +150,6 @@ class LeadController extends Controller
                 $em->persist($lead);
                 $em->flush();
 
-//                // MailerLite adding subscriber
-                $mailerLite = new \MailerLiteApi\MailerLite('d4d847245983c24a7400a97546d12b40');
-                $groupsApi = $mailerLite->groups();
-
-                $subscriber = [
-                    'email' => $request->get('email'),
-                    'fields' => [
-                        'name' => $request->get('name'),
-                    ],
-                ];
-
-                // Fixed hardcode GROUP_ID
-                if ($request->get('event') == 'healthmarketing') {
-                    $groupsApi->addSubscriber('4336713', $subscriber);
-                } else {
-                    $groupsApi->addSubscriber('4284365', $subscriber);
-                }
 
                 if ($request->get('redirectUrl')) {
                     return new RedirectResponse($request->get('redirectUrl'));
