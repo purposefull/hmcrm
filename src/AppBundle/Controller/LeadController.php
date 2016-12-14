@@ -35,7 +35,7 @@ class LeadController extends Controller
         $em = $this->getDoctrine()->getManager();
         $paginator  = $this->get('knp_paginator');
 
-        $dql   = "SELECT a FROM AppBundle:Lead a WHERE a.user = :user";
+        $dql   = "SELECT a FROM AppBundle:Lead a WHERE a.user = :user ORDER BY a.createdAt DESC";
         $query = $em->createQuery($dql)->setParameters(['user' => $this->getUser()->getId()]);
 
         $pagination = $paginator->paginate(
