@@ -41,7 +41,7 @@ class LoadLeadData extends AbstractFixture implements DependentFixtureInterface
 //            ->setRegion('Воронеж')
             ->setCountry('Россия')
 //            ->setTags('Новый клиент, перспективный')
-            ->setLeadStatus(1)
+            ->setStatus(Lead::STATUS_NEW)
             ->setUser($userAdmin);
         $this->setReference('lead-1', $lead1);
         $manager->persist($lead1);
@@ -59,7 +59,7 @@ class LoadLeadData extends AbstractFixture implements DependentFixtureInterface
 //            ->setRegion('Киев')
             ->setCountry('Украина')
 //            ->setTags('Клиент')
-            ->setLeadStatus(1)
+            ->setStatus(Lead::STATUS_NEW)
             ->setUser($userAdmin);
         $this->setReference('lead-2', $lead2);
         $manager->persist($lead2);
@@ -77,7 +77,7 @@ class LoadLeadData extends AbstractFixture implements DependentFixtureInterface
 //            ->setRegion('Харьков')
             ->setCountry('Украина')
 //            ->setTags('Клиент')
-            ->setLeadStatus(2)
+            ->setStatus(Lead::STATUS_NEW)
             ->setUser($userAdmin);
         $this->setReference('lead-3', $lead3);
         $manager->persist($lead3);
@@ -95,7 +95,7 @@ class LoadLeadData extends AbstractFixture implements DependentFixtureInterface
            // ->setRegion('Харьков')
             ->setCountry('Украина')
             //->setTags('Клиент')
-            ->setLeadStatus(2)
+            ->setStatus(Lead::STATUS_NEW)
             ->setCreatedAt(new \DateTime('-1 month'))
             ->setUser($userAdmin);
         $this->setReference('lead-4', $lead4);
@@ -114,7 +114,7 @@ class LoadLeadData extends AbstractFixture implements DependentFixtureInterface
             //->setRegion('Харьков')
             ->setCountry('Украина')
             //->setTags('Клиент')
-            ->setLeadStatus(3)
+            ->setStatus(Lead::STATUS_NEW)
             ->setCreatedAt(new \DateTime('+1 month'))
             ->setUser($userAdmin);
         $this->setReference('lead-5', $lead5);
@@ -133,7 +133,7 @@ class LoadLeadData extends AbstractFixture implements DependentFixtureInterface
            // ->setRegion('Харьков')
             ->setCountry('Украина')
             //->setTags('Клиент')
-            ->setLeadStatus(3)
+            ->setStatus(Lead::STATUS_NEW)
             ->setCreatedAt(new \DateTime('+3 month'))
             ->setUser($userAdmin);
         $this->setReference('lead-6', $lead6);
@@ -152,7 +152,7 @@ class LoadLeadData extends AbstractFixture implements DependentFixtureInterface
            // ->setRegion('Харьков')
             ->setCountry('Украина')
             //->setTags('Клиент')
-            ->setLeadStatus(3)
+            ->setStatus(Lead::STATUS_NEW)
             ->setCreatedAt(new \DateTime('-9 month'))
             ->setUser($userAdmin);
         $this->setReference('lead-7', $lead7);
@@ -171,7 +171,7 @@ class LoadLeadData extends AbstractFixture implements DependentFixtureInterface
             //->setRegion('Харьков')
             ->setCountry('Украина')
            // ->setTags('Клиент')
-            ->setLeadStatus(3)
+           ->setStatus(Lead::STATUS_NEW)
             ->setCreatedAt(new \DateTime('+5 month'))
             ->setUser($userAdmin);
         $this->setReference('lead-8', $lead8);

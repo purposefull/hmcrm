@@ -59,7 +59,7 @@ class Lead extends Base
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $leadStatus;
+    protected $status;
 
     /**
      * @var string
@@ -475,19 +475,19 @@ class Lead extends Base
     /**
      * @return string
      */
-    public function getLeadStatus()
+    public function getStatus()
     {
-        return $this->leadStatus;
+        return $this->status;
     }
 
     /**
-     * @param string $leadStatus
+     * @param string $status
      *
      * @return $this
      */
-    public function setLeadStatus($leadStatus)
+    public function setStatus($status)
     {
-        $this->leadStatus = $leadStatus;
+        $this->status = $status;
 
         return $this;
     }

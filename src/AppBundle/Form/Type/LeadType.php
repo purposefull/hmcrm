@@ -30,7 +30,7 @@ class LeadType extends AbstractType
             ->add('firstName', TextType::class, [
                 'label' => 'firstname',
             ])
-            ->add('leadStatus', ChoiceType::class, [
+            ->add('status', ChoiceType::class, [
                 'choices' => Lead::valuesOfStatus(),
                 'label' => 'lead.status',
             ])

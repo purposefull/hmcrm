@@ -73,13 +73,13 @@
                         <tr>
                             <th class="footable-visible footable-first-column footable-sortable">Id<span class="footable-sort-indicator"></span></th>
                             <th data-hide="phone" class="footable-visible footable-sortable">Name<span class="footable-sort-indicator"></span></th>
-                            <th data-hide="phone" class="footable-visible footable-sortable">Surname<span class="footable-sort-indicator"></span></th>
+                            {#<th data-hide="phone" class="footable-visible footable-sortable">Surname<span class="footable-sort-indicator"></span></th>#}
                             <th data-hide="phone" class="footable-visible footable-sortable">Phone<span class="footable-sort-indicator"></span></th>
                             <th data-hide="phone,tablet" class="footable-visible footable-sortable">Email<span class="footable-sort-indicator"></span></th>
                             <!-- <th data-hide="phone" class="footable-visible footable-sortable">Order Id<span class="footable-sort-indicator"></span></th> -->
                             <th data-hide="phone" class="footable-visible footable-sortable">Created<span class="footable-sort-indicator"></span></th>
                             <th data-hide="phone" class="footable-visible footable-sortable">Event<span class="footable-sort-indicator"></span></th>
-                            <th data-hide="phone" class="footable-visible footable-sortable">Group ID<span class="footable-sort-indicator"></span></th>
+                            <th data-hide="phone" class="footable-visible footable-sortable">Status<span class="footable-sort-indicator"></span></th>
                             <!-- <th data-hide="phone" class="footable-visible footable-sortable">Status<span class="footable-sort-indicator"></span></th> -->
                             <th class="text-right footable-visible footable-last-column footable-sortable">Action<span class="footable-sort-indicator"></span></th>
                         </tr>
@@ -94,9 +94,9 @@
                                 <td class="footable-visible">
                                     {{ lead.getFirstName() }}
                                 </td>
-                                <td class="footable-visible">
-                                    {{ lead.getLastName() }}
-                                </td>
+                                {#<td class="footable-visible">#}
+                                    {#{{ lead.getLastName() }}#}
+                                {#</td>#}
                                 <td class="footable-visible">
                                     {{ lead.getMobilephone() }}
                                 </td>
@@ -113,7 +113,7 @@
                                     {{ lead.getEvent() }}
                                 </td>
                                 <td class="footable-visible">
-                                    {#{{ lead.getGroupId() }}#}
+                                    {{ lead.getStatus() }}
                                 </td>
                                 <!-- <td class="footable-visible">
                                     <span class="label label-primary">Pending</span>
