@@ -3,9 +3,9 @@
 {% block list %}
     {% import _self as knp_menu %}
     {% if item.label|trans == 'Contacts' %}
-        <ul id="contacts" class="nav nav-second-level collapse" aria-expanded="true">
-            {{ block('children') }}
-        </ul>
+        {#<ul id="contacts" class="nav nav-second-level collapse" aria-expanded="true">#}
+            {#{{ block('children') }}#}
+        {#</ul>#}
     {% elseif item.hasChildren and options.depth is not same as(0) and item.displayChildren %}
         <ul class="nav metismenu" id="side-menu" style="height: 0" id="contacts">
             {{ block('children') }}

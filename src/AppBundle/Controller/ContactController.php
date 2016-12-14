@@ -22,7 +22,7 @@ class ContactController extends Controller
      *
      * @return Response
      *
-     * @Route("/contact", name="contact_list")
+     * @Route("/contact", name="contact")
      * @Template()
      */
     public function indexAction(Request $request)
@@ -198,7 +198,7 @@ class ContactController extends Controller
         $em->remove($contact);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('contact_list'));
+        return $this->redirect($this->generateUrl('contact'));
     }
 
     /**

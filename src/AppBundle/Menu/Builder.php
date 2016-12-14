@@ -32,15 +32,21 @@ class Builder implements ContainerAwareInterface
         // Add Menu items that are available for user
         $menu->addChild('menu.lead', [
             'route' => 'lead',
-        ])->setAttribute('icon', 'fa fa-users');
+        ])
+            ->setAttribute('icon', 'fa fa-user')
+            ->setAttribute('title', 'Leads');
 
         $menu->addChild('menu.contacts', [
-            'route' => 'contact_list',
-        ])->setAttribute('icon', 'fa fa-phone');
+            'route' => 'contact',
+        ])
+            ->setAttribute('icon', 'fa fa-phone')
+            ->setAttribute('title', 'Contacts');
 
         $menu->addChild('menu.deal', [
             'route' => 'deal',
-        ])->setAttribute('icon', 'fa fa-usd');
+        ])
+            ->setAttribute('icon', 'fa fa-usd')
+            ->setAttribute('title', 'Deals');
 
         $menu->addChild('menu.task', [
             'route' => 'task',
@@ -56,7 +62,7 @@ class Builder implements ContainerAwareInterface
 
         $menu->addChild('menu.leadCaptureForm', [
             'route' => 'lead_capture_form_settings',
-        ])->setAttribute('icon', 'fa fa-user');
+        ])->setAttribute('icon', 'fa fa-users');
 
         $menu->addChild('menu.emailTemplate', [
             'route' => 'email_template',
@@ -76,7 +82,9 @@ class Builder implements ContainerAwareInterface
 
         $menu->addChild('Settings', [
             'route' => 'settings',
-        ])->setAttribute('icon', 'fa fa-cog');
+        ])
+            ->setAttribute('icon', 'fa fa-cog')
+            ->setAttribute('title', 'Settings');;
 
         return $menu;
     }
