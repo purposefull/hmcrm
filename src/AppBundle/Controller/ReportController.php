@@ -20,9 +20,9 @@ class ReportController extends Controller
 
         // leads by months
         $stmt = $connection->prepare(
-'SELECT COUNT(lead.id) AS leadcount 
+'SELECT COUNT(lead.id) AS leads, EXTRACT(MONTH FROM created_at) AS month
 FROM lead 
-GROUP BY EXTRACT(MONTH FROM created_at) 
+GROUP BY EXTRACT(MONTH FROM created_at)
 ORDER BY EXTRACT(MONTH FROM created_at);');
         $stmt->execute();
         $leads = $stmt->fetchAll();
@@ -37,7 +37,7 @@ ORDER BY EXTRACT(MONTH FROM created_at);'
         $stmt->execute();
         $deals = $stmt->fetchAll();
 
-        $leadcount = array_column($leads, 'leadcount');
+        $leadcount = $this->fixMonths($leads);
         $dealcount = array_column($deals, 'dealcount');
 
         return [
@@ -70,5 +70,30 @@ ORDER BY EXTRACT(MONTH FROM created_at);'
     public function calendarAction()
     {
         return [];
+    }
+
+    /**
+     * @param array $monthCollection
+     *
+     * @return array
+     */
+    public function fixMonths(array $monthCollection)
+    {
+        // create array with month keys
+        $result_array = [];
+        foreach ($monthCollection as $el) {
+            $result_array[$el['month']] = $el['leads'];
+        }
+
+        // added unused months with 0
+        for ($i = 1; $i <= 12; $i++) {
+            if (!isset($result_array[$i])) {
+                $result_array[$i] = 0;
+            }
+        }
+
+        ksort($result_array);
+
+        return $result_array;
     }
 }

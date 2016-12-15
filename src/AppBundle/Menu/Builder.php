@@ -33,7 +33,7 @@ class Builder implements ContainerAwareInterface
         $menu->addChild('menu.lead', [
             'route' => 'lead',
         ])
-            ->setAttribute('icon', 'fa fa-user')
+            ->setAttribute('icon', 'fa fa-users')
             ->setAttribute('title', 'Leads');
 
         $menu->addChild('menu.contacts', [
@@ -62,7 +62,7 @@ class Builder implements ContainerAwareInterface
 
         $menu->addChild('menu.leadCaptureForm', [
             'route' => 'lead_capture_form_settings',
-        ])->setAttribute('icon', 'fa fa-users');
+        ])->setAttribute('icon', 'fa fa-user');
 
         $menu->addChild('menu.emailTemplate', [
             'route' => 'email_template',
