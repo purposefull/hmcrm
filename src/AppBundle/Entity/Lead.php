@@ -8,7 +8,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Lead.
  *
- * @ORM\Table(name="lead")
  * @ORM\Entity()
  */
 class Lead extends Base
@@ -146,6 +145,24 @@ class Lead extends Base
     protected $user;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $deliveryDate;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $tariff;
+
+    /**
+     * Lead constructor.
+     */
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
      * @return string
      */
     public function getEmail()
@@ -156,9 +173,9 @@ class Lead extends Base
     /**
      * @param string $email
      *
-     * @return $this
+     * @return Lead
      */
-    public function setEmail($email)
+    public function setEmail($email): Lead
     {
         $this->email = $email;
 
@@ -176,9 +193,9 @@ class Lead extends Base
     /**
      * @param string $mobilePhone
      *
-     * @return $this
+     * @return Lead
      */
-    public function setMobilePhone($mobilePhone)
+    public function setMobilePhone($mobilePhone): Lead
     {
         $this->mobilePhone = $mobilePhone;
 
@@ -195,10 +212,14 @@ class Lead extends Base
 
     /**
      * @param string $region
+     *
+     * @return Lead
      */
-    public function setRegion($region)
+    public function setRegion($region): Lead
     {
         $this->region = $region;
+
+        return $this;
     }
 
     /**
@@ -212,9 +233,9 @@ class Lead extends Base
     /**
      * @param string $workPhone
      *
-     * @return $this
+     * @return Lead
      */
-    public function setWorkPhone($workPhone)
+    public function setWorkPhone($workPhone): Lead
     {
         $this->workPhone = $workPhone;
 
@@ -232,15 +253,14 @@ class Lead extends Base
     /**
      * @param string $address
      *
-     * @return $this
+     * @return Lead
      */
-    public function setAddress($address)
+    public function setAddress($address): Lead
     {
         $this->address = $address;
 
         return $this;
     }
-
 
     /**
      * @return string
@@ -253,9 +273,9 @@ class Lead extends Base
     /**
      * @param string $city
      *
-     * @return $this
+     * @return Lead
      */
-    public function setCity($city)
+    public function setCity($city): Lead
     {
         $this->city = $city;
 
@@ -273,9 +293,9 @@ class Lead extends Base
     /**
      * @param string $country
      *
-     * @return $this
+     * @return Lead
      */
-    public function setCountry($country)
+    public function setCountry($country): Lead
     {
         $this->country = $country;
 
@@ -292,10 +312,14 @@ class Lead extends Base
 
     /**
      * @param mixed $event
+     *
+     * @return Lead
      */
-    public function setEvent($event)
+    public function setEvent($event): Lead
     {
         $this->event = $event;
+
+        return $this;
     }
 
     /**
@@ -308,10 +332,14 @@ class Lead extends Base
 
     /**
      * @param mixed $building
+     *
+     * @return Lead
      */
-    public function setBuilding($building)
+    public function setBuilding($building): Lead
     {
         $this->building = $building;
+
+        return $this;
     }
 
     /**
@@ -324,21 +352,15 @@ class Lead extends Base
 
     /**
      * @param mixed $deliveryDate
+     *
+     * @return Lead
      */
-    public function setDeliveryDate($deliveryDate)
+    public function setDeliveryDate($deliveryDate): Lead
     {
         $this->deliveryDate = $deliveryDate;
+
+        return $this;
     }
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $deliveryDate;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    protected $tariff;
 
     /**
      * @return mixed
@@ -350,10 +372,14 @@ class Lead extends Base
 
     /**
      * @param mixed $tariff
+     *
+     * @return Lead
      */
-    public function setTariff($tariff)
+    public function setTariff($tariff): Lead
     {
         $this->tariff = $tariff;
+
+        return $this;
     }
 
     /**
@@ -365,11 +391,11 @@ class Lead extends Base
     }
 
     /**
-     * @param mixed $user
+     * @param User $user
      *
-     * @return $this
+     * @return Lead
      */
-    public function setUser($user)
+    public function setUser(User $user): Lead
     {
         $this->user = $user;
 
@@ -387,9 +413,9 @@ class Lead extends Base
     /**
      * @param string $firstName
      *
-     * @return $this
+     * @return Lead
      */
-    public function setFirstName($firstName)
+    public function setFirstName($firstName): Lead
     {
         $this->firstName = $firstName;
 
@@ -406,10 +432,14 @@ class Lead extends Base
 
     /**
      * @param string $zipCode
+     *
+     * @return Lead
      */
-    public function setZipCode($zipCode)
+    public function setZipCode($zipCode): Lead
     {
         $this->zipCode = $zipCode;
+
+        return $this;
     }
 
     /**
@@ -423,9 +453,9 @@ class Lead extends Base
     /**
      * @param string $lastName
      *
-     * @return $this
+     * @return Lead
      */
-    public function setLastName($lastName)
+    public function setLastName($lastName): Lead
     {
         $this->lastName = $lastName;
 
@@ -443,9 +473,9 @@ class Lead extends Base
     /**
      * @param string $companyName
      *
-     * @return $this
+     * @return Lead
      */
-    public function setCompanyName($companyName)
+    public function setCompanyName($companyName): Lead
     {
         $this->companyName = $companyName;
 
@@ -463,9 +493,9 @@ class Lead extends Base
     /**
      * @param string $title
      *
-     * @return $this
+     * @return Lead
      */
-    public function setTitle($title)
+    public function setTitle($title): Lead
     {
         $this->title = $title;
 
@@ -483,9 +513,9 @@ class Lead extends Base
     /**
      * @param string $status
      *
-     * @return $this
+     * @return Lead
      */
-    public function setStatus($status)
+    public function setStatus($status): Lead
     {
         $this->status = $status;
 
@@ -503,9 +533,9 @@ class Lead extends Base
     /**
      * @param string $source
      *
-     * @return $this
+     * @return Lead
      */
-    public function setSource($source)
+    public function setSource($source): Lead
     {
         $this->source = $source;
 
@@ -555,17 +585,12 @@ class Lead extends Base
     /**
      * @param string $product
      *
-     * @return $this
+     * @return Lead
      */
-    public function setProduct($product)
+    public function setProduct($product): Lead
     {
         $this->product = $product;
 
         return $this;
-    }
-
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime();
     }
 }

@@ -97,6 +97,121 @@ class User extends BaseUser
     protected $emailServer;
 
     /**
+     * @var Company
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Company", inversedBy="users")
+     */
+    protected $company;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $emailLogin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $emailPassword;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $emailServiceAuto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $emailApiKey;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $taskService;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $taskApiKey;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $smsService;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $smsApiKey;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Lead", mappedBy="user")
+     */
+    protected $leads;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Template", mappedBy="user")
+     */
+    protected $templates;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contact", mappedBy="user")
+     */
+    protected $contacts;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Deal", mappedBy="user")
+     */
+    protected $deals;
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->leads = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
+        $this->deals = new ArrayCollection();
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
+     * @return Company
+     */
+    public function getCompany(): Company
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param Company $company
+     *
+     * @return User
+     */
+    public function setCompany($company): User
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getEmailServer()
@@ -145,48 +260,6 @@ class User extends BaseUser
     }
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $emailLogin;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $emailPassword;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $emailServiceAuto;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $emailApiKey;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $taskService;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $taskApiKey;
-
-    /**
      * @return string
      */
     public function getEmailServiceAuto()
@@ -232,49 +305,6 @@ class User extends BaseUser
     public function setSmsApiKey($smsApiKey)
     {
         $this->smsApiKey = $smsApiKey;
-    }
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $smsService;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $smsApiKey;
-
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Lead", mappedBy="user")
-     */
-    protected $leads;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Template", mappedBy="user")
-     */
-    protected $templates;
-
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Contact", mappedBy="user")
-     */
-    protected $contacts;
-
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Deal", mappedBy="user")
-     */
-    protected $deals;
-
-    public function __construct()
-    {
-        parent::__construct();
-        $this->leads = new ArrayCollection();
-        $this->contacts = new ArrayCollection();
-        $this->deals = new ArrayCollection();
-        $this->createdAt = new \DateTime();
     }
 
     /**

@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Template class.
  *
- * @ORM\Table(name="template")
  * @ORM\Entity()
  */
 class Template extends Base
@@ -32,25 +31,28 @@ class Template extends Base
      */
     protected $code;
 
+    /**
+     * Template constructor.
+     */
     public function __construct()
     {
         $this->createdAt = new \DateTime();
     }
 
     /**
-     * @return mixed
+     * @return User
      */
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
     /**
-     * @param mixed $user
+     * @param User $user
      *
-     * @return $this
+     * @return Template
      */
-    public function setUser($user)
+    public function setUser(User $user): Template
     {
         $this->user = $user;
 
@@ -68,9 +70,9 @@ class Template extends Base
     /**
      * @param string $code
      *
-     * @return $this
+     * @return Template
      */
-    public function setCode($code)
+    public function setCode($code): Template
     {
         $this->code = $code;
 
@@ -88,9 +90,9 @@ class Template extends Base
     /**
      * @param string $name
      *
-     * @return $this
+     * @return Template
      */
-    public function setName($name)
+    public function setName($name): Template
     {
         $this->name = $name;
 

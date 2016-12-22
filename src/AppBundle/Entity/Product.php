@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Product.
  *
- * @ORM\Table(name="product")
  * @ORM\Entity()
  */
 class Product extends Base
@@ -58,15 +57,18 @@ class Product extends Base
      */
     protected $code;
 
+    /**
+     * Product constructor.
+     */
     public function __construct()
     {
         $this->createdAt = new \DateTime();
     }
 
     /**
-     * @return mixed
+     * @return User
      */
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }
@@ -74,9 +76,9 @@ class Product extends Base
     /**
      * @param mixed $user
      *
-     * @return $this
+     * @return Product
      */
-    public function setUser($user)
+    public function setUser(User $user): Product
     {
         $this->user = $user;
 
@@ -93,10 +95,14 @@ class Product extends Base
 
     /**
      * @param string $name
+     *
+     * @return Product
      */
-    public function setName($name)
+    public function setName($name): Product
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -109,10 +115,14 @@ class Product extends Base
 
     /**
      * @param string $price
+     *
+     * @return Product
      */
-    public function setPrice($price)
+    public function setPrice($price): Product
     {
         $this->price = $price;
+
+        return $this;
     }
 
     /**
@@ -125,10 +135,14 @@ class Product extends Base
 
     /**
      * @param mixed $deals
+     *
+     * @return Product
      */
-    public function setDeals($deals)
+    public function setDeals($deals): Product
     {
         $this->deals = $deals;
+
+        return $this;
     }
 
     /**
@@ -141,10 +155,14 @@ class Product extends Base
 
     /**
      * @param string $title
+     *
+     * @return Product
      */
-    public function setTitle($title)
+    public function setTitle($title): Product
     {
         $this->title = $title;
+
+        return $this;
     }
 
     /**
@@ -157,10 +175,14 @@ class Product extends Base
 
     /**
      * @param string $currency
+     *
+     * @return Product
      */
-    public function setCurrency($currency)
+    public function setCurrency($currency): Product
     {
         $this->currency = $currency;
+
+        return $this;
     }
 
     /**
@@ -173,9 +195,13 @@ class Product extends Base
 
     /**
      * @param string $code
+     *
+     * @return Product
      */
-    public function setCode($code)
+    public function setCode($code): Product
     {
         $this->code = $code;
+
+        return $this;
     }
 }

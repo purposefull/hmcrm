@@ -3,12 +3,12 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Contact.
  *
- * @ORM\Table(name="contact")
  * @ORM\Entity()
  */
 class Contact extends Base
@@ -39,7 +39,7 @@ class Contact extends Base
     protected $user;
 
     /**
-     * Constructor.
+     * Contact constructor.
      */
     public function __construct()
     {
@@ -57,10 +57,14 @@ class Contact extends Base
 
     /**
      * @param string $name
+     *
+     * @return Contact
      */
-    public function setName($name)
+    public function setName($name): Contact
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -74,9 +78,9 @@ class Contact extends Base
     /**
      * @param int $type
      *
-     * @return $this
+     * @return Contact
      */
-    public function setType($type)
+    public function setType($type): Contact
     {
         $this->type = $type;
 
@@ -84,9 +88,9 @@ class Contact extends Base
     }
 
     /**
-     * @return mixed
+     * @return Collection
      */
-    public function getDeals()
+    public function getDeals(): Collection
     {
         return $this->deals;
     }
@@ -94,9 +98,9 @@ class Contact extends Base
     /**
      * @param mixed $deals
      *
-     * @return $this
+     * @return Contact
      */
-    public function setDeals($deals)
+    public function setDeals($deals): Contact
     {
         $this->deals = $deals;
 
@@ -112,11 +116,11 @@ class Contact extends Base
     }
 
     /**
-     * @param mixed $user
+     * @param User $user
      *
-     * @return $this
+     * @return Contact
      */
-    public function setUser($user)
+    public function setUser(User $user): Contact
     {
         $this->user = $user;
 
@@ -128,9 +132,9 @@ class Contact extends Base
      *
      * @param Deal $deal Deal
      *
-     * @return $this
+     * @return Contact
      */
-    public function addDeal(Deal $deal)
+    public function addDeal(Deal $deal): Contact
     {
         $this->deals[] = $deal;
 
@@ -141,9 +145,13 @@ class Contact extends Base
      * Remove deal.
      *
      * @param Deal $deal Deal
+     *
+     * @return Contact
      */
-    public function removeDeal(Deal $deal)
+    public function removeDeal(Deal $deal): Contact
     {
         $this->deals->removeElement($deal);
+
+        return $this;
     }
 }

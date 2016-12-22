@@ -8,7 +8,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Deal.
  *
- * @ORM\Table(name="deal")
  * @ORM\Entity()
  */
 class Deal extends Base
@@ -92,6 +91,14 @@ class Deal extends Base
     protected $tags;
 
     /**
+     * Deal constructor.
+     */
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
      * @return string
      */
     public function getName()
@@ -102,9 +109,9 @@ class Deal extends Base
     /**
      * @param string $name
      *
-     * @return $this
+     * @return Deal
      */
-    public function setName($name)
+    public function setName($name): Deal
     {
         $this->name = $name;
 
@@ -122,9 +129,9 @@ class Deal extends Base
     /**
      * @param string $value
      *
-     * @return $this
+     * @return Deal
      */
-    public function setValue($value)
+    public function setValue($value): Deal
     {
         $this->value = $value;
 
@@ -142,9 +149,9 @@ class Deal extends Base
     /**
      * @param mixed $contact
      *
-     * @return $this
+     * @return Deal
      */
-    public function setContact($contact)
+    public function setContact($contact): Deal
     {
         $this->contact = $contact;
 
@@ -162,9 +169,9 @@ class Deal extends Base
     /**
      * @param string $currency
      *
-     * @return $this
+     * @return Deal
      */
-    public function setCurrency($currency)
+    public function setCurrency($currency): Deal
     {
         $this->currency = $currency;
 
@@ -182,9 +189,9 @@ class Deal extends Base
     /**
      * @param string $source
      *
-     * @return $this
+     * @return Deal
      */
-    public function setSource($source)
+    public function setSource($source): Deal
     {
         $this->source = $source;
 
@@ -202,9 +209,9 @@ class Deal extends Base
     /**
      * @param string $tags
      *
-     * @return $this
+     * @return Deal
      */
-    public function setTags($tags)
+    public function setTags($tags): Deal
     {
         $this->tags = $tags;
 
@@ -222,9 +229,9 @@ class Deal extends Base
     /**
      * @param string $stage
      *
-     * @return $this
+     * @return Deal
      */
-    public function setStage($stage)
+    public function setStage($stage): Deal
     {
         $this->stage = $stage;
 
@@ -250,9 +257,9 @@ class Deal extends Base
     }
 
     /**
-     * @return mixed
+     * @return User
      */
-    public function getUser()
+    public function getUser(): User
     {
         return $this->user;
     }
@@ -260,17 +267,12 @@ class Deal extends Base
     /**
      * @param mixed $user
      *
-     * @return $this
+     * @return Deal
      */
-    public function setUser($user)
+    public function setUser(User $user): Deal
     {
         $this->user = $user;
 
         return $this;
-    }
-
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime();
     }
 }
