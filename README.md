@@ -11,9 +11,9 @@ http://crm.foxweb24.ru - SaaS implementation.
 
 # System Requirements
 
-1) PHP 7+
+1) PHP 7.1+
 
-2) PostgreSQL 9.3+
+2) PostgreSQL 9.5+
 
 3) Composer
 
