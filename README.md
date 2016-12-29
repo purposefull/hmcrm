@@ -61,7 +61,7 @@ http://crm.foxweb24.ru - SaaS implementation.
 
 # Database [PostgreSQL]
 
-1) $ sudo apt-get install php7.0-postgresql
+1) $ sudo apt-get install php7.1-pgsql
 
 2) $ sudo -u postgres psql postgres
 
