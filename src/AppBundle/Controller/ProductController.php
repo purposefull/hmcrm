@@ -148,7 +148,7 @@ class ProductController extends Controller
      * @return Response
      *
      * @Route("/edit/{id}", name="product_edit")
-     * 
+     *
      * @Template()
      */
     public function editAction(Request $request)

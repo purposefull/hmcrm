@@ -91,6 +91,11 @@ fos_user:
     db_driver:      orm # can be orm or odm
     firewall_name:  main
     user_class:     AppBundle\Entity\User
+    profile:
+        form:
+            type:               AppBundle\Form\Type\ProfileFormType # or 'fos_user_profile' on Symfony < 2.8
+            name:               fos_user_profile_form
+            validation_groups:  [Profile, Default]
 
 
 #    group:

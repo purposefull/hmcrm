@@ -178,6 +178,4 @@ class Product extends Base
     {
         $this->code = $code;
     }
-
-
 }

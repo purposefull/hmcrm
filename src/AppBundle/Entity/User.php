@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Misd\PhoneNumberBundle\Validator\Constraints\PhoneNumber as AssertPhoneNumber;
 
 /**
  * @ORM\Entity
@@ -33,6 +34,58 @@ class User extends BaseUser
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $emailService;
+
+    /**
+     * @Assert\Country()
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $country;
+
+    /**
+     * @AssertPhoneNumber()
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $phoneNumber;
+
+    /**
+     * @return mixed
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * @param mixed $phoneNumber
+     */
+    public function setPhoneNumber($phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param mixed $country
+     *
+     * @return $this
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
 
     /**
      * @var string
