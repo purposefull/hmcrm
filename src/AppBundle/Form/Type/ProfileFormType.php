@@ -15,11 +15,9 @@ use AppBundle\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
 class ProfileFormType extends AbstractType
 {
@@ -37,13 +35,6 @@ class ProfileFormType extends AbstractType
         if (!empty($options['validation_groups'])) {
             $constraintsOptions['groups'] = array(reset($options['validation_groups']));
         }
-
-        $builder->add('current_password', PasswordType::class, array(
-            'label' => 'form.current_password',
-            'translation_domain' => 'FOSUserBundle',
-            'mapped' => false,
-            'constraints' => new UserPassword($constraintsOptions),
-        ));
     }
 
     /**
