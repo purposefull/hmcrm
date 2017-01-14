@@ -20,11 +20,12 @@ class PasswordTest extends BaseTestCase
         $crawler = $client->request('GET', '/profile/change-password');
         $form = $crawler->selectButton('Save changes')->form();
         $form['fos_user_change_password_form[current_password]'] = 'admin';
-        $form['fos_user_change_password_form[plainPassword][first]'] = '';
-        $form['fos_user_change_password_form[plainPassword][second]'] = '';
-
+        $form['fos_user_change_password_form[plainPassword][first]'] = '1111';
+        $form['fos_user_change_password_form[plainPassword][second]'] = '1111';
         $client->submit($form);
 
-        static::assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
+        $client->request('GET', '/logout');
+
+        static::assertEquals(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
     }
 }
