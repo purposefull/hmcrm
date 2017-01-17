@@ -26,6 +26,13 @@ class PasswordTest extends BaseTestCase
 
         $client->request('GET', '/logout');
 
+        $crawler = $client->request('GET', '/login');
+        $form = $crawler->selectButton('Login')->form();
+        $form['_username'] = 'admin';
+        $form['_password'] = '1111';
+        $client->submit($form);
+
+
         static::assertEquals(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
     }
 }
