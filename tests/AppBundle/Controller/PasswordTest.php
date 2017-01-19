@@ -32,7 +32,9 @@ class PasswordTest extends BaseTestCase
         $form['_password'] = '1111';
         $client->submit($form);
 
+        $client->request('GET', '/lead/show/1');
 
-        static::assertEquals(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+
+        static::assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
     }
 }
